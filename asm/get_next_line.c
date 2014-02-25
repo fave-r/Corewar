@@ -1,11 +1,11 @@
 /*
-** get_next_line.c for get_next_line in /home/odet_a/rendu/CPE-2013-BSQ/get_next_line
+** get_next_line.c for Corewar in /home/blackbird/work/Corewar/asm
 **
-** Made by
-** Login   <odet_a@epitech.net>
+** Made by romaric
+** Login   <fave_r@epitech.net>
 **
-** Started on  Fri Dec  6 17:53:50 2013
-** Last update Mon Feb 24 15:03:03 2014 
+** Started on  Tue Feb 25 18:55:03 2014 romaric
+** Last update Tue Feb 25 18:55:07 2014 romaric
 */
 
 #include "struct.h"

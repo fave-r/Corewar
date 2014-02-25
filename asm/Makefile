@@ -1,11 +1,11 @@
 ##
-## Makefile for Makefile in /home/odet_a/Corewar
-## 
-## Made by 
-## Login   <odet_a@epitech.net>
-## 
-## Started on  Mon Feb 17 04:28:28 2014 
-## Last update Mon Feb 24 14:57:47 2014 
+## Makefile for Corewar in /home/blackbird/work/Corewar/asm
+##
+## Made by romaric
+## Login   <fave_r@epitech.net>
+##
+## Started on  Tue Feb 25 18:54:15 2014 romaric
+## Last update Tue Feb 25 18:54:19 2014 romaric
 ##
 
 NAME=	asm
