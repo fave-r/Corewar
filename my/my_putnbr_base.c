@@ -1,11 +1,11 @@
 /*
-** my_putnbr_base.c for my_putnbr_base in /home/blackbird/work/my_putnbr_base
-** 
+** my_putnbr_base.c for Corewar in /home/blackbird/work/Corewar/my
+**
 ** Made by romaric
 ** Login   <fave_r@epitech.net>
-** 
-** Started on  Thu Nov 14 10:54:10 2013 romaric
-** Last update Thu Nov 14 10:57:45 2013 romaric
+**
+** Started on  Wed Feb 26 16:47:20 2014 romaric
+** Last update Wed Feb 26 16:47:23 2014 romaric
 */
 
 void    my_putnbr_base(int nb, char *base)

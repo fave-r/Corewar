@@ -1,11 +1,11 @@
 /*
-** my_putnbr.c for my_putnbr in /home/blackbird/work/my_putnbr
+** my_putnbr.c for Corewar in /home/blackbird/work/Corewar/my
 **
 ** Made by romaric
 ** Login   <fave_r@epitech.net>
 **
-** Started on  Sun Nov 17 17:01:56 2013 romaric
-** Last update Wed Feb 26 16:44:08 2014 romaric
+** Started on  Wed Feb 26 16:46:01 2014 romaric
+** Last update Wed Feb 26 16:46:04 2014 romaric
 */
 
 void    my_putnbr(int n)
