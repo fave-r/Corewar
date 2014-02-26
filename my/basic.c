@@ -5,10 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Feb 26 18:12:20 2014 romaric
-** Last update Wed Feb 26 18:12:24 2014 romaric
+** Last update Wed Feb 26 20:18:44 2014 Thibaut Lopez
 */
 
-#include "struct.h"
+#include "my.h"
 
 int	my_strlen(char *str)
 {
