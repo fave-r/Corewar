@@ -5,38 +5,38 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue Feb 25 18:54:15 2014 romaric
-## Last update Tue Feb 25 19:51:28 2014 romaric
+## Last update Wed Feb 26 11:45:06 2014 Thibaut Lopez
 ##
 
-CC=	gcc
+CC=		gcc
 
-RM=	rm -f
+RM=		rm -f
 
-CFLAGS=	-Wall -ggdb3 -g3
+CFLAGS=		-Wall -ggdb3 -g3
 
-NAME=	asm
+NAME=		asm
 
-SRCS=	main.c \
-	op.c \
-	parsing.c \
-	basic.c \
-	xfunction.c \
-	get_next_line.c \
-	recup.c
+SRCS=		main.c \
+		op.c \
+		parsing.c \
+		basic.c \
+		xfunction.c \
+		get_next_line.c \
+		recup.c
 
-OBJS=	$(SRCS:.c=.o)
+OBJS=		$(SRCS:.c=.o)
 
-all:	$(NAME)
+all:		$(NAME)
 
 $(NAME):	$(OBJS)
 		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
 
 clean:
-	$(RM) $(OBJS)
+		$(RM) $(OBJS)
 
-fclean:	clean
-	$(RM) $(NAME)
+fclean:		clean
+		$(RM) $(NAME)
 
-re:	fclean all
+re:		fclean all
 
-.PHONY:	all fclean re
+.PHONY:		all fclean re
