@@ -1,11 +1,11 @@
 /*
 ** parsing.c for parsing in /home/odet_a/rendu/CPE_2014_corewar/asm
-** 
-** Made by 
+**
+** Made by
 ** Login   <odet_a@epitech.net>
-** 
-** Started on  Mon Feb 17 18:54:21 2014 
-** Last update Tue Feb 25 17:33:19 2014 
+**
+** Started on  Mon Feb 17 18:54:21 2014
+** Last update Tue Feb 25 19:37:31 2014 romaric
 */
 
 #include "struct.h"
@@ -47,23 +47,21 @@ void	check_name(char *str)
     }
   else
     {
-      quotes = count_quotes(tmp);
+      quotes = count_quotes(tmp, 0);
       if (quotes != 2)
 	{
 	  my_putstr("Unterminated string in the name.\n", 2);
 	  exit(EXIT_FAILURE);
 	}
       else
-	recup_name(str);
+	recup_name(tmp);
     }
 }
 
-int	count_quotes(char *str)
+int	count_quotes(char *str, int i)
 {
-  int	i;
   int	x;
 
-  i = 0;
   x = 0;
   while (str[i])
     {

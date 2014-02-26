@@ -1,11 +1,11 @@
 /*
 ** struct.h for struct in /home/odet_a/Corewar
-** 
-** Made by 
+**
+** Made by
 ** Login   <odet_a@epitech.net>
-** 
-** Started on  Mon Feb 17 04:27:37 2014 
-** Last update Mon Feb 24 15:04:21 2014 
+**
+** Started on  Mon Feb 17 04:27:37 2014
+** Last update Tue Feb 25 19:40:29 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -39,6 +39,7 @@ void	parser(char *str);
 char	*cmd_by_line(char *str);
 int	check(char *str);
 void	check_name(char *str);
-int	count_quotes(char *str);
+int	count_quotes(char *str, int i);
+char	*recup_name(char *str);
 
 #endif

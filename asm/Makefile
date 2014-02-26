@@ -5,31 +5,38 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue Feb 25 18:54:15 2014 romaric
-## Last update Tue Feb 25 18:54:19 2014 romaric
+## Last update Wed Feb 26 11:45:06 2014 Thibaut Lopez
 ##
 
-NAME=	asm
+CC=		gcc
 
-CC=	gcc -W -Wall
+RM=		rm -f
 
-SRC=	main.c \
-	op.c \
-	parsing.c \
-	basic.c \
-	xfunction.c \
-	get_next_line.c
+CFLAGS=		-Wall -ggdb3 -g3
 
-RM=	rm -f
+NAME=		asm
 
-T=	*~
+SRCS=		main.c \
+		op.c \
+		parsing.c \
+		basic.c \
+		xfunction.c \
+		get_next_line.c \
+		recup.c
 
-all:
-	$(CC) -o $(NAME) $(SRC)
+OBJS=		$(SRCS:.c=.o)
+
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
 
 clean:
-	$(RM) $(T)
+		$(RM) $(OBJS)
 
-fclean:	clean
-	$(RM) $(NAME)
+fclean:		clean
+		$(RM) $(NAME)
 
-re:	fclean all
+re:		fclean all
+
+.PHONY:		all fclean re
