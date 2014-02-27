@@ -1,43 +1,51 @@
 ##
-## Makefile for Corewar in /home/blackbird/work/Corewar/asm
+## Makefile for Corewar in /home/odet_a/work/Corewar/asm
 ##
-## Made by romaric
-## Login   <fave_r@epitech.net>
+## Made by
+## Login   <odet_a@epitech.net>
 ##
-## Started on  Tue Feb 25 18:54:15 2014 romaric
-## Last update Wed Feb 26 11:38:43 2014 
+## Started on  Thu Feb 27 18:18:06 2014
+## Last update Thu Feb 27 18:18:10 2014 
 ##
 
-CC=	gcc
+CC=		gcc
 
-RM=	rm -f
+RM=		rm -f
 
-CFLAGS=	-Wall -ggdb3 -g3
+CFLAGS=		-Wall -ggdb3 -g3
 
-NAME=	asm
+NAME=		asm
 
-SRCS=	main.c \
-	op.c \
-	parsing.c \
-	basic.c \
-	xfunction.c \
-	get_next_line.c \
-	recup.c \
-	fill_header.c
+SRCS=		main.c \
+		op.c \
+		parsing.c \
+		basic.c \
+		xfunction.c \
+		get_next_line.c \
+		recup.c \
+		fill_header.c
 
-OBJS=	$(SRCS:.c=.o)
+SRCS=		main.c \
+		op.c \
+		parsing.c \
+		basic.c \
+		xfunction.c \
+		get_next_line.c \
+		recup.c
 
-all:	$(NAME)
+OBJS=		$(SRCS:.c=.o)
+
+all:		$(NAME)
 
 $(NAME):	$(OBJS)
 		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
 
 clean:
-	$(RM) $(OBJS)
+		$(RM) $(OBJS)
 
-fclean:	clean
-	$(RM) $(NAME)
+fclean:		clean
+		$(RM) $(NAME)
 
-re:	fclean all
+re:		fclean all
 
-.PHONY:	all fclean re
+.PHONY:		all fclean re
