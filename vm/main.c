@@ -5,23 +5,28 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Wed Feb 26 18:48:45 2014 Thibaut Lopez
+** Last update Thu Feb 27 15:55:29 2014 Thibaut Lopez
 */
 
-void	rm_empty_champ(t_champ *champ, t_champ *first)
+#include "my.h"
+#include "vm.h"
+
+void	rm_empty_champ(t_champ **tmp, t_champ **first)
 {
+  t_champ	*prev;
   t_champ	*to_free;
 
-  if (first == tmp)
-    first = first->next;
-  to_free = tmp;
-  tmp = tmp->next;
-  tmp->prev = to_free->prev;
-  to_free->prev->next = tmp;
+  if (*first == *tmp)
+    *first = (*first)->next;
+  prev = (*tmp)->prev;
+  to_free = *tmp;
+  *tmp = (*tmp)->next;
+  prev->next = *tmp;
+  (*tmp)->prev = prev;
   free(to_free);
 }
 
-void	epur_champ(t_champ *champ, t_champ *first)
+void	epur_champ(t_champ *champ, t_champ **first)
 {
   int		i;
   t_champ	*tmp;
@@ -31,7 +36,7 @@ void	epur_champ(t_champ *champ, t_champ *first)
   while (i < 4)
     {
       if (tmp->path == NULL && tmp != tmp->next)
-	rm_empty_champ(tmp, first);
+	rm_empty_champ(&tmp, first);
       else if (tmp->path == NULL)
 	{
 	  free(tmp);
@@ -50,7 +55,7 @@ int     get_dump(char *nbr)
   int   ret;
   int	len;
   int	pow;
-  char	base[16];
+  char	*base;
 
   len = my_strlen(nbr);
   base = "0123456789ABCDEF";
@@ -60,19 +65,19 @@ int     get_dump(char *nbr)
       my_putstr(ER_DUMP, 2);
       return (150);
     }
-  pow = (len == 2) ? 10 : 1;
+  pow = (len == 2) ? 16 : 1;
   i = 0;
   ret = 0;
   while (nbr[i] != 0)
     {
-      ret += my_strchr(nbr[i], base) * 16 * pow;
-      pow /= 10;
+      ret += my_strchr(nbr[i], base) * pow;
+      pow /= 16;
       i++;
     }
   return (ret);
 }
 
-void	fill_champ(int argc, char **argv, t_cor *cor)
+void	fill_champ(char **argv, t_cor *cor)
 {
   int		addr;
   t_champ	*tmp;
@@ -80,40 +85,35 @@ void	fill_champ(int argc, char **argv, t_cor *cor)
   cor->champ = init_champ();
   tmp = cor->champ;
   addr = 0;
-  while (argv[i] != NULL)
+  while (argv[cor->cycle] != NULL)
     {
-      if (my_strcmp(argv[i], "-dump") == 0)
-	cor->dump = get_dump(argv[++i]);
-      else if (my_strcmp(argv[i], "-n") == 0)
-	move_in_list(cor->champ, my_getnbr(argv[++i]) % 4 + 1);
-      else if (my_strcmp(argv[i], "-a") == 0)
-	addr = my_getnbr(argv[++i]) % MEM_SIZE;
+      if (my_strcmp(argv[cor->cycle], "-dump") == 0)
+	cor->dump = get_dump(argv[++cor->cycle]);
+      else if (my_strcmp(argv[cor->cycle], "-n") == 0)
+	move_in_list(&cor->champ, my_getnbr(argv[++cor->cycle]) % 5);
+      else if (my_strcmp(argv[cor->cycle], "-a") == 0)
+	addr = my_getnbr(argv[++cor->cycle]) % MEM_SIZE;
       else
-	addr = check_champ(cor->champ, argv[i], addr);
-      i++;
+	if ((addr = check_champ(&(cor->champ),
+				argv[cor->cycle], addr, cor->endian)) == 1)
+	  exit(1);
+      if (argv[cor->cycle] != NULL)
+	cor->cycle++;
     }
-  epur_champ(cor->champ, tmp);
+  epur_champ(cor->champ, &tmp);
   cor->champ = tmp;
 }
 
 int	main(int argc, char **argv)
 {
-  t_champ	*tmp;
   t_cor	cor;
 
+  (void)argc;
   cor.dump = 150;
   cor.cycle = 1;
   cor.cycle_to_die = CYCLE_TO_DIE;
-  fill_champ(argc, argv, &cor);
+  cor.endian = my_endian();
+  fill_champ(argv, &cor);
   cor.cycle = 0;
-  printf("dump = %d\n", cor->dump);
-  tmp = cor->champ;
-  printf("path : %s, fd = %d, nb = %d, adress = %d, prog_name = %s, comment = %s\n", tmp->path, tmp->fd, tmp->champ_nb, tmp->adress, tmp->head->prog_name, tmp->head->comment);
-  tmp = tmp->next;
-  while (tmp != cor->champ)
-    {
-      printf("path : %s, fd = %d, nb = %d, adress = %d, prog_name = %s, comment = %s\n", tmp->path, tmp->fd, tmp->champ_nb, tmp->adress, tmp->head->prog_name, tmp->head->comment);
-      tmp = tmp->next;
-    }
   return (0);
 }

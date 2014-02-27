@@ -5,8 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Feb 26 16:46:37 2014 romaric
-** Last update Wed Feb 26 16:46:39 2014 romaric
+** Last update Thu Feb 27 15:12:47 2014 Thibaut Lopez
 */
+
+#include "my.h"
 
 int     my_getnbr(char *str)
 {
@@ -14,6 +16,8 @@ int     my_getnbr(char *str)
   int   i;
   int   result;
 
+  if (str == NULL)
+    return (0);
   result = 0;
   i = 0;
   cpt = 1;

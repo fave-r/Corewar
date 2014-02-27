@@ -5,13 +5,13 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:49:14 2014 thibaud
-** Last update Wed Feb 26 18:14:12 2014 Thibaut Lopez
+** Last update Thu Feb 27 15:58:35 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
 #define VM_H
 #define ER_DUMP	"Warning : Wrong value for nbr_cycle. Have been initialized at 150.\n"
-#define ER_COR	" is not a .cor file.\n"
+#define ER_COR	" is not a corewar executable.\n"
 #define ER_SIZE	" take to much memory to be launched.\n"
 #define ER_POS1	"Error : the position "
 #define	ER_POS2	"  is already taken by the file"
@@ -41,13 +41,15 @@ typedef struct		s_champ
 typedef struct 	s_cor
 {
   t_champ	*champ;
+  char		*mem;
   int		dump;
   int		cycle;
   int		cycle_to_die;
+  int		endian;
 }		t_cor;
 
 t_champ	*init_champ();
 void	move_in_list(t_champ **champ, int nbr);
-int	check_champ(t_champ *champ, char *path, int addr);
+int	check_champ(t_champ **champ, char *path, int addr, int endian);
 
 #endif

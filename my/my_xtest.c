@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Feb 23 21:21:10 2014 Thibaut Lopez
-** Last update Sun Feb 23 21:25:19 2014 Thibaut Lopez
+** Last update Thu Feb 27 15:46:57 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -23,13 +23,14 @@ void	*xmalloc(size_t n)
   return (p);
 }
  
-int	xopen(const char *pathname, int flags)
+int	xopen(char *pathname, int flags)
 {
   int	fd;
  
   fd = open(pathname, flags);
   if (fd == -1)
     {
+      my_putstr(pathname, 2);
       my_putstr(ER_OPEN, 2);
       exit(EXIT_FAILURE);
     }
