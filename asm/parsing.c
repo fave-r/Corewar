@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Tue Feb 25 19:37:31 2014 romaric
+** Last update Wed Feb 26 15:42:37 2014 
 */
 
 #include "struct.h"
@@ -25,22 +25,31 @@ void	parser(char *str)
 
 int	check(char *str)
 {
-  check_name(str);
+  header_t	*ptr;
+  header_t	*tmp;
+  char		*name;
+
+  ptr = xmalloc(sizeof(header_t));
+  tmp = xmalloc(sizeof(header_t));
+  name = check_name(str);
+  tmp = fill_header(ptr, name);
+  ptr = tmp;
   return (0);
 }
 
-void	check_name(char *str)
+char	*check_name(char *str)
 {
   int	fd;
   int	quotes;
   char	*tmp;
+  char	*name;
 
   fd = xopen(str, O_RDONLY);
   tmp = get_next_line(fd);
   if (tmp[0] != '.')
     {
       my_putstr("The header is not valid.\n", 2);
-      my_putstr("Your header needs to like :\n", 2);
+      my_putstr("Your header needs to be like :\n", 2);
       my_putstr(".name \"Name_Of_The_Champion\"\n", 2);
       my_putstr(".comment \"Comment_on_your_champion\"\n", 2);
       exit(EXIT_FAILURE);
@@ -54,8 +63,10 @@ void	check_name(char *str)
 	  exit(EXIT_FAILURE);
 	}
       else
-	recup_name(tmp);
+	name = recup_name(tmp);
     }
+  printf("name = %s\n", name);
+  return (name);
 }
 
 int	count_quotes(char *str, int i)

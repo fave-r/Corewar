@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue Feb 25 18:54:15 2014 romaric
-## Last update Tue Feb 25 19:51:28 2014 romaric
+## Last update Wed Feb 26 11:38:43 2014 
 ##
 
 CC=	gcc
@@ -22,7 +22,8 @@ SRCS=	main.c \
 	basic.c \
 	xfunction.c \
 	get_next_line.c \
-	recup.c
+	recup.c \
+	fill_header.c
 
 OBJS=	$(SRCS:.c=.o)
 

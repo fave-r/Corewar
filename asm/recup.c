@@ -5,19 +5,26 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Feb 25 18:56:54 2014 romaric
-** Last update Tue Feb 25 19:42:59 2014 romaric
+** Last update Wed Feb 26 15:43:20 2014 
 */
 
 #include "struct.h"
+#include "op.h"
 
 char	*recup_name(char *str)
 {
   int	i;
+  int	j;
+  char	save[PROG_NAME_LENGTH];
 
   i = 6;
+  j = 0;
   while (str[++i] != '"' && count_quotes(str, i) >= 1)
     {
-      write(1, &str[i], 1);
+      save[j] = str[i];
+      j++;
     }
-  return ("BG");
+  save[j] = 0;
+  printf("save = %s\n", save);
+  return (save);
 }
