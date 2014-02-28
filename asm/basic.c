@@ -1,11 +1,11 @@
 /*
-** basic.c for basic in /home/odet_a/rendu/CPE_2014_corewar/asm
-** 
-** Made by 
-** Login   <odet_a@epitech.net>
-** 
-** Started on  Mon Feb 24 15:01:04 2014 
-** Last update Mon Feb 24 15:02:31 2014 
+** basic.c for Corewar in /home/blackbird/work/Corewar/asm
+**
+** Made by romaric
+** Login   <fave_r@epitech.net>
+**
+** Started on  Wed Feb 26 18:12:20 2014 romaric
+** Last update Wed Feb 26 18:12:24 2014 romaric
 */
 
 #include "struct.h"

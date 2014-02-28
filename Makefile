@@ -1,11 +1,11 @@
 ##
 ## Makefile for makefile in /home/thibaut.lopez/Corewar
-## 
+##
 ## Made by Thibaut Lopez
 ## Login   <thibaut.lopez@epitech.net>
-## 
+##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Thu Feb 27 09:46:25 2014 Thibaut Lopez
+## Last update Fri Feb 28 12:09:20 2014 romaric
 ##
 
 LIB_S=		my/basic.c \
