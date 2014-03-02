@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:49:14 2014 thibaud
-** Last update Thu Feb 27 15:58:35 2014 Thibaut Lopez
+** Last update Sun Mar  2 13:29:36 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -51,5 +51,7 @@ typedef struct 	s_cor
 t_champ	*init_champ();
 void	move_in_list(t_champ **champ, int nbr);
 int	check_champ(t_champ **champ, char *path, int addr, int endian);
+int	my_list_len(t_champ *champ);
+void	init_adress(t_champ *champ);
 
 #endif

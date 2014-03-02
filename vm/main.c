@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Thu Feb 27 15:55:29 2014 Thibaut Lopez
+** Last update Sun Mar  2 13:28:29 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -84,7 +84,7 @@ void	fill_champ(char **argv, t_cor *cor)
 
   cor->champ = init_champ();
   tmp = cor->champ;
-  addr = 0;
+  addr = -1;
   while (argv[cor->cycle] != NULL)
     {
       if (my_strcmp(argv[cor->cycle], "-dump") == 0)
@@ -115,5 +115,7 @@ int	main(int argc, char **argv)
   cor.endian = my_endian();
   fill_champ(argv, &cor);
   cor.cycle = 0;
+  init_adress(cor.champ);
+  cor.mem = xmalloc((MEM_SIZE + 1) * sizeof(char));
   return (0);
 }

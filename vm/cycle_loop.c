@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Feb 27 15:26:28 2014 Thibaut Lopez
-** Last update Thu Feb 27 15:30:12 2014 Thibaut Lopez
+** Last update Sun Mar  2 12:45:25 2014 Thibaut Lopez
 */
 
 void	cycle_loop(t_cor *cor)
