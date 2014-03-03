@@ -5,12 +5,11 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Mar  2 12:45:35 2014 Thibaut Lopez
-** Last update Sun Mar  2 13:29:38 2014 Thibaut Lopez
+** Last update Mon Mar  3 09:41:02 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 #include "my.h"
-#include <stdio.h>
 
 int	my_list_len(t_champ *champ)
 {
@@ -82,17 +81,33 @@ void	init_adress(t_champ *champ)
   tmp = champ;
   if (tmp->adress == -1)
     tmp->adress = (MEM_SIZE / len) * i;
-  printf("%d", tmp->adress);
   i++;
   tmp = tmp->next;
   while (tmp != champ)
     {
       if (tmp->adress == -1)
 	tmp->adress = (MEM_SIZE / len) * i;
-      printf(" %d", tmp->adress);
       i++;
       tmp = tmp->next;
     }
-  printf("\n");
   check_adress(champ);
+}
+
+void	fill_mem(char **mem, t_champ *champ)
+{
+  int		len;
+  t_champ	*tmp;
+
+  tmp = champ;
+  len = read(tmp->fd, *mem + tmp->adress, MEM_SIZE - tmp->adress);
+  if (len < tmp->head->prog_size)
+    read(tmp->fd, *mem, tmp->head->prog_size);
+  tmp = tmp->next;
+  while (tmp != champ)
+    {
+      len = read(tmp->fd, *mem + tmp->adress, MEM_SIZE - tmp->adress);
+      if (len < tmp->head->prog_size)
+	read(tmp->fd, *mem, tmp->head->prog_size);
+      tmp = tmp->next;
+    }
 }

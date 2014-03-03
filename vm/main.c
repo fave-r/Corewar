@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Sun Mar  2 13:28:29 2014 Thibaut Lopez
+** Last update Mon Mar  3 09:39:17 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -117,5 +117,16 @@ int	main(int argc, char **argv)
   cor.cycle = 0;
   init_adress(cor.champ);
   cor.mem = xmalloc((MEM_SIZE + 1) * sizeof(char));
+  cor.mem[MEM_SIZE] = 0;
+  fill_mem(&(cor.mem), cor.champ);
+  int	i;
+
+  i = 0;
+  while (i < MEM_SIZE)
+    {
+      my_putnbr(cor.mem[i], 1);
+      my_putstr(" ", 1);
+      i++;
+    }
   return (0);
 }

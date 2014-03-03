@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:49:14 2014 thibaud
-** Last update Sun Mar  2 13:29:36 2014 Thibaut Lopez
+** Last update Mon Mar  3 09:37:04 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -53,5 +53,6 @@ void	move_in_list(t_champ **champ, int nbr);
 int	check_champ(t_champ **champ, char *path, int addr, int endian);
 int	my_list_len(t_champ *champ);
 void	init_adress(t_champ *champ);
+void	fill_mem(char **mem, t_champ *champ);
 
 #endif
