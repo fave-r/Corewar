@@ -1,11 +1,11 @@
 /*
-** fill_header.c for fill_header in /home/odet_a/work/Corewar/asm
-** 
-** Made by 
+** fill_header.c for corewar in /home/blackbird/work/Corewar/asm
+**
+** Made by
 ** Login   <odet_a@epitech.net>
-** 
-** Started on  Wed Feb 26 11:34:10 2014 
-** Last update Wed Feb 26 15:25:36 2014 
+**
+** Started on  Tue Mar  4 16:53:28 2014
+** Last update Tue Mar  4 17:26:01 2014 romaric
 */
 
 #include "struct.h"
@@ -17,6 +17,6 @@ header_t	*fill_header(header_t *ptr, char *str)
   printf("str = %s\n", str);
   new = xmalloc(sizeof(header_t));
   new->magic = COREWAR_EXEC_MAGIC;
-  //  new->prog_name = str;
+  new->prog_name = str;
   return (new);
 }

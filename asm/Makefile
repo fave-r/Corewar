@@ -5,7 +5,7 @@
 ## Login   <odet_a@epitech.net>
 ##
 ## Started on  Thu Feb 27 18:18:06 2014
-## Last update Tue Mar  4 16:25:05 2014 romaric
+## Last update Tue Mar  4 16:58:16 2014 romaric
 ##
 
 CC=		clang
@@ -24,14 +24,6 @@ SRCS=		main.c \
 		get_next_line.c \
 		recup.c \
 		fill_header.c
-
-SRCS=		main.c \
-		op.c \
-		parsing.c \
-		basic.c \
-		xfunction.c \
-		get_next_line.c \
-		recup.c
 
 OBJS=		$(SRCS:.c=.o)
 

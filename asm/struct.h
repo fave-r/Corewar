@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 04:27:37 2014
-** Last update Tue Mar  4 16:29:53 2014 romaric
+** Last update Tue Mar  4 17:15:03 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -41,7 +41,7 @@ char		*cmd_by_line(char *str);
 int		check(char *str);
 char		*check_name(char *str);
 int		count_quotes(char *str, int i);
-void		recup_name(char *str);
+char		*recup_name(char *str);
 header_t	*fill_header(header_t *ptr, char *str);
 
 #endif

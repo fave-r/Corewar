@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Tue Mar  4 16:24:48 2014 romaric
+** Last update Tue Mar  4 17:22:34 2014 romaric
 */
 
 #include "struct.h"
@@ -63,7 +63,7 @@ char	*check_name(char *str)
 	  exit(EXIT_FAILURE);
 	}
       else
-	name = recup_name(tmp);
+	  name = recup_name(tmp);
     }
   printf("name = %s\n", name);
   return (name);
