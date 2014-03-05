@@ -1,32 +1,24 @@
 /*
-** my_putnbr_base.c for Corewar in /home/blackbird/work/Corewar/my
-**
-** Made by romaric
-** Login   <fave_r@epitech.net>
-**
-** Started on  Wed Feb 26 16:47:20 2014 romaric
-** Last update Wed Feb 26 16:47:23 2014 romaric
+** my_putnbr_base.c for my_putnbr_base in /home/odet_a/rendu/Piscine-C-Jour_06/ex_15
+** 
+** Made by alexandre.odet
+** Login   <odet_a@epitech.net>
+** 
+** Started on  Mon Oct  7 20:30:16 2013 alexandre.odet
+** Last update Mon Mar  3 19:21:42 2014 Thibaut Lopez
 */
 
-void    my_putnbr_base(int nb, char *base)
-{
-  int   result;
-  int   div;
-  int   sibase;
+#include <stdio.h>
 
-  sibase = my_strlen(base);
-  if (nb < 0)
-    {
-      my_putchar('-');
-      nb = -nb;
-    }
-  div = 1;
-  while ((nb / div) >= sibase)
-    div = div * sibase;
-  while (div > 0)
-    {
-      result = (nb / div) % sibase;
-      my_putchar(base[result]);
-      div = div / sibase;
-    }
+void	my_putnbr_base(unsigned int nb, char *base)
+{
+  int	a;
+  int	len_base;
+
+  len_base = my_strlen(base);
+  a = nb % len_base;
+  nb = nb / len_base;
+  if (nb > 0)
+    my_putnbr_base(nb, base);
+  my_putchar(base[a]);
 }

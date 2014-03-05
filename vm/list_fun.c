@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Mar  2 12:45:35 2014 Thibaut Lopez
-** Last update Mon Mar  3 09:41:02 2014 Thibaut Lopez
+** Last update Wed Mar  5 15:51:14 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -102,12 +102,14 @@ void	fill_mem(char **mem, t_champ *champ)
   len = read(tmp->fd, *mem + tmp->adress, MEM_SIZE - tmp->adress);
   if (len < tmp->head->prog_size)
     read(tmp->fd, *mem, tmp->head->prog_size);
+  close(tmp->fd);
   tmp = tmp->next;
   while (tmp != champ)
     {
       len = read(tmp->fd, *mem + tmp->adress, MEM_SIZE - tmp->adress);
       if (len < tmp->head->prog_size)
 	read(tmp->fd, *mem, tmp->head->prog_size);
+      close(tmp->fd);
       tmp = tmp->next;
     }
 }

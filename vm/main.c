@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Mon Mar  3 09:39:17 2014 Thibaut Lopez
+** Last update Mon Mar  3 10:43:44 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -124,9 +124,10 @@ int	main(int argc, char **argv)
   i = 0;
   while (i < MEM_SIZE)
     {
-      my_putnbr(cor.mem[i], 1);
-      my_putstr(" ", 1);
+      my_putnbr_base(cor.mem[i], "0123456789ABCDEF");
+      my_putstr("|", 1);
       i++;
     }
+  my_putstr("\n", 1);
   return (0);
 }
