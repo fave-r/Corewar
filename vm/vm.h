@@ -5,12 +5,12 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:49:14 2014 thibaud
-** Last update Mon Mar  3 09:37:04 2014 Thibaut Lopez
+** Last update Wed Mar  5 16:32:02 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
 #define VM_H
-#define ER_DUMP	"Warning : Wrong value for nbr_cycle. Have been initialized at 150.\n"
+#define ER_DUMP	"Warning : Wrong value for nbr_cycle. Have been initialized at 0x68.\n"
 #define ER_COR	" is not a corewar executable.\n"
 #define ER_SIZE	" take to much memory to be launched.\n"
 #define ER_POS1	"Error : the position "
@@ -46,6 +46,7 @@ typedef struct 	s_cor
   int		cycle;
   int		cycle_to_die;
   int		endian;
+  int		live[4];
 }		t_cor;
 
 t_champ	*init_champ();
