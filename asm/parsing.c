@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Tue Mar  4 17:22:34 2014 romaric
+** Last update Mon Mar 10 14:15:10 2014 alex-odet
 */
 
 #include "struct.h"
@@ -65,7 +65,6 @@ char	*check_name(char *str)
       else
 	  name = recup_name(tmp);
     }
-  printf("name = %s\n", name);
   return (name);
 }
 

@@ -5,18 +5,24 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Tue Mar  4 16:53:28 2014
-** Last update Tue Mar  4 17:26:01 2014 romaric
+** Last update Mon Mar 10 14:14:56 2014 alex-odet
 */
 
 #include "struct.h"
 
 header_t	*fill_header(header_t *ptr, char *str)
 {
+  int		i;
   header_t	*new;
 
-  printf("str = %s\n", str);
+  i = 0;
   new = xmalloc(sizeof(header_t));
   new->magic = COREWAR_EXEC_MAGIC;
-  new->prog_name = str;
+  while (i < my_strlen(str))
+    {
+      new->prog_name[i] = str[i];
+      i++;
+    }
+  new->prog_name[i] = 0;
   return (new);
 }
