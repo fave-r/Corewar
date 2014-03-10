@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Mon Mar 10 14:15:10 2014 alex-odet
+** Last update Mon Mar 10 14:18:20 2014 alex-odet
 */
 
 #include "struct.h"
@@ -32,8 +32,7 @@ int	check(char *str)
   ptr = xmalloc(sizeof(header_t));
   tmp = xmalloc(sizeof(header_t));
   name = check_name(str);
-  tmp = fill_header(ptr, name);
-  ptr = tmp;
+  ptr = fill_header(name);
   return (0);
 }
 

@@ -5,12 +5,12 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Tue Mar  4 16:53:28 2014
-** Last update Mon Mar 10 14:14:56 2014 alex-odet
+** Last update Mon Mar 10 14:18:21 2014 alex-odet
 */
 
 #include "struct.h"
 
-header_t	*fill_header(header_t *ptr, char *str)
+header_t	*fill_header(char *str)
 {
   int		i;
   header_t	*new;
