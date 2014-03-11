@@ -5,7 +5,7 @@
 ## Login   <odet_a@epitech.net>
 ##
 ## Started on  Thu Feb 27 18:18:06 2014
-## Last update Mon Mar 10 18:01:13 2014 alex-odet
+## Last update Tue Mar 11 04:15:06 2014 alex-odet
 ##
 
 CC=		clang
@@ -24,7 +24,8 @@ SRCS=		main.c \
 		fill_header.c \
 		init.c \
 		recup_comment.c \
-		error.c
+		error.c \
+		create_cor.c
 
 OBJS=		$(SRCS:.c=.o)
 
