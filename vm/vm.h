@@ -4,16 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Started on  Tue Feb 25 15:49:14 2014 thibaud
-<<<<<<< HEAD
-** Last update Tue Mar 11 16:26:01 2014 Thibaut Lopez
-=======
-<<<<<<< HEAD
-** Last update Tue Mar 11 15:23:50 2014 thibaud
-=======
-** Last update Tue Mar 11 08:59:30 2014 Thibaut Lopez
->>>>>>> c0170bdbdfe4ae04b9c353ff3ff449a277ff1f5c
->>>>>>> cbb57c0ce9464c9af0bd7f53dd9e510acd100012
+** Last update Tue Mar 11 17:13:14 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -42,12 +33,7 @@ typedef struct		s_champ
   int			pc;
   int			reg[REG_NUMBER];
   int			carry;
-<<<<<<< HEAD
   int			wait;
-  int			jump;
-=======
-  int			cycle_to_wait;
->>>>>>> cbb57c0ce9464c9af0bd7f53dd9e510acd100012
   struct s_champ	*next;
   struct s_champ	*prev;
 }			t_champ;
