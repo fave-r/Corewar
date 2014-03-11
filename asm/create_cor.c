@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Tue Mar 11 04:03:48 2014 alex-odet
-** Last update Tue Mar 11 04:32:06 2014 alex-odet
+** Last update Tue Mar 11 05:15:58 2014 alex-odet
 */
 
 #include "struct.h"
@@ -28,5 +28,4 @@ void	create_cor(char *name, header_t *header)
   new_name = strcat(save_name, COR_EXT);
   fd = xopen(new_name, O_CREAT|O_WRONLY);
   write(fd, header, sizeof(header_t));
-  printf("comment = %s\n", header->comment);
 }

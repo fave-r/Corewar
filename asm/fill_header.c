@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Tue Mar  4 16:53:28 2014
-** Last update Tue Mar 11 04:46:10 2014 alex-odet
+** Last update Tue Mar 11 05:16:20 2014 alex-odet
 */
 
 #include "struct.h"
@@ -27,10 +27,9 @@ header_t	*fill_header(char *name, char *comment)
   i = 0;
   while (i < my_strlen(comment) && i < COMMENT_LENGTH)
     {
-      comment[i] = new->comment[i];
+      new->comment[i] = comment[i];
       i++;
     }
   new->comment[i] = 0;
-  printf("new->comment = %s\n", new->comment);
   return (new);
 }
