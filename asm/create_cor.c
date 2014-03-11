@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Tue Mar 11 04:03:48 2014 alex-odet
-** Last update Tue Mar 11 08:38:14 2014 alex-odet
+** Last update Tue Mar 11 08:42:26 2014 alex-odet
 */
 
 #include "struct.h"
@@ -32,12 +32,17 @@ void	create_cor(char *name, header_t *header)
       my_putstr("Open Failed\n", 2);
       exit(EXIT_FAILURE);
     }
-  my_putstr("Assembling ", 1);
+  print_assembling(name, header);
+  write(fd, header, sizeof(header_t));
+}
+
+void	print_assembling(char *name, header_t *header)
+{
+  my_putstr("Assembling : ", 1);
   my_putstr(name, 1);
   my_putstr("\n\t", 1);
   my_putstr(header->prog_name, 1);
   my_putstr("\n\t", 1);
   my_putstr(header->comment, 1);
-  my_putstr("\n", 1);
-  write(fd, header, sizeof(header_t));
+  my_putstr("\n", 1);  
 }

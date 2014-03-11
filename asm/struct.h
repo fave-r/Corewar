@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 04:27:37 2014
-** Last update Tue Mar 11 04:14:22 2014 alex-odet
+** Last update Tue Mar 11 08:42:48 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -51,5 +51,6 @@ char		*recup_comment(char *str);
 int		my_strncmp(char *s1, char *s2, int n);
 void		print_header_error();
 void		create_cor(char *name, header_t *header);
+void		print_assembling(char *name, header_t *header);
 
 #endif
