@@ -1,0 +1,17 @@
+/*
+** repartisseur.c for vm in /home/thibaud/rendu/Corewar/Corewar/vm/fonctions
+** 
+** Made by thibaud
+** Login   <thibaud@epitech.net>
+** 
+** Started on  Wed Mar  5 18:19:35 2014 thibaud
+** Last update Wed Mar  5 18:44:37 2014 thibaud
+*/
+
+#include"vm.h"
+
+int	repartisseur(t_champ *champs, t_cor *map)
+{
+
+  return (0);
+}
