@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Tue Mar 11 05:16:09 2014 alex-odet
+** Last update Tue Mar 11 12:59:22 2014 romaric
 */
 
 #include "struct.h"
@@ -18,7 +18,8 @@ void	parser(char *str)
     check(str);
   else
     {
-      my_putstr("Bad file Extension. Please Choose a file with '.s'extension.\n", 2);
+      my_putstr("Bad file Extension. ", 2);
+      my_putstr("Please Choose a file with '.s' extension.\n", 2);
       exit(EXIT_FAILURE);
     }
 }
