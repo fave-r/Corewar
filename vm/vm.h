@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:49:14 2014 thibaud
-** Last update Tue Mar 11 08:59:30 2014 Thibaut Lopez
+** Last update Tue Mar 11 16:26:01 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -34,6 +34,8 @@ typedef struct		s_champ
   int			pc;
   int			reg[REG_NUMBER];
   int			carry;
+  int			wait;
+  int			jump;
   struct s_champ	*next;
   struct s_champ	*prev;
 }			t_champ;

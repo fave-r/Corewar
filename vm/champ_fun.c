@@ -6,7 +6,7 @@
 **
 ** Started on  Wed Feb 26 13:43:48 2014 Thibaut Lopez
 <<<<<<< HEAD
-** Last update Tue Mar 11 08:58:18 2014 Thibaut Lopez
+** Last update Tue Mar 11 16:13:57 2014 Thibaut Lopez
 =======
 ** Last update Tue Mar 11 12:39:22 2014 romaric
 >>>>>>> 7a1ce4467cbb2609ed07177ffab4ad4b6bbffa85
@@ -22,6 +22,7 @@ void	set_var(t_champ *champ)
   champ->fd = -1;
   champ->adress = -1;
   champ->pc = 0;
+  champ->wait = -1;
   my_mem_set(champ->reg, REG_NUMBER);
   champ->carry = 0;
 }
