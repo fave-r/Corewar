@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 13:43:48 2014 Thibaut Lopez
-** Last update Tue Mar 11 08:44:31 2014 Thibaut Lopez
+** Last update Tue Mar 11 08:52:09 2014 alex-odet
 */
 
 #include "vm.h"
@@ -70,7 +70,7 @@ void	move_in_list(t_champ **champ, int nbr)
   while (tmp != *champ && tmp->champ_nb != nbr)
     tmp = tmp->next;
   if (tmp == *champ && tmp->champ_nb != nbr)
-    void;
+    (void);
   if ((*champ)->path != NULL)
     {
       my_putstr(ER_POS1, 2);

@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 04:27:37 2014
-** Last update Tue Mar 11 08:42:48 2014 alex-odet
+** Last update Tue Mar 11 08:51:29 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -28,6 +28,7 @@ typedef struct	s_gnl
   int		c;
 }		t_gnl;
 
+char		*my_strcat(char *dest, char *src);
 int		my_putstr(char *str, int fd);
 int		my_strlen(char *str);
 void		check_my_arg(char *str);
