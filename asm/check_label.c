@@ -5,37 +5,81 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Tue Mar 11 14:02:14 2014 romaric
+** Last update Tue Mar 11 19:17:39 2014 romaric
 */
+
+#include "struct.h"
+
+int count_labels(char *str)
+{
+  int   fd;
+  char  *line;
+  int   i;
+  int   x;
+  int   k = 0;
+
+  i = 0;
+  x = 0;
+  fd = xopen(str, O_RDONLY);
+  while ((line = get_next_line(fd)))
+    {
+      while (line[i] != ':' && line[i] != '\0')
+	i++;
+      i--;
+      if (line[i] == '%')
+	k++;//ceci est une line qui ne sert a rien mais oblige par la condition
+      else if (line[++i] != '\0')
+	x++;
+      i = -1;
+    }
+  return (x);
+}
 
 void	check_label(char *str)
 {
   int	fd;
   char	*line;
   int	i;
+  char	**labels;
+  int	x;
+  int	k = 0;
+  int	w = 0;
+  int	nbrlabels;
 
-  i = -1;
+  i = 0;
+  x = 0;
+  nbrlabels = count_labels(str);
+  labels = xmalloc(nbrlabels * sizeof(char*));
   fd = xopen(str, O_RDONLY);
   while ((line = get_next_line(fd)))
     {
-      while (line[++i] != ':' || line[++i] != '\0')
-	i = i; //ceci est une line qui ne sert a rien mais oblige par la boucle
+      while (line[i] != ':' && line[i] != '\0')
+	i++;
       i--;
       if (line[i] == '%')
-	ckeck_for_label(fd);
-      i++;
-      if (line[i] != '\0')
-	create_label(fd);
+	k++;//ceci est une line qui ne sert a rien mais oblige par la condition
+      else if (line[++i] != '\0')
+	labels = create_label(line, labels, i, &x);
       i = -1;
+    }
+  while (w <= x)
+    {
+      printf("%s\n", labels[w]);
+      w++;
     }
 }
 
-void	check_for_label(int fd)
+char	**create_label(char *line, char **labels, int i, int *y)
 {
+  int	x;
 
-}
-
-void	create_label(int fd)
-{
-
+  labels[*y] = xmalloc(i * sizeof(char));
+  x = 0;
+  while (x != i)
+    {
+      labels[*y][x] = line[x];
+      x++;
+    }
+  y++;
+  return (labels);
 }

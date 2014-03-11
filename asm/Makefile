@@ -5,7 +5,7 @@
 ## Login   <odet_a@epitech.net>
 ##
 ## Started on  Thu Feb 27 18:18:06 2014
-## Last update Tue Mar 11 12:45:06 2014 romaric
+## Last update Tue Mar 11 17:58:20 2014 romaric
 ##
 
 CC=		clang
@@ -25,7 +25,8 @@ SRCS=		main.c \
 		init.c \
 		recup_comment.c \
 		error.c \
-		create_cor.c
+		create_cor.c \
+		check_label.c
 
 OBJS=		$(SRCS:.c=.o)
 

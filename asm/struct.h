@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 04:27:37 2014
-** Last update Tue Mar 11 08:51:29 2014 alex-odet
+** Last update Tue Mar 11 19:17:35 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -53,5 +53,7 @@ int		my_strncmp(char *s1, char *s2, int n);
 void		print_header_error();
 void		create_cor(char *name, header_t *header);
 void		print_assembling(char *name, header_t *header);
+void		check_label(char *str);
+char		**create_label(char *line, char **labels, int i, int *y);
 
 #endif
