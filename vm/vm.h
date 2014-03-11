@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Tue Mar 11 17:13:14 2014 Thibaut Lopez
+** Last update Tue Mar 11 17:15:55 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -51,7 +51,7 @@ typedef struct 	s_cor
 
 typedef struct	s_struct
 {
-  char		mnémonique;
+  char		mnemonique;
   int		(* ptr_fct)(t_cor *, t_champ *);
   int		ctw;
 }		t_struct;
