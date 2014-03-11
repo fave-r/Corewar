@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 04:27:37 2014
-** Last update Mon Mar 10 16:04:24 2014 alex-odet
+** Last update Tue Mar 11 03:59:13 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -16,6 +16,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <stdio.h>
+
 #include "op.h"
 
 #define BUFF_SIZE 1024
@@ -43,7 +44,11 @@ int		check(char *str);
 char		*check_name(char *str);
 int		count_quotes(char *str, int i);
 char		*recup_name(char *str);
-header_t	*fill_header(char *str);
+header_t	*fill_header(char *name, char *comment);
 header_t	*init();
+char		*check_comment(char *str);
+char		*recup_comment(char *str);
+int		my_strncmp(char *s1, char *s2, int n);
+void		print_header_error();
 
 #endif
