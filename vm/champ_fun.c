@@ -6,10 +6,18 @@
 **
 ** Started on  Wed Feb 26 13:43:48 2014 Thibaut Lopez
 <<<<<<< HEAD
+<<<<<<< HEAD
 ** Last update Tue Mar 11 16:13:57 2014 Thibaut Lopez
+=======
+** Last update Tue Mar 11 12:59:36 2014 thibaud
+=======
+<<<<<<< HEAD
+** Last update Tue Mar 11 08:58:18 2014 Thibaut Lopez
+>>>>>>> cbb57c0ce9464c9af0bd7f53dd9e510acd100012
 =======
 ** Last update Tue Mar 11 12:39:22 2014 romaric
 >>>>>>> 7a1ce4467cbb2609ed07177ffab4ad4b6bbffa85
+>>>>>>> c0170bdbdfe4ae04b9c353ff3ff449a277ff1f5c
 */
 
 #include "vm.h"
@@ -25,6 +33,7 @@ void	set_var(t_champ *champ)
   champ->wait = -1;
   my_mem_set(champ->reg, REG_NUMBER);
   champ->carry = 0;
+  champ->cycle_to_wait = -1;
 }
 
 t_champ	*init_champ()
