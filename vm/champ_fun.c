@@ -1,11 +1,15 @@
 /*
 ** champ_fun.c for champ_fun in /home/thibaut.lopez/Corewar/Corewar/vm
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Wed Feb 26 13:43:48 2014 Thibaut Lopez
+<<<<<<< HEAD
 ** Last update Tue Mar 11 08:58:18 2014 Thibaut Lopez
+=======
+** Last update Tue Mar 11 12:39:22 2014 romaric
+>>>>>>> 7a1ce4467cbb2609ed07177ffab4ad4b6bbffa85
 */
 
 #include "vm.h"
@@ -69,10 +73,16 @@ int	move_in_list(t_champ **champ, int nbr)
     tmp = tmp->next;
   while (tmp != *champ && tmp->champ_nb != nbr)
     tmp = tmp->next;
+<<<<<<< HEAD
   if (tmp == *champ && tmp->champ_nb != nbr && tmp->path == NULL)
     tmp->champ_nb = nbr;
   *champ = tmp;
   if ((*champ)->champ_nb == nbr && (*champ)->path != NULL)
+=======
+  //if (tmp == *champ && tmp->champ_nb != nbr)
+  //void;
+  if ((*champ)->path != NULL)
+>>>>>>> 7a1ce4467cbb2609ed07177ffab4ad4b6bbffa85
     {
       my_putstr(ER_POS1, 2);
       my_putnbr(nbr, 2);

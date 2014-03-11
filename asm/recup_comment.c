@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Mon Mar 10 16:12:02 2014 alex-odet
-** Last update Tue Mar 11 03:56:19 2014 alex-odet
+** Last update Tue Mar 11 14:35:02 2014 alex-odet
 */
 
 #include "struct.h"
@@ -43,8 +43,10 @@ char	*recup_comment(char *str)
   int	i;
   int	j;
 
-  i = 9;
+  i = 0;
   j = 0;
+  while (str[i] != '\"')
+    i++;
   save = xmalloc(sizeof(char) * COMMENT_LENGTH + 1);
   while (str[++i] != '"' && count_quotes(str, i) >= 1)
     {

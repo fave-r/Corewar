@@ -5,11 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-<<<<<<< HEAD
-## Last update Tue Mar 11 08:42:08 2014 Thibaut Lopez
-=======
-## Last update Mon Mar 10 17:43:17 2014 alex-odet
->>>>>>> 147f6dabd6dbe569e98faaca75935a5792b6ffc6
+## Last update Tue Mar 11 08:48:47 2014 alex-odet
 ##
 
 LIB_S=		my/basic.c \
