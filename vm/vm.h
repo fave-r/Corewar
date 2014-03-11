@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:49:14 2014 thibaud
-** Last update Wed Mar  5 16:32:02 2014 Thibaut Lopez
+** Last update Tue Mar 11 15:23:50 2014 thibaud
 */
 
 #ifndef VM_H
@@ -34,6 +34,7 @@ typedef struct		s_champ
   int			pc;
   int			reg[REG_NUMBER];
   int			carry;
+  int			cycle_to_wait;
   struct s_champ	*next;
   struct s_champ	*prev;
 }			t_champ;
@@ -49,11 +50,24 @@ typedef struct 	s_cor
   int		live[4];
 }		t_cor;
 
+typedef struct	s_struct
+{
+  char		mnémonique;
+  int		(* ptr_fct)(t_cor *, t_champ *);
+  int		ctw;
+}		t_struct;
+
+t_struct	ptr_fct[23];
+
 t_champ	*init_champ();
 void	move_in_list(t_champ **champ, int nbr);
 int	check_champ(t_champ **champ, char *path, int addr, int endian);
 int	my_list_len(t_champ *champ);
 void	init_adress(t_champ *champ);
 void	fill_mem(char **mem, t_champ *champ);
+
+int	repartisseur(t_champ *, t_cor *);
+int	cycle_run(t_champ *, t_cor *);
+int	find_in_tab(char *);
 
 #endif
