@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Tue Mar 11 04:15:11 2014 alex-odet
+** Last update Tue Mar 11 04:34:58 2014 alex-odet
 */
 
 #include "struct.h"
@@ -30,10 +30,12 @@ int	check(char *str)
   char		*comment;
 
   ptr = xmalloc(sizeof(header_t));
+  ptr = init();
   name = check_name(str);
   comment = check_comment(str);
-  ptr = init();
+  printf("comment = %s\n", comment);
   ptr = fill_header(name, comment);
+  printf("ptr->comment = %s\n", ptr->comment);
   create_cor(str, ptr);
   return (0);
 }

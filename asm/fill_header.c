@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Tue Mar  4 16:53:28 2014
-** Last update Tue Mar 11 04:00:03 2014 alex-odet
+** Last update Tue Mar 11 04:46:10 2014 alex-odet
 */
 
 #include "struct.h"
@@ -18,18 +18,19 @@ header_t	*fill_header(char *name, char *comment)
   i = 0;
   new = xmalloc(sizeof(header_t));
   new->magic = COREWAR_EXEC_MAGIC;
-  while (i < PROG_NAME_LENGTH)
+  while (i < my_strlen(name) && i < PROG_NAME_LENGTH)
     {
       new->prog_name[i] = name[i];
       i++;
     }
   new->prog_name[i] = 0;
   i = 0;
-  while (i < COMMENT_LENGTH)
+  while (i < my_strlen(comment) && i < COMMENT_LENGTH)
     {
       comment[i] = new->comment[i];
       i++;
     }
   new->comment[i] = 0;
+  printf("new->comment = %s\n", new->comment);
   return (new);
 }
