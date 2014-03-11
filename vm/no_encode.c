@@ -5,14 +5,23 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Wed Feb 26 12:20:27 2014 Thibaut Lopez
+** Last update Tue Mar 11 07:41:42 2014 Thibaut Lopez
 */
 
-void	my_live()
-{
-  int	nb_player;
+#include "vm.h"
 
-  read(fd, &nb_player, sizeof(int));
+void	my_live(t_champ *champ, char *mem)
+{
+  int	i;
+  int	nb;
+
+  nb = 0;
+  i = 1;
+  while (i < 5)
+    {
+      nb = nb * 256 + mem[champ->adress + champ->pc + i];
+      i++;
+    }
 }
 
 void	my_zjmp()

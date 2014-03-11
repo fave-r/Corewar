@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Fri Feb 28 12:09:20 2014 romaric
+## Last update Tue Mar 11 08:42:08 2014 Thibaut Lopez
 ##
 
 LIB_S=		my/basic.c \
@@ -16,6 +16,7 @@ LIB_S=		my/basic.c \
 		my/my_putchar.c \
 		my/my_putnbr_base.c \
 		my/my_putnbr.c \
+		my/my_strcat.c \
 		my/my_strchr.c \
 		my/my_strcmp.c \
 		my/my_strdup.c \

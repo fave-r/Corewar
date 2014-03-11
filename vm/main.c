@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Mon Mar  3 10:43:44 2014 Thibaut Lopez
+** Last update Mon Mar 10 20:00:46 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -90,7 +90,7 @@ void	fill_champ(char **argv, t_cor *cor)
       if (my_strcmp(argv[cor->cycle], "-dump") == 0)
 	cor->dump = get_dump(argv[++cor->cycle]);
       else if (my_strcmp(argv[cor->cycle], "-n") == 0)
-	move_in_list(&cor->champ, my_getnbr(argv[++cor->cycle]) % 5);
+	move_in_list(&cor->champ, my_getnbr(argv[++cor->cycle]));
       else if (my_strcmp(argv[cor->cycle], "-a") == 0)
 	addr = my_getnbr(argv[++cor->cycle]) % MEM_SIZE;
       else
