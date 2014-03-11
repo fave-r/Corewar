@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:49:14 2014 thibaud
-** Last update Wed Mar  5 16:32:02 2014 Thibaut Lopez
+** Last update Tue Mar 11 08:59:30 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -14,8 +14,8 @@
 #define ER_COR	" is not a corewar executable.\n"
 #define ER_SIZE	" take to much memory to be launched.\n"
 #define ER_POS1	"Error : the position "
-#define	ER_POS2	"  is already taken by the file"
-#define ER_POS3	". Setting the champion to the next available position.\n"
+#define	ER_POS2	"  is already taken by the file "
+#define ER_POS3	".\n"
 #define	ER_FULL	"Cannot find a new place for another champ : places already taken.\n"
 #define ER_VOID	"You haven't gave a single correct champion.\n"
 #include <sys/stat.h>
@@ -50,7 +50,7 @@ typedef struct 	s_cor
 }		t_cor;
 
 t_champ	*init_champ();
-void	move_in_list(t_champ **champ, int nbr);
+int	move_in_list(t_champ **champ, int nbr);
 int	check_champ(t_champ **champ, char *path, int addr, int endian);
 int	my_list_len(t_champ *champ);
 void	init_adress(t_champ *champ);

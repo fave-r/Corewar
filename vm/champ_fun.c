@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 13:43:48 2014 Thibaut Lopez
-** Last update Tue Mar 11 08:44:31 2014 Thibaut Lopez
+** Last update Tue Mar 11 08:58:18 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -60,7 +60,7 @@ void	find_next_available(t_champ **champ)
     my_putstr(ER_FULL, 2);
 }
 
-void	move_in_list(t_champ **champ, int nbr)
+int	move_in_list(t_champ **champ, int nbr)
 {
   t_champ	*tmp;
 
@@ -69,16 +69,19 @@ void	move_in_list(t_champ **champ, int nbr)
     tmp = tmp->next;
   while (tmp != *champ && tmp->champ_nb != nbr)
     tmp = tmp->next;
-  if (tmp == *champ && tmp->champ_nb != nbr)
-    void;
-  if ((*champ)->path != NULL)
+  if (tmp == *champ && tmp->champ_nb != nbr && tmp->path == NULL)
+    tmp->champ_nb = nbr;
+  *champ = tmp;
+  if ((*champ)->champ_nb == nbr && (*champ)->path != NULL)
     {
       my_putstr(ER_POS1, 2);
       my_putnbr(nbr, 2);
       my_putstr(ER_POS2, 2);
       my_putstr((*champ)->path, 2);
       my_putstr(ER_POS3, 2);
+      return (1);
     }
+  return (0);
 }
 
 int	check_champ(t_champ **champ, char *path, int addr, int endian)
