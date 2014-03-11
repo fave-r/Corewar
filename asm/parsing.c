@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Mon Mar 10 14:18:20 2014 alex-odet
+** Last update Tue Mar 11 05:16:09 2014 alex-odet
 */
 
 #include "struct.h"
@@ -26,13 +26,15 @@ void	parser(char *str)
 int	check(char *str)
 {
   header_t	*ptr;
-  header_t	*tmp;
   char		*name;
+  char		*comment;
 
   ptr = xmalloc(sizeof(header_t));
-  tmp = xmalloc(sizeof(header_t));
+  ptr = init();
   name = check_name(str);
-  ptr = fill_header(name);
+  comment = check_comment(str);
+  ptr = fill_header(name, comment);
+  create_cor(str, ptr);
   return (0);
 }
 
@@ -43,16 +45,11 @@ char	*check_name(char *str)
   char	*tmp;
   char	*name;
 
+  name = NULL;
   fd = xopen(str, O_RDONLY);
   tmp = get_next_line(fd);
   if (tmp[0] != '.')
-    {
-      my_putstr("The header is not valid.\n", 2);
-      my_putstr("Your header needs to be like :\n", 2);
-      my_putstr(".name \"Name_Of_The_Champion\"\n", 2);
-      my_putstr(".comment \"Comment_on_your_champion\"\n", 2);
-      exit(EXIT_FAILURE);
-    }
+    print_header_error();
   else
     {
       quotes = count_quotes(tmp, 0);
@@ -62,7 +59,7 @@ char	*check_name(char *str)
 	  exit(EXIT_FAILURE);
 	}
       else
-	  name = recup_name(tmp);
+	name = recup_name(tmp);
     }
   return (name);
 }

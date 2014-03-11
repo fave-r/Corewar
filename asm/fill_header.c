@@ -5,12 +5,12 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Tue Mar  4 16:53:28 2014
-** Last update Mon Mar 10 14:18:21 2014 alex-odet
+** Last update Tue Mar 11 05:16:20 2014 alex-odet
 */
 
 #include "struct.h"
 
-header_t	*fill_header(char *str)
+header_t	*fill_header(char *name, char *comment)
 {
   int		i;
   header_t	*new;
@@ -18,11 +18,18 @@ header_t	*fill_header(char *str)
   i = 0;
   new = xmalloc(sizeof(header_t));
   new->magic = COREWAR_EXEC_MAGIC;
-  while (i < my_strlen(str))
+  while (i < my_strlen(name) && i < PROG_NAME_LENGTH)
     {
-      new->prog_name[i] = str[i];
+      new->prog_name[i] = name[i];
       i++;
     }
   new->prog_name[i] = 0;
+  i = 0;
+  while (i < my_strlen(comment) && i < COMMENT_LENGTH)
+    {
+      new->comment[i] = comment[i];
+      i++;
+    }
+  new->comment[i] = 0;
   return (new);
 }
