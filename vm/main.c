@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Mon Mar 10 20:00:46 2014 Thibaut Lopez
+** Last update Tue Mar 11 15:45:00 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -90,13 +90,15 @@ void	fill_champ(char **argv, t_cor *cor)
       if (my_strcmp(argv[cor->cycle], "-dump") == 0)
 	cor->dump = get_dump(argv[++cor->cycle]);
       else if (my_strcmp(argv[cor->cycle], "-n") == 0)
-	move_in_list(&cor->champ, my_getnbr(argv[++cor->cycle]));
+	{
+	  if (move_in_list(&cor->champ, my_getnbr(argv[++cor->cycle])) != 0)
+	    exit(1);
+	}
       else if (my_strcmp(argv[cor->cycle], "-a") == 0)
 	addr = my_getnbr(argv[++cor->cycle]) % MEM_SIZE;
-      else
-	if ((addr = check_champ(&(cor->champ),
-				argv[cor->cycle], addr, cor->endian)) == 1)
-	  exit(1);
+      else if ((addr = check_champ(&(cor->champ),
+				   argv[cor->cycle], addr, cor->endian)) == 1)
+	exit(1);
       if (argv[cor->cycle] != NULL)
 	cor->cycle++;
     }
@@ -124,7 +126,7 @@ int	main(int argc, char **argv)
   i = 0;
   while (i < MEM_SIZE)
     {
-      my_putnbr_base(cor.mem[i], "0123456789ABCDEF");
+      my_putnbr(cor.mem[i], 1);
       my_putstr("|", 1);
       i++;
     }

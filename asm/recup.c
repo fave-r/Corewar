@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Feb 25 18:56:54 2014 romaric
-** Last update Tue Mar  4 17:25:24 2014 romaric
+** Last update Tue Mar 11 14:35:47 2014 alex-odet
 */
 
 #include "struct.h"
@@ -18,8 +18,10 @@ char	*recup_name(char *str)
   char	*save;
 
   save = xmalloc(PROG_NAME_LENGTH * sizeof(char));
-  i = 6;
+  i = 0;
   j = 0;
+  while (str[i] != '"')
+    i++;
   while (str[++i] != '"' && count_quotes(str, i) >= 1)
     {
       save[j] = str[i];
