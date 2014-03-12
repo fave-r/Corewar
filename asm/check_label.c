@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Wed Mar 12 10:38:53 2014 alex-odet
+** Last update Wed Mar 12 11:21:38 2014 alex-odet
 */
 
 #include "struct.h"
@@ -16,8 +16,9 @@ int count_labels(char *str)
   char  *line;
   int   i;
   int   x;
-  int   k = 0;
+  int   k;
 
+  k = 0;
   i = 0;
   x = 0;
   fd = xopen(str, O_RDONLY);
@@ -59,7 +60,7 @@ void	check_label(char *str)
     }
   while (p.w < p.x)
     {
-      printf("%s\n", labels[p.w]);
+      printf("%s\n", p.labels[p.w]);
       p.w++;
     }
 }
