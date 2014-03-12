@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Wed Mar 12 11:21:38 2014 alex-odet
+** Last update Wed Mar 12 18:25:14 2014 romaric
 */
 
 #include "struct.h"
@@ -57,11 +57,6 @@ void	check_label(char *str)
       else if (p.line[++p.i] != '\0')
 	p.labels = create_label(p.line, p.labels, p.i, &p.x);
       p.i = 0;
-    }
-  while (p.w < p.x)
-    {
-      printf("%s\n", p.labels[p.w]);
-      p.w++;
     }
 }
 

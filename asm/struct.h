@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 04:27:37 2014
-** Last update Wed Mar 12 10:35:57 2014 alex-odet
+** Last update Wed Mar 12 18:25:17 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -36,7 +36,6 @@ typedef struct s_label
   char	**labels;
   int	x;
   int	k;
-  int	w;
   int	nbrlabels;  
 }		t_label;
 
