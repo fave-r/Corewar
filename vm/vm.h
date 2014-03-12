@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Wed Mar 12 17:35:02 2014 thibaud
+** Last update Wed Mar 12 18:17:32 2014 thibaud
 */
 
 #ifndef VM_H
@@ -48,6 +48,8 @@ typedef struct 	s_cor
   int		cycle_to_die;
   int		endian;
   int		live[4];
+  int		champs_nb[4];
+  int		nb_chmps_alive;
 }		t_cor;
 
 typedef struct	s_struct
