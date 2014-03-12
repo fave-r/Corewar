@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Tue Mar 11 19:40:26 2014 romaric
+** Last update Wed Mar 12 10:38:53 2014 alex-odet
 */
 
 #include "struct.h"
@@ -37,36 +37,30 @@ int count_labels(char *str)
 
 void	check_label(char *str)
 {
-  int	fd;
-  char	*line;
-  int	i;
-  char	**labels;
-  int	x;
-  int	k = 0;
-  int	w;
-  int	nbrlabels;
+  t_label	p;
 
-  i = 0;
-  x = 0;
-  w = 0;
-  nbrlabels = count_labels(str);
-  labels = xmalloc(nbrlabels * sizeof(char*));
-  fd = xopen(str, O_RDONLY);
-  while ((line = get_next_line(fd)))
+  p.i = 0;
+  p.x = 0;
+  p.w = 0;
+  p.k = 0;
+  p.nbrlabels = count_labels(str);
+  p.labels = xmalloc(p.nbrlabels * sizeof(char*));
+  p.fd = xopen(str, O_RDONLY);
+  while ((p.line = get_next_line(p.fd)))
     {
-      while (line[i] != ':' && line[i] != '\0')
-	i++;
-      i--;
-      if (line[i] == '%' || (line[i] >= '0' && line[i] <= '9'))
-	k++;//ceci est une line qui ne sert a rien mais oblige par la condition
-      else if (line[++i] != '\0')
-	labels = create_label(line, labels, i, &x);
-      i = 0;
+      while (p.line[p.i] != ':' && p.line[p.i] != '\0')
+	p.i++;
+      p.i--;
+      if (p.line[p.i] == '%' || (p.line[p.i] >= '0' && p.line[p.i] <= '9'))
+	p.k++;//ceci est une line qui ne sert a rien mais oblige par la condition
+      else if (p.line[++p.i] != '\0')
+	p.labels = create_label(p.line, p.labels, p.i, &p.x);
+      p.i = 0;
     }
-  while (w < x)
+  while (p.w < p.x)
     {
-      printf("%s\n", labels[w]);
-      w++;
+      printf("%s\n", labels[p.w]);
+      p.w++;
     }
 }
 

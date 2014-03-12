@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 04:27:37 2014
-** Last update Tue Mar 11 19:17:35 2014 romaric
+** Last update Wed Mar 12 10:35:57 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -27,6 +27,18 @@ typedef struct	s_gnl
   char		*save;
   int		c;
 }		t_gnl;
+
+typedef struct s_label
+{
+  int	fd;
+  char	*line;
+  int	i;
+  char	**labels;
+  int	x;
+  int	k;
+  int	w;
+  int	nbrlabels;  
+}		t_label;
 
 char		*my_strcat(char *dest, char *src);
 int		my_putstr(char *str, int fd);
