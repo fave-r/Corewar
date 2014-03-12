@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Wed Mar 12 18:17:32 2014 thibaud
+** Last update Wed Mar 12 18:19:49 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -67,6 +67,8 @@ int	check_champ(t_champ **champ, char *path, int addr, int endian);
 int	my_list_len(t_champ *champ);
 void	init_adress(t_champ *champ);
 void	fill_mem(char **mem, t_champ *champ);
+int	get_nbr_action(char *mem, int pc, int len);
+int	**get_encode(char *mem, int pc);
 
 int	someine_is_dead(t_champ *, t_cor *);
 int	run_corewar(t_champ *, t_cor *);
