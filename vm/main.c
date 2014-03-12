@@ -5,13 +5,13 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Wed Mar 12 16:30:27 2014 Thibaut Lopez
+** Last update Wed Mar 12 19:08:00 2014 thibaud
 */
 
 #include "my.h"
 #include "vm.h"
 
-void	rm_empty_champ(t_champ **tmp, t_champ **first)
+void	rm_empty_champ(t_champ **tmp, t_champ **first, t_cor *cor)
 {
   t_champ	*prev;
   t_champ	*to_free;
@@ -24,19 +24,20 @@ void	rm_empty_champ(t_champ **tmp, t_champ **first)
   prev->next = *tmp;
   (*tmp)->prev = prev;
   free(to_free);
+  cor->nb_chmps_alive--;
 }
 
-void	epur_champ(t_champ *champ, t_champ **first)
+void	epur_champ(t_cor *cor, t_champ **first)
 {
   int		i;
   t_champ	*tmp;
 
   i = 0;
-  tmp = champ;
+  tmp = cor->champ;
   while (i < 4)
     {
       if (tmp->path == NULL && tmp != tmp->next)
-	rm_empty_champ(&tmp, first);
+	rm_empty_champ(&tmp, first, cor);
       else if (tmp->path == NULL)
 	{
 	  free(tmp);
@@ -102,8 +103,24 @@ void	fill_champ(char **argv, t_cor *cor)
       if (argv[cor->cycle_done] != NULL)
 	cor->cycle++;
     }
-  epur_champ(cor->champ, &tmp);
+  epur_champ(cor, &tmp);
   cor->champ = tmp;
+}
+
+int	init_champs_nb(t_cor *cor)
+{
+  int	i;
+  t_champ	*cur_champ;
+
+  cur_champ = cor->champ;
+  i = 0;
+  while (cur_champ != NULL)
+    {
+      cor->champs_nb[i] == cur_champ->champ_nb;
+      cur_champ = cur_champ->next;
+      i++;
+    }
+  return (0);
 }
 
 int	main(int argc, char **argv)
@@ -115,7 +132,10 @@ int	main(int argc, char **argv)
   cor.cycle = 1;
   cor.cycle_to_die = CYCLE_TO_DIE;
   cor.endian = my_endian();
+  cor.nb_champs_alive = 4;
   fill_champ(argv, &cor);
+  memset(cor.live, 4);
+  init_champs_nb(&cor);
   cor.cycle = 0;
   init_adress(cor.champ);
   cor.mem = xmalloc((MEM_SIZE + 1) * sizeof(char));

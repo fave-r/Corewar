@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Wed Mar 12 18:19:49 2014 Thibaut Lopez
+** Last update Wed Mar 12 18:27:20 2014 thibaud
 */
 
 #ifndef VM_H
@@ -56,7 +56,7 @@ typedef struct	s_struct
 {
   char		mnemonique;
   int		(* ptr_fct)(t_cor *, t_champ *);
-  int		ctw;
+  int		wait;
 }		t_struct;
 
 t_struct	ptr_fct[23];
@@ -70,12 +70,13 @@ void	fill_mem(char **mem, t_champ *champ);
 int	get_nbr_action(char *mem, int pc, int len);
 int	**get_encode(char *mem, int pc);
 
-int	someine_is_dead(t_champ *, t_cor *);
+int	someone_is_dead(t_champ *, t_cor *);
 int	run_corewar(t_champ *, t_cor *);
 t_champ *del_chmp(t_champ *, int);
 int	cycle_run(t_champ *, t_cor *);
 int	get_wait(t_champ *, t_cor *);
 int	champ_play(t_champ *, t_cor *);
 int	find_in_tab(char *);
+int	end_game(t_champ *, t_cor *);
 
 #endif
