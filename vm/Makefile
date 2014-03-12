@@ -5,11 +5,12 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Sun Mar  2 13:29:02 2014 Thibaut Lopez
+## Last update Wed Mar 12 17:46:04 2014 thibaud
 ##
 
 VM_S=		champ_fun.c \
 		list_fun.c \
+		run_corewar \
 		main.c
 
 VM_N=		corewar
