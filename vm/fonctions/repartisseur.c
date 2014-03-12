@@ -5,7 +5,11 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
+<<<<<<< HEAD
 ** Last update Wed Mar 12 16:21:34 2014 thibaud
+=======
+** Last update Tue Mar 11 17:22:36 2014 Thibaut Lopez
+>>>>>>> 1c3e4b5f64ebc24a7e86cdbcde63e65755e0e120
 */
 
 #include"vm.h"
@@ -130,7 +134,11 @@ int	repartisseur(t_champ *champs, t_cor *map)
   map->cycle_to_die = CYCLE_TO_DIE + CYCLE_DELTA;
   while ((map->cycle_to_die -= CYCLE_DELTA) > 100)
     {
+<<<<<<< HEAD
       while (NBR_LIVE > map->nbr_live && map->cycle_done < cycle_to_die )
+=======
+      while (NBR_LIVE > nbr_live && cycle_done < cycle_to_die)
+>>>>>>> 1c3e4b5f64ebc24a7e86cdbcde63e65755e0e120
 	cycle_run(champs, map);
       kill_champ(champs, map);
       map->nbr_live = 0;
