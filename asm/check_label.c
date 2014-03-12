@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Wed Mar 12 11:21:38 2014 alex-odet
+** Last update Wed Mar 12 18:28:05 2014 romaric
 */
 
 #include "struct.h"
@@ -42,7 +42,6 @@ void	check_label(char *str)
 
   p.i = 0;
   p.x = 0;
-  p.w = 0;
   p.k = 0;
   p.nbrlabels = count_labels(str);
   p.labels = xmalloc(p.nbrlabels * sizeof(char*));
@@ -57,11 +56,6 @@ void	check_label(char *str)
       else if (p.line[++p.i] != '\0')
 	p.labels = create_label(p.line, p.labels, p.i, &p.x);
       p.i = 0;
-    }
-  while (p.w < p.x)
-    {
-      printf("%s\n", p.labels[p.w]);
-      p.w++;
     }
 }
 
