@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Tue Mar 11 17:15:55 2014 Thibaut Lopez
+** Last update Wed Mar 12 16:11:28 2014 thibaud
 */
 
 #ifndef VM_H
@@ -43,7 +43,8 @@ typedef struct 	s_cor
   t_champ	*champ;
   char		*mem;
   int		dump;
-  int		cycle;
+  int		nbr_livre;
+  int		cycle_done;
   int		cycle_to_die;
   int		endian;
   int		live[4];

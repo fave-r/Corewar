@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Tue Mar 11 16:38:29 2014 thibaud
+** Last update Wed Mar 12 16:21:34 2014 thibaud
 */
 
 #include"vm.h"
@@ -31,8 +31,6 @@ t_struct	fct_tab[] =
     {0, &none, 0},
   };
 
-int	nbr_live = 0;
-int	cycle_done = 0;
 
 int	find_in_tab(char octet)
 {
@@ -66,9 +64,9 @@ int	get_ctw(t_champ *champ, t_cor *map)
   int	fct_nb;
 
   if ((fct_nb = find_in_tab(champ->pc)) != 0)
-    champ->cycle_to_wait = fct_tab[fct_nb].ctw;
+    champ->wait = fct_tab[fct_nb].ctw;
   else
-    champ->cycle_to_wait = 0;
+    champ->wait = 0;
   return (0);
 }
 
@@ -79,14 +77,14 @@ int	cycle_run(t_champ *champs, t_cor *map)
   tmp_champ = champs->next;
   while (tmp_champ != champs)
     {
-      if (champ->cycle_to_wait < 0)
-	champ->cycle_to_wait = get_ctw(champs, map);
+      if (champ->wait < 0)
+	champ->wait = get_ctw(champs, map);
       if (cycle_to_wait == 0)
 	champ_play(tmp_champ, map);
-      tmp_champ->cycle_to_wait -= 1;
+      tmp_champ->wait -= 1;
       tmp_champ = tmp_champ->next;
     }
-  cycle_done++;
+  map->cycle_done++;
   return (0);
 }
 
@@ -128,16 +126,15 @@ int	kill_champ(t_champ *champs, t_cor *map)
 
 int	repartisseur(t_champ *champs, t_cor *map)
 {
-  int	cycle_to_die;
 
-  cycle_to_die = CYCLE_TO_DIE + CYCLE_DELTA;
-  while ((cycle_to_die -= CYCLE_DELTA) > 100)
+  map->cycle_to_die = CYCLE_TO_DIE + CYCLE_DELTA;
+  while ((map->cycle_to_die -= CYCLE_DELTA) > 100)
     {
-      while (NBR_LIVE > nbr_live && cycle_done < cycle_to_die )
-	  cycle_run(champs, map);
+      while (NBR_LIVE > map->nbr_live && map->cycle_done < cycle_to_die )
+	cycle_run(champs, map);
       kill_champ(champs, map);
-      nbr_live = 0;
-      cycle_done = 0;
+      map->nbr_live = 0;
+      map->cycle_done = 0;
     }
   end_game(champs);
   return (0);
