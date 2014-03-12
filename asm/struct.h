@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 04:27:37 2014
-** Last update Wed Mar 12 18:25:17 2014 romaric
+** Last update Wed Mar 12 19:11:45 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -66,5 +66,6 @@ void		create_cor(char *name, header_t *header);
 void		print_assembling(char *name, header_t *header);
 void		check_label(char *str);
 char		**create_label(char *line, char **labels, int i, int *y);
+void		check_label_exist(char **labels, char *str, int nbrlabels);
 
 #endif

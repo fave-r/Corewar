@@ -5,10 +5,11 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Wed Mar 12 18:28:05 2014 romaric
+** Last update Wed Mar 12 19:17:14 2014 romaric
 */
 
 #include "struct.h"
+#include "my.h"
 
 int count_labels(char *str)
 {
@@ -56,6 +57,60 @@ void	check_label(char *str)
       else if (p.line[++p.i] != '\0')
 	p.labels = create_label(p.line, p.labels, p.i, &p.x);
       p.i = 0;
+    }
+  check_label_exist(p.labels, str, p.nbrlabels);
+}
+
+void	check_label_exist(char **labels, char *str, int nbrlabels)
+{
+  int	fd;
+  char	*label;
+  int	i;
+  int	x;
+  int	w;
+  char	*line;
+  int	k;
+
+  i = 0;
+  x = 0;
+  w = 0;
+  k = 0;
+  fd = xopen(str, O_RDONLY);
+  while ((line = get_next_line(fd)))
+    {
+      while (line[i] != ':' && line[i] != '\0')
+        i++;
+      if (line[++i] != '\0')
+        k++;//ceci est une line qui ne sert a rien mais oblige par la condition  
+      else if (line[--i] == '%')
+	{
+	  i = i + 2;
+	  x = i;
+	  while (line[i] >= 'a' && line[i] <= 'z')
+	    i++;
+	  i = 0;
+	  label = xmalloc((i - x + 1) * sizeof(char));
+	  while (line[x] >= 'a' && line[x] <= 'z')
+	    {
+	      label[i] = line[x];
+	      i++;
+	      x++;
+	    }
+	  i = 0;
+	  while (w <= nbrlabels)
+	    {
+	      if (my_strcmp(labels[w], label) == 0)
+		i++;
+	      w++;
+	    }
+	  if (i == 0)
+	    {
+	      my_putstr("bourrel suce\n", 2);
+	      exit(EXIT_FAILURE);
+	    }
+	}
+      i = 0;
+      x = 0;
     }
 }
 
