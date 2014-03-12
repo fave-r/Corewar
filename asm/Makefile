@@ -5,14 +5,14 @@
 ## Login   <odet_a@epitech.net>
 ##
 ## Started on  Thu Feb 27 18:18:06 2014
-## Last update Tue Mar 11 17:58:20 2014 romaric
+## Last update Wed Mar 12 19:15:50 2014 romaric
 ##
 
 CC=		clang
 
 RM=		rm -f
 
-CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I../
+CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I../ -I../my
 
 NAME=		asm
 
