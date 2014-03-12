@@ -5,42 +5,59 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Tue Mar 11 15:48:33 2014 Thibaut Lopez
+** Last update Wed Mar 12 19:08:44 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 
-void	my_live(t_champ *champ, char *mem)
+int	my_live(t_champ *champ, t_cor *cor)
 {
-  int	i;
-  int	nb;
+  int	live;
 
-  nb = 0;
-  i = 1;
-  while (i < 5)
-    {
-      nb = nb * 256 + mem[champ->adress + champ->pc + i];
-      i++;
-    }
+  my_putstr("live du champion : ", 1);
+  my_putstr(champ->head->prog_name, 1);
+  my_putstr(", pour le numéro : ", 1);
+  live = get_nbr_action(mem, cor->pc, 8);
+  my_put_nbr(live, 1);
+  my_putstr(", avance dans la mémoire de 8\n", 1);
+  return (9);
 }
 
-void	my_zjmp()
+int	my_zjmp(t_champ *champ, t_cor *cor)
 {
-  short int	jump;
+  int	jump;
 
-  read(fd, &jump, sizeof(short int));
+  my_putstr("zjmp du champion : ", 1);
+  my_putstr(champ->head->prog_name, 1);
+  my_putstr(", vers le numéro : ", 1);
+  jump = get_nbr_action(mem, cor->pc, 4);
+  my_put_nbr(jump, 1);
+  my_putstr(", avance dans la mémoire de 4\n", 1);
+  return (5);
 }
 
-void	my_fork()
+int	my_fork(t_champ *champ, t_cor *cor)
 {
-  short int	addr;
+  int	frk;
 
-  read(fd, &jump, sizeof(short int));
+  my_putstr("fork du champion : ", 1);
+  my_putstr(champ->head->prog_name, 1);
+  my_putstr(", vers le numéro : ", 1);
+  frk = get_nbr_action(mem, cor->pc, 4);
+  my_put_nbr(frk, 1);
+  my_putstr(", avance dans la mémoire de 4\n", 1);
+  return (5);
 }
 
-void	my_lfork()
+int	my_lfork(t_champ *champ, t_cor *cor)
 {
-  short int	addr;
+  int	frk;
 
-  read(fd, &jump, sizeof(short int));
+  my_putstr("lfork du champion : ", 1);
+  my_putstr(champ->head->prog_name, 1);
+  my_putstr(", vers le numéro : ", 1);
+  frk = get_nbr_action(mem, cor->pc, 4);
+  my_put_nbr(frk, 1);
+  my_putstr(", avance dans la mémoire de 4\n", 1);
+  return (5);
 }
