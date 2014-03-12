@@ -5,34 +5,30 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-<<<<<<< HEAD
-** Last update Wed Mar 12 16:21:34 2014 thibaud
-=======
-** Last update Tue Mar 11 17:22:36 2014 Thibaut Lopez
->>>>>>> 1c3e4b5f64ebc24a7e86cdbcde63e65755e0e120
+** Last update Wed Mar 12 17:33:00 2014 thibaud
 */
 
 #include"vm.h"
 
 t_struct	fct_tab[] =
   {
-    {1, &live, 10},
-    {2, &ld, 5},
-    {3, &st, 8},
-    {4, &add, 10},
-    {5, &sub, 10},
-    {6, &and, 6},
-    {7, &or, 6},
-    {8, &xor, 6},
-    {9, &zjmp, 20},
-    {10, &ldi, 25},
-    {11, &sti, 25},
-    {12, &fork, 800},
-    {13, &lld, 10},
-    {14, &lldi, 50},
-    {15, &lfork, 1000},
-    {16, &aff, 2},
-    {0, &none, 0},
+    {1, &my_live, 10},
+    {2, &my_ld, 5},
+    {3, &my_st, 8},
+    {4, &my_add, 10},
+    {5, &my_sub, 10},
+    {6, &my_and, 6},
+    {7, &my_or, 6},
+    {8, &my_xor, 6},
+    {9, &my_zjmp, 20},
+    {10, &my_ldi, 25},
+    {11, &my_sti, 25},
+    {12, &my_fork, 800},
+    {13, &my_lld, 10},
+    {14, &my_lldi, 50},
+    {15, &my_lfork, 1000},
+    {16, &my_aff, 2},
+    {0, &my_none, 0},
   };
 
 
@@ -49,44 +45,31 @@ int	find_in_tab(char octet)
     }
   return (0);
 }
-int	champ_play(t_champ *champ, t_cor *map)
+int	champ_play(t_champ *cur_champ, t_cor *map)
 {
-  int	fct_nb;
-
-  if ((fct_nb = find_in_tab(champ->pc)) != 0)
-    {
-      fct_tab[fct_nb].ptr_fct(champ, map);
-
-    }
-  else
-    none(champ, map);
+  fct_tab[find_in_tab(map[(int)champ->pc)]].ptr_fct(cur_champ, map);
   return (0);
 }
 
-int	get_ctw(t_champ *champ, t_cor *map)
+int	get_wait(t_champ *cur_champ, t_cor *map)
 {
-  int	fct_nb;
-
-  if ((fct_nb = find_in_tab(champ->pc)) != 0)
-    champ->wait = fct_tab[fct_nb].ctw;
-  else
-    champ->wait = 0;
-  return (0);
+  cur_champ->wait = fct_tab[find_in_tab(map[(int)champ->pc)]].ctw;
+  return (cur_champ->wait);
 }
 
 int	cycle_run(t_champ *champs, t_cor *map)
 {
-  t_champ	*tmp_champ;
+  t_champ	*cur_champ;
 
-  tmp_champ = champs->next;
-  while (tmp_champ != champs)
+  cur_champ = champs->next;
+  while (cur_champ != champs)
     {
-      if (champ->wait < 0)
-	champ->wait = get_ctw(champs, map);
-      if (cycle_to_wait == 0)
-	champ_play(tmp_champ, map);
-      tmp_champ->wait -= 1;
-      tmp_champ = tmp_champ->next;
+      if (cur_champ->wait < 0)
+	get_wait(cur_champ, map);
+      if (cur_champ->wait == 0)
+	champ_play(cur_champ, map);
+      cur_champ->wait -= 1;
+      cur_champ = cur_champ->next;
     }
   map->cycle_done++;
   return (0);
@@ -128,20 +111,34 @@ int	kill_champ(t_champ *champs, t_cor *map)
   return (0);
 }
 
-int	repartisseur(t_champ *champs, t_cor *map)
+int	someone_is_dead(t_champ *champs, t_cor *map)
 {
+  t_champ	*cur_champ;
 
-  map->cycle_to_die = CYCLE_TO_DIE + CYCLE_DELTA;
-  while ((map->cycle_to_die -= CYCLE_DELTA) > 100)
+  cur_champ = champs->next;
+
+}
+
+int	run_corewar(t_champ *champs, t_cor *map)
+{
+  map->cycle_to_die = CYCLE_TO_DIE;
+  while ((map->cycle_to_die) > 100)
     {
-<<<<<<< HEAD
-      while (NBR_LIVE > map->nbr_live && map->cycle_done < cycle_to_die )
-=======
-      while (NBR_LIVE > nbr_live && cycle_done < cycle_to_die)
->>>>>>> 1c3e4b5f64ebc24a7e86cdbcde63e65755e0e120
-	cycle_run(champs, map);
+      while (map->cycle_done <= map->cycle_to_die)
+	{
+	  cycle_run(champs, map);
+	  if (map->live_done >= NBR_LIVE)
+	    {
+	      if (!some_one_die(champs, map))
+		{
+		  map->cycle_to_die -= CYCLE_DELTA;
+		}
+	      map->live_done = 0;
+	      map->cycle_done = 0;
+	    }
+	}      
       kill_champ(champs, map);
-      map->nbr_live = 0;
+      map->live_done = 0;
       map->cycle_done = 0;
     }
   end_game(champs);
