@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Thu Mar 13 10:38:09 2014 romaric
+** Last update Thu Mar 13 11:03:13 2014 romaric
 */
 
 #include "struct.h"
@@ -58,7 +58,7 @@ void	check_label(char *str)
 	p.labels = create_label(p.line, p.labels, p.i, &p.x);
       p.i = 0;
     }
-  check_label_exist(p.labels, str, p.nbrlabels);
+  check_label_exist(p.labels, str, p.x);
 }
 
 void	check_label_exist(char **labels, char *str, int nbrlabels)
@@ -80,11 +80,10 @@ void	check_label_exist(char **labels, char *str, int nbrlabels)
     {
       while (line[i] != ':' && line[i] != '\0')
         i++;
-      if (line[++i] != '\0')
-        k++;//ceci est une line qui ne sert a rien mais oblige par la condition  
-      else if (line[--i] == '%')
+      if (line[++i] == '\0')
+      k++;//ceci est une line qui ne sert a rien mais oblige par la condition
+      else if (line[i - 2] == '%')
 	{
-	  i = i + 2;
 	  x = i;
 	  while (line[i] >= 'a' && line[i] <= 'z')
 	    i++;
