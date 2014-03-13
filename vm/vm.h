@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Thu Mar 13 10:07:06 2014 Thibaut Lopez
+** Last update Thu Mar 13 10:42:42 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -44,7 +44,7 @@ typedef struct 	s_cor
   char		*mem;
   int		dump;
   int		live_done;
-  int		cycle_done;
+  int		cycle;
   int		cycle_to_die;
   int		endian;
   int		live[4];

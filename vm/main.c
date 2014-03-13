@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Thu Mar 13 10:31:32 2014 Thibaut Lopez
+** Last update Thu Mar 13 10:45:45 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -87,21 +87,21 @@ void	fill_champ(char **argv, t_cor *cor)
   cor->champ = init_champ();
   tmp = cor->champ;
   addr = -1;
-  while (argv[cor->cycle_done] != NULL)
+  while (argv[cor->cycle] != NULL)
     {
-      if (my_strcmp(argv[cor->cycle_done], "-dump") == 0)
-	cor->dump = get_dump(argv[++cor->cycle_done]);
-      else if (my_strcmp(argv[cor->cycle_done], "-n") == 0)
+      if (my_strcmp(argv[cor->cycle], "-dump") == 0)
+	cor->dump = get_dump(argv[++cor->cycle]);
+      else if (my_strcmp(argv[cor->cycle], "-n") == 0)
 	{
-	  if (move_in_list(&cor->champ, my_getnbr(argv[++cor->cycle_done])) != 0)
+	  if (move_in_list(&cor->champ, my_getnbr(argv[++cor->cycle])) != 0)
 	    exit(1);
 	}
-      else if (my_strcmp(argv[cor->cycle_done], "-a") == 0)
-	addr = my_getnbr(argv[++cor->cycle_done]) % MEM_SIZE;
+      else if (my_strcmp(argv[cor->cycle], "-a") == 0)
+	addr = my_getnbr(argv[++cor->cycle]) % MEM_SIZE;
       else if ((addr = check_champ(&(cor->champ),
-				   argv[cor->cycle_done], addr, cor->endian)) == 1)
+				   argv[cor->cycle], addr, cor->endian)) == 1)
 	exit(1);
-      if (argv[cor->cycle_done] != NULL)
+      if (argv[cor->cycle] != NULL)
 	cor->cycle++;
     }
   epur_champ(cor, &tmp);
@@ -117,7 +117,7 @@ int	init_champs_nb(t_cor *cor)
   i = 0;
   while (cur_champ != NULL)
     {
-      cor->champs_nb[i] == cur_champ->champ_nb;
+      cor->champs_nb[i] = cur_champ->champ_nb;
       cur_champ = cur_champ->next;
       i++;
     }
@@ -133,9 +133,9 @@ int	main(int argc, char **argv)
   cor.cycle = 1;
   cor.cycle_to_die = CYCLE_TO_DIE;
   cor.endian = my_endian();
-  cor.nb_champs_alive = 4;
+  cor.nb_chmps_alive = 4;
   fill_champ(argv, &cor);
-  memset(cor.live, 4);
+  my_mem_set(cor.live, 4);
   init_champs_nb(&cor);
   cor.cycle = 0;
   init_adress(cor.champ);
@@ -146,7 +146,7 @@ int	main(int argc, char **argv)
   int		bool;
 
   bool = 0;
-  tmp = cor->champ;
+  tmp = cor.champ;
   while (bool == 0)
     {
       printf("path = %s, champ_name = %s, champ_nb = %d\n", tmp->path, tmp->head->prog_name, tmp->champ_nb);
