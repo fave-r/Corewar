@@ -5,15 +5,13 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Thu Mar 13 10:09:04 2014 Thibaut Lopez
+## Last update Thu Mar 13 10:41:48 2014 Thibaut Lopez
 ##
 
 VM_S=		champ_fun.c \
-		cycle_loop.c \
 		get_encode.c \
 		ld_fun.c \
 		list_fun.c \
-		live.c \
 		main.c \
 		no_encode.c \
 		operation.c \

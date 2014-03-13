@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Mar  2 12:45:35 2014 Thibaut Lopez
-** Last update Tue Mar 11 09:04:46 2014 Thibaut Lopez
+** Last update Thu Mar 13 10:31:39 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -115,4 +115,6 @@ void	fill_mem(char **mem, t_champ *champ)
       printf("path = %s, champ_name = %s, champ_nb = %d\n", tmp->path, tmp->head->prog_name, tmp->champ_nb);
       tmp = tmp->next;
     }
+  champ->prev->next = NULL;
+  champ->prev = NULL;
 }
