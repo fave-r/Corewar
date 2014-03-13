@@ -5,11 +5,12 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Wed Mar 12 19:08:00 2014 thibaud
+** Last update Thu Mar 13 10:31:32 2014 Thibaut Lopez
 */
 
 #include "my.h"
 #include "vm.h"
+#include <stdio.h>
 
 void	rm_empty_champ(t_champ **tmp, t_champ **first, t_cor *cor)
 {
@@ -141,6 +142,24 @@ int	main(int argc, char **argv)
   cor.mem = xmalloc((MEM_SIZE + 1) * sizeof(char));
   cor.mem[MEM_SIZE] = 0;
   fill_mem(&(cor.mem), cor.champ);
+  t_champ	*tmp;
+  int		bool;
+
+  bool = 0;
+  tmp = cor->champ;
+  while (bool == 0)
+    {
+      printf("path = %s, champ_name = %s, champ_nb = %d\n", tmp->path, tmp->head->prog_name, tmp->champ_nb);
+      if (tmp->next == NULL)
+	bool = 1;
+      else
+	tmp = tmp->next;
+    }
+  while (tmp != NULL)
+    {
+      printf("path = %s, champ_name = %s, champ_nb = %d\n", tmp->path, tmp->head->prog_name, tmp->champ_nb);
+      tmp = tmp->prev;
+    }
   int	i;
 
   i = 0;

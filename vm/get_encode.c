@@ -5,8 +5,11 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Thu Mar 13 10:10:38 2014 Thibaut Lopez
+** Last update Thu Mar 13 10:32:43 2014 Thibaut Lopez
 */
+
+#include "vm.h"
+#include "my.h"
 
 int	get_nbr_action(char *mem, int pc, int len)
 {
