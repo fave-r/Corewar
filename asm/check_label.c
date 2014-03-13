@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Thu Mar 13 11:03:13 2014 romaric
+** Last update Thu Mar 13 11:09:17 2014 romaric
 */
 
 #include "struct.h"
@@ -87,8 +87,8 @@ void	check_label_exist(char **labels, char *str, int nbrlabels)
 	  x = i;
 	  while (line[i] >= 'a' && line[i] <= 'z')
 	    i++;
-	  i = 0;
 	  label = xmalloc((i - x + 1) * sizeof(char));
+	  i = 0;
 	  while (line[x] >= 'a' && line[x] <= 'z')
 	    {
 	      label[i] = line[x];
