@@ -5,7 +5,7 @@
 ## Login   <odet_a@epitech.net>
 ##
 ## Started on  Thu Feb 27 18:18:06 2014
-## Last update Wed Mar 12 19:15:50 2014 romaric
+## Last update Thu Mar 13 10:34:30 2014 romaric
 ##
 
 CC=		clang
@@ -17,7 +17,6 @@ CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I../ -I../my
 NAME=		asm
 
 SRCS=		main.c \
-		op.c \
 		parsing.c \
 		get_next_line.c \
 		recup.c \

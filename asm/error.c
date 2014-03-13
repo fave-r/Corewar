@@ -5,10 +5,11 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Tue Mar 11 08:04:10 2014 alex-odet
-** Last update Tue Mar 11 08:05:47 2014 alex-odet
+** Last update Thu Mar 13 10:16:12 2014 Thibaut Lopez
 */
 
 #include "struct.h"
+#include "my.h"
 
 void	print_header_error()
 {

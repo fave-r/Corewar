@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Wed Mar 12 19:29:04 2014 thibaud
+** Last update Thu Mar 13 10:42:42 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -44,7 +44,7 @@ typedef struct 	s_cor
   char		*mem;
   int		dump;
   int		live_done;
-  int		cycle_done;
+  int		cycle;
   int		cycle_to_die;
   int		endian;
   int		live[4];
@@ -78,5 +78,22 @@ int	get_wait(t_champ *, t_cor *);
 int	champ_play(t_champ *, t_cor *);
 int	find_in_tab(char);
 int	end_game(t_champ *, t_cor *);
+
+int	my_live(t_champ *champ, t_cor *cor);
+int	my_ld(t_champ *champ, t_cor *cor);
+int	my_st(t_champ *champ, t_cor *cor);
+int	my_add(t_champ *champ, t_cor *cor);
+int	my_sub(t_champ *champ, t_cor *cor);
+int	my_and(t_champ *champ, t_cor *cor);
+int	my_or(t_champ *champ, t_cor *cor);
+int	my_xor(t_champ *champ, t_cor *cor);
+int	my_zjmp(t_champ *champ, t_cor *cor);
+int	my_ldi(t_champ *champ, t_cor *cor);
+int	my_sti(t_champ *champ, t_cor *cor);
+int	my_fork(t_champ *champ, t_cor *cor);
+int	my_lld(t_champ *champ, t_cor *cor);
+int	my_lldi(t_champ *champ, t_cor *cor);
+int	my_lfork(t_champ *champ, t_cor *cor);
+int	my_aff(t_champ *champ, t_cor *cor);
 
 #endif

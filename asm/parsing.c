@@ -5,11 +5,12 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Tue Mar 11 17:56:57 2014 romaric
+** Last update Thu Mar 13 10:15:42 2014 Thibaut Lopez
 */
 
 #include "struct.h"
 #include "op.h"
+#include "my.h"
 
 void	parser(char *str)
 {

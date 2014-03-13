@@ -5,10 +5,11 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Mon Mar 10 16:12:02 2014 alex-odet
-** Last update Tue Mar 11 14:35:02 2014 alex-odet
+** Last update Thu Mar 13 10:19:48 2014 Thibaut Lopez
 */
 
 #include "struct.h"
+#include "my.h"
 
 char	*check_comment(char *str)
 {
