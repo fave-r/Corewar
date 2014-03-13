@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Feb 23 21:19:02 2014 Thibaut Lopez
-** Last update Thu Mar 13 10:21:32 2014 Thibaut Lopez
+** Last update Thu Mar 13 10:38:33 2014 Thibaut Lopez
 */
 
 /*
@@ -32,6 +32,7 @@ int	convert_endian(int *nb, int endian);
 int	my_endian();
 int     my_getnbr(char *str);
 void	my_mem_set(int *s, size_t n);
+void	my_putchar(char c, int fd);
 void    my_putnbr(int n, int fd);
 void    my_putnbr_base(unsigned int nb, char *base);
 int	my_putstr(char *str, int fd);
