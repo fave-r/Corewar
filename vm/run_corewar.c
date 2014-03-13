@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Wed Mar 12 19:39:56 2014 thibaud
+** Last update Thu Mar 13 13:57:57 2014 thibaud
 */
 
 #include "vm.h"
@@ -144,9 +144,9 @@ int	end_game(t_champ *champ, t_cor *map)
   gg = 0;
   while (map->live[gg] != 2)
     gg++;
-  my_putstr("le joueur ", 0);
-  my_putnbr(map->champs_nb[gg], 0);
-  my_putstr(" a gagné yéyéyé !!", 0);
+  my_putstr("le joueur ", 1);
+  my_putnbr(map->champs_nb[gg], 1);
+  my_putstr(" a gagné yéyéyé !!", 1);
   // A refaire avec un my_printf et en moins con
   return (0);
 }
