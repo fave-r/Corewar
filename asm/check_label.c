@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Thu Mar 13 12:36:44 2014 alex-odet
+** Last update Thu Mar 13 13:20:52 2014 romaric
 */
 
 #include "struct.h"
@@ -28,13 +28,13 @@ int count_labels(char *str)
       while (line[i] != ':' && line[i] != '\0')
 	i++;
       i--;
-      if (line[i] == '%'|| (line[i] >= '0' && line[i] <= '9'))
+      if (line[i] == '%' || (line[i] >= '0' && line[i] <= '9'))
 	k++;//ceci est une line qui ne sert a rien mais oblige par la condition
       else if (line[++i] != '\0')
 	x++;
       i = 0;
     }
-  printf("x = %d\n", x);
+    printf("x = %d\n", x);
   return (x);
 }
 
@@ -59,13 +59,12 @@ void	check_label(char *str)
 	p.labels = create_label(p.line, p.labels, p.i, &p.x);
       p.i = 0;
     }
-  int	xs = 0;
-  if (p.labels[xs] == NULL)
-    printf("NULL\n");
-  while (p.labels[xs])
-    {
-      printf("p.labels[xs] = %s\n", p.labels[xs++]);
-    }
+  //  int	w = 0;
+  //while (w < p.nbrlabels)
+  //{
+  //  printf("%s\n", p.labels[w]);
+  //  w++;
+  //}
   check_label_exist(p.labels, str, p.nbrlabels);
 }
 
@@ -103,8 +102,14 @@ void	check_label_exist(char **labels, char *str, int nbrlabels)
 	      i++;
 	      x++;
 	    }
-	  label[i] = 0;
+	  //label[i] = 0;
 	  i = 0;
+	  int       j = 0;
+	  while (j < nbrlabels)
+	    {
+	      printf("%s\n", labels[w]);
+	      w++;
+	    }
 	  while (w <= nbrlabels)
 	    {
 	      if (labels[w] != NULL)
@@ -136,7 +141,7 @@ char	**create_label(char *line, char **labels, int i, int *y)
       labels[*y][x] = line[x];
       x++;
     }
-  *y = *y++;
+  *y = *y + 1;
   labels[*y] = NULL;
   return (labels);
 }
