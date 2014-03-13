@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Thu Mar 13 11:29:47 2014 romaric
+** Last update Thu Mar 13 11:56:36 2014 alex-odet
 */
 
 #include "struct.h"
@@ -34,6 +34,7 @@ int count_labels(char *str)
 	x++;
       i = 0;
     }
+  printf("x = %d\n", x);
   return (x);
 }
 
@@ -58,7 +59,7 @@ void	check_label(char *str)
 	p.labels = create_label(p.line, p.labels, p.i, &p.x);
       p.i = 0;
     }
-  check_label_exist(p.labels, str, p.x);
+  check_label_exist(p.labels, str, p.nbrlabels);
 }
 
 void	check_label_exist(char **labels, char *str, int nbrlabels)
@@ -76,12 +77,13 @@ void	check_label_exist(char **labels, char *str, int nbrlabels)
   w = 0;
   k = 0;
   fd = xopen(str, O_RDONLY);
+  printf("nbrlabels = %d\n", nbrlabels);
   while ((line = get_next_line(fd)))
     {
       while (line[i] != ':' && line[i] != '\0')
         i++;
       if (line[++i] == '\0')
-      k++;//ceci est une line qui ne sert a rien mais oblige par la condition
+	k++;//ceci est une line qui ne sert a rien mais oblige par la condition
       else if (line[i - 2] == '%')
 	{
 	  x = i;
@@ -98,8 +100,12 @@ void	check_label_exist(char **labels, char *str, int nbrlabels)
 	  i = 0;
 	  while (w <= nbrlabels)
 	    {
+	      printf("nbrlabels = %d\nlabels[4] = %s\n", nbrlabels, labels[4]);
 	      if (my_strcmp(labels[w], label) == 0)
-		i++;
+		{
+		  printf("label = %s\nlabels[w] = %s\n", label, labels[w]);
+		  i++;
+		}
 	      w++;
 	    }
 	  if (i == 0)
