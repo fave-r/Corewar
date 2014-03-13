@@ -1,11 +1,11 @@
 /*
-** struct.h for struct in /home/odet_a/Corewar
+** struct.h for corewar in /home/blackbird/work/Corewar/asm
 **
-** Made by
-** Login   <odet_a@epitech.net>
+** Made by romaric
+** Login   <fave_r@epitech.net>
 **
-** Started on  Mon Feb 17 04:27:37 2014
-** Last update Thu Mar 13 10:14:56 2014 Thibaut Lopez
+** Started on  Thu Mar 13 10:29:46 2014 romaric
+** Last update Thu Mar 13 10:29:50 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -36,7 +36,7 @@ typedef struct s_label
   char	**labels;
   int	x;
   int	k;
-  int	nbrlabels;  
+  int	nbrlabels;
 }		t_label;
 
 void		check_my_arg(char *str);
