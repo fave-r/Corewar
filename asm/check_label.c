@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Thu Mar 13 11:09:17 2014 romaric
+** Last update Thu Mar 13 11:29:47 2014 romaric
 */
 
 #include "struct.h"
@@ -124,6 +124,6 @@ char	**create_label(char *line, char **labels, int i, int *y)
       labels[*y][x] = line[x];
       x++;
     }
-  *y = *y + 1;
+  *y = *y++;
   return (labels);
 }
