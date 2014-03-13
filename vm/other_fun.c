@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Thu Mar 13 10:50:17 2014 Thibaut Lopez
+** Last update Thu Mar 13 15:43:58 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -64,9 +64,7 @@ int	my_aff(t_champ *champ, t_cor *cor)
   my_putstr("aff du champion : ", 1);
   my_putstr(champ->head->prog_name, 1);
   my_putstr(", affichage de ", 1);
-  my_putnbr(, 1);
-  my_putstr(", avance dans la mémoire de ", 1);
-  my_putnbr(tab[0][1], 1);
-  my_putchar('\n', 1);
-  return (tab[0][1] + 2);
+  my_putnbr(cor->mem[champ->pc + 2], 1);
+  my_putstr(", avance dans la mémoire de 2\n", 1);
+  return (3);
 }

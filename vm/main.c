@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Thu Mar 13 10:45:45 2014 Thibaut Lopez
+** Last update Thu Mar 13 15:51:03 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -133,33 +133,15 @@ int	main(int argc, char **argv)
   cor.cycle = 1;
   cor.cycle_to_die = CYCLE_TO_DIE;
   cor.endian = my_endian();
-  cor.nb_chmps_alive = 4;
   fill_champ(argv, &cor);
-  my_mem_set(cor.live, 4);
-  init_champs_nb(&cor);
   cor.cycle = 0;
   init_adress(cor.champ);
   cor.mem = xmalloc((MEM_SIZE + 1) * sizeof(char));
   cor.mem[MEM_SIZE] = 0;
   fill_mem(&(cor.mem), cor.champ);
-  t_champ	*tmp;
-  int		bool;
-
-  bool = 0;
-  tmp = cor.champ;
-  while (bool == 0)
-    {
-      printf("path = %s, champ_name = %s, champ_nb = %d\n", tmp->path, tmp->head->prog_name, tmp->champ_nb);
-      if (tmp->next == NULL)
-	bool = 1;
-      else
-	tmp = tmp->next;
-    }
-  while (tmp != NULL)
-    {
-      printf("path = %s, champ_name = %s, champ_nb = %d\n", tmp->path, tmp->head->prog_name, tmp->champ_nb);
-      tmp = tmp->prev;
-    }
+  cor.nb_chmps_alive = 4;
+  my_mem_set(cor.live, 4);
+  init_champs_nb(&cor);
   int	i;
 
   i = 0;
