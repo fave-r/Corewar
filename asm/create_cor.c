@@ -5,10 +5,11 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Mar 11 04:03:48 2014 alex-odet
-** Last update Tue Mar 11 17:46:28 2014 alex-odet
+** Last update Thu Mar 13 10:16:36 2014 Thibaut Lopez
 */
 
 #include "struct.h"
+#include "my.h"
 
 void	create_cor(char *name, header_t *header)
 {

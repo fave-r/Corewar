@@ -5,10 +5,11 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Tue Mar  4 16:53:28 2014
-** Last update Tue Mar 11 05:16:20 2014 alex-odet
+** Last update Thu Mar 13 10:17:50 2014 Thibaut Lopez
 */
 
 #include "struct.h"
+#include "my.h"
 
 header_t	*fill_header(char *name, char *comment)
 {

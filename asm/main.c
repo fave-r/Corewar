@@ -5,11 +5,12 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 04:24:43 2014
-** Last update Tue Mar  4 17:00:06 2014 romaric
+** Last update Thu Mar 13 10:18:04 2014 Thibaut Lopez
 */
 
 #include "struct.h"
 #include "op.h"
+#include "my.h"
 
 int	main(int ac, char **av)
 {

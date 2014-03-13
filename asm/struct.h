@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 04:27:37 2014
-** Last update Wed Mar 12 19:11:45 2014 romaric
+** Last update Thu Mar 13 10:14:56 2014 Thibaut Lopez
 */
 
 #ifndef __COREWAR__
@@ -39,16 +39,8 @@ typedef struct s_label
   int	nbrlabels;  
 }		t_label;
 
-char		*my_strcat(char *dest, char *src);
-int		my_putstr(char *str, int fd);
-int		my_strlen(char *str);
 void		check_my_arg(char *str);
 void		check_instructions(char *str);
-void		*xmalloc(size_t n);
-int		xopen(char *pathname, int flags);
-ssize_t		xread(int fd, void *buf, size_t count);
-char		*my_strcpy(char *dest, char *src);
-char		*my_strdup(char *src);
 char		*get_next_line(const int fd);
 void		parser(char *str);
 char		*cmd_by_line(char *str);
@@ -60,7 +52,6 @@ header_t	*fill_header(char *name, char *comment);
 header_t	*init();
 char		*check_comment(char *str);
 char		*recup_comment(char *str);
-int		my_strncmp(char *s1, char *s2, int n);
 void		print_header_error();
 void		create_cor(char *name, header_t *header);
 void		print_assembling(char *name, header_t *header);

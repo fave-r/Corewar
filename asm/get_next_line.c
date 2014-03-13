@@ -5,10 +5,11 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Feb 25 18:55:03 2014 romaric
-** Last update Tue Feb 25 18:55:07 2014 romaric
+** Last update Thu Mar 13 10:18:22 2014 Thibaut Lopez
 */
 
 #include "struct.h"
+#include "my.h"
 
 char	*my_strcpy(char *dest, char *src)
 {

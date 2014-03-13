@@ -5,11 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Feb 25 18:56:54 2014 romaric
-** Last update Tue Mar 11 14:35:47 2014 alex-odet
+** Last update Thu Mar 13 10:19:07 2014 Thibaut Lopez
 */
 
 #include "struct.h"
 #include "op.h"
+#include "my.h"
 
 char	*recup_name(char *str)
 {
