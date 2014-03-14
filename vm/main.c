@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Thu Mar 13 15:51:03 2014 Thibaut Lopez
+** Last update Fri Mar 14 10:03:32 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -147,8 +147,7 @@ int	main(int argc, char **argv)
   i = 0;
   while (i < MEM_SIZE)
     {
-      my_putnbr(cor.mem[i], 1);
-      my_putstr("|", 1);
+      my_printf(1, "%X|", cor.mem[i]);
       i++;
     }
   my_putstr("\n", 1);

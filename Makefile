@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Tue Mar 11 08:48:47 2014 alex-odet
+## Last update Fri Mar 14 09:58:34 2014 Thibaut Lopez
 ##
 
 LIB_S=		my/basic.c \
@@ -13,16 +13,25 @@ LIB_S=		my/basic.c \
 		my/my_endian.c \
 		my/my_getnbr_base.c \
 		my/my_getnbr.c \
+		my/my_printf.c \
+		my/my_print_num.c \
+		my/my_print_ptr.c \
+		my/my_print_spec.c \
 		my/my_putchar.c \
+		my/my_putfnbr_base.c \
+		my/my_putf_nbr.c \
+		my/my_putfstr.c \
+		my/my_putlong_base.c \
 		my/my_putnbr_base.c \
 		my/my_putnbr.c \
 		my/my_strcat.c \
 		my/my_strchr.c \
 		my/my_strcmp.c \
 		my/my_strdup.c \
+		my/my_strflen.c \
 		my/my_strlen.c \
-		my/my_xtest.c \
-		my/my_strncmp.c
+		my/my_strncmp.c \
+		my/my_xtest.c
 ## Mettre ici tous les fichier C de la library avec leur chemin ("my/")
 
 ASM_N=		asm/

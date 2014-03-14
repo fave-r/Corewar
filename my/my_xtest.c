@@ -1,11 +1,11 @@
 /*
-** my_xtest.c for my_xtest in /home/thibaut.lopez/Corewar
+xo** my_xtest.c for my_xtest in /home/thibaut.lopez/Corewar
 ** 
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Feb 23 21:21:10 2014 Thibaut Lopez
-** Last update Thu Feb 27 15:46:57 2014 Thibaut Lopez
+** Last update Fri Mar 14 08:54:09 2014 Thibaut Lopez
 */
 
 #include "my.h"
