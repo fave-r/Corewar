@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Mar  2 12:45:35 2014 Thibaut Lopez
-** Last update Thu Mar 13 10:31:39 2014 Thibaut Lopez
+** Last update Fri Mar 14 08:41:03 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -37,9 +37,9 @@ void	good_adress(t_champ *champ)
   tmp = champ->next;
   while (tmp != champ)
     {
-      i = champ->adress;
+      i = champ->pc;
       j = 0;
-      addr = tmp->adress;
+      addr = tmp->pc;
       while (i != addr)
 	{
 	  i = (i + 1) % MEM_SIZE;
@@ -80,14 +80,14 @@ void	init_adress(t_champ *champ)
   i = 0;
   len = my_list_len(champ);
   tmp = champ;
-  if (tmp->adress == -1)
-    tmp->adress = (MEM_SIZE / len) * i;
+  if (tmp->pc == -1)
+    tmp->pc = (MEM_SIZE / len) * i;
   i++;
   tmp = tmp->next;
   while (tmp != champ)
     {
-      if (tmp->adress == -1)
-	tmp->adress = (MEM_SIZE / len) * i;
+      if (tmp->pc == -1)
+	tmp->pc = (MEM_SIZE / len) * i;
       i++;
       tmp = tmp->next;
     }
@@ -100,17 +100,19 @@ void	fill_mem(char **mem, t_champ *champ)
   t_champ	*tmp;
 
   tmp = champ;
-  len = read(tmp->fd, *mem + tmp->adress, MEM_SIZE - tmp->adress);
+  len = read(tmp->fd, *mem + tmp->pc, MEM_SIZE - tmp->pc);
   if (len < tmp->head->prog_size)
     read(tmp->fd, *mem, tmp->head->prog_size);
+  tmp->reg[0] = tmp->champ_nb;
   close(tmp->fd);
   printf("path = %s, champ_name = %s, champ_nb = %d\n", tmp->path, tmp->head->prog_name, tmp->champ_nb);
   tmp = tmp->next;
   while (tmp != champ)
     {
-      len = read(tmp->fd, *mem + tmp->adress, MEM_SIZE - tmp->adress);
+      len = read(tmp->fd, *mem + tmp->pc, MEM_SIZE - tmp->pc);
       if (len < tmp->head->prog_size)
 	read(tmp->fd, *mem, tmp->head->prog_size);
+      tmp->reg[0] = tmp->champ_nb;
       close(tmp->fd);
       printf("path = %s, champ_name = %s, champ_nb = %d\n", tmp->path, tmp->head->prog_name, tmp->champ_nb);
       tmp = tmp->next;

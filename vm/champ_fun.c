@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Wed Feb 26 13:43:48 2014 Thibaut Lopez
-** Last update Wed Mar 12 18:40:08 2014 thibaud
+** Last update Fri Mar 14 08:36:50 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -16,8 +16,7 @@ void	set_var(t_champ *champ)
   champ->head = NULL;
   champ->path = NULL;
   champ->fd = -1;
-  champ->adress = -1;
-  champ->pc = 0;
+  champ->pc = -1;
   champ->wait = -1;
   my_mem_set(champ->reg, REG_NUMBER);
   champ->carry = 0;
@@ -109,7 +108,7 @@ int	check_champ(t_champ **champ, char *path, int addr, int endian)
       return (1);
     }
   (*champ)->path = my_strdup(path);
-  (*champ)->adress = addr;
+  (*champ)->pc = addr;
   find_next_available(champ);
   return (-1);
 }

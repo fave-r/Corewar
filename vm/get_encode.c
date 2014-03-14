@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Thu Mar 13 10:32:43 2014 Thibaut Lopez
+** Last update Thu Mar 13 18:47:05 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -31,10 +31,12 @@ int	**get_encode(char *mem, int pc)
   int	i;
   int	puis;
   int	**tab;
+  int	add;
 
   tab = xmalloc(4 * sizeof(int *));
   puis = 256;
   i = 0;
+  add = 0;
   while (i < 4)
     {
       tab[i] = xmalloc(3 * sizeof(int));
@@ -46,8 +48,8 @@ int	**get_encode(char *mem, int pc)
 	tab[i][1] = (mem[pc] == 10 || mem[pc] == 11 || mem[pc] == 14) ? 2 : 4;
       else
 	tab[i][1] = (tab[i][0] == 3) ? 2 : 0;
-      tab[i][2] = get_nbr_action(mem, pc, tab[i][1]);
-      pc += tab[i][1];
+      tab[i][2] = get_nbr_action(mem, pc + add, tab[i][1]);
+      add += tab[i][1];
       i++;
     }
   return (tab);

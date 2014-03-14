@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Thu Mar 13 10:42:42 2014 Thibaut Lopez
+** Last update Fri Mar 14 08:36:31 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -29,7 +29,6 @@ typedef struct		s_champ
   char			*path;
   int			fd;
   int			champ_nb;
-  int			adress;
   int			pc;
   int			reg[REG_NUMBER];
   int			carry;
