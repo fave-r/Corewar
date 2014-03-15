@@ -5,13 +5,13 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Fri Mar 14 17:36:25 2014 Thibaut Lopez
+** Last update Sat Mar 15 17:47:17 2014 thibaud
 */
 
 #include "vm.h"
 #include "my.h"
 
-int	get_nbr_action(char *mem, int pc, int len)
+int	get_nbr_action(unsigned char *mem, int pc, int len)
 {
   int	i;
   int	nb;
@@ -26,7 +26,7 @@ int	get_nbr_action(char *mem, int pc, int len)
   return (nb);
 }
 
-int	**get_encode(char *mem, int pc)
+int	**get_encode(unsigned char *mem, int pc)
 {
   int	i;
   int	puis;
