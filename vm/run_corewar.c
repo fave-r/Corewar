@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Thu Mar 13 13:57:57 2014 thibaud
+** Last update Mon Mar 17 20:01:36 2014 thibaud
 */
 
 #include "vm.h"
@@ -29,7 +29,7 @@ t_struct	fct_tab[] =
     {14, &my_lldi, 50},
     {15, &my_lfork, 1000},
     {16, &my_aff, 2},
-    {0, &my_none, 0},
+    //{0, &my_none, 0},
   };
 
 int	find_in_tab(char octet)
@@ -71,7 +71,7 @@ int	cycle_run(t_champ *champs, t_cor *map)
       cur_champ->wait -= 1;
       cur_champ = cur_champ->next;
     }
-  map->cycle_done++;
+  map->cycle++;
   return (0);
 }
 
@@ -151,12 +151,21 @@ int	end_game(t_champ *champ, t_cor *map)
   return (0);
 }
 
+void    my_bzero(void *b, int len)
+{
+  int   *tmp;
+
+  tmp = (int *)b;
+  while (len--)
+      *tmp++ = 0;
+}
+
 int	run_corewar(t_champ *champs, t_cor *map)
 {
   map->cycle_to_die = CYCLE_TO_DIE;
   while ((map->cycle_to_die) > 100)
     {
-      while (map->cycle_done <= map->cycle_to_die)
+      while (map->cycle <= map->cycle_to_die)
 	{
 	  cycle_run(champs, map);
 	  if (map->live_done >= NBR_LIVE)
@@ -165,13 +174,13 @@ int	run_corewar(t_champ *champs, t_cor *map)
 		{
 		  map->cycle_to_die -= CYCLE_DELTA;
 		}
-	      map->live_done = 0;
-	      map->cycle_done = 0;
+	      my_bzero(map->live, 4);
+	      map->cycle = 0;
 	    }
 	}      
       kill_champ(champs, map);
       map->live_done = 0;
-      map->cycle_done = 0;
+      map->cycle = 0;
     }
   end_game(champs, map);
   return (0);
