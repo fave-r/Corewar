@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Mon Mar 17 14:21:26 2014 Thibaut Lopez
+** Last update Mon Mar 17 16:51:22 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -23,6 +23,10 @@ int	get_nbr_action(unsigned char *mem, int pc, int len)
       nb = nb * 256 + mem[pc + i];
       i++;
     }
+  if (len == 2)
+    nb = (short int)nb;
+  else if (len == 1)
+    nb = (char)nb;
   return (nb);
 }
 
