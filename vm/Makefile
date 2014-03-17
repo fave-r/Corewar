@@ -5,8 +5,12 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
+<<<<<<< HEAD
 ## Last update Mon Mar 17 20:04:47 2014 thibaud
 ## Last update Mon Mar 17 16:52:01 2014 Thibaut Lopez
+=======
+## Last update Mon Mar 17 20:43:23 2014 Thibaut Lopez
+>>>>>>> fccb0f17e4753f6766b38dc63e88d2d9698f6899
 ##
 
 VM_S=		champ_fun.c \

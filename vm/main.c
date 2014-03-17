@@ -5,7 +5,11 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
+<<<<<<< HEAD
 ** Last update Mon Mar 17 20:19:27 2014 thibaud
+=======
+** Last update Mon Mar 17 20:46:07 2014 Thibaut Lopez
+>>>>>>> fccb0f17e4753f6766b38dc63e88d2d9698f6899
 */
 
 #include "my.h"

@@ -5,7 +5,18 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
+<<<<<<< HEAD
 ** Last update Mon Mar 17 20:18:54 2014 thibaud
+=======
+<<<<<<< HEAD
+** Last update Mon Mar 17 20:45:34 2014 Thibaut Lopez
+=======
+<<<<<<< HEAD
+** Last update Mon Mar 17 16:51:46 2014 Thibaut Lopez
+=======
+>>>>>>> dec3113d2006626c8872b7af3eca2521b7d2e9d5
+** Last update Mon Mar 17 14:21:24 2014 Thibaut Lopez
+>>>>>>> fccb0f17e4753f6766b38dc63e88d2d9698f6899
 */
 
 #include "my.h"
@@ -31,6 +42,7 @@ int	my_live(t_champ *champ, t_cor *cor)
       my_putstr(champ->head->prog_name, 1);
       my_putstr(", pour le numéro : ", 1);
       my_putnbr(cor->champs_nb[j], 1);
+<<<<<<< HEAD
       cor->live_done++;
       i = 0;
       while (i++ < 4)
@@ -41,6 +53,8 @@ int	my_live(t_champ *champ, t_cor *cor)
       my_putstr(champ->head->prog_name, 1);
       my_putstr(", pour le numéro : ", 1);
       my_putnbr(direct_arg , 1);
+=======
+>>>>>>> fccb0f17e4753f6766b38dc63e88d2d9698f6899
       cor->live_done++;
       i = 0;
       while (i++ < 4)
