@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Mon Mar 17 20:01:36 2014 thibaud
+** Last update Mon Mar 17 20:20:38 2014 thibaud
 */
 
 #include "vm.h"
@@ -157,7 +157,9 @@ void    my_bzero(void *b, int len)
 
   tmp = (int *)b;
   while (len--)
+    {
       *tmp++ = 0;
+    }
 }
 
 int	run_corewar(t_champ *champs, t_cor *map)
