@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Fri Mar 14 08:36:31 2014 Thibaut Lopez
+** Last update Mon Mar 17 13:37:27 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -37,10 +37,10 @@ typedef struct		s_champ
   struct s_champ	*prev;
 }			t_champ;
 
-typedef struct 	s_cor
+typedef struct	s_cor
 {
   t_champ	*champ;
-  char		*mem;
+  unsigned char	*mem;
   int		dump;
   int		live_done;
   int		cycle;
@@ -66,8 +66,8 @@ int	check_champ(t_champ **champ, char *path, int addr, int endian);
 int	my_list_len(t_champ *champ);
 void	init_adress(t_champ *champ);
 void	fill_mem(char **mem, t_champ *champ);
-int	get_nbr_action(char *mem, int pc, int len);
-int	**get_encode(char *mem, int pc);
+int	get_nbr_action(unsigned char *mem, int pc, int len);
+int	**get_encode(unsigned char *mem, int pc);
 
 int	someone_is_dead(t_champ *, t_cor *);
 int	run_corewar(t_champ *, t_cor *);
