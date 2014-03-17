@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Mar  2 12:45:35 2014 Thibaut Lopez
-** Last update Fri Mar 14 08:41:03 2014 Thibaut Lopez
+** Last update Mon Mar 17 13:40:19 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -94,7 +94,7 @@ void	init_adress(t_champ *champ)
   check_adress(champ);
 }
 
-void	fill_mem(char **mem, t_champ *champ)
+void	fill_mem(unsigned char **mem, t_champ *champ)
 {
   int		len;
   t_champ	*tmp;

@@ -5,7 +5,11 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Sat Mar 15 17:43:03 2014 thibaud
+<<<<<<< HEAD
+** Last update Mon Mar 17 14:23:06 2014 thibaud
+=======
+** Last update Mon Mar 17 14:21:24 2014 Thibaut Lopez
+>>>>>>> 203a6422a1fb41813c000c3c1db7bb52827abf73
 */
 
 #include "my.h"
@@ -14,39 +18,44 @@
 int	my_live(t_champ *champ, t_cor *cor)
 {
   int	live;
+<<<<<<< HEAD
   int	i;
   int	j;
   int	direct_arg;
   int	**encode;
 
-  encode = get_encode(cor->mem, champ->pc);
-
   i = 0;
   j = -1;
+  direct_arg = get_nbr_action(cor->mem, champ->pc + 1, 4);
   while (i++ < 4)
     {
-      if (cor->champs->nb[i - 1] == direct_arg)
+      if (cor->champ->nb[i - 1] == direct_arg)
 	j = i - 1;
     }
   if (j != -1)
     {
-      if (j != -1)
-	{
 	  my_putstr("live du champion : ", 1);
 	  my_putstr(champ->head->prog_name, 1);
 	  my_putstr(", pour le numéro : ", 1);
-	  my_putnbr(cor->direct_arg, 1);
+	  my_putnbr(, 1);
 	  cor->live_done++;
 	  i = 0;
 	  while (i++ < 4)
 	    if (cor->live[i - 1] == 2)
 	      cor->live[i - 1] = 1;
 	  cor->live[j] = 2;
-	}
     }
+  my_putstr(", avance dans la mémoire de 5\n", 1);
+  champ->pc += 5;
+=======
 
-  my_putstr(", avance dans la mémoire de 4\n", 1); //T'es sur que c'est 6 plutot? 4 octets pour le label "live" + 2 octets du T_DIR
-  champ->pc += 6;
+  my_putstr("live du champion : ", 1);
+  my_putstr(champ->head->prog_name, 1);
+  my_putstr(", pour le numéro : ", 1);
+  live = get_nbr_action(cor->mem, champ->pc + 1, 4);
+  my_putnbr(live, 1);
+  my_putstr(", avance dans la mémoire de 4\n", 1);
+>>>>>>> 203a6422a1fb41813c000c3c1db7bb52827abf73
   return (5);
 }
 
@@ -57,7 +66,7 @@ int	my_zjmp(t_champ *champ, t_cor *cor)
   my_putstr("zjmp du champion : ", 1);
   my_putstr(champ->head->prog_name, 1);
   my_putstr(", vers le numéro : ", 1);
-  jump = get_nbr_action(cor->mem, champ->pc, 2);
+  jump = get_nbr_action(cor->mem, champ->pc + 1, 2);
   my_putnbr(jump, 1);
   my_putstr(", avance dans la mémoire de 2\n", 1);
   return (3);
@@ -70,7 +79,7 @@ int	my_fork(t_champ *champ, t_cor *cor)
   my_putstr("fork du champion : ", 1);
   my_putstr(champ->head->prog_name, 1);
   my_putstr(", vers le numéro : ", 1);
-  frk = get_nbr_action(cor->mem, champ->pc, 2);
+  frk = get_nbr_action(cor->mem, champ->pc + 1, 2);
   my_putnbr(frk, 1);
   my_putstr(", avance dans la mémoire de 2\n", 1);
   return (3);
@@ -83,7 +92,7 @@ int	my_lfork(t_champ *champ, t_cor *cor)
   my_putstr("lfork du champion : ", 1);
   my_putstr(champ->head->prog_name, 1);
   my_putstr(", vers le numéro : ", 1);
-  frk = get_nbr_action(cor->mem, champ->pc, 2);
+  frk = get_nbr_action(cor->mem, champ->pc + 1, 2);
   my_putnbr(frk, 1);
   my_putstr(", avance dans la mémoire de 2\n", 1);
   return (3);

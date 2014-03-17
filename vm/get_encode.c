@@ -5,11 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-<<<<<<< HEAD
-** Last update Mon Mar 17 13:36:51 2014 Thibaut Lopez
-=======
-** Last update Sat Mar 15 17:47:17 2014 thibaud
->>>>>>> b7ca3333f0ac155cde082187f6c1823c71b4fd92
+** Last update Mon Mar 17 14:21:26 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -40,7 +36,7 @@ int	**get_encode(unsigned char *mem, int pc)
   tab = xmalloc(4 * sizeof(int *)); //tableau principal de 4 cases, parce que 4 arguments
   puis = 256;
   i = 0;
-  add = 0;
+  add = 2;
   while (i < 4)
     {
       tab[i] = xmalloc(3 * sizeof(int));//tableau de 3 cases
