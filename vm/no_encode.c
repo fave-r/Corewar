@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Mon Mar 17 14:16:47 2014 Thibaut Lopez
+** Last update Mon Mar 17 14:21:24 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -18,7 +18,7 @@ int	my_live(t_champ *champ, t_cor *cor)
   my_putstr("live du champion : ", 1);
   my_putstr(champ->head->prog_name, 1);
   my_putstr(", pour le numéro : ", 1);
-  live = get_nbr_action(cor->mem, champ->pc, 4);
+  live = get_nbr_action(cor->mem, champ->pc + 1, 4);
   my_putnbr(live, 1);
   my_putstr(", avance dans la mémoire de 4\n", 1);
   return (5);
@@ -31,7 +31,7 @@ int	my_zjmp(t_champ *champ, t_cor *cor)
   my_putstr("zjmp du champion : ", 1);
   my_putstr(champ->head->prog_name, 1);
   my_putstr(", vers le numéro : ", 1);
-  jump = get_nbr_action(cor->mem, champ->pc, 2);
+  jump = get_nbr_action(cor->mem, champ->pc + 1, 2);
   my_putnbr(jump, 1);
   my_putstr(", avance dans la mémoire de 2\n", 1);
   return (3);
@@ -44,7 +44,7 @@ int	my_fork(t_champ *champ, t_cor *cor)
   my_putstr("fork du champion : ", 1);
   my_putstr(champ->head->prog_name, 1);
   my_putstr(", vers le numéro : ", 1);
-  frk = get_nbr_action(cor->mem, champ->pc, 2);
+  frk = get_nbr_action(cor->mem, champ->pc + 1, 2);
   my_putnbr(frk, 1);
   my_putstr(", avance dans la mémoire de 2\n", 1);
   return (3);
@@ -57,7 +57,7 @@ int	my_lfork(t_champ *champ, t_cor *cor)
   my_putstr("lfork du champion : ", 1);
   my_putstr(champ->head->prog_name, 1);
   my_putstr(", vers le numéro : ", 1);
-  frk = get_nbr_action(cor->mem, champ->pc, 2);
+  frk = get_nbr_action(cor->mem, champ->pc + 1, 2);
   my_putnbr(frk, 1);
   my_putstr(", avance dans la mémoire de 2\n", 1);
   return (3);
