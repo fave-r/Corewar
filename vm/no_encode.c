@@ -5,11 +5,8 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-<<<<<<< HEAD
-** Last update Mon Mar 17 14:23:06 2014 thibaud
-=======
+** Last update Mon Mar 17 19:22:35 2014 thibaud
 ** Last update Mon Mar 17 14:21:24 2014 Thibaut Lopez
->>>>>>> 203a6422a1fb41813c000c3c1db7bb52827abf73
 */
 
 #include "my.h"
@@ -17,19 +14,16 @@
 
 int	my_live(t_champ *champ, t_cor *cor)
 {
-  int	live;
-<<<<<<< HEAD
   int	i;
   int	j;
   int	direct_arg;
-  int	**encode;
 
   i = 0;
   j = -1;
   direct_arg = get_nbr_action(cor->mem, champ->pc + 1, 4);
   while (i++ < 4)
     {
-      if (cor->champ->nb[i - 1] == direct_arg)
+      if (cor->champs_nb[i - 1] == direct_arg)
 	j = i - 1;
     }
   if (j != -1)
@@ -37,7 +31,7 @@ int	my_live(t_champ *champ, t_cor *cor)
 	  my_putstr("live du champion : ", 1);
 	  my_putstr(champ->head->prog_name, 1);
 	  my_putstr(", pour le numéro : ", 1);
-	  my_putnbr(, 1);
+	  my_putnbr(cor->champs_nb[j], 1);
 	  cor->live_done++;
 	  i = 0;
 	  while (i++ < 4)
@@ -47,28 +41,26 @@ int	my_live(t_champ *champ, t_cor *cor)
     }
   my_putstr(", avance dans la mémoire de 5\n", 1);
   champ->pc += 5;
-=======
-
-  my_putstr("live du champion : ", 1);
-  my_putstr(champ->head->prog_name, 1);
-  my_putstr(", pour le numéro : ", 1);
-  live = get_nbr_action(cor->mem, champ->pc + 1, 4);
-  my_putnbr(live, 1);
-  my_putstr(", avance dans la mémoire de 4\n", 1);
->>>>>>> 203a6422a1fb41813c000c3c1db7bb52827abf73
   return (5);
 }
 
 int	my_zjmp(t_champ *champ, t_cor *cor)
 {
-  int	jump;
+  int	direct_arg;
 
-  my_putstr("zjmp du champion : ", 1);
-  my_putstr(champ->head->prog_name, 1);
-  my_putstr(", vers le numéro : ", 1);
-  jump = get_nbr_action(cor->mem, champ->pc + 1, 2);
-  my_putnbr(jump, 1);
-  my_putstr(", avance dans la mémoire de 2\n", 1);
+  //On risque d'avoir un problème avec les jump en arrière.
+  //Faudra sans doute modifier un peu get_nbr_action
+  //J'ai la flemme de regarder ça tout de suite :)
+  if (champ->carry == 1)
+    {
+      direct_arg = get_nbr_action(cor->mem, champ->pc + 1, 2);
+      my_putstr("zjmp du champion : ", 1);
+      my_putstr(champ->head->prog_name, 1);
+      my_putstr(", vers le numéro : ", 1);
+      my_putnbr(direct_arg, 1);
+      my_putstr(", avance dans la mémoire de 3\n", 1);
+      champ->pc += direct_arg;
+    }
   return (3);
 }
 

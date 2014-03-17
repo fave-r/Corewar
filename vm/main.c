@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Fri Mar 14 10:03:32 2014 Thibaut Lopez
+** Last update Mon Mar 17 15:38:59 2014 thibaud
 */
 
 #include "my.h"
@@ -142,6 +142,7 @@ int	main(int argc, char **argv)
   cor.nb_chmps_alive = 4;
   my_mem_set(cor.live, 4);
   init_champs_nb(&cor);
+  /*
   int	i;
 
   i = 0;
@@ -150,6 +151,7 @@ int	main(int argc, char **argv)
       my_printf(1, "%X|", cor.mem[i]);
       i++;
     }
-  my_putstr("\n", 1);
+    my_putstr("\n", 1);*/
+  run_corewar(cor.champ, &cor);
   return (0);
 }
