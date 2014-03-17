@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Sat Mar  1 14:41:33 2014 Alexandre Odet
-## Last update Sun Mar  2 22:26:57 2014 romaric
+## Last update Mon Mar 17 15:28:20 2014 Thibaut Lopez
 ##
 
 NAME=	SDL_TEST
