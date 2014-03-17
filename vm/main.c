@@ -5,11 +5,8 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-<<<<<<< HEAD
-** Last update Mon Mar 17 20:19:27 2014 thibaud
-=======
+** Last update Mon Mar 17 22:11:08 2014 thibaud
 ** Last update Mon Mar 17 20:46:07 2014 Thibaut Lopez
->>>>>>> fccb0f17e4753f6766b38dc63e88d2d9698f6899
 */
 
 #include "my.h"
@@ -139,12 +136,13 @@ int	main(int argc, char **argv)
   cor.endian = my_endian();
   fill_champ(argv, &cor);
   cor.cycle = 0;
+  my_bzero(cor.champs_nb, 4);  
   init_adress(cor.champ);
   cor.mem = xmalloc((MEM_SIZE + 1) * sizeof(char));
   cor.mem[MEM_SIZE] = 0;
   fill_mem(&(cor.mem), cor.champ);
   cor.nb_chmps_alive = 4;
-  my_mem_set(cor.live, 4);
+  my_bzero(cor.live, 4);
   init_champs_nb(&cor);
   /*
   int	i;

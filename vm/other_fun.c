@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Mon Mar 17 19:24:16 2014 thibaud
+** Last update Mon Mar 17 23:08:01 2014 thibaud
 */
 
 #include "vm.h"
@@ -44,16 +44,49 @@ int	my_sti(t_champ *champ, t_cor *cor)
   tab = get_encode( cor->mem, champ->pc);
   if (tab[0][0] == 1 && tab[0][2] >= 0 && tab[0][2] <= REG_SIZE && (tab[1][0] != 0) && (tab[2][0] == 1 || tab[2][0] == 2))
     {
+      my_putstr("Voici le REG 1 : ", 1);
+      my_putnbr(champ->reg[0], 1);
+      my_putstr("\nIl y dans la mémoire : ", 1);
+      my_putnbr((int)cor->mem[champ->pc + 1], 1);
+      my_putstr("  ", 1);
+      my_putnbr((int)cor->mem[champ->pc + 2], 1);
+      my_putstr("  ", 1);
+      my_putnbr((int)cor->mem[champ->pc + 3], 1);
+      my_putstr("  ", 1);
+      my_putnbr((int)cor->mem[champ->pc + 4], 1);
+      my_putstr("  ", 1);
+      my_putnbr((int)cor->mem[champ->pc + 5], 1);
+      my_putstr("  ", 1);
+      my_putnbr((int)cor->mem[champ->pc + 6], 1);
+      my_putstr("  ", 1);
+      my_putnbr((int)cor->mem[champ->pc + 7], 1);
+      my_putstr("  ", 1);
+      my_putnbr((int)cor->mem[champ->pc + 8], 1);
+      my_putstr("  ", 1);
+      my_putnbr((int)cor->mem[champ->pc + 9], 1);
+      my_putstr("  ", 1);
+      my_putnbr((int)cor->mem[champ->pc + 10], 1);
+      my_putstr("  ", 1);
+      my_putnbr((int)cor->mem[champ->pc + 11], 1);
+      my_putstr("  ", 1);
+      my_putnbr((int)cor->mem[champ->pc + 12], 1);
+      my_putstr("  ", 1);
+      my_putstr("\n", 1);
       tmp = tab[0][2];
       while (i < 4)
 	{
-	  tmp = tab[0][2] / (oct_size * (3 - i)) % (oct_size * i); 
+	  if (i - 3 == 0)
+	    tmp = (tab[0][2] % (oct_size * i));
+	  else if (i == 0)
+	    tmp = (tab[0][2] / (oct_size * (3 - i))); 
+	  else
+	    tmp = (tab[0][2] / (oct_size * (3 - i))) %(oct_size * i); 
 	  cor->mem[tab[1][2] + tab[2][2] + i] = (unsigned char)tmp;
 	  i++;
 	}
-      my_putstr("ldi du champion : ", 1);
+      my_putstr("sti du champion : ", 1);
       my_putstr(champ->head->prog_name, 1);
-      my_putstr(", stisation ", 1);
+      my_putstr(", utilisation ", 1);
       my_putstr(" du registre ", 1);
       my_putnbr(tab[0][2], 1);
       if (tab[1][0] == 1)

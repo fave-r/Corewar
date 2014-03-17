@@ -5,11 +5,13 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Mon Mar 17 20:20:38 2014 thibaud
+** Last update Mon Mar 17 22:16:01 2014 thibaud
 */
 
 #include "vm.h"
 #include "my.h"
+#include <stdio.h>
+#include <strings.h>
 
 t_struct	fct_tab[] =
   {
@@ -47,12 +49,14 @@ int	find_in_tab(char octet)
 }
 int	champ_play(t_champ *cur_champ, t_cor *map)
 {
+  my_putstr("champ_play !\n", 1);
   fct_tab[find_in_tab(map->mem[cur_champ->pc])].ptr_fct(cur_champ, map);
   return (0);}
     
 
 int	get_wait(t_champ *cur_champ, t_cor *map)
 {
+  my_putstr("get_wait !\n", 1);
   cur_champ->wait = fct_tab[find_in_tab(map->mem[cur_champ->pc])].wait;
   return (cur_champ->wait);
 }
@@ -65,9 +69,16 @@ int	cycle_run(t_champ *champs, t_cor *map)
   while (cur_champ != NULL)
     {
       if (cur_champ->wait < 0)
+	{
+	  my_putstr("run_cycle1 !\n", 1);
 	get_wait(cur_champ, map);
+	}
       if (cur_champ->wait == 0)
+	{
+	  my_putstr("run_cycle2 !\n", 1);
+   printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
 	champ_play(cur_champ, map);
+	}
       cur_champ->wait -= 1;
       cur_champ = cur_champ->next;
     }
@@ -164,19 +175,29 @@ void    my_bzero(void *b, int len)
 
 int	run_corewar(t_champ *champs, t_cor *map)
 {
+  my_putstr("C'est PARTI !!\n", 1);
   map->cycle_to_die = CYCLE_TO_DIE;
+   printf("Num champ = %d %d %d %d\n", map->champs_nb[0], map->champs_nb[1], map->champs_nb[2], map->champs_nb[3]);
+   printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
   while ((map->cycle_to_die) > 100)
     {
       while (map->cycle <= map->cycle_to_die)
 	{
+	  my_putstr("X", 1);
 	  cycle_run(champs, map);
 	  if (map->live_done >= NBR_LIVE)
 	    {
+	      my_putstr("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", 1);
+	      my_putstr("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", 1);
+	      my_putstr("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", 1);
+	      my_putstr("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", 1);
+	      my_putstr("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", 1);
+	      my_putstr("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", 1);
 	      if (!someone_is_dead(champs, map))
 		{
 		  map->cycle_to_die -= CYCLE_DELTA;
 		}
-	      my_bzero(map->live, 4);
+	      my_bzero(map->champs_nb, 4);
 	      map->cycle = 0;
 	    }
 	}      

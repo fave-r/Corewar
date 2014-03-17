@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Mon Mar 17 13:40:18 2014 Thibaut Lopez
+** Last update Mon Mar 17 21:54:21 2014 thibaud
 */
 
 #ifndef VM_H
@@ -77,6 +77,7 @@ int	get_wait(t_champ *, t_cor *);
 int	champ_play(t_champ *, t_cor *);
 int	find_in_tab(char);
 int	end_game(t_champ *, t_cor *);
+void	my_bzero(void *, int);
 
 int	my_live(t_champ *champ, t_cor *cor);
 int	my_ld(t_champ *champ, t_cor *cor);
