@@ -4,11 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-<<<<<<< HEAD
-** Last update Mon Mar 17 13:37:27 2014 Thibaut Lopez
-=======
-** Last update Fri Mar 14 13:42:00 2014 thibaud
->>>>>>> b7ca3333f0ac155cde082187f6c1823c71b4fd92
+** Last update Mon Mar 17 13:40:18 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -69,7 +65,7 @@ int	move_in_list(t_champ **champ, int nbr);
 int	check_champ(t_champ **champ, char *path, int addr, int endian);
 int	my_list_len(t_champ *champ);
 void	init_adress(t_champ *champ);
-void	fill_mem(char **mem, t_champ *champ);
+void	fill_mem(unsigned char **mem, t_champ *champ);
 int	get_nbr_action(unsigned char *mem, int pc, int len);
 int	**get_encode(unsigned char *mem, int pc);
 

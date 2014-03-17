@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Sat Mar 15 17:43:03 2014 thibaud
+** Last update Mon Mar 17 14:13:51 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -25,7 +25,7 @@ int	my_live(t_champ *champ, t_cor *cor)
   j = -1;
   while (i++ < 4)
     {
-      if (cor->champs->nb[i - 1] == direct_arg)
+      if (cor->champ->nb[i - 1] == direct_arg)
 	j = i - 1;
     }
   if (j != -1)
@@ -35,7 +35,7 @@ int	my_live(t_champ *champ, t_cor *cor)
 	  my_putstr("live du champion : ", 1);
 	  my_putstr(champ->head->prog_name, 1);
 	  my_putstr(", pour le numéro : ", 1);
-	  my_putnbr(cor->direct_arg, 1);
+	  my_putnbr(, 1);
 	  cor->live_done++;
 	  i = 0;
 	  while (i++ < 4)
@@ -45,7 +45,7 @@ int	my_live(t_champ *champ, t_cor *cor)
 	}
     }
 
-  my_putstr(", avance dans la mémoire de 4\n", 1); //T'es sur que c'est 6 plutot? 4 octets pour le label "live" + 2 octets du T_DIR
+  my_putstr(", avance dans la mémoire de 4\n", 1);
   champ->pc += 6;
   return (5);
 }
