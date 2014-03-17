@@ -5,7 +5,11 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
+<<<<<<< HEAD
 ** Last update Mon Mar 17 13:36:51 2014 Thibaut Lopez
+=======
+** Last update Sat Mar 15 17:47:17 2014 thibaud
+>>>>>>> b7ca3333f0ac155cde082187f6c1823c71b4fd92
 */
 
 #include "vm.h"

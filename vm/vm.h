@@ -4,7 +4,11 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
+<<<<<<< HEAD
 ** Last update Mon Mar 17 13:37:27 2014 Thibaut Lopez
+=======
+** Last update Fri Mar 14 13:42:00 2014 thibaud
+>>>>>>> b7ca3333f0ac155cde082187f6c1823c71b4fd92
 */
 
 #ifndef VM_H
