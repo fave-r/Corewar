@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Tue Mar 18 09:43:02 2014 Thibaut Lopez
+## Last update Tue Mar 18 19:54:34 2014 Thibaut Lopez
 ##
 
 VM_S=		champ_fun.c \
@@ -16,18 +16,19 @@ VM_S=		champ_fun.c \
 		main.c \
 		operation.c \
 		other_fun.c \
-		run_corewar.c
+		run_corewar.c \
+		Graphic/main.c
 
 VM_N=		corewar
 
 VM_O=		$(VM_S:.c=.o)
 
-CC=		gcc -g3 -W -Wall -Werror -I ../my/ -I ../
+CC=		gcc -g3 -W -Wall -Werror -I ../my/ -I ../ -I .
 
 all:		$(VM_N)
 
 $(VM_N):	$(VM_O)
-		$(CC) -o $(VM_N) $(VM_O) -L.. -lmy
+		$(CC) -o $(VM_N) $(VM_O) -L.. -lmy  -lSDL -lGL -lGLU
 
 clean:
 		rm -f $(VM_O)

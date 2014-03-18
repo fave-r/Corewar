@@ -5,11 +5,10 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 17 17:01:09 2014 Thibaut Lopez
-** Last update Tue Mar 18 16:01:54 2014 Thibaut Lopez
+** Last update Tue Mar 18 20:02:22 2014 Thibaut Lopez
 */
 
-#include "graphic.h"
-#include "../../op.h"
+#include "vm.h"
 
 void	my_pause()
 {
@@ -25,42 +24,64 @@ void	my_pause()
     }
 }
 
-int	main()
+void	init_color_champ(t_cor *cor, t_champ *champ)
 {
   int		i;
-  int		col1;
-  int		col2;
-  int		col3;
-  SDL_Surface	*screen;
-  SDL_Rect	position;
-  SDL_Surface	*case_mem[MEM_SIZE] = {NULL};
 
-  screen = NULL;
+  i = 0;
+  while (champ != NULL)
+    {
+      if (i == 0)
+	champ->color = SDL_MapRGB(cor->screen->format, 255, 0, 0);
+      else if (i == 1)
+	champ->color = SDL_MapRGB(cor->screen->format, 0, 255, 0);
+      else if (i == 2)
+	champ->color = SDL_MapRGB(cor->screen->format, 0, 0, 255);
+      else
+	champ->color = SDL_MapRGB(cor->screen->format, 255, 255, 0);
+      i++;
+      champ = champ->next;
+    }
+}
+
+void	fill_screen(t_cor *cor, t_champ *champ)
+{
+  int		i;
+  SDL_Rect	position;
+
+  position.w = 10;
+  position.h = 20;
+  while (champ != NULL)
+    {
+      i = 0;
+      while (i < champ->head->prog_size)
+	{
+	  position.x = (champ->pc + i) % (MEM_SIZE - 1) % 149 * 10;
+	  position.y = (champ->pc + i) % (MEM_SIZE - 1) / 149 * 20;
+	  SDL_FillRect(cor->screen, &position, champ->color);
+	  i++;
+	}
+      champ = champ->next;
+    }
+  position.x = (MEM_SIZE - 1) % 149 * 10;
+  position.y = (MEM_SIZE - 1) / 149 * 20;
+  position.w = 1490 - position.x;
+  SDL_FillRect(cor->screen, &position,
+	       SDL_MapRGB(cor->screen->format, 127, 127, 127));
+}
+
+int	init_graphic(t_cor *cor)
+{
   if (SDL_Init(SDL_INIT_VIDEO) == -1)
     return (1);
-  if ((screen = SDL_SetVideoMode(1490, 840, 32, SDL_SWSURFACE)) == NULL)
+  if ((cor->screen = SDL_SetVideoMode(1490, 840, 32, SDL_SWSURFACE)) == NULL)
     return (1);
-  SDL_WM_SetCaption("COREWAR POPOPOOOOOOOOOOOOOOOO", NULL);
-  SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 17, 206, 112));
-  for (i = 0 ; i <= MEM_SIZE ; i++)
-    case_mem[i] = SDL_CreateRGBSurface(SDL_HWSURFACE, 10, 20, 32, 0, 0, 0, 0);
-  col1 = 0;
-  col2 = 0;
-  col3 = 0;
-  for (i = 0 ; i <= MEM_SIZE - 1 ; i++)
-    {
-      position.x = i % 149 * 10;
-      position.y = i / 149 * 20;
-      SDL_FillRect(case_mem[i], NULL, SDL_MapRGB(screen->format, col1, col2, col3));
-      SDL_BlitSurface(case_mem[i], NULL, screen, &position);
-      col1 = (col1 == 0) ? 255 : 0;
-      col2 = (col2 == 0) ? 255 : 0;
-      col3 = (col3 == 0) ? 255 : 0;
-    }
-  SDL_Flip(screen);
-  my_pause();
-  for (i = 0 ; i <= MEM_SIZE - 1 ; i++)
-    SDL_FreeSurface(case_mem[i]);
-  SDL_Quit();
+  SDL_WM_SetCaption("Corewar VM", NULL);
+  SDL_FillRect(cor->screen, NULL, SDL_MapRGB(cor->screen->format, 0, 0, 0));
+  init_color_champ(cor, cor->champ);
+  fill_screen(cor, cor->champ);
+  SDL_Flip(cor->screen);
+  pause();
+  exit(0);
   return (0);
 }

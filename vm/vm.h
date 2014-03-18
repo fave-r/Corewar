@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Mon Mar 17 21:54:21 2014 thibaud
+** Last update Tue Mar 18 19:53:54 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -18,8 +18,10 @@
 #define	ER_FULL	"Cannot find a new place for another champ : places already taken.\n"
 #define ER_VOID	"You haven't gave a single correct champion.\n"
 #include <sys/stat.h>
+#include <SDL/SDL.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "op.h"
 
@@ -33,6 +35,7 @@ typedef struct		s_champ
   int			reg[REG_NUMBER];
   int			carry;
   int			wait;
+  Uint32		color;
   struct s_champ	*next;
   struct s_champ	*prev;
 }			t_champ;
@@ -49,6 +52,7 @@ typedef struct	s_cor
   int		live[4];
   int		champs_nb[4];
   int		nb_chmps_alive;
+  SDL_Surface	*screen;
 }		t_cor;
 
 typedef struct	s_struct
@@ -68,6 +72,7 @@ void	init_adress(t_champ *champ);
 void	fill_mem(unsigned char **mem, t_champ *champ);
 int	get_nbr_action(unsigned char *mem, int pc, int len);
 int	**get_encode(unsigned char *mem, int pc);
+int	init_graphic(t_cor *cor);
 
 int	someone_is_dead(t_champ *, t_cor *);
 int	run_corewar(t_champ *, t_cor *);

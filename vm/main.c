@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Tue Mar 18 09:43:28 2014 Thibaut Lopez
+** Last update Tue Mar 18 19:53:10 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -143,6 +143,7 @@ int	main(int argc, char **argv)
   cor.nb_chmps_alive = 4;
   my_bzero(cor.live, 4);
   init_champs_nb(&cor);
+  init_graphic(&cor);
   /*
   int	i;
 
