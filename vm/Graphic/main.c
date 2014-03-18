@@ -5,13 +5,10 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 17 17:01:09 2014 Thibaut Lopez
-** Last update Mon Mar 17 20:28:58 2014 Thibaut Lopez
+** Last update Tue Mar 18 16:01:54 2014 Thibaut Lopez
 */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <SDL/SDL.h>
-#include <unistd.h>
+#include "graphic.h"
 #include "../../op.h"
 
 void	my_pause()
@@ -23,15 +20,12 @@ void	my_pause()
   while (bool == 1)
     {
       SDL_WaitEvent(&event);
-      switch(event.type)
-        {
-	case SDL_QUIT:
-	  bool = 0;
-        }
+      if (event.type == SDL_QUIT)
+	bool = 0;
     }
 }
 
-int main()
+int	main()
 {
   int		i;
   int		col1;
