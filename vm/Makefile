@@ -5,9 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Mon Mar 17 20:52:29 2014 thibaud
-## Last update Mon Mar 17 16:52:01 2014 Thibaut Lopez
-## Last update Mon Mar 17 20:43:23 2014 Thibaut Lopez
+## Last update Tue Mar 18 09:43:02 2014 Thibaut Lopez
 ##
 
 VM_S=		champ_fun.c \
