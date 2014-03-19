@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Tue Mar 18 19:53:54 2014 Thibaut Lopez
+** Last update Wed Mar 19 09:44:20 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -72,7 +72,6 @@ void	init_adress(t_champ *champ);
 void	fill_mem(unsigned char **mem, t_champ *champ);
 int	get_nbr_action(unsigned char *mem, int pc, int len);
 int	**get_encode(unsigned char *mem, int pc);
-int	init_graphic(t_cor *cor);
 
 int	someone_is_dead(t_champ *, t_cor *);
 int	run_corewar(t_champ *, t_cor *);
@@ -100,5 +99,8 @@ int	my_lld(t_champ *champ, t_cor *cor);
 int	my_lldi(t_champ *champ, t_cor *cor);
 int	my_lfork(t_champ *champ, t_cor *cor);
 int	my_aff(t_champ *champ, t_cor *cor);
+
+int	init_graphic(t_cor *cor);
+void	free_graphic();
 
 #endif
