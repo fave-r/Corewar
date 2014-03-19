@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Wed Mar 19 18:31:55 2014 Thibaut Lopez
+** Last update Wed Mar 19 18:58:39 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -65,7 +65,7 @@ int	my_and(t_champ *champ, t_cor *cor)
   arg1 = get_arg(tab[0][0], tab[0][2], champ->reg, cor->mem);
   arg2 = get_arg(tab[0][0], tab[0][2], champ->reg, cor->mem);
   if (arg1 != -1 && arg2 != -1 &&
-      tab[2][2] > 0 && tab[0][2] <= REG_NUMBER)
+      tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
       my_printf(1, "and du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], and);
@@ -88,7 +88,7 @@ int	my_or(t_champ *champ, t_cor *cor)
   arg1 = get_arg(tab[0][0], tab[0][2], champ->reg, cor->mem);
   arg2 = get_arg(tab[0][0], tab[0][2], champ->reg, cor->mem);
   if (arg1 != -1 && arg2 != -1 &&
-      tab[2][2] > 0 && tab[0][2] <= REG_NUMBER)
+      tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
       my_printf(1, "or du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], or);
@@ -111,7 +111,7 @@ int	my_xor(t_champ *champ, t_cor *cor)
   arg1 = get_arg(tab[0][0], tab[0][2], champ->reg, cor->mem);
   arg2 = get_arg(tab[0][0], tab[0][2], champ->reg, cor->mem);
   if (arg1 != -1 && arg2 != -1 &&
-      tab[2][2] > 0 && tab[0][2] <= REG_NUMBER)
+      tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
       my_printf(1, "xor du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], xor);
