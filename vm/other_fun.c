@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Wed Mar 19 18:20:12 2014 Thibaut Lopez
+** Last update Wed Mar 19 18:31:54 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -110,10 +110,17 @@ int	my_sti(t_champ *champ, t_cor *cor)
 
 int	my_aff(t_champ *champ, t_cor *cor)
 {
-  my_putstr("aff du champion : ", 1);
-  my_putstr(champ->head->prog_name, 1);
-  my_putstr(", affichage de ", 1);
-  my_putnbr(cor->mem[champ->pc + 2], 1);
-  my_putstr(", avance dans la mémoire de 2\n", 1);
-  return (3);
+  int	aff;
+  int	**tab;
+
+  tab = get_encode(cor->mem, champ->pc);
+  aff = tab[0][1] + tab[1][1] + tab[2][1] + tab[3][1] + 2;
+  if (tab[0][2] > 0 && tab[0][2] <= REG_NUMBER)
+    {
+      champ->carry = 1;
+      my_putchar(champ->reg[tab[0][2]], 1);
+    }
+  change_pos_pc(champ, champ->pc + aff, aff, cor->screen);
+  ifree(tab, 4);
+  return (aff);
 }
