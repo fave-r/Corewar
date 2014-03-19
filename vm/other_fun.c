@@ -5,11 +5,21 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Mon Mar 17 23:08:01 2014 thibaud
+** Last update Wed Mar 19 18:15:27 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 #include "my.h"
+
+int	get_arg(int type, int val, int *reg, unsigned char *mem)
+{
+  if (type == 3)
+    return (val);
+  else if (type == 1)
+    return ((val > 0 && val <= 16) ? reg[val - 1] : -1);
+  else
+    return ((type != 0 && val >= 0 && val < MEM_SIZE) ? mem[val] : -1);
+}
 
 int	my_st(t_champ *champ, t_cor *cor)
 {

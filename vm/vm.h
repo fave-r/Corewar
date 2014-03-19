@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Wed Mar 19 09:44:20 2014 Thibaut Lopez
+** Last update Wed Mar 19 18:15:14 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -72,6 +72,8 @@ void	init_adress(t_champ *champ);
 void	fill_mem(unsigned char **mem, t_champ *champ);
 int	get_nbr_action(unsigned char *mem, int pc, int len);
 int	**get_encode(unsigned char *mem, int pc);
+void	ifree(int **tab, int len);
+void	sfree(char **str);
 
 int	someone_is_dead(t_champ *, t_cor *);
 int	run_corewar(t_champ *, t_cor *);
@@ -99,8 +101,11 @@ int	my_lld(t_champ *champ, t_cor *cor);
 int	my_lldi(t_champ *champ, t_cor *cor);
 int	my_lfork(t_champ *champ, t_cor *cor);
 int	my_aff(t_champ *champ, t_cor *cor);
+int	get_arg(int type, int val, int *reg, unsigned char *mem);
 
 int	init_graphic(t_cor *cor);
 void	free_graphic();
+void	change_pos_pc(t_champ *champ, int pc, int len, SDL_Surface *screen);
+void	change_case_mem(int case_mem, Uint32 color, SDL_Surface *screen);
 
 #endif

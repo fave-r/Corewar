@@ -5,18 +5,18 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:40:14 2014 Thibaut Lopez
-** Last update Wed Mar 19 10:56:03 2014 Thibaut Lopez
+** Last update Wed Mar 19 16:24:37 2014 Thibaut Lopez
 */
+
+#include "vm.h"
 
 /*
 change_pos_pc
 Données :
-	-old_pc, qui est la position "avant" du PC
-	-new_pc, position "après" du PC (important dans le cas d'un zjmp)
+	-champ, structure du champion
+	-pc, position "après" du PC (important dans le cas d'un zjmp)
 	-len, le nombre de bit qu'a lu le champion pour executer sa fonction
 	-screen, une variable qui se trouve dans la structure cor (cor->screen)
-	-color, la couleur du champion (dans sa structure, champ->color)
-	Note : Il y a trop d'argument, mais on peux donner la structure t_champ *champ, qui contiendrait color et l'un des PC. Le problème est que je ne sais pas lequel.
 Résultat :
 	Va changer la position du curseur du champion et colorier l'endroit où celui-ci est passé en la couleur "color"
 Quand l'appeller:
@@ -24,7 +24,7 @@ Quand l'appeller:
 Pas encore testé
 */
 
-void	change_pos_pc(int old_pc, int new_pc, int len, SDL_Surface *screen, Uint32 color)
+void	change_pos_pc(t_champ *champ, int pc, int len, SDL_Surface *screen)
 {
   int		i;
   SDL_Rect	position;
@@ -34,14 +34,15 @@ void	change_pos_pc(int old_pc, int new_pc, int len, SDL_Surface *screen, Uint32 
   i = 0;
   while (i < len)
     {
-      position.x = (old_pc + i) % (MEM_SIZE - 1) % 149 * 10;
-      position.y = (old_pc + i) % (MEM_SIZE - 1) / 149 * 20;
-      SDL_FillRect(screen, &position, color);
+      position.x = (champ->pc + i) % (MEM_SIZE - 1) % 149 * 10;
+      position.y = (champ->pc + i) % (MEM_SIZE - 1) / 149 * 20;
+      SDL_FillRect(screen, &position, champ->color);
       i++;
     }
-  position.x = (new_pc + i) % (MEM_SIZE - 1) % 149 * 10;
-  position.y = (new_pc + i) % (MEM_SIZE - 1) / 149 * 20;
+  position.x = (pc + i) % (MEM_SIZE - 1) % 149 * 10;
+  position.y = (pc + i) % (MEM_SIZE - 1) / 149 * 20;
   SDL_FillRect(screen, &position, 0xFFFFFF);
+  SDL_Flip(screen);
 }
 
 /*
@@ -66,4 +67,5 @@ void	change_case_mem(int case_mem, Uint32 color, SDL_Surface *screen)
   position.x = case_mem % (MEM_SIZE - 1) % 149 * 10;
   position.y = case_mem % (MEM_SIZE - 1) / 149 * 20;
   SDL_FillRect(screen, &position, color);
+  SDL_Flip(screen);
 }
