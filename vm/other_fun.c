@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Wed Mar 19 19:03:40 2014 Thibaut Lopez
+** Last update Thu Mar 20 08:49:16 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -18,21 +18,21 @@ int	my_st(t_champ *champ, t_cor *cor)
   int	arg;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc);
-  st = tab[0][1] + tab[1][1] + tab[2][1] + tab[3][1] + 2;
+  tab = get_encode(cor->mem, champ->pc, &st);
   arg = get_arg(tab[1][0], tab[1][2], champ->reg, cor->mem);
-  if (arg != -1 && tab[0][2] > 0 && tab[0][2] <= REG_NUMBER)
+  case_mem = 0;
+  if (arg != -1 && tab[1][0] != 1)
+    case_mem = (tab[1][0] == 2) ? tab[1][2] : champ->pc + (tab[1][2] % IDX_MOD);
+  if (arg != -1 && tab[0][2] > 0 && tab[0][2] <= REG_NUMBER &&
+      case_mem >= 0 && case_mem < MEM_SIZE)
     {
       champ->carry = 1;
       if (tab[1][0] == 1)
 	champ->reg[tab[1][2]] = champ->reg[tab[0][2]];
       else
 	{
-	  case_mem = (tab[1][0] == 2) ? tab[1][2] : champ->pc + (tab[1][2] % IDX_MOD);
-	  if (case_mem >= 0 && case_mem < MEM_SIZE)
-	    cor->mem[case_mem] = champ->reg[tab[0][2]];
-	  if (case_mem >= 0 && case_mem < MEM_SIZE)
-	    change_case_mem(case_mem, champ->color, cor->screen);
+	  cor->mem[case_mem] = champ->reg[tab[0][2]];
+	  change_case_mem(case_mem, champ->color, cor->screen);
 	}
     }
   change_pos_pc(champ, champ->pc + st, st, cor->screen);
@@ -45,11 +45,12 @@ int	my_sti(t_champ *champ, t_cor *cor)
   int	**tab;
   int	tmp;
   int	i;
+  int	sti;
   int	oct_size;
 
   oct_size = 256;
   i = 0;
-  tab = get_encode( cor->mem, champ->pc);
+  tab = get_encode(cor->mem, champ->pc, &sti);
   if (tab[0][0] == 1 && tab[0][2] >= 0 && tab[0][2] <= REG_SIZE && (tab[1][0] != 0) && (tab[2][0] == 1 || tab[2][0] == 2))
     {
       my_putstr("Voici le REG 1 : ", 1);
@@ -121,8 +122,7 @@ int	my_aff(t_champ *champ, t_cor *cor)
   int	aff;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc);
-  aff = tab[0][1] + tab[1][1] + tab[2][1] + tab[3][1] + 2;
+  tab = get_encode(cor->mem, champ->pc, &aff);
   if (tab[0][2] > 0 && tab[0][2] <= REG_NUMBER)
     {
       champ->carry = 1;

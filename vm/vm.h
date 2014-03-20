@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Wed Mar 19 18:15:14 2014 Thibaut Lopez
+** Last update Thu Mar 20 08:43:22 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -71,7 +71,7 @@ int	my_list_len(t_champ *champ);
 void	init_adress(t_champ *champ);
 void	fill_mem(unsigned char **mem, t_champ *champ);
 int	get_nbr_action(unsigned char *mem, int pc, int len);
-int	**get_encode(unsigned char *mem, int pc);
+int	**get_encode(unsigned char *mem, int pc, int *add);
 void	ifree(int **tab, int len);
 void	sfree(char **str);
 

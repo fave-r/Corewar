@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Wed Mar 19 18:20:11 2014 Thibaut Lopez
+** Last update Thu Mar 20 08:43:09 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -40,17 +40,16 @@ int	get_nbr_action(unsigned char *mem, int pc, int len)
   return (nb);
 }
 
-int	**get_encode(unsigned char *mem, int pc)
+int	**get_encode(unsigned char *mem, int pc, int *add)
 {
   int	i;
   int	puis;
   int	**tab;
-  int	add;
 
   tab = xmalloc(4 * sizeof(int *)); //tableau principal de 4 cases, parce que 4 arguments
   puis = 256;
   i = 0;
-  add = 2;
+  *add = 2;
   while (i < 4)
     {
       tab[i] = xmalloc(3 * sizeof(int));//tableau de 3 cases
@@ -62,8 +61,8 @@ int	**get_encode(unsigned char *mem, int pc)
 	tab[i][1] = (mem[pc] == 10 || mem[pc] == 11 || mem[pc] == 14) ? 2 : 4;
       else
 	tab[i][1] = (tab[i][0] == 3) ? 2 : 0; //case 1 : nombre d'octet que prend l'argument (registre = 1, direct = 2 ou 4, indirect = 2)
-      tab[i][2] = get_nbr_action(mem, pc + add, tab[i][1]); // case 2 : récupérer la valeur de l'argument
-      add += tab[i][1];
+      tab[i][2] = get_nbr_action(mem, pc + *add, tab[i][1]); // case 2 : récupérer la valeur de l'argument
+      *add += tab[i][1];
       i++;
     }
   return (tab);

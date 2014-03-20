@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Wed Mar 19 18:58:39 2014 Thibaut Lopez
+** Last update Thu Mar 20 08:43:58 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -16,8 +16,7 @@ int	my_add(t_champ *champ, t_cor *cor)
   int	add;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc);
-  add = tab[0][1] + tab[1][1] + tab[2][1] + tab[3][1] + 2;
+  tab = get_encode(cor->mem, champ->pc, &add);
   if (tab[0][2] > 0 && tab[0][2] <= REG_NUMBER &&
       tab[1][2] > 0 && tab[1][2] <= REG_NUMBER &&
       tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
@@ -37,8 +36,7 @@ int	my_sub(t_champ *champ, t_cor *cor)
   int	sub;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc);
-  sub = tab[0][1] + tab[1][1] + tab[2][1] + tab[3][1] + 2;
+  tab = get_encode(cor->mem, champ->pc, &sub);
   if (tab[0][2] > 0 && tab[0][2] <= REG_NUMBER &&
       tab[1][2] > 0 && tab[1][2] <= REG_NUMBER &&
       tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
@@ -60,8 +58,7 @@ int	my_and(t_champ *champ, t_cor *cor)
   int	arg2;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc);
-  and = tab[0][1] + tab[1][1] + tab[2][1] + tab[3][1] + 2;
+  tab = get_encode(cor->mem, champ->pc, &and);
   arg1 = get_arg(tab[0][0], tab[0][2], champ->reg, cor->mem);
   arg2 = get_arg(tab[0][0], tab[0][2], champ->reg, cor->mem);
   if (arg1 != -1 && arg2 != -1 &&
@@ -83,8 +80,7 @@ int	my_or(t_champ *champ, t_cor *cor)
   int	arg2;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc);
-  or = tab[0][1] + tab[1][1] + tab[2][1] + tab[3][1] + 2;
+  tab = get_encode(cor->mem, champ->pc, &or);
   arg1 = get_arg(tab[0][0], tab[0][2], champ->reg, cor->mem);
   arg2 = get_arg(tab[0][0], tab[0][2], champ->reg, cor->mem);
   if (arg1 != -1 && arg2 != -1 &&
@@ -106,8 +102,7 @@ int	my_xor(t_champ *champ, t_cor *cor)
   int	arg2;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc);
-  xor = tab[0][1] + tab[1][1] + tab[2][1] + tab[3][1] + 2;
+  tab = get_encode(cor->mem, champ->pc, &xor);
   arg1 = get_arg(tab[0][0], tab[0][2], champ->reg, cor->mem);
   arg2 = get_arg(tab[0][0], tab[0][2], champ->reg, cor->mem);
   if (arg1 != -1 && arg2 != -1 &&
