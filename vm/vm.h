@@ -4,7 +4,8 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Thu Mar 20 16:59:26 2014 thibaud
+** Last update Thu Mar 20 17:16:45 2014 thibaud
+** Last update Thu Mar 20 17:05:52 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -71,7 +72,7 @@ int	my_list_len(t_champ *champ);
 void	init_adress(t_champ *champ);
 void	fill_mem(unsigned char **mem, t_champ *champ);
 int	get_nbr_action(unsigned char *mem, int pc, int len);
-int	**get_encode(unsigned char *mem, int pc, int *add);
+int	**get_encode(unsigned char *mem, int pc);
 void	ifree(int **tab, int len);
 void	sfree(char **str);
 
@@ -102,7 +103,7 @@ int	my_lldi(t_champ *champ, t_cor *cor);
 int	my_lfork(t_champ *champ, t_cor *cor);
 int	my_aff(t_champ *champ, t_cor *cor);
 int	my_none(t_champ *champ, t_cor *cor);
-int	get_arg(int type, int val, int *reg, unsigned char *mem);
+int	get_arg(int type, int val, t_champ *champ, unsigned char *mem);
 
 int	init_graphic(t_cor *cor);
 void	free_graphic();
