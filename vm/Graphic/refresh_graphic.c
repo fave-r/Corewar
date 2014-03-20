@@ -5,24 +5,10 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:40:14 2014 Thibaut Lopez
-** Last update Wed Mar 19 19:05:06 2014 Thibaut Lopez
+** Last update Thu Mar 20 16:15:41 2014 Thibaut Lopez
 */
 
 #include "vm.h"
-
-/*
-change_pos_pc
-Données :
-	-champ, structure du champion
-	-pc, position "après" du PC (important dans le cas d'un zjmp)
-	-len, le nombre de bit qu'a lu le champion pour executer sa fonction
-	-screen, une variable qui se trouve dans la structure cor (cor->screen)
-Résultat :
-	Va changer la position du curseur du champion et colorier l'endroit où celui-ci est passé en la couleur "color"
-Quand l'appeller:
-	A chaque fois que le PC d'un champion avance (donc à la fin de chaque fonction de la VM entre autre)
-Pas encore testé
-*/
 
 void	change_pos_pc(t_champ *champ, int pc, int len, SDL_Surface *screen)
 {
@@ -44,19 +30,6 @@ void	change_pos_pc(t_champ *champ, int pc, int len, SDL_Surface *screen)
   SDL_FillRect(screen, &position, 0xFFFFFF);
   SDL_Flip(screen);
 }
-
-/*
-change_case_mem
-Données :
-	-case_mem, la case qui va être changé
-	-color, la couleur du champion qui change la valeur de la case
-	-screen, une variable qui se trouve dans la structure cor (cor->screen)
-Résultat :
-	Va colorier l'endroit où le champion change la valeur en la couleur "color"
-Quand l'appeller:
-	Dans certaines fonctions comme st, qui peuvent changer la valeur d'une case mémoire
-Pas encore testé
-*/
 
 void	change_case_mem(int case_mem, Uint32 color, SDL_Surface *screen)
 {
