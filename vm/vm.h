@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Thu Mar 20 17:16:45 2014 thibaud
+** Last update Thu Mar 20 17:28:19 2014 Thibaut Lopez
 ** Last update Thu Mar 20 17:05:52 2014 Thibaut Lopez
 */
 
@@ -103,7 +103,7 @@ int	my_lldi(t_champ *champ, t_cor *cor);
 int	my_lfork(t_champ *champ, t_cor *cor);
 int	my_aff(t_champ *champ, t_cor *cor);
 int	my_none(t_champ *champ, t_cor *cor);
-int	get_arg(int type, int val, t_champ *champ, unsigned char *mem);
+int	get_all_type_arg(int type, int val, t_champ *champ, unsigned char *mem);
 
 int	init_graphic(t_cor *cor);
 void	free_graphic();

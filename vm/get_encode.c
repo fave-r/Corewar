@@ -5,31 +5,11 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-<<<<<<< HEAD
-<<<<<<< HEAD
-** Last update Wed Mar 19 21:12:48 2014 thibaud
-** Last update Mon Mar 17 16:51:22 2014 Thibaut Lopez
-=======
-** Last update Thu Mar 20 08:43:09 2014 Thibaut Lopez
->>>>>>> 5775429878f44ebd823be891c03d12ccdf72776b
-=======
-** Last update Thu Mar 20 17:06:09 2014 Thibaut Lopez
->>>>>>> a84314d3e8bb6a7f32960e71a84c45f0a48eb8f1
+** Last update Thu Mar 20 17:33:42 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 #include "my.h"
-
-int	get_all_type_arg(int type, int val, t_champ *champ, unsigned char *mem)
-{
-  if (type == 2)
-    return (val);
-  else if (type == 1)
-    return ((val > 0 && val <= 16) ? champ->reg[val - 1] : -1);
-  else
-    return ((type != 0 && champ->pc + val >= 0 && champ->pc + val < MEM_SIZE) ?
-	    get_nbr_action(mem, champ->pc + val, 4) : -1);
-}
 
 int	get_nbr_action(unsigned char *mem, int pc, int len)
 {

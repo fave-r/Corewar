@@ -6,7 +6,7 @@
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
 <<<<<<< HEAD
-** Last update Thu Mar 20 17:01:09 2014 thibaud
+** Last update Thu Mar 20 17:31:36 2014 Thibaut Lopez
 ** Last update Thu Mar 20 08:49:16 2014 Thibaut Lopez
 =======
 ** Last update Thu Mar 20 15:24:02 2014 Thibaut Lopez
@@ -23,8 +23,9 @@ int	my_st(t_champ *champ, t_cor *cor)
   int	arg;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc, &st);
-  arg = get_arg(tab[1][0], tab[1][2], champ, cor->mem);
+  tab = get_encode(cor->mem, champ->pc);
+  st = tab[0][1] + tab[1][1] + tab[2][1] + tab[3][1] + 2;
+  arg = get_all_type_arg(tab[1][0], tab[1][2], champ, cor->mem);
   case_mem = 0;
   if (arg != -1 && tab[1][0] != 1)
     case_mem = (tab[1][0] == 2) ? tab[1][2] : champ->pc + (tab[1][2] % IDX_MOD);
@@ -55,7 +56,7 @@ int	my_sti(t_champ *champ, t_cor *cor)
 
   //oct_size = 256;
   //i = 0;
-  tab = get_encode(cor->mem, champ->pc, &sti);
+  tab = get_encode(cor->mem, champ->pc);
 
   int	a, b;
   a = b = 0;
@@ -129,7 +130,8 @@ int	my_aff(t_champ *champ, t_cor *cor)
   int	aff;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc, &aff);
+  tab = get_encode(cor->mem, champ->pc);
+  aff = tab[0][1] + tab[1][1] + tab[2][1] + tab[3][1] + 2;
   if (tab[0][2] > 0 && tab[0][2] <= REG_NUMBER)
     {
       champ->carry = 1;

@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-** Last update Thu Mar 20 17:18:43 2014 thibaud
+** Last update Thu Mar 20 17:34:04 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -18,7 +18,7 @@ int	my_ld(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
-  arg = get_arg(tab[0][0], tab[0][2], champ, cor->mem);
+  arg = get_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
   if (arg != -1 && tab[1][2] > 0 && tab[1][2] <= REG_NUMBER)
     {
       champ->carry = 1;
