@@ -5,6 +5,8 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
+** Last update Thu Mar 20 17:19:56 2014 thibaud
+** Last update Thu Mar 20 08:43:58 2014 Thibaut Lopez
 ** Last update Thu Mar 20 16:24:11 2014 Thibaut Lopez
 */
 
@@ -13,19 +15,19 @@
 
 int	my_add(t_champ *champ, t_cor *cor)
 {
-  int	add;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc, &add);
+  tab = get_encode(cor->mem, champ->pc);
   if (tab[0][0] == 1 && tab[1][0] == 1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       tab[0][2] > 0 && tab[0][2] <= REG_NUMBER && tab[1][2] > 0 &&
       tab[1][2] <= REG_NUMBER && tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
-      my_printf(1, "add du champion : %d, ajout du registre %d au registre %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, tab[0][2], tab[1][2], tab[2][2], add);
+      my_printf(1, "ADD du champion : %d, ajout du registre %d au registre %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, tab[0][2], tab[1][2], tab[2][2], add);
       champ->reg[tab[0][2] - 1] = champ->reg[tab[0][0] - 1] +
 	champ->reg[tab[0][1] - 1];
     }
+  champ->pc += tab[0][1] + tab[1][1] + tab[2][1] + 1;
   ifree(tab, 4);
   return (add);
 }
@@ -41,7 +43,7 @@ int	my_sub(t_champ *champ, t_cor *cor)
       tab[1][2] <= REG_NUMBER && tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
-      my_printf(1, "sub du champion : %d, soustraction du registre %d au registre %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, tab[0][2], tab[1][2], tab[2][2], sub);
+      my_printf(1, "SUB du champion : %d, soustraction du registre %d au registre %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, tab[0][2], tab[1][2], tab[2][2], sub);
       champ->reg[tab[0][2] - 1] = champ->reg[tab[0][0] - 1] -
 	champ->reg[tab[0][1] - 1];
     }
@@ -63,7 +65,7 @@ int	my_and(t_champ *champ, t_cor *cor)
       tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
-      my_printf(1, "and du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], and);
+      my_printf(1, "AND du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], and);
       champ->reg[tab[2][2] - 1] = arg1 & arg2;
     }
   ifree(tab, 4);
@@ -84,7 +86,11 @@ int	my_or(t_champ *champ, t_cor *cor)
       tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
+<<<<<<< HEAD
+      my_printf(1, "OR du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], or);
+=======
       my_printf(1, "or du champion : %d, '|' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], or);
+>>>>>>> a84314d3e8bb6a7f32960e71a84c45f0a48eb8f1
       champ->reg[tab[2][2] - 1] = arg1 | arg2;
     }
   ifree(tab, 4);
@@ -105,7 +111,11 @@ int	my_xor(t_champ *champ, t_cor *cor)
       tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
+<<<<<<< HEAD
+      my_printf(1, "XOR du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], xor);
+=======
       my_printf(1, "xor du champion : %d, '^' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], xor);
+>>>>>>> a84314d3e8bb6a7f32960e71a84c45f0a48eb8f1
       champ->reg[tab[2][2] - 1] = arg1 ^ arg2;
     }
   ifree(tab, 4);

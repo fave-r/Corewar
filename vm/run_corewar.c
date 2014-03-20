@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Mon Mar 17 22:16:01 2014 thibaud
+** Last update Wed Mar 19 11:13:35 2014 thibaud
 */
 
 #include "vm.h"
@@ -69,19 +69,17 @@ int	cycle_run(t_champ *champs, t_cor *map)
   while (cur_champ != NULL)
     {
       if (cur_champ->wait < 0)
-	{
-	  my_putstr("run_cycle1 !\n", 1);
 	get_wait(cur_champ, map);
-	}
       if (cur_champ->wait == 0)
 	{
-	  my_putstr("run_cycle2 !\n", 1);
-   printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
-	champ_play(cur_champ, map);
+	  printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
+	  champ_play(cur_champ, map);
+	get_wait(cur_champ, map);
 	}
       cur_champ->wait -= 1;
       cur_champ = cur_champ->next;
     }
+  my_putstr("X", 1);
   map->cycle++;
   return (0);
 }
@@ -158,7 +156,7 @@ int	end_game(t_champ *champ, t_cor *map)
   my_putstr("le joueur ", 1);
   my_putnbr(map->champs_nb[gg], 1);
   my_putstr(" a gagné yéyéyé !!", 1);
-  // A refaire avec un my_printf et en moins con
+  // A refaire avec un my_printf
   return (0);
 }
 
@@ -183,7 +181,6 @@ int	run_corewar(t_champ *champs, t_cor *map)
     {
       while (map->cycle <= map->cycle_to_die)
 	{
-	  my_putstr("X", 1);
 	  cycle_run(champs, map);
 	  if (map->live_done >= NBR_LIVE)
 	    {

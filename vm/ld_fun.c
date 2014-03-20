@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-** Last update Thu Mar 20 15:24:01 2014 Thibaut Lopez
+** Last update Thu Mar 20 17:18:43 2014 thibaud
 */
 
 #include "vm.h"
@@ -14,28 +14,25 @@
   //pas encore codé
 int	my_ld(t_champ *champ, t_cor *cor)
 {
-  int	ld;
   int	arg;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc, &ld);
+  tab = get_encode(cor->mem, champ->pc);
   arg = get_arg(tab[0][0], tab[0][2], champ, cor->mem);
   if (arg != -1 && tab[1][2] > 0 && tab[1][2] <= REG_NUMBER)
     {
       champ->carry = 1;
       champ->reg[tab[1][2] - 1] = arg;
     }
-  change_pos_pc(champ, champ->pc + ld, ld, cor->screen);
   ifree(tab, 4);
   return (tab[0][1] + tab[1][1] + 2);
 }
 
 int	my_ldi(t_champ *champ, t_cor *cor)
 {
-  int	ldi;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc, &ldi);
+  tab = get_encode(cor->mem, champ->pc);
   my_putstr("ldi du champion : ", 1);
   my_putstr(champ->head->prog_name, 1);
   my_putstr(", ldisation ", 1);
@@ -59,10 +56,9 @@ int	my_ldi(t_champ *champ, t_cor *cor)
 
 int	my_lld(t_champ *champ, t_cor *cor)
 {
-  int	lld;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc, &lld);
+  tab = get_encode(cor->mem, champ->pc);
   my_putstr("lld du champion : ", 1);
   my_putstr(champ->head->prog_name, 1);
   my_putstr(", lload ", 1);
@@ -81,10 +77,9 @@ int	my_lld(t_champ *champ, t_cor *cor)
 
 int	my_lldi(t_champ *champ, t_cor *cor)
 {
-  int	lldi;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc, &lldi);
+  tab = get_encode(cor->mem, champ->pc);
   my_putstr("lldi du champion : ", 1);
   my_putstr(champ->head->prog_name, 1);
   my_putstr(", lldisation ", 1);
