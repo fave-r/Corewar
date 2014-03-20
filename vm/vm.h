@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Mon Mar 17 21:54:21 2014 thibaud
+** Last update Wed Mar 19 11:03:33 2014 thibaud
 */
 
 #ifndef VM_H
@@ -95,5 +95,6 @@ int	my_lld(t_champ *champ, t_cor *cor);
 int	my_lldi(t_champ *champ, t_cor *cor);
 int	my_lfork(t_champ *champ, t_cor *cor);
 int	my_aff(t_champ *champ, t_cor *cor);
+int	my_none(t_champ *champ, t_cor *cor);
 
 #endif

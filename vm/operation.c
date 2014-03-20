@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Mon Mar 17 20:46:03 2014 thibaud
+** Last update Wed Mar 19 10:42:33 2014 thibaud
 */
 
 #include "vm.h"
@@ -15,6 +15,7 @@ int	my_add(t_champ *champ, t_cor *cor)
 {
   int	**tab;
 
+  my_putstr("ADD\n\n", 1);
   tab = get_encode(cor->mem, champ->pc);
   if (tab[0][2] > 0 && tab[1][2] > 0)
     champ->reg[tab[2][2]] = 1;
@@ -31,6 +32,7 @@ int	my_add(t_champ *champ, t_cor *cor)
   my_putstr(", avance dans la mémoire de ", 1);
   my_putnbr(tab[0][1] + tab[1][1] + tab[2][1], 1);
   my_putchar('\n', 1);
+  champ->pc += tab[0][1] + tab[1][1] + tab[2][1] + 1;
   return (tab[0][1] + tab[1][1] + tab[2][1] + 1);
 }
 
