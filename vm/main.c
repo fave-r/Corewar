@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Wed Mar 19 16:25:36 2014 Thibaut Lopez
+** Last update Thu Mar 20 17:46:14 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -145,16 +145,6 @@ int	main(int argc, char **argv)
   init_champs_nb(&cor);
   init_graphic(&cor);// c'est pour l'aperçu graphique, ne le lance pas maintenant, j'ai pas fini
   sleep(5);
-  /*
-  int	i;
-
-  i = 0;
-  while (i < MEM_SIZE)
-    {
-      my_printf(1, "%X|", cor.mem[i]);
-      i++;
-    }
-    my_putstr("\n", 1);*/
   run_corewar(cor.champ, &cor);
   free_graphic();
   return (0);

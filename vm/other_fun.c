@@ -6,7 +6,7 @@
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
 <<<<<<< HEAD
-** Last update Thu Mar 20 17:31:36 2014 Thibaut Lopez
+** Last update Thu Mar 20 17:43:44 2014 Thibaut Lopez
 ** Last update Thu Mar 20 08:49:16 2014 Thibaut Lopez
 =======
 ** Last update Thu Mar 20 15:24:02 2014 Thibaut Lopez
@@ -41,7 +41,6 @@ int	my_st(t_champ *champ, t_cor *cor)
 	  change_case_mem(case_mem, champ->color, cor->screen);
 	}
     }
-  change_pos_pc(champ, champ->pc + st, st, cor->screen);
   ifree(tab, 4);
   return (st);
 }

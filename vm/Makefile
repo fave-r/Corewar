@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Thu Mar 20 17:27:16 2014 Thibaut Lopez
+## Last update Thu Mar 20 17:46:42 2014 Thibaut Lopez
 ##
 
 VM_S=		champ_fun.c \
@@ -19,6 +19,7 @@ VM_S=		champ_fun.c \
 		run_corewar.c \
 		spec_fun.c \
 		get_arg.c \
+		tmp.c \
 		Graphic/init_graphic.c \
 		Graphic/free_graphic.c \
 		Graphic/refresh_graphic.c
