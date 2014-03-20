@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Thu Mar 20 18:42:21 2014 thibaud
+** Last update Thu Mar 20 18:51:47 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -25,6 +25,7 @@ int	my_add(t_champ *champ, t_cor *cor)
       champ->reg[tab[0][2] - 1] = champ->reg[tab[0][0] - 1] +
 	champ->reg[tab[0][1] - 1];
     }
+  champ->pc += 5;
   ifree(tab, 4);
   return (5);
 }
@@ -43,6 +44,7 @@ int	my_sub(t_champ *champ, t_cor *cor)
       champ->reg[tab[0][2] - 1] = champ->reg[tab[0][0] - 1] -
 	champ->reg[tab[0][1] - 1];
     }
+  champ->pc += 5;
   ifree(tab, 4);
   return (5);
 }
@@ -88,6 +90,7 @@ int	my_or(t_champ *champ, t_cor *cor)
       my_printf(1, "OR du champion : %d, '|' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], or);
       champ->reg[tab[2][2] - 1] = arg1 | arg2;
     }
+  champ->pc += or;
   ifree(tab, 4);
   return (or);
 }
@@ -110,6 +113,7 @@ int	my_xor(t_champ *champ, t_cor *cor)
       my_printf(1, "XOR du champion : %d, '^' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], xor);
       champ->reg[tab[2][2] - 1] = arg1 ^ arg2;
     }
+  champ->pc += xor;
   ifree(tab, 4);
   return (xor);
 }

@@ -5,7 +5,7 @@
 ## Login   <odet_a@epitech.net>
 ##
 ## Started on  Thu Feb 27 18:18:06 2014
-## Last update Thu Mar 20 18:51:35 2014 alex-odet
+## Last update Thu Mar 20 23:59:51 2014 alex-odet
 ##
 
 CC=		clang
@@ -29,7 +29,6 @@ SRCS=		main.c \
 		Header/recup_comment.c \
 		Header/recup.c \
 		../op.c
-
 
 OBJS=		$(SRCS:.c=.o)
 

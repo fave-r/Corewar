@@ -1,13 +1,13 @@
 /*
+<<<<<<< HEAD
 ** my_str_to_wordtab.c for my_str_to_wordtab in /home/alex-odet/work/Corewar/asm
 ** 
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:04:31 2014 alex-odet
-** Last update Thu Mar 20 17:04:45 2014 alex-odet
+** Last update Thu Mar 20 23:57:45 2014 alex-odet
 */
-
 
 #include "struct.h"
 

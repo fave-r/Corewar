@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Thu Mar 20 18:51:54 2014 alex-odet
+** Last update Thu Mar 20 23:58:54 2014 alex-odet
 */
 
 #include "struct.h"
@@ -36,8 +36,8 @@ int	check(char *str)
   name = check_name(str);
   comment = check_comment(str);
   ptr = fill_header(name, comment);
-  check_label(str);
-  check_cmd(str);
+  //check_label(str);
+  //check_cmd(str);
   create_cor(str, ptr);
   return (0);
 }
@@ -48,23 +48,29 @@ char	*check_name(char *str)
   int	quotes;
   char	*tmp;
   char	*name;
-
+  char	**words;
   name = NULL;
   fd = xopen(str, O_RDONLY);
-  tmp = get_next_line(fd);
-  if (tmp[0] != '.')
-    print_header_error();
-  else
+  while ((tmp = get_next_line(fd)))
     {
-      quotes = count_quotes(tmp, 0);
-      if (quotes != 2)
+      words = my_str_to_wordtab(tmp, ' ');
+      if (words[0] != NULL)
 	{
-	  my_putstr("Unterminated string in the name.\n", 2);
-	  exit(EXIT_FAILURE);
+	  if (my_strcmp(words[0], ".name") == 0)
+	    {
+	      quotes = count_quotes(tmp, 0);
+	      if (quotes != 2)
+		{
+		  my_putstr("Unterminated string in the name.\n", 2);
+		  exit(EXIT_FAILURE);
+		}
+	      else
+		name = recup_name(tmp);
+	    }
 	}
-      else
-	name = recup_name(tmp);
     }
+  if (name == NULL)
+    print_header_error();
   return (name);
 }
 

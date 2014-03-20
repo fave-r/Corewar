@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Wed Mar 19 11:02:58 2014 thibaud
+** Last update Thu Mar 20 19:12:22 2014 thibaud
 */
 
 #include "my.h"
@@ -52,7 +52,7 @@ int	my_live(t_champ *champ, t_cor *cor)
   my_putstr(", avance dans la mémoire de 5\n", 1);
   champ->pc += 5;
 
-  exit(0);
+  printf("Num live = %d %d %d %d\n", cor->live[0], cor->live[1], cor->live[2], cor->live[3]);
 
   return (5);
 }
@@ -65,7 +65,7 @@ int	my_zjmp(t_champ *champ, t_cor *cor)
   //Faudra sans doute modifier un peu get_nbr_action
   //J'ai la flemme de regarder ça tout de suite :)
 
-  //exit(0);
+  exit(0);
 
   if (champ->carry == 1)
     {
