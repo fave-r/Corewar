@@ -1,14 +1,14 @@
 /*
-** my_str_to_wordtab.c for minishell in /home/blackbird/work/minishell/1
-**
+** my_str_to_wordtab.c for corewar in /home/fave-r/work/Corewar/asm
+** 
 ** Made by romaric
 ** Login   <fave_r@epitech.net>
-**
-** Started on  Wed Dec 18 13:38:53 2013 romaric
-** Last update Mon Jan  6 17:15:22 2014 romaric
+** 
+** Started on  Thu Mar 20 20:23:00 2014 romaric
+** Last update Thu Mar 20 20:25:25 2014 romaric
 */
 
-#include "minishell.h"
+#include "struct.h"
 
 int	countword(char *str, char sep)
 {

@@ -5,7 +5,7 @@
 ## Login   <odet_a@epitech.net>
 ##
 ## Started on  Thu Feb 27 18:18:06 2014
-## Last update Thu Mar 20 19:15:30 2014 romaric
+## Last update Thu Mar 20 20:27:56 2014 romaric
 ##
 
 CC=		clang
@@ -27,8 +27,8 @@ SRCS=		main.c \
 		Header/recup_comment.c \
 		Header/recup.c \
 		../op.c \
-		Parsing/check_label.c
-
+		Parsing/check_label.c \
+		my_str_to_wordtab.c
 
 OBJS=		$(SRCS:.c=.o)
 
