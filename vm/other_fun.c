@@ -6,7 +6,7 @@
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
 <<<<<<< HEAD
-** Last update Thu Mar 20 17:43:44 2014 Thibaut Lopez
+** Last update Thu Mar 20 17:56:53 2014 Thibaut Lopez
 ** Last update Thu Mar 20 08:49:16 2014 Thibaut Lopez
 =======
 ** Last update Thu Mar 20 15:24:02 2014 Thibaut Lopez
@@ -72,7 +72,7 @@ int	my_sti(t_champ *champ, t_cor *cor)
       a++;
       my_putstr("\n", 1);
     }
-      my_putstr("\n", 1);
+  my_putstr("\n", 1);
 
   if (tab[0][0] == 1 && tab[0][2] >= 0 && tab[0][2] <= REG_SIZE && (tab[1][0] != 0) && (tab[2][0] == 1 || tab[2][0] == 2))
     {
