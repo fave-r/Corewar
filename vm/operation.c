@@ -5,9 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Thu Mar 20 17:19:56 2014 thibaud
-** Last update Thu Mar 20 08:43:58 2014 Thibaut Lopez
-** Last update Thu Mar 20 16:24:11 2014 Thibaut Lopez
+** Last update Thu Mar 20 17:25:11 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -27,17 +25,15 @@ int	my_add(t_champ *champ, t_cor *cor)
       champ->reg[tab[0][2] - 1] = champ->reg[tab[0][0] - 1] +
 	champ->reg[tab[0][1] - 1];
     }
-  champ->pc += tab[0][1] + tab[1][1] + tab[2][1] + 1;
   ifree(tab, 4);
-  return (add);
+  return (5);
 }
 
 int	my_sub(t_champ *champ, t_cor *cor)
 {
-  int	sub;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc, &sub);
+  tab = get_encode(cor->mem, champ->pc);
   if (tab[0][0] == 1 && tab[1][0] == 1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       tab[0][2] > 0 && tab[0][2] <= REG_NUMBER && tab[1][2] > 0 &&
       tab[1][2] <= REG_NUMBER && tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
@@ -48,7 +44,7 @@ int	my_sub(t_champ *champ, t_cor *cor)
 	champ->reg[tab[0][1] - 1];
     }
   ifree(tab, 4);
-  return (sub);
+  return (5);
 }
 
 int	my_and(t_champ *champ, t_cor *cor)
@@ -58,7 +54,7 @@ int	my_and(t_champ *champ, t_cor *cor)
   int	arg2;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc, &and);
+  tab = get_encode(cor->mem, champ->pc);
   arg1 = gat_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
   arg2 = gat_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
   if (arg1 != -1 && arg2 != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
@@ -68,6 +64,7 @@ int	my_and(t_champ *champ, t_cor *cor)
       my_printf(1, "AND du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], and);
       champ->reg[tab[2][2] - 1] = arg1 & arg2;
     }
+  and = tab[0][1] + tab[1][1] + 3;
   ifree(tab, 4);
   return (and);
 }
@@ -79,20 +76,17 @@ int	my_or(t_champ *champ, t_cor *cor)
   int	arg2;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc, &or);
+  tab = get_encode(cor->mem, champ->pc);
   arg1 = gat_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
   arg2 = gat_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
   if (arg1 != -1 && arg2 != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
-<<<<<<< HEAD
-      my_printf(1, "OR du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], or);
-=======
-      my_printf(1, "or du champion : %d, '|' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], or);
->>>>>>> a84314d3e8bb6a7f32960e71a84c45f0a48eb8f1
+      my_printf(1, "OR du champion : %d, '|' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], or);
       champ->reg[tab[2][2] - 1] = arg1 | arg2;
     }
+  or = tab[0][1] + tab[1][1] + 3;
   ifree(tab, 4);
   return (or);
 }
@@ -104,20 +98,17 @@ int	my_xor(t_champ *champ, t_cor *cor)
   int	arg2;
   int	**tab;
 
-  tab = get_encode(cor->mem, champ->pc, &xor);
+  tab = get_encode(cor->mem, champ->pc);
   arg1 = gat_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
   arg2 = gat_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
   if (arg1 != -1 && arg2 != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
-<<<<<<< HEAD
-      my_printf(1, "XOR du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], xor);
-=======
-      my_printf(1, "xor du champion : %d, '^' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], xor);
->>>>>>> a84314d3e8bb6a7f32960e71a84c45f0a48eb8f1
+      my_printf(1, "XOR du champion : %d, '^' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], xor);
       champ->reg[tab[2][2] - 1] = arg1 ^ arg2;
     }
+  xor = tab[0][1] + tab[1][1] + 3;
   ifree(tab, 4);
   return (xor);
 }
