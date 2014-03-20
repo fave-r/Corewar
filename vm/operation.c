@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Thu Mar 20 17:29:03 2014 Thibaut Lopez
+** Last update Thu Mar 20 18:42:21 2014 thibaud
 */
 
 #include "vm.h"
@@ -62,9 +62,10 @@ int	my_and(t_champ *champ, t_cor *cor)
       tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
-      my_printf(1, "AND du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg1, arg2, tab[2][2], and);
+      my_printf(1, "AND du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->champ_nb, arg1, arg2, tab[2][2], and);
       champ->reg[tab[2][2] - 1] = arg1 & arg2;
     }
+  champ->pc += and;
   ifree(tab, 4);
   return (and);
 }

@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Wed Mar 19 11:13:35 2014 thibaud
+** Last update Thu Mar 20 18:33:31 2014 thibaud
 */
 
 #include "vm.h"
@@ -49,14 +49,14 @@ int	find_in_tab(char octet)
 }
 int	champ_play(t_champ *cur_champ, t_cor *map)
 {
-  my_putstr("champ_play !\n", 1);
+  my_printf(1, "champ_play ! %d\n", map->mem[cur_champ->pc]);
   fct_tab[find_in_tab(map->mem[cur_champ->pc])].ptr_fct(cur_champ, map);
   return (0);}
     
 
 int	get_wait(t_champ *cur_champ, t_cor *map)
 {
-  my_putstr("get_wait !\n", 1);
+  my_printf(1, "get_wait ! %d\n", map->mem[cur_champ->pc]);
   cur_champ->wait = fct_tab[find_in_tab(map->mem[cur_champ->pc])].wait;
   return (cur_champ->wait);
 }
@@ -175,8 +175,9 @@ int	run_corewar(t_champ *champs, t_cor *map)
 {
   my_putstr("C'est PARTI !!\n", 1);
   map->cycle_to_die = CYCLE_TO_DIE;
-   printf("Num champ = %d %d %d %d\n", map->champs_nb[0], map->champs_nb[1], map->champs_nb[2], map->champs_nb[3]);
-   printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
+  printf("Num champ = %d %d %d %d\n", map->champs_nb[0], map->champs_nb[1], map->champs_nb[2], map->champs_nb[3]);
+  printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
+  my_printf(1, "%d\n", map->mem[champs->pc]);
   while ((map->cycle_to_die) > 100)
     {
       while (map->cycle <= map->cycle_to_die)
