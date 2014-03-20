@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Thu Mar 20 08:49:16 2014 Thibaut Lopez
+** Last update Thu Mar 20 15:24:02 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -19,7 +19,7 @@ int	my_st(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc, &st);
-  arg = get_arg(tab[1][0], tab[1][2], champ->reg, cor->mem);
+  arg = get_arg(tab[1][0], tab[1][2], champ, cor->mem);
   case_mem = 0;
   if (arg != -1 && tab[1][0] != 1)
     case_mem = (tab[1][0] == 2) ? tab[1][2] : champ->pc + (tab[1][2] % IDX_MOD);
