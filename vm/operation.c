@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Thu Mar 20 17:25:11 2014 Thibaut Lopez
+** Last update Thu Mar 20 17:26:49 2014 thibaud
 */
 
 #include "vm.h"
@@ -21,7 +21,7 @@ int	my_add(t_champ *champ, t_cor *cor)
       tab[1][2] <= REG_NUMBER && tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
-      my_printf(1, "ADD du champion : %d, ajout du registre %d au registre %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, tab[0][2], tab[1][2], tab[2][2], add);
+      my_printf(1, "ADD du champion : %d, ajout du registre %d au registre %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, tab[0][2], tab[1][2], tab[2][2], 5);
       champ->reg[tab[0][2] - 1] = champ->reg[tab[0][0] - 1] +
 	champ->reg[tab[0][1] - 1];
     }
@@ -39,7 +39,7 @@ int	my_sub(t_champ *champ, t_cor *cor)
       tab[1][2] <= REG_NUMBER && tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
       champ->carry = 1;
-      my_printf(1, "SUB du champion : %d, soustraction du registre %d au registre %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, tab[0][2], tab[1][2], tab[2][2], sub);
+      my_printf(1, "SUB du champion : %d, soustraction du registre %d au registre %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, tab[0][2], tab[1][2], tab[2][2], 5);
       champ->reg[tab[0][2] - 1] = champ->reg[tab[0][0] - 1] -
 	champ->reg[tab[0][1] - 1];
     }
@@ -55,8 +55,8 @@ int	my_and(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
-  arg1 = gat_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
-  arg2 = gat_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
+  arg1 = get_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
+  arg2 = get_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
   if (arg1 != -1 && arg2 != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
@@ -77,8 +77,8 @@ int	my_or(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
-  arg1 = gat_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
-  arg2 = gat_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
+  arg1 = get_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
+  arg2 = get_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
   if (arg1 != -1 && arg2 != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
@@ -99,8 +99,8 @@ int	my_xor(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
-  arg1 = gat_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
-  arg2 = gat_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
+  arg1 = get_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
+  arg2 = get_all_type_arg(tab[0][0], tab[0][2], champ, cor->mem);
   if (arg1 != -1 && arg2 != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       tab[2][2] > 0 && tab[2][2] <= REG_NUMBER)
     {
