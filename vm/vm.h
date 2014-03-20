@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Thu Mar 20 17:28:19 2014 Thibaut Lopez
+** Last update Thu Mar 20 17:48:21 2014 Thibaut Lopez
 ** Last update Thu Mar 20 17:05:52 2014 Thibaut Lopez
 */
 
@@ -109,5 +109,6 @@ int	init_graphic(t_cor *cor);
 void	free_graphic();
 void	change_pos_pc(t_champ *champ, int pc, int len, SDL_Surface *screen);
 void	change_case_mem(int case_mem, Uint32 color, SDL_Surface *screen);
+int	aff_memdr(unsigned char *mem);
 
 #endif
