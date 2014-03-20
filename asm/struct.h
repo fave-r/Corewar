@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Thu Mar 13 10:29:50 2014 romaric
+** Last update Thu Mar 20 14:41:22 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -18,6 +18,7 @@
 #include <stdio.h>
 
 #include "op.h"
+#include "my.h"
 
 #define BUFF_SIZE 1024
 #define COR_EXT ".cor"
@@ -58,5 +59,7 @@ void		print_assembling(char *name, header_t *header);
 void		check_label(char *str);
 char		**create_label(char *line, char **labels, int i, int *y);
 void		check_label_exist(char **labels, char *str, int nbrlabels);
+void		check_cmd(char *str);
+void		cmd_exist(char *str);
 
 #endif
