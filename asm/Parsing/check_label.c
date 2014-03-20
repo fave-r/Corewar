@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Thu Mar 13 13:20:52 2014 romaric
+** Last update Mon Mar 17 11:05:57 2014 alex-odet
 */
 
 #include "struct.h"
@@ -34,7 +34,6 @@ int count_labels(char *str)
 	x++;
       i = 0;
     }
-    printf("x = %d\n", x);
   return (x);
 }
 

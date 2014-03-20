@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Thu Mar 13 10:15:42 2014 Thibaut Lopez
+** Last update Thu Mar 20 14:40:33 2014 alex-odet
 */
 
 #include "struct.h"
@@ -36,7 +36,8 @@ int	check(char *str)
   name = check_name(str);
   comment = check_comment(str);
   ptr = fill_header(name, comment);
-  check_label(str);
+  //  check_label(str);
+  check_cmd(str);
   create_cor(str, ptr);
   return (0);
 }

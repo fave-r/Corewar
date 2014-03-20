@@ -4,7 +4,7 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Wed Mar 19 11:03:33 2014 thibaud
+** Last update Thu Mar 20 16:59:26 2014 thibaud
 */
 
 #ifndef VM_H
@@ -18,8 +18,10 @@
 #define	ER_FULL	"Cannot find a new place for another champ : places already taken.\n"
 #define ER_VOID	"You haven't gave a single correct champion.\n"
 #include <sys/stat.h>
+#include <SDL/SDL.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "op.h"
 
@@ -33,6 +35,7 @@ typedef struct		s_champ
   int			reg[REG_NUMBER];
   int			carry;
   int			wait;
+  Uint32		color;
   struct s_champ	*next;
   struct s_champ	*prev;
 }			t_champ;
@@ -49,6 +52,7 @@ typedef struct	s_cor
   int		live[4];
   int		champs_nb[4];
   int		nb_chmps_alive;
+  SDL_Surface	*screen;
 }		t_cor;
 
 typedef struct	s_struct
@@ -67,7 +71,9 @@ int	my_list_len(t_champ *champ);
 void	init_adress(t_champ *champ);
 void	fill_mem(unsigned char **mem, t_champ *champ);
 int	get_nbr_action(unsigned char *mem, int pc, int len);
-int	**get_encode(unsigned char *mem, int pc);
+int	**get_encode(unsigned char *mem, int pc, int *add);
+void	ifree(int **tab, int len);
+void	sfree(char **str);
 
 int	someone_is_dead(t_champ *, t_cor *);
 int	run_corewar(t_champ *, t_cor *);
@@ -96,5 +102,11 @@ int	my_lldi(t_champ *champ, t_cor *cor);
 int	my_lfork(t_champ *champ, t_cor *cor);
 int	my_aff(t_champ *champ, t_cor *cor);
 int	my_none(t_champ *champ, t_cor *cor);
+int	get_arg(int type, int val, int *reg, unsigned char *mem);
+
+int	init_graphic(t_cor *cor);
+void	free_graphic();
+void	change_pos_pc(t_champ *champ, int pc, int len, SDL_Surface *screen);
+void	change_case_mem(int case_mem, Uint32 color, SDL_Surface *screen);
 
 #endif
