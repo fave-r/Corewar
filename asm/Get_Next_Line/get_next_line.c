@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Feb 25 18:55:03 2014 romaric
-** Last update Thu Mar 13 10:18:22 2014 Thibaut Lopez
+** Last update Thu Mar 20 18:54:23 2014 alex-odet
 */
 
 #include "struct.h"
@@ -29,12 +29,7 @@ char    *my_strdup(char *src)
 {
   char  *dest;
 
-  dest = malloc((my_strlen(src) + 2) * sizeof(char));
-  if (dest == NULL)
-    {
-      free(dest);
-      exit (EXIT_FAILURE);
-    }
+  dest = xmalloc((my_strlen(src) + 2) * sizeof(char));
   my_strcpy(dest, src);
   dest[my_strlen(src)] = 0;
   free(src);
@@ -49,7 +44,8 @@ char    *get_next_line(const int fd)
   t_gnl		ptr;
 
   ptr.c = 0;
-  ptr.save = malloc(1 * sizeof(char));
+  ptr.save = malloc(2 * sizeof(char));
+  ptr.save[1] = 0;
   if (i == a)
     {
       a = xread(fd, buff, BUFF_SIZE);

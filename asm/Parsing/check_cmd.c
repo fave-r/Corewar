@@ -5,12 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Thu Mar 20 15:10:17 2014 alex-odet
+** Last update Thu Mar 20 17:15:21 2014 alex-odet
 */
 
 #include "struct.h"
-#include "my.h"
-#include "op.h"
 
 void	check_cmd(char *str)
 {

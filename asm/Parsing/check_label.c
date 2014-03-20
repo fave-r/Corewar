@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Mon Mar 17 11:05:57 2014 alex-odet
+** Last update Thu Mar 20 18:56:50 2014 alex-odet
 */
 
 #include "struct.h"
@@ -104,9 +104,11 @@ void	check_label_exist(char **labels, char *str, int nbrlabels)
 	  //label[i] = 0;
 	  i = 0;
 	  int       j = 0;
+	  printf("nbrlabels = %d\n", nbrlabels);
 	  while (j < nbrlabels)
 	    {
 	      printf("%s\n", labels[w]);
+	      j++;
 	      w++;
 	    }
 	  while (w <= nbrlabels)
