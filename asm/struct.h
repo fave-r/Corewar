@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Thu Mar 20 23:56:55 2014 alex-odet
+** Last update Fri Mar 21 00:18:45 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -31,28 +31,16 @@ typedef struct	s_gnl
 
 typedef struct s_label
 {
-  int	fd;
-  char	*line;
-  int	i;
-  char	**labels;
-  int	x;
-  int	k;
-  int	nbrlabels;
+  struct s_label *next;
+  char		*name;
 }		t_label;
 
 typedef struct	s_word
 {
-<<<<<<< HEAD
-  int		nbwords;
-  int		i;
-  char		**strpar;
-  char		*ptr;
-=======
   int   nbwords;
   int   i;
   char  **strpar;
   char  *ptr;
->>>>>>> ae93a69ddf806f83382ac1a27e7ca2addc46315e
 }		t_word;
 
 void		check_my_arg(char *str);
@@ -78,5 +66,7 @@ void		check_cmd(char *str);
 void		cmd_exist(char *str);
 int		countword(char *str, char sep);
 char		**my_str_to_wordtab(char *str, char sep);
+t_label		*my_put_in_list(t_label *list, char *name);
+void		my_show_list(t_label *list);
 
 #endif

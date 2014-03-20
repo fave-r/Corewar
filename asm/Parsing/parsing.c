@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Thu Mar 20 23:58:54 2014 alex-odet
+** Last update Fri Mar 21 00:23:47 2014 alex-odet
 */
 
 #include "struct.h"
@@ -49,6 +49,7 @@ char	*check_name(char *str)
   char	*tmp;
   char	*name;
   char	**words;
+
   name = NULL;
   fd = xopen(str, O_RDONLY);
   while ((tmp = get_next_line(fd)))
