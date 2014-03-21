@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Fri Mar 21 12:19:22 2014 alex-odet
+** Last update Fri Mar 21 13:15:52 2014 alex-odet
 */
 
 #include "struct.h"
@@ -35,7 +35,7 @@ void	cmd_exist(char *str)
   cmd = xmalloc(sizeof(char) * 6);
   big_buffer = xmalloc(sizeof(char) * BUFF_SIZE);
   printf("str = %s\n", str);
-  while ((str[i] != '\t' || str[i] != ' ') && str[i])
+  while ((str[i] != '\t' && str[i] != ' ') && str[i])
       {
 	cmd[j] = str[i];
 	j++;
