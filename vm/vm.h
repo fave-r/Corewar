@@ -4,8 +4,8 @@
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
 ** 
-** Last update Fri Mar 21 09:05:35 2014 thibaud
-** Last update Thu Mar 20 17:05:52 2014 Thibaut Lopez
+** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
+** Last update Fri Mar 21 09:22:23 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -110,7 +110,7 @@ void	free_graphic();
 void	change_pos_pc(t_champ *champ, int pc, int len, SDL_Surface *screen);
 void	change_case_mem(int case_mem, Uint32 color, SDL_Surface *screen);
 int	aff_memdr(unsigned char *mem);
-int	print_encode(int *);
+int	print_encode(int **tab);
 int	check_reg(int);
 
 #endif

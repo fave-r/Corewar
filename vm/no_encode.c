@@ -5,7 +5,8 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Fri Mar 21 09:22:43 2014 thibaud
+** Last update Fri Mar 21 09:27:53 2014 thibaud
+** Last update Fri Mar 21 09:23:42 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -68,7 +69,7 @@ int	my_zjmp(t_champ *champ, t_cor *cor)
       champ->pc += direct_arg;
     }
   else
-    my_putstr("ECHEC DE JUMP car carry = 0;", 1);
+    my_putstr("ECHEC DE JUMP car carry = 0", 1);
 
   exit(0);
 

@@ -5,32 +5,11 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Fri Mar 21 07:56:32 2014 thibaud
+** Last update Fri Mar 21 09:22:24 2014 Thibaut Lopez
 */
 
 #include "my.h"
 #include "vm.h"
-
-int	print_encode(int *encode)
-{
-  int   a, b;
-
-  a = b = 0;
-  my_putstr("\nENCODE = \n", 1);
-  while (a < 4)
-    {
-      while (b < 3)
-        {
-          my_putnbr(encode[a][b], 1);
-          my_putstr(" ", 1);
-          b++;
-        }
-      b = 0;
-      a++;
-      my_putstr("\n", 1);
-    }
-  my_putstr("\n", 1);
-}
 
 int	aff_memdr(unsigned char *mem)
 {
@@ -43,5 +22,11 @@ int	aff_memdr(unsigned char *mem)
       i++;
     }
   my_putstr("\n", 1);
+  return (42);
+}
+
+int	print_encode(int **tab)
+{
+  printf("ENCODE\n%d %d %d\n%d %d %d\n%d %d %d\n%d %d %d\n", tab[0][0], tab[0][1], tab[0][2], tab[1][0], tab[1][1], tab[1][2], tab[2][0], tab[2][1], tab[2][2], tab[3][0], tab[3][1], tab[3][2]);
   return (42);
 }

@@ -5,8 +5,10 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Fri Mar 21 08:59:00 2014 thibaud
-** Last update Fri Mar 21 08:59:42 2014 thibaud
+** Last update Fri Mar 21 09:26:51 2014 thibaud
 */
+
+#include "vm.h"
 
 int	check_reg(int reg_nb)
 {
