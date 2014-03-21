@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Fri Mar 21 08:19:17 2014 thibaud
+** Last update Fri Mar 21 09:22:43 2014 thibaud
 */
 
 #include "my.h"
@@ -33,7 +33,7 @@ int	my_live(t_champ *champ, t_cor *cor)
 	if (cor->live[i - 1] == 2)
 	  cor->live[i - 1] = 1;
       cor->live[j] = 2;
-      my_printf("Live du champion %s pour le champion numéro %d\n", champ->head->prog_name, direct_arg);
+      my_printf(1, "Live du champion %s pour le champion numéro %d\n", champ->head->prog_name, direct_arg);
       i = 0;
       while (i++ < 4)
 	if (cor->live[i - 1] == 2)
@@ -46,7 +46,7 @@ int	my_live(t_champ *champ, t_cor *cor)
   my_putstr(", avance dans la mémoire de 5\n", 1);
   champ->pc += 5;
 
-  printf("Num live = %d %d %d %d\n", cor->live[0], cor->live[1], cor->live[2], cor->live[3]);
+  my_printf(1 ,"Num live = %d %d %d %d\n", cor->live[0], cor->live[1], cor->live[2], cor->live[3]);
 
   return (5);
 }
@@ -63,7 +63,7 @@ int	my_zjmp(t_champ *champ, t_cor *cor)
     {
       direct_arg = get_nbr_action(cor->mem, champ->pc + 1, 2);
 
-      my_printf("ZJMP du champion %s de %d cases.\n", champ->head->prog_name, direct_arg);
+      my_printf(1, "ZJMP du champion %s de %d cases.\n", champ->head->prog_name, direct_arg);
       my_putstr(", avance dans la mémoire de 3\n", 1);
       champ->pc += direct_arg;
     }
@@ -104,7 +104,7 @@ int	my_lfork(t_champ *champ, t_cor *cor)
 int	my_none(t_champ *champ, t_cor *cor)
 {
   (void)cor;
-  my_printf("NONE du champion %s\n", champ->head->prog_name);
+  my_printf(1, "NONE du champion %s\n", champ->head->prog_name);
   my_putstr("Avance dans la mémoire de 1\n", 1);
   champ->pc++;
   return (0);

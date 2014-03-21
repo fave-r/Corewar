@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Fri Mar 21 08:18:16 2014 thibaud
+** Last update Fri Mar 21 09:24:32 2014 thibaud
 */
 
 #include "vm.h"
@@ -31,7 +31,7 @@ int	my_st(t_champ *champ, t_cor *cor)
 	  cor->mem[champ->pc + tab[1][2] + 1] = tmp[2];
 	  cor->mem[champ->pc + tab[1][2] + 0] = tmp[3];
 	}
-      my_printf("ST du champion %s\n", champ->head->prog_name);
+      my_printf(1, "ST du champion %s\n", champ->head->prog_name);
     }
   else
     my_putstr("ST FAIL\n", 1);
@@ -58,7 +58,7 @@ int	my_sti(t_champ *champ, t_cor *cor)
       cor->mem[champ->pc + tab[1][2] + tab[2][2] + 2] = tmp[1];
       cor->mem[champ->pc + tab[1][2] + tab[2][2] + 1] = tmp[2];
       cor->mem[champ->pc + tab[1][2] + tab[2][2] + 0] = tmp[3];
-      my_printf("STI du champion %s\n", champ->head->prog_name);
+      my_printf(1, "STI du champion %s\n", champ->head->prog_name);
     }
   else
     my_putstr("STI FAIL\n", 1);
@@ -75,7 +75,6 @@ int	my_aff(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
-  aff = tab[0][1] + tab[1][1] + tab[2][1] + tab[3][1] + 2;
   if (tab[0][0] == 1 && tab[0][2] >= 0 && tab[0][2] <= REG_NUMBER)
     {
       champ->carry = 1;
