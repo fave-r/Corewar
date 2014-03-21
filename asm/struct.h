@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Fri Mar 21 15:41:47 2014 alex-odet
+** Last update Fri Mar 21 18:24:03 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -22,6 +22,7 @@
 
 #define BUFF_SIZE 1024
 #define COR_EXT ".cor"
+#define COR_SEP "%:,"
 
 typedef struct	s_gnl
 {
