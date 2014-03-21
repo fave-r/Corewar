@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Feb 27 09:31:58 2014 Thibaut Lopez
-** Last update Tue Mar 11 08:43:55 2014 Thibaut Lopez
+** Last update Fri Mar 21 16:15:08 2014 alex-odet
 */
 
 #include "my.h"
@@ -18,15 +18,9 @@ int	my_endian()
   x = 1;
   y = (char *) & x;
   if (*y)
-    {
-      my_putstr("You computer is in little endian.\n", 2);
-      return (1);
-    }
+    return (1);
   else
-    {
-      my_putstr("You computer is in big endian.\n", 2);
-      return (0);
-    }
+    return (0);
 }
 
 int	convert_endian(int *nb, int endian)

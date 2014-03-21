@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Tue Mar  4 16:53:28 2014
-** Last update Thu Mar 13 10:17:50 2014 Thibaut Lopez
+** Last update Fri Mar 21 16:15:02 2014 alex-odet
 */
 
 #include "struct.h"
@@ -19,6 +19,7 @@ header_t	*fill_header(char *name, char *comment)
   i = 0;
   new = xmalloc(sizeof(header_t));
   new->magic = COREWAR_EXEC_MAGIC;
+  convert_endian(&(new->magic), my_endian());
   while (i < my_strlen(name) && i < PROG_NAME_LENGTH)
     {
       new->prog_name[i] = name[i];

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Fri Mar 21 02:12:10 2014 alex-odet
+** Last update Fri Mar 21 15:41:47 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -59,9 +59,6 @@ char		*recup_comment(char *str);
 void		print_header_error();
 void		create_cor(char *name, header_t *header);
 void		print_assembling(char *name, header_t *header);
-void		check_label(char *str);
-char		**create_label(char *line, char **labels, int i, int *y);
-void		check_label_exist(char **labels, char *str, int nbrlabels);
 void		check_cmd(char *str);
 void		cmd_exist(char *str);
 int		countword(char *str, char sep);
@@ -69,5 +66,6 @@ char		**my_str_to_wordtab(char *str, char sep);
 void		my_show_list(t_label *list);
 t_label		*fill_list_of_label(char *str);
 t_label		*my_put_in_list(t_label *list, char *name);
+t_label		*check_label(char *tmp, t_label *list);
 
 #endif
