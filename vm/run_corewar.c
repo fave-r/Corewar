@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Thu Mar 20 18:33:31 2014 thibaud
+** Last update Fri Mar 21 13:18:48 2014 thibaud
 */
 
 #include "vm.h"
@@ -31,7 +31,7 @@ t_struct	fct_tab[] =
     {14, &my_lldi, 50},
     {15, &my_lfork, 1000},
     {16, &my_aff, 2},
-    //{0, &my_none, 0},
+    {0, &my_none, 0},
   };
 
 int	find_in_tab(char octet)
@@ -47,11 +47,13 @@ int	find_in_tab(char octet)
     }
   return (0);
 }
+
 int	champ_play(t_champ *cur_champ, t_cor *map)
 {
   my_printf(1, "champ_play ! %d\n", map->mem[cur_champ->pc]);
   fct_tab[find_in_tab(map->mem[cur_champ->pc])].ptr_fct(cur_champ, map);
-  return (0);}
+  return (0);
+}
     
 
 int	get_wait(t_champ *cur_champ, t_cor *map)
@@ -72,14 +74,14 @@ int	cycle_run(t_champ *champs, t_cor *map)
 	get_wait(cur_champ, map);
       if (cur_champ->wait == 0)
 	{
-	  printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
+	  //printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
 	  champ_play(cur_champ, map);
 	get_wait(cur_champ, map);
 	}
       cur_champ->wait -= 1;
       cur_champ = cur_champ->next;
     }
-  my_putstr("X", 1);
+  //my_putstr("X", 1);
   map->cycle++;
   return (0);
 }
@@ -107,13 +109,11 @@ t_champ	*del_chmp(t_champ *champs, int champ_del)
 
 int	kill_champ(t_champ *champs, t_cor *map)
 {
-  //  t_champ	*cur_champ;
   int	champ_nb;
 
   champ_nb = 1;
   while (champ_nb <= 4)
     {
-      //      cur_champ = champs;
       if (map->live[champ_nb - 1] == 0)
 	{
 	  del_chmp(champs, map->champs_nb[champ_nb - 1]);
@@ -151,13 +151,11 @@ int	end_game(t_champ *champ, t_cor *map)
 
   (void)champ;
   gg = 0;
+  //printf("\n%d%d%d%d\n\n", map->live[0], map->live[1], map->live[2], map->live[3]);
   while (map->live[gg] != 2)
     gg++;
-  my_putstr("le joueur ", 1);
-  my_putnbr(map->champs_nb[gg], 1);
-  my_putstr(" a gagné yéyéyé !!", 1);
-  // A refaire avec un my_printf
-  return (0);
+  my_printf(1, "Le joueur numéro %d a gagné!\n", map->champs_nb[gg]);
+  exit(0);
 }
 
 void    my_bzero(void *b, int len)
@@ -177,7 +175,7 @@ int	run_corewar(t_champ *champs, t_cor *map)
   map->cycle_to_die = CYCLE_TO_DIE;
   printf("Num champ = %d %d %d %d\n", map->champs_nb[0], map->champs_nb[1], map->champs_nb[2], map->champs_nb[3]);
   printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
-  my_printf(1, "%d\n", map->mem[champs->pc]);
+  //my_printf(1, "%d\n", map->mem[champs->pc]);
   while ((map->cycle_to_die) > 100)
     {
       while (map->cycle <= map->cycle_to_die)
@@ -185,18 +183,13 @@ int	run_corewar(t_champ *champs, t_cor *map)
 	  cycle_run(champs, map);
 	  if (map->live_done >= NBR_LIVE)
 	    {
-	      my_putstr("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", 1);
-	      my_putstr("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", 1);
-	      my_putstr("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", 1);
-	      my_putstr("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", 1);
-	      my_putstr("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", 1);
-	      my_putstr("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n", 1);
 	      if (!someone_is_dead(champs, map))
 		{
+		  printf("Personne n'est MORT bordel !!\n");
 		  map->cycle_to_die -= CYCLE_DELTA;
 		}
-	      my_bzero(map->champs_nb, 4);
-	      map->cycle = 0;
+	      my_bzero(map->live, 4);
+	      map->live_done = 0;
 	    }
 	}      
       kill_champ(champs, map);
