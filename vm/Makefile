@@ -1,0 +1,45 @@
+##
+## Makefile for makefile in /home/thibaut.lopez/Corewar
+## 
+## Made by Thibaut Lopez
+## Login   <thibaut.lopez@epitech.net>
+## 
+## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
+## Last update Fri Mar 21 09:05:55 2014 thibaud
+##
+
+VM_S=		champ_fun.c \
+		get_encode.c \
+		ld_fun.c \
+		list_fun.c \
+		no_encode.c \
+		main.c \
+		operation.c \
+		other_fun.c \
+		run_corewar.c \
+		spec_fun.c \
+		get_arg.c \
+		tmp.c \
+		Graphic/init_graphic.c \
+		Graphic/free_graphic.c \
+		Graphic/refresh_graphic.c \
+		check_reg.c
+
+VM_N=		corewar
+
+VM_O=		$(VM_S:.c=.o)
+
+CC=		gcc -g3 -W -Wall -Werror -I ../my/ -I ../ -I .
+
+all:		$(VM_N)
+
+$(VM_N):	$(VM_O)
+		$(CC) -o $(VM_N) $(VM_O) -L.. -lmy  -lSDL -lGL -lGLU
+
+clean:
+		rm -f $(VM_O)
+
+fclean:		clean
+		rm -f $(VM_N)
+
+re:		fclean all
