@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Fri Mar 21 17:23:20 2014 Thibaut Lopez
+** Last update Fri Mar 21 18:54:59 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -62,7 +62,7 @@ int	**get_encode(unsigned char *mem, int pc)
       tab[i] = xmalloc(3 * sizeof(int));//tableau de 3 cases
       tab[i][0] = mem[pc + 1] % puis / (puis / 4);//case 0 : récupération du type de l'argument (1 = registre, 2 = direct, 3 = indirect, 0 = pas d'argument)
       puis /= 4;
-      if (tab[i][0] == 1) 
+      if (tab[i][0] == 1)
 	tab[i][1] = 1;
       else if (tab[i][0] == 2)
 	tab[i][1] = (mem[pc] == 10 || mem[pc] == 11 || mem[pc] == 14) ? 2 : 4;

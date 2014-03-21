@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Fri Mar 21 18:25:42 2014 Thibaut Lopez
+** Last update Fri Mar 21 18:55:55 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -22,8 +22,8 @@ int	my_add(t_champ *champ, t_cor *cor)
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
     {
       champ->carry = 1;
-      champ->reg[tab[2][2] - 1] = champ->reg[tab[0][2] - 1] +
-	champ->reg[tab[1][2] - 1];
+      champ->reg[tab[2][2] - 1] = champ->reg[tab[0][2] - 1]
+	+ champ->reg[tab[1][2] - 1];
       my_printf(1, "ADD du champion : %d, ajout du registre %d au registre %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->champ_nb, tab[0][2], tab[1][2], tab[2][2], 5);
     }
   else

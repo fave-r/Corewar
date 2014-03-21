@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Fri Mar 21 12:30:57 2014 thibaud
+** Last update Fri Mar 21 18:56:18 2014 Thibaut Lopez
 ** Last update Fri Mar 21 09:23:42 2014 Thibaut Lopez
 */
 
@@ -17,12 +17,7 @@ int	my_live(t_champ *champ, t_cor *cor)
   int	i;
   int	j;
   int	direct_arg;
-  /*
-  static int stat = 20;
-  if (stat == 0)
-    exit(0);
-  stat--;
-  */
+
   my_printf(1, "Compteur de live = %d\n", cor->live_done);
   my_printf(1, "Compteur de cycle = %d\n", cor->cycle);
   i = 0;
@@ -54,7 +49,7 @@ int	my_live(t_champ *champ, t_cor *cor)
   my_putstr(", avance dans la mémoire de 5\n", 1);
   champ->pc += 5;
 
-  my_printf(1 ,"Num live = %d %d %d %d\n", cor->live[0], cor->live[1], cor->live[2], cor->live[3]);
+  my_printf(1, "Num live = %d %d %d %d\n", cor->live[0], cor->live[1], cor->live[2], cor->live[3]);
 
   return (5);
 }
@@ -72,9 +67,6 @@ int	my_zjmp(t_champ *champ, t_cor *cor)
     }
   else
     my_putstr("ECHEC DE JUMP car carry = 0", 1);
-
-  //exit(0);
-
   return (3);
 }
 

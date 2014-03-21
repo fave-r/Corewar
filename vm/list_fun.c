@@ -5,12 +5,11 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Mar  2 12:45:35 2014 Thibaut Lopez
-** Last update Mon Mar 17 13:40:19 2014 Thibaut Lopez
+** Last update Fri Mar 21 19:28:15 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 #include "my.h"
-#include <stdio.h>
 
 int	my_list_len(t_champ *champ)
 {
