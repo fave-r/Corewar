@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Fri Mar 21 15:55:09 2014 alex-odet
+** Last update Fri Mar 21 17:47:03 2014 alex-odet
 */
 
 #include "struct.h"
@@ -40,7 +40,7 @@ t_label		*check_label(char *tmp, t_label *list)
   save = xmalloc(sizeof(char) * my_strlen(tmp));
   while (tmp[i])
     {
-      if (tmp[i] == ':' && tmp[i + 1] != 0 && tmp[i - 1] != '%')
+      if (tmp[i] == ':' && tmp[i + 1] != 0 && tmp[i - 1] != '%' && tmp[i - 1] != ',')
 	{
 	  while (j <= i)
 	    {
@@ -54,6 +54,6 @@ t_label		*check_label(char *tmp, t_label *list)
 	}
       i++;
     }
-  save[i] = 0;
-  return (list);
+  save[j] = 0;
+  return (NULL);
 }

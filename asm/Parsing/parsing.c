@@ -5,12 +5,14 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Fri Mar 21 16:19:00 2014 alex-odet
+** Last update Fri Mar 21 17:42:39 2014 alex-odet
 */
 
 #include "struct.h"
 #include "op.h"
 #include "my.h"
+
+void	check_arg(t_label *list, char *str);
 
 void	parser(char *str)
 {
@@ -27,6 +29,7 @@ void	parser(char *str)
 
 int	check(char *str)
 {
+  t_label	*list;
   header_t	*ptr;
   char		*name;
   char		*comment;
@@ -36,10 +39,16 @@ int	check(char *str)
   name = check_name(str);
   comment = check_comment(str);
   ptr = fill_header(name, comment);
-  // fill_list_of_label(str);
+  if ((list = fill_list_of_label(str)))
+    check_arg(list, str);
   check_cmd(str);
   create_cor(str, ptr);
   return (0);
+}
+
+void	check_arg(t_label *list, char *str)
+{
+  printf("La liste n'est pas nulle :D\n");
 }
 
 char	*check_name(char *str)

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Mar 21 00:05:01 2014 alex-odet
-** Last update Fri Mar 21 14:53:55 2014 alex-odet
+** Last update Fri Mar 21 17:44:44 2014 alex-odet
 */
 
 #include "struct.h"
@@ -15,7 +15,7 @@ t_label		*new_node(char *name)
   t_label *new;
 
   new = xmalloc(sizeof(t_label));
-  new->name = my_strdup(name);
+  new->name = name;
   new->next = NULL;
   return (new);
 }
