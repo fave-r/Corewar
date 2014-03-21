@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Thu Mar 20 17:46:14 2014 Thibaut Lopez
+** Last update Fri Mar 21 12:58:49 2014 thibaud
 */
 
 #include "my.h"
@@ -144,7 +144,7 @@ int	main(int argc, char **argv)
   my_bzero(cor.live, 4);
   init_champs_nb(&cor);
   init_graphic(&cor);// c'est pour l'aperçu graphique, ne le lance pas maintenant, j'ai pas fini
-  sleep(5);
+  //sleep(5);
   run_corewar(cor.champ, &cor);
   free_graphic();
   return (0);
