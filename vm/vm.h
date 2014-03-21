@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Fri Mar 21 09:22:23 2014 Thibaut Lopez
+** Last update Fri Mar 21 17:38:05 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -104,6 +104,7 @@ int	my_lfork(t_champ *champ, t_cor *cor);
 int	my_aff(t_champ *champ, t_cor *cor);
 int	my_none(t_champ *champ, t_cor *cor);
 int	get_all_type_arg(int type, int val, t_champ *champ, unsigned char *mem);
+int	get_dir_ind_arg(int type, int val, t_champ *champ, unsigned char *mem);
 
 int	init_graphic(t_cor *cor);
 void	free_graphic();
@@ -112,5 +113,6 @@ void	change_case_mem(int case_mem, Uint32 color, SDL_Surface *screen);
 int	aff_memdr(unsigned char *mem);
 int	print_encode(int **tab);
 int	check_reg(int);
+void	print_on_mem(t_cor *cor, int to_add, int pc);
 
 #endif
