@@ -1,9 +1,7 @@
 .name "Ta mère je voulais t'en envoyer un"
 .comment "Je suis très déçu de ce comportement"
 
-lol:	add r1, r2, r3
-	sub r1, r2, r4
-	and r1, r2, r5
+lol:	and r1, r2, r5
 	and %1, %2, r6
 	and 1, 2, r7
 	or r1, r2, r8
