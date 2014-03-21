@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Fri Mar 21 17:42:39 2014 alex-odet
+** Last update Fri Mar 21 18:40:46 2014 alex-odet
 */
 
 #include "struct.h"
@@ -39,8 +39,7 @@ int	check(char *str)
   name = check_name(str);
   comment = check_comment(str);
   ptr = fill_header(name, comment);
-  if ((list = fill_list_of_label(str)))
-    check_arg(list, str);
+  list = fill_list_of_label(str);
   check_cmd(str);
   create_cor(str, ptr);
   return (0);
