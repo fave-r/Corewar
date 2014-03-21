@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Feb 26 18:12:20 2014 romaric
-** Last update Wed Feb 26 20:36:35 2014 Thibaut Lopez
+** Last update Fri Mar 21 13:22:35 2014 alex-odet
 */
 
 #include "my.h"
@@ -22,5 +22,7 @@ int	my_strlen(char *str)
 
 int	my_putstr(char *str, int fd)
 {
-  return (write(fd, str, my_strlen(str)));
+  if (str != NULL)
+    return (write(fd, str, my_strlen(str)));
+  return (0);
 }

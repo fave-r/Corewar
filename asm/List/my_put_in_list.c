@@ -5,25 +5,30 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Mar 21 00:05:01 2014 alex-odet
-** Last update Fri Mar 21 12:53:32 2014 alex-odet
+** Last update Fri Mar 21 14:53:55 2014 alex-odet
 */
 
 #include "struct.h"
 
-t_label		*my_put_in_list(t_label *list, char *name)
+t_label		*new_node(char *name)
 {
   t_label *new;
-  t_label *tmp;
 
-  printf("my_put_in_list : Name : %s\n", name);
   new = xmalloc(sizeof(t_label));
   new->name = my_strdup(name);
   new->next = NULL;
+  return (new);
+}
+
+t_label		*my_put_in_list(t_label *list, char *name)
+{
+  t_label *tmp;
+
   if (list == NULL)
-    return (new);
+    return (new_node(name));
   tmp = list;
   while (tmp->next != NULL)
     tmp = tmp->next;
-  tmp->next = new;
+  tmp->next = new_node(name);
   return (list);
 }
