@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Mon Mar 10 16:12:02 2014 alex-odet
-** Last update Fri Mar 21 13:02:47 2014 alex-odet
+** Last update Fri Mar 21 15:05:18 2014 alex-odet
 */
 
 #include "struct.h"
@@ -54,5 +54,6 @@ char	*recup_comment(char *str)
       save[j] = str[i];
       j++;
     }
+  save[j] = 0;
   return (save);
 }
