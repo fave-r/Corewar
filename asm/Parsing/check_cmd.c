@@ -5,12 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Thu Mar 20 15:10:17 2014 alex-odet
+** Last update Fri Mar 21 02:17:00 2014 alex-odet
 */
 
 #include "struct.h"
-#include "my.h"
-#include "op.h"
 
 void	check_cmd(char *str)
 {
@@ -36,12 +34,12 @@ void	cmd_exist(char *str)
   j = 0;
   cmd = xmalloc(sizeof(char) * 6);
   big_buffer = xmalloc(sizeof(char) * BUFF_SIZE);
-  while (str[i] != '\t')
-    {
-      cmd[j] = str[i];
-      j++;
-      i++;
-    }
+    while (str[i] != '\t')
+      {
+	cmd[j] = str[i];
+	j++;
+	i++;
+      }
   cmd[j] = 0;
   j = 0;
   while (op_tab[j].mnemonique)
