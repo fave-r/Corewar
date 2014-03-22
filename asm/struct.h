@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Fri Mar 21 18:24:03 2014 alex-odet
+** Last update Sat Mar 22 03:49:57 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -36,6 +36,12 @@ typedef struct s_label
   char		*name;
 }		t_label;
 
+typedef struct	s_file
+{
+  struct s_file *next;
+  char		*name_file;
+}		t_file;
+
 typedef struct	s_word
 {
   int   nbwords;
@@ -44,11 +50,8 @@ typedef struct	s_word
   char  *ptr;
 }		t_word;
 
-void		check_my_arg(char *str);
-void		check_instructions(char *str);
 char		*get_next_line(const int fd);
 void		parser(char *str);
-char		*cmd_by_line(char *str);
 int		check(char *str);
 char		*check_name(char *str);
 int		count_quotes(char *str, int i);
@@ -68,5 +71,8 @@ void		my_show_list(t_label *list);
 t_label		*fill_list_of_label(char *str);
 t_label		*my_put_in_list(t_label *list, char *name);
 t_label		*check_label(char *tmp, t_label *list);
+t_file		*create_node(char *name);
+t_file		*my_put_in_file_list(t_file *list, char *name);
+void		my_show_file_list(t_file *list);
 
 #endif

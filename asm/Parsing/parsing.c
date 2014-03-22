@@ -5,14 +5,10 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Fri Mar 21 18:40:46 2014 alex-odet
+** Last update Sat Mar 22 03:40:00 2014 alex-odet
 */
 
 #include "struct.h"
-#include "op.h"
-#include "my.h"
-
-void	check_arg(t_label *list, char *str);
 
 void	parser(char *str)
 {
@@ -45,11 +41,6 @@ int	check(char *str)
   return (0);
 }
 
-void	check_arg(t_label *list, char *str)
-{
-  printf("La liste n'est pas nulle :D\n");
-}
-
 char	*check_name(char *str)
 {
   int	fd;
@@ -57,8 +48,8 @@ char	*check_name(char *str)
   char	*tmp;
   char	*name;
 
-  name = NULL;
   fd = xopen(str, O_RDONLY);
+  name = NULL;
   while ((tmp = get_next_line(fd)))
     {
       if (my_strncmp(tmp, ".name", 5) == 0)
@@ -73,6 +64,8 @@ char	*check_name(char *str)
 	    name = recup_name(tmp);
 	}
     }
+  if (name == NULL)
+    print_header_error();
   return (name);
 }
 

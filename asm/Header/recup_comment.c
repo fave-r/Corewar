@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Mon Mar 10 16:12:02 2014 alex-odet
-** Last update Fri Mar 21 15:05:18 2014 alex-odet
+** Last update Sat Mar 22 03:37:47 2014 alex-odet
 */
 
 #include "struct.h"
@@ -18,23 +18,24 @@ char	*check_comment(char *str)
   char	*comment;
   char	*tmp;
 
-  comment = NULL;
   fd = xopen(str, O_RDONLY);
-  while ((my_strncmp(tmp, ".comment", 8)) != 0)
-    tmp = get_next_line(fd);
-  if (tmp == NULL)
-    print_header_error();
-  else
+  comment = NULL;
+  while ((tmp = get_next_line(fd)))
     {
-      quotes = count_quotes(tmp, 0);
-      if (quotes != 2)
+      if (my_strncmp(tmp, ".comment", 8) == 0)
 	{
-	  my_putstr("Unterminated string in the comment", 2);
-	  exit(EXIT_FAILURE);
+	  quotes = count_quotes(tmp, 0);
+	  if (quotes != 2)
+	    {
+	      my_putstr("Unterminated string in the comment", 2);
+	      exit(EXIT_FAILURE);
+	    }
+	  else
+	    comment = recup_comment(tmp);
 	}
-      else
-	comment = recup_comment(tmp);
     }
+  if (comment == NULL)
+    print_header_error();
   return (comment);
 }
 
