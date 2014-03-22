@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Feb 23 21:02:50 2014 Thibaut Lopez
-** Last update Sun Feb 23 21:03:43 2014 Thibaut Lopez
+** Last update Sat Mar 22 04:56:33 2014 alex-odet
 */
 
 int	my_strlen(char *str)

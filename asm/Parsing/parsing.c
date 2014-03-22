@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Sat Mar 22 03:40:00 2014 alex-odet
+** Last update Sat Mar 22 05:05:37 2014 alex-odet
 */
 
 #include "struct.h"
@@ -17,7 +17,9 @@ void	parser(char *str)
     check(str);
   else
     {
-      my_putstr("Bad file Extension. ", 2);
+      my_putstr("Your file : ", 2);
+      my_putstr(str, 2);
+      my_putstr(" Has a bad extension.\n", 2);
       my_putstr("Please Choose a file with '.s' extension.\n", 2);
       exit(EXIT_FAILURE);
     }
@@ -30,7 +32,6 @@ int	check(char *str)
   char		*name;
   char		*comment;
 
-  ptr = xmalloc(sizeof(header_t));
   ptr = init();
   name = check_name(str);
   comment = check_comment(str);
@@ -66,19 +67,22 @@ char	*check_name(char *str)
     }
   if (name == NULL)
     print_header_error();
+  close (fd);
   return (name);
 }
 
 int	count_quotes(char *str, int i)
 {
   int	x;
+  int	j;
 
   x = 0;
-  while (str[i])
+  j = i;
+  while (str[j] != 0)
     {
-      if (str[i] == '"')
+      if (str[j] == '"')
 	x++;
-      i++;
+      j++;
     }
   return (x);
 }

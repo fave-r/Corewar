@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Mar 11 04:03:48 2014 alex-odet
-** Last update Thu Mar 13 10:16:36 2014 Thibaut Lopez
+** Last update Sat Mar 22 04:53:33 2014 alex-odet
 */
 
 #include "struct.h"
@@ -28,7 +28,7 @@ void	create_cor(char *name, header_t *header)
   save_name[i] = 0;
   new_name = my_strcat(save_name, COR_EXT);
   free(save_name);
-  fd = open(new_name, O_RDWR | O_CREAT, 0666);
+  fd = open(new_name, O_RDWR|O_CREAT, 0666);
   if (fd == -1)
     {
       my_putstr("Open Failed\n", 2);

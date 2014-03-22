@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Fri Mar 21 13:48:30 2014 alex-odet
+** Last update Sat Mar 22 04:57:53 2014 alex-odet
 */
 
 #include "struct.h"
@@ -23,6 +23,7 @@ void	check_cmd(char *str)
       if (tmp[0] == '\t')
 	cmd_exist(tmp);
     }
+  close (fd);
 }
 
 void	cmd_exist(char *str)

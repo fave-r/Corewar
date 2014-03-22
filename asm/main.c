@@ -5,14 +5,10 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 04:24:43 2014
-** Last update Sat Mar 22 03:52:30 2014 alex-odet
+** Last update Sat Mar 22 04:44:31 2014 alex-odet
 */
 
 #include "struct.h"
-#include "op.h"
-#include "my.h"
-
-void	send_file_to_parser(t_file *list);
 
 int	main(int ac, char **av)
 {

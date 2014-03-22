@@ -5,11 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Mon Mar 10 15:58:46 2014 alex-odet
-** Last update Thu Mar 13 10:19:20 2014 Thibaut Lopez
+** Last update Sat Mar 22 04:59:47 2014 alex-odet
 */
 
 #include "struct.h"
-#include "my.h"
 
 header_t	*init()
 {
