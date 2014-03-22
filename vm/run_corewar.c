@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Fri Mar 21 15:20:44 2014 thibaud
+** Last update Fri Mar 21 16:30:43 2014 thibaud
 */
 
 #include "vm.h"
@@ -110,18 +110,25 @@ t_champ	*del_chmp(t_champ *champs, int champ_del)
 int	kill_champ(t_champ *champs, t_cor *map)
 {
   int	champ_nb;
+  int	nb_alive;
 
+  nb_alive = 0;
   champ_nb = 1;
   while (champ_nb <= 4)
     {
       if (map->live[champ_nb - 1] == 0)
 	{
 	  del_chmp(champs, map->champs_nb[champ_nb - 1]);
-	  map->nb_chmps_alive--;
+	  //map->nb_chmps_alive--;
 	}
+      else
+	nb_alive++;
       champ_nb++;
-      if (map->nb_chmps_alive == 1)
-	end_game(champs, map);
+    }
+  if (nb_alive == 1)
+    {
+      printf("Il n'en reste qu'un\n");
+      end_game(champs, map);
     }
   return (0);
 }
