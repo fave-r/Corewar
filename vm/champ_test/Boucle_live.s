@@ -1,5 +1,5 @@
-.name "Buddha Swag"
-.comment "Swag dude"
+.name "Boucle Liv"
+.comment "So alive"
 
 
 label1:
@@ -7,5 +7,4 @@ label1:
 	and r1,%0,r1
 live:
 	live %1
-	fork %42
 	zjmp %:live

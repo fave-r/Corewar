@@ -5,11 +5,27 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Thu Mar 20 17:33:42 2014 Thibaut Lopez
+** Last update Fri Mar 21 18:54:59 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 #include "my.h"
+
+void	print_on_mem(t_cor *cor, int to_add, int pc)
+{
+  int	i;
+  char	*tmp;
+
+  i = (cor->endian == 1) ? 3 : 1;
+  tmp = (char *)&to_add;
+  cor->mem[(pc + i) % MEM_SIZE] = tmp[0];
+  i += (cor->endian == 1) ? -1 : 1;
+  cor->mem[pc + i] = tmp[1];
+  i += (cor->endian == 1) ? -1 : 1;
+  cor->mem[(pc + i) % MEM_SIZE] = tmp[2];
+  i += (cor->endian == 1) ? -1 : 1;
+  cor->mem[(pc + i) % MEM_SIZE] = tmp[3];
+}
 
 int	get_nbr_action(unsigned char *mem, int pc, int len)
 {
@@ -46,7 +62,7 @@ int	**get_encode(unsigned char *mem, int pc)
       tab[i] = xmalloc(3 * sizeof(int));//tableau de 3 cases
       tab[i][0] = mem[pc + 1] % puis / (puis / 4);//case 0 : récupération du type de l'argument (1 = registre, 2 = direct, 3 = indirect, 0 = pas d'argument)
       puis /= 4;
-      if (tab[i][0] == 1) 
+      if (tab[i][0] == 1)
 	tab[i][1] = 1;
       else if (tab[i][0] == 2)
 	tab[i][1] = (mem[pc] == 10 || mem[pc] == 11 || mem[pc] == 14) ? 2 : 4;

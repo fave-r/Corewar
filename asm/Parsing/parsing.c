@@ -5,12 +5,10 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Fri Mar 21 14:20:24 2014 alex-odet
+** Last update Sat Mar 22 05:05:37 2014 alex-odet
 */
 
 #include "struct.h"
-#include "op.h"
-#include "my.h"
 
 void	parser(char *str)
 {
@@ -19,7 +17,9 @@ void	parser(char *str)
     check(str);
   else
     {
-      my_putstr("Bad file Extension. ", 2);
+      my_putstr("Your file : ", 2);
+      my_putstr(str, 2);
+      my_putstr(" Has a bad extension.\n", 2);
       my_putstr("Please Choose a file with '.s' extension.\n", 2);
       exit(EXIT_FAILURE);
     }
@@ -27,16 +27,16 @@ void	parser(char *str)
 
 int	check(char *str)
 {
+  t_label	*list;
   header_t	*ptr;
   char		*name;
   char		*comment;
 
-  ptr = xmalloc(sizeof(header_t));
   ptr = init();
   name = check_name(str);
   comment = check_comment(str);
   ptr = fill_header(name, comment);
-  fill_list_of_label(str);
+  list = fill_list_of_label(str);
   check_cmd(str);
   create_cor(str, ptr);
   return (0);
@@ -49,8 +49,8 @@ char	*check_name(char *str)
   char	*tmp;
   char	*name;
 
-  name = NULL;
   fd = xopen(str, O_RDONLY);
+  name = NULL;
   while ((tmp = get_next_line(fd)))
     {
       if (my_strncmp(tmp, ".name", 5) == 0)
@@ -65,19 +65,24 @@ char	*check_name(char *str)
 	    name = recup_name(tmp);
 	}
     }
+  if (name == NULL)
+    print_header_error();
+  close (fd);
   return (name);
 }
 
 int	count_quotes(char *str, int i)
 {
   int	x;
+  int	j;
 
   x = 0;
-  while (str[i])
+  j = i;
+  while (str[j] != 0)
     {
-      if (str[i] == '"')
+      if (str[j] == '"')
 	x++;
-      i++;
+      j++;
     }
   return (x);
 }

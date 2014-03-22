@@ -5,12 +5,11 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Mar  2 12:45:35 2014 Thibaut Lopez
-** Last update Mon Mar 17 13:40:19 2014 Thibaut Lopez
+** Last update Sat Mar 22 17:48:34 2014 thibaud
 */
 
 #include "vm.h"
 #include "my.h"
-#include <stdio.h>
 
 int	my_list_len(t_champ *champ)
 {
@@ -110,8 +109,10 @@ void	fill_mem(unsigned char **mem, t_champ *champ)
   while (tmp != champ)
     {
       len = read(tmp->fd, *mem + tmp->pc, MEM_SIZE - tmp->pc);
+      //c'est pas plutot "tmp->head->prog_size" le dernier paramètre pour read?
       if (len < tmp->head->prog_size)
 	read(tmp->fd, *mem, tmp->head->prog_size);
+      // c'est pas plutot "*mem + tmp->pc + len" juste au dessus à la place de "*mem"?
       tmp->reg[0] = tmp->champ_nb;
       close(tmp->fd);
       printf("path = %s, champ_name = %s, champ_nb = %d\n", tmp->path, tmp->head->prog_name, tmp->champ_nb);

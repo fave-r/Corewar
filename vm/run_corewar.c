@@ -5,7 +5,11 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
+<<<<<<< HEAD
 ** Last update Fri Mar 21 16:30:43 2014 thibaud
+=======
+** Last update Fri Mar 21 13:18:48 2014 thibaud
+>>>>>>> c76ba0efc8c2635943b14c5b5881498f2ef913e5
 */
 
 #include "vm.h"
@@ -161,7 +165,6 @@ int	end_game(t_champ *champ, t_cor *map)
   //printf("\n%d%d%d%d\n\n", map->live[0], map->live[1], map->live[2], map->live[3]);
   while (map->live[gg] != 2)
     gg++;
-  my_printf(1, "Cycle done = %d\n", map->cycle);
   my_printf(1, "Le joueur numéro %d a gagné!\n", map->champs_nb[gg]);
   exit(0);
 }
@@ -186,7 +189,7 @@ int	run_corewar(t_champ *champs, t_cor *map)
   //my_printf(1, "%d\n", map->mem[champs->pc]);
   while ((map->cycle_to_die) > 100)
     {
-      while (map->cycle < map->cycle_to_die)
+      while (map->cycle <= map->cycle_to_die)
 	{
 	  cycle_run(champs, map);
 	  if (map->live_done >= NBR_LIVE)
@@ -196,16 +199,13 @@ int	run_corewar(t_champ *champs, t_cor *map)
 		  printf("Personne n'est MORT bordel !!\n");
 		  map->cycle_to_die -= CYCLE_DELTA;
 		}
-	      //map->cycle = 0;
-	      //my_bzero(map->live, 4);
+	      my_bzero(map->live, 4);
 	      map->live_done = 0;
 	    }
-	  //printf("Cycle_to_die = %d\n", map->cycle_to_die);
-	}
+	}      
       kill_champ(champs, map);
       map->live_done = 0;
       map->cycle = 0;
-      my_bzero(map->live, 4);
     }
   end_game(champs, map);
   return (0);
