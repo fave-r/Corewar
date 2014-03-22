@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Sat Mar 22 05:31:05 2014 alex-odet
+** Last update Sat Mar 22 12:42:33 2014 alex-odet
 */
 
 #include "struct.h"
@@ -42,19 +42,25 @@ t_label		*check_label(char *tmp, t_label *list)
   while (tmp[i])
     {
       if (tmp[i] == ':' && tmp[i - 1] != '%' && tmp[i - 1] != ',' && tmp[i - 1] != ' '
-	  && tmp[i - 1] != '\t'
-	  && (tmp[i - 1] < '1' || tmp[i - 1] > '9'))
-	{
-	  while (j <= i)
-	    {
-	      save[j] = tmp[j];
-	      j++;
-	    }
-	  save[j] = 0;
-	  list = my_put_in_list(list, save);
-	}
+	  && tmp[i - 1] != '\t' && (tmp[i - 2] != 'r')
+	  && (tmp[i + 1] == '\t' || tmp[i + 1] == ' '))
+	list = copy_label(save, tmp, i, list);
       i++;
     }
+  return (list);
+}
+
+t_label	*copy_label(char *save, char *tmp, int len, t_label *list)
+{
+  int	j;
+
+  j = 0;
+  while (j <= len)
+    {
+      save[j] = tmp[j];
+      j++;
+    }
   save[j] = 0;
+  list = my_put_in_list(list, save);
   return (list);
 }

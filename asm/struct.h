@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sat Mar 22 03:53:43 2014 alex-odet
+** Last update Sat Mar 22 12:43:51 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -71,9 +71,11 @@ void		my_show_list(t_label *list);
 t_label		*fill_list_of_label(char *str);
 t_label		*my_put_in_list(t_label *list, char *name);
 t_label		*check_label(char *tmp, t_label *list);
+t_label		*copy_label(char *save, char *tmp, int len, t_label *list);
 void		my_show_file_list(t_file *list);
 t_file		*create_node(char *name);
 t_file		*my_put_in_file_list(t_file *list, char *name);
 void		send_file_to_parser(t_file *list);
+void		check_cmd_exist(char *cmd);
 
 #endif
