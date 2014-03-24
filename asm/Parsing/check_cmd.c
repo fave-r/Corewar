@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Mon Mar 24 17:25:08 2014 romaric
+** Last update Mon Mar 24 17:35:54 2014 romaric
 */
 
 #include "struct.h"
@@ -49,19 +49,23 @@ void	cmd_exist(char *str)
       i++;
     }
   if (cmd[j - 1] == ':')
-    {
-      my_memset(cmd, my_strlen(cmd));
-      j = 0;
-      i++;
-      while (str[i] != '\t' && str[i] != ' ' && str[i])
-        {
-	  cmd[j] = str[i];
-	  j++;
-	  i++;
-	}
-    }
+    cmd = cmd_next_label(cmd, j, i, str);
   cmd[j] = 0;
   check_cmd_exist(cmd);
+}
+
+char	*cmd_next_label(char *cmd, int j, int i, char *str)
+{
+  my_memset(cmd, my_strlen(cmd));
+  j = 0;
+  i++;
+  while (str[i] != '\t' && str[i] != ' ' && str[i])
+    {
+      cmd[j] = str[i];
+      j++;
+      i++;
+    }
+  return (cmd);
 }
 
 void	check_cmd_exist(char *cmd)
