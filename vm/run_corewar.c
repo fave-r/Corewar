@@ -5,17 +5,11 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-<<<<<<< HEAD
-** Last update Fri Mar 21 16:30:43 2014 thibaud
-=======
-** Last update Fri Mar 21 13:18:48 2014 thibaud
->>>>>>> c76ba0efc8c2635943b14c5b5881498f2ef913e5
+** Last update Mon Mar 24 14:12:08 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 #include "my.h"
-#include <stdio.h>
-#include <strings.h>
 
 t_struct	fct_tab[] =
   {
@@ -67,126 +61,12 @@ int	get_wait(t_champ *cur_champ, t_cor *map)
   return (cur_champ->wait);
 }
 
-int	cycle_run(t_champ *champs, t_cor *map)
-{
-  t_champ	*cur_champ;
-
-  cur_champ = champs;
-  while (cur_champ != NULL)
-    {
-      if (cur_champ->wait < 0)
-	get_wait(cur_champ, map);
-      if (cur_champ->wait == 0)
-	{
-	  //printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
-	  champ_play(cur_champ, map);
-	get_wait(cur_champ, map);
-	}
-      cur_champ->wait -= 1;
-      cur_champ = cur_champ->next;
-    }
-  //my_putstr("X", 1);
-  map->cycle++;
-  return (0);
-}
-
-t_champ	*del_chmp(t_champ *champs, int champ_del)
-{
-  t_champ	*tmp;
-
-  if (champs == NULL)
-    return (NULL);
-  if (champs->champ_nb == champ_del)
-    {
-      tmp = champs->next;
-      free(champs);
-      tmp = del_chmp(tmp, champ_del);
-      return (tmp);
-    }
-  else
-    {
-      champs->next = del_chmp(champs->next, champ_del);
-      return (champs);
-    }
-  return (NULL);
-}
-
-int	kill_champ(t_champ *champs, t_cor *map)
-{
-  int	champ_nb;
-  int	nb_alive;
-
-  nb_alive = 0;
-  champ_nb = 1;
-  while (champ_nb <= 4)
-    {
-      if (map->live[champ_nb - 1] == 0)
-	{
-	  del_chmp(champs, map->champs_nb[champ_nb - 1]);
-	  //map->nb_chmps_alive--;
-	}
-      else
-	nb_alive++;
-      champ_nb++;
-    }
-  if (nb_alive == 1)
-    {
-      printf("Il n'en reste qu'un\n");
-      end_game(champs, map);
-    }
-  return (0);
-}
-
-int	someone_is_dead(t_champ *champs, t_cor *map)
-{
-  int	cpt;
-  int	i;
-
-  (void)champs;
-  i = 0;
-  cpt = 0;
-  while (i < 4)
-    {
-      if (map->live[i] != 0)
-	cpt++;
-      i++;
-    }
-  if (map->nb_chmps_alive != cpt)
-    return (1);
-  return (0);
-}
-
-int	end_game(t_champ *champ, t_cor *map)
-{
-  int	gg;
-
-  (void)champ;
-  gg = 0;
-  //printf("\n%d%d%d%d\n\n", map->live[0], map->live[1], map->live[2], map->live[3]);
-  while (map->live[gg] != 2)
-    gg++;
-  my_printf(1, "Le joueur numéro %d a gagné!\n", map->champs_nb[gg]);
-  exit(0);
-}
-
-void    my_bzero(void *b, int len)
-{
-  int   *tmp;
-
-  tmp = (int *)b;
-  while (len--)
-    {
-      *tmp++ = 0;
-    }
-}
-
 int	run_corewar(t_champ *champs, t_cor *map)
 {
   my_putstr("C'est PARTI !!\n", 1);
   map->cycle_to_die = CYCLE_TO_DIE;
   printf("Num champ = %d %d %d %d\n", map->champs_nb[0], map->champs_nb[1], map->champs_nb[2], map->champs_nb[3]);
   printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
-  //my_printf(1, "%d\n", map->mem[champs->pc]);
   while ((map->cycle_to_die) > 100)
     {
       while (map->cycle <= map->cycle_to_die)
@@ -199,7 +79,7 @@ int	run_corewar(t_champ *champs, t_cor *map)
 		  printf("Personne n'est MORT bordel !!\n");
 		  map->cycle_to_die -= CYCLE_DELTA;
 		}
-	      my_bzero(map->live, 4);
+	      my_mem_set(map->live, 4);
 	      map->live_done = 0;
 	    }
 	}      

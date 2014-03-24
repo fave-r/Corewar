@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Fri Mar 21 18:48:13 2014 Thibaut Lopez
+** Last update Mon Mar 24 14:12:41 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -24,6 +24,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <strings.h>
 #include "op.h"
 
 typedef struct		s_champ
@@ -84,7 +85,6 @@ int	get_wait(t_champ *, t_cor *);
 int	champ_play(t_champ *, t_cor *);
 int	find_in_tab(char);
 int	end_game(t_champ *, t_cor *);
-void	my_bzero(void *, int);
 
 int	my_live(t_champ *champ, t_cor *cor);
 int	my_ld(t_champ *champ, t_cor *cor);
@@ -119,5 +119,13 @@ int	aff_memdr(unsigned char *mem);
 int	print_encode(int **tab);
 int	check_reg(int);
 void	print_on_mem(t_cor *cor, int to_add, int pc);
+int	cycle_run(t_champ *champs, t_cor *map);
+int	someone_is_dead(t_champ *champs, t_cor *map);
+int	end_game(t_champ *champ, t_cor *map);
+
+void	rm_empty_champ(t_champ **tmp, t_champ **first, t_cor *cor);
+void	epur_champ(t_cor *cor, t_champ **first);
+t_champ	*del_chmp(t_champ *champs, int champ_del);
+int	kill_champ(t_champ *champs, t_cor *map);
 
 #endif
