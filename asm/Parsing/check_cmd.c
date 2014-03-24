@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Mon Mar 24 17:35:54 2014 romaric
+** Last update Mon Mar 24 19:05:04 2014 romaric
 */
 
 #include "struct.h"
@@ -14,9 +14,7 @@ void	check_cmd(char *str)
 {
   int	fd;
   char	*tmp;
-  int	i;
 
-  i = 0;
   fd = xopen(str, O_RDONLY);
   while ((tmp = get_next_line(fd)))
     {
@@ -32,12 +30,10 @@ void	cmd_exist(char *str)
   int	j;
   int	i;
   char	*cmd;
-  char	*big_buffer;
 
   i = 1;
   j = 1;
   cmd = xmalloc(sizeof(char) * 6);
-  big_buffer = xmalloc(sizeof(char) * BUFF_SIZE);
   if (str[i - 1] != '\t')
     cmd[0] = str[i - 1];
   else
@@ -49,20 +45,20 @@ void	cmd_exist(char *str)
       i++;
     }
   if (cmd[j - 1] == ':')
-    cmd = cmd_next_label(cmd, j, i, str);
+    cmd = cmd_next_label(cmd, &j, i, str);
   cmd[j] = 0;
   check_cmd_exist(cmd);
 }
 
-char	*cmd_next_label(char *cmd, int j, int i, char *str)
+char	*cmd_next_label(char *cmd, int *j, int i, char *str)
 {
   my_memset(cmd, my_strlen(cmd));
-  j = 0;
+  *j = 0;
   i++;
   while (str[i] != '\t' && str[i] != ' ' && str[i])
     {
-      cmd[j] = str[i];
-      j++;
+      cmd[*j] = str[i];
+      *j = *j + 1;
       i++;
     }
   return (cmd);

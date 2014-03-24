@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Mon Mar 24 12:33:46 2014 romaric
+** Last update Mon Mar 24 19:03:22 2014 romaric
 */
 
 #include "struct.h"
@@ -27,7 +27,7 @@ void	parser(char *str)
 
 int	check(char *str)
 {
-  t_label	*list;
+  __attribute__((unused))t_label	*list;
   header_t	*ptr;
   char		*name;
   char		*comment;

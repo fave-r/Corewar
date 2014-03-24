@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Mon Mar 24 17:36:15 2014 romaric
+** Last update Mon Mar 24 18:54:05 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -79,6 +79,6 @@ t_file		*my_put_in_file_list(t_file *list, char *name);
 void		send_file_to_parser(t_file *list);
 void		check_cmd_exist(char *cmd);
 char		*my_get_strdup(char *src);
-char		*cmd_next_label(char *cmd, int j, int i, char *str);
+char		*cmd_next_label(char *cmd, int *j, int i, char *str);
 
 #endif
