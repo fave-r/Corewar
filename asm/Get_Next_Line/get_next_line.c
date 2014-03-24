@@ -29,7 +29,7 @@ char		*get_next_line(const int fd)
   t_get	l;
 
   l.c = 0;
-  l.s = malloc(1 * sizeof(char));
+  l.s = xmalloc(1 * sizeof(char));
   if (i == a)
     {
       a = read(fd, buff, BUFF_SIZE);

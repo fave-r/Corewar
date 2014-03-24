@@ -5,16 +5,16 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Sun Feb 23 21:19:02 2014 Thibaut Lopez
-** Last update Mon Mar 24 12:12:24 2014 romaric
+** Last update Mon Mar 24 17:23:14 2014 romaric
 */
 
 /*
-Mettre les infos du fichier dans ce sens si
-possible avec 2 retour à la ligne entre chaque type d'info:
-#define
-#include system
-typedef struct
-prototype de fonction
+**Mettre les infos du fichier dans ce sens si
+**possible avec 2 retour à la ligne entre chaque type d'info:
+**#define
+**#include system
+**typedef struct
+**prototype de fonction
 */
 
 #ifndef MY_H
@@ -67,5 +67,6 @@ int	my_putlong_base(unsigned long nb, char *base, int *i, int fd);
 int	my_strflen(const char *str);
 int	my_putfstr(const char *str, int fd);
 int	my_printf(int fd, const char *format, ...);
+void    my_memset(char *str, size_t n);
 
 #endif

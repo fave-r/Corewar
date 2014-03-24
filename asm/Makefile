@@ -1,18 +1,18 @@
 ##
-## Makefile for Corewar in /home/odet_a/work/Corewar/asm
+## Makefile for corewar in /home/blackbird/work/Corewar/asm
 ##
-## Made by
-## Login   <odet_a@epitech.net>
+## Made by romaric
+## Login   <fave_r@epitech.net>
 ##
-## Started on  Thu Feb 27 18:18:06 2014
-## Last update Fri Mar 21 14:47:56 2014 alex-odet
+## Started on  Mon Mar 24 12:19:30 2014 romaric
+## Last update Mon Mar 24 12:19:42 2014 romaric
 ##
 
 CC=		clang
 
 RM=		rm -f
 
-CFLAGS=		-Wall -Wextra -ggdb3 -g3 -g -I../ -I../my -I.
+CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I../ -I../my -I.
 
 NAME=		asm
 

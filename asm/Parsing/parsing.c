@@ -1,11 +1,11 @@
 /*
-** parsing.c for parsing in /home/odet_a/rendu/CPE_2014_corewar/asm
+** parsing.c for corewar in /home/blackbird/work/Corewar/asm/Parsing
 **
-** Made by
-** Login   <odet_a@epitech.net>
+** Made by romaric
+** Login   <fave_r@epitech.net>
 **
-** Started on  Mon Feb 17 18:54:21 2014
-** Last update Mon Mar 24 09:29:14 2014 alex-odet
+** Started on  Mon Mar 24 12:33:43 2014 romaric
+** Last update Mon Mar 24 12:33:46 2014 romaric
 */
 
 #include "struct.h"

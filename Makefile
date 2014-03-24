@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Fri Mar 14 09:58:34 2014 Thibaut Lopez
+## Last update Mon Mar 24 17:22:09 2014 romaric
 ##
 
 LIB_S=		my/basic.c \
@@ -31,7 +31,9 @@ LIB_S=		my/basic.c \
 		my/my_strflen.c \
 		my/my_strlen.c \
 		my/my_strncmp.c \
-		my/my_xtest.c
+		my/my_xtest.c \
+		my/my_memset.c
+
 ## Mettre ici tous les fichier C de la library avec leur chemin ("my/")
 
 ASM_N=		asm/
