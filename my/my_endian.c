@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Thu Feb 27 09:31:58 2014 Thibaut Lopez
-** Last update Mon Mar 24 11:58:29 2014 romaric
+** Last update Mon Mar 24 13:52:26 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -31,7 +31,6 @@ int	convert_endian(int *nb, int endian)
 	| ((*nb >> 8) & 0x00FF00FF00FF00FFULL);
       *nb = ((*nb << 16) & 0xFFFF0000FFFF0000ULL)
 	| ((*nb >> 16) & 0x0000FFFF0000FFFFULL);
-      //      *nb = (*nb << 32) | ((*nb >> 32) & 0xFFFFFFFFULL);
     }
   return (*nb);
 }
