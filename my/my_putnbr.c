@@ -1,4 +1,3 @@
-
 /*
 ** my_putnbr.c for Corewar in /home/blackbird/work/Corewar/my
 **
@@ -6,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Feb 26 16:46:01 2014 romaric
-** Last update Wed Feb 26 20:56:42 2014 Thibaut Lopez
+** Last update Mon Mar 24 12:13:07 2014 romaric
 */
 
 #include "my.h"

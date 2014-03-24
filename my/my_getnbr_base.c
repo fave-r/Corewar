@@ -1,11 +1,11 @@
 /*
 ** convert_base.c for convert_base7 in /home/odet_a/rendu/Piscine-C-Jour_08/ex_02
-** 
+**
 ** Made by alexandre.odet
 ** Login   <odet_a@epitech.net>
-** 
+**
 ** Started on  Wed Oct  9 09:38:10 2013 alexandre.odet
-** Last update Wed Oct  9 15:42:53 2013 alexandre.odet
+** Last update Mon Mar 24 12:11:27 2014 romaric
 */
 
 //#include "my.h"
@@ -14,7 +14,7 @@ int	my_strlen(char *str)
 {
   int	i;
   i = 0;
-  while(str[i])
+  while (str[i])
     i++;
   return (i);
 }

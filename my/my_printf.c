@@ -1,16 +1,16 @@
 /*
 ** my_printf.c for my_printf in /home/thibaut.lopez/PSU_2018_my_printf
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Tue Nov  5 18:31:47 2013 Thibaut Lopez
-** Last update Fri Mar 14 09:46:37 2014 Thibaut Lopez
+** Last update Mon Mar 24 12:13:38 2014 romaric
 */
 
 #include "my.h"
 
-int	(*ptr_tab[13])() = 
+int	(*ptr_tab[13])() =
 {&my_printbin,
  &my_printchar,
  &my_printnbr,
@@ -53,7 +53,7 @@ int	my_printf(int fd, const char *format, ...)
   int		ret;
 
   va_start(ap, format);
-  count = xmalloc(2 * sizeof(int));  
+  count = xmalloc(2 * sizeof(int));
   count[0] = 0;
   count[1] = 0;
   while (format[count[0]])

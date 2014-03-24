@@ -5,11 +5,12 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Sun Feb 23 21:19:02 2014 Thibaut Lopez
-** Last update Mon Mar 24 11:55:57 2014 romaric
+** Last update Mon Mar 24 12:12:24 2014 romaric
 */
 
 /*
-Mettre les infos du fichier dans ce sens si possible avec 2 retour à la ligne entre chaque type d'info:
+Mettre les infos du fichier dans ce sens si
+possible avec 2 retour à la ligne entre chaque type d'info:
 #define
 #include system
 typedef struct
