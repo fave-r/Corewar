@@ -1,11 +1,11 @@
 /*
-** new_get_next_line.c for get_next_line in /home/blackbird/work/get_next_line
+** get_next_line.c for corewar in /home/blackbird/work/Corewar/asm/Get_Next_Line
 **
 ** Made by romaric
 ** Login   <fave_r@epitech.net>
 **
-** Started on  Sat Nov 23 13:24:46 2013 romaric
-** Last update Mon Mar 24 11:45:38 2014 romaric
+** Started on  Mon Mar 24 11:49:17 2014 romaric
+** Last update Mon Mar 24 11:49:21 2014 romaric
 */
 
 #include "get_next_line.h"

@@ -1,11 +1,11 @@
 /*
-** get_next_line.h for get_next_line in /home/blackbird/work/get_next_line
+** get_next_line.h for corewar in /home/blackbird/work/Corewar/asm/Get_Next_Line
 **
 ** Made by romaric
 ** Login   <fave_r@epitech.net>
 **
-** Started on  Tue Nov 19 19:22:47 2013 romaric
-** Last update Sun Nov 24 16:56:08 2013 romaric
+** Started on  Mon Mar 24 11:49:34 2014 romaric
+** Last update Mon Mar 24 11:49:37 2014 romaric
 */
 
 #include <unistd.h>
