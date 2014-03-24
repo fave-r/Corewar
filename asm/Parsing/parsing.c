@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Mon Feb 17 18:54:21 2014
-** Last update Sat Mar 22 05:05:37 2014 alex-odet
+** Last update Mon Mar 24 09:29:14 2014 alex-odet
 */
 
 #include "struct.h"
@@ -74,15 +74,13 @@ char	*check_name(char *str)
 int	count_quotes(char *str, int i)
 {
   int	x;
-  int	j;
 
   x = 0;
-  j = i;
-  while (str[j] != 0)
+  while (str[i] != 0)
     {
-      if (str[j] == '"')
+      if (str[i] == '"')
 	x++;
-      j++;
+      i++;
     }
   return (x);
 }
