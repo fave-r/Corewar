@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sat Mar 22 12:43:51 2014 alex-odet
+** Last update Mon Mar 24 12:07:11 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -24,11 +24,12 @@
 #define COR_EXT ".cor"
 #define COR_SEP "%:,"
 
-typedef struct	s_gnl
+typedef struct	s_get
 {
-  char		*save;
+  char		*s;
   int		c;
-}		t_gnl;
+  int		l;
+}		t_get;
 
 typedef struct s_label
 {
@@ -77,5 +78,6 @@ t_file		*create_node(char *name);
 t_file		*my_put_in_file_list(t_file *list, char *name);
 void		send_file_to_parser(t_file *list);
 void		check_cmd_exist(char *cmd);
+char		*my_get_strdup(char *src);
 
 #endif

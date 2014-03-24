@@ -5,35 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 11:49:17 2014 romaric
-** Last update Mon Mar 24 11:49:21 2014 romaric
+** Last update Mon Mar 24 12:06:39 2014 alex-odet
 */
 
-#include "get_next_line.h"
+#include "struct.h"
 
-char		*my_strcpy(char *dest, char *src)
-{
-  int		i;
-
-  i = 0;
-  while (src[i] != '\0')
-    {
-      dest[i] = src[i];
-      i = i + 1;
-    }
-  return (dest);
-}
-
-int		my_strlen(char *str)
-{
-  int		x;
-
-  x = 0;
-  while  (str[x] != '\0')
-      x++;
-  return (x);
-}
-
-char		*my_strdup(char *src)
+char		*my_get_strdup(char *src)
 {
   char		*dest;
 
@@ -64,7 +41,7 @@ char		*get_next_line(const int fd)
     {
       if (buff[i] == '\0')
 	return (l.s);
-      l.s = my_strdup(l.s);
+      l.s = my_get_strdup(l.s);
       l.s[l.c] = buff[i];
       i++;
       l.c++;
