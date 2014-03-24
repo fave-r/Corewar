@@ -1,11 +1,11 @@
 /*
-** my_getnbr.c for Corewar in /home/blackbird/work/Corewar/my
+** my_getnbr.c for corewar in /home/blackbird/work/Corewar/my
 **
 ** Made by romaric
 ** Login   <fave_r@epitech.net>
 **
-** Started on  Wed Feb 26 16:46:37 2014 romaric
-** Last update Wed Mar 19 09:26:05 2014 Thibaut Lopez
+** Started on  Mon Mar 24 12:00:36 2014 romaric
+** Last update Mon Mar 24 12:00:39 2014 romaric
 */
 
 #include "my.h"

@@ -1,11 +1,11 @@
 /*
 ** my.h for my in /home/thibaut.lopez/Corewar
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Sun Feb 23 21:19:02 2014 Thibaut Lopez
-** Last update Fri Mar 14 10:00:05 2014 Thibaut Lopez
+** Last update Mon Mar 24 11:55:57 2014 romaric
 */
 
 /*
@@ -18,9 +18,6 @@ prototype de fonction
 
 #ifndef MY_H
 #define MY_H
-#define ER_MALLOC	"Malloc Failed\n"
-#define ER_OPEN		" : Open Failed\n"
-#define ER_READ		"Read Failed\n"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -28,6 +25,10 @@ prototype de fonction
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
+
+#define ER_MALLOC	"Malloc Failed\n"
+#define ER_OPEN		" : Open Failed\n"
+#define ER_READ		"Read Failed\n"
 
 int	convert_endian(int *nb, int endian);
 int	my_endian();

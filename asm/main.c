@@ -1,11 +1,11 @@
 /*
-** main.c for main in /home/odet_a/Corewar
+** main.c for corewar in /home/blackbird/work/Corewar/asm
 **
-** Made by
-** Login   <odet_a@epitech.net>
+** Made by romaric
+** Login   <fave_r@epitech.net>
 **
-** Started on  Mon Feb 17 04:24:43 2014
-** Last update Sat Mar 22 04:44:31 2014 alex-odet
+** Started on  Mon Mar 24 11:53:25 2014 romaric
+** Last update Mon Mar 24 11:53:32 2014 romaric
 */
 
 #include "struct.h"

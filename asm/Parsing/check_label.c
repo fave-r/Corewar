@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Mon Mar 24 11:32:44 2014 romaric
+** Last update Mon Mar 24 11:52:02 2014 romaric
 */
 
 #include "struct.h"
@@ -41,7 +41,8 @@ t_label		*check_label(char *tmp, t_label *list)
   save = xmalloc(sizeof(char) * my_strlen(tmp));
   while (tmp[i])
     {
-      if (tmp[i] == ':' && tmp[i - 1] != '%' && tmp[i - 1] != ',' && tmp[i - 1] != ' '
+      if (tmp[i] == ':' && tmp[i - 1] != '%'
+	  && tmp[i - 1] != ',' && tmp[i - 1] != ' '
 	  && tmp[i - 1] != '\t' && tmp[i - 3] != ','
 	  && (tmp[i + 1] == '\t' || tmp[i + 1] == ' '))
 	list = copy_label(save, tmp, i, list);
