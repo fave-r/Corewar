@@ -5,21 +5,23 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Fri Mar 21 09:05:55 2014 thibaud
+## Last update Mon Mar 24 14:12:59 2014 Thibaut Lopez
 ##
 
 VM_S=		champ_fun.c \
+		cycle_run.c \
 		get_encode.c \
-		ld_fun.c \
 		list_fun.c \
-		no_encode.c \
 		main.c \
-		operation.c \
-		other_fun.c \
 		run_corewar.c \
 		spec_fun.c \
 		get_arg.c \
 		tmp.c \
+		rm_fun.c \
+		Function/ld_fun.c \
+		Function/no_encode.c \
+		Function/operation.c \
+		Function/other_fun.c \
 		Graphic/init_graphic.c \
 		Graphic/free_graphic.c \
 		Graphic/refresh_graphic.c \

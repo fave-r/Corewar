@@ -5,51 +5,11 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Fri Mar 21 12:58:49 2014 thibaud
+** Last update Mon Mar 24 14:08:46 2014 Thibaut Lopez
 */
 
 #include "my.h"
 #include "vm.h"
-#include <stdio.h>
-
-void	rm_empty_champ(t_champ **tmp, t_champ **first, t_cor *cor)
-{
-  t_champ	*prev;
-  t_champ	*to_free;
-
-  if (*first == *tmp)
-    *first = (*first)->next;
-  prev = (*tmp)->prev;
-  to_free = *tmp;
-  *tmp = (*tmp)->next;
-  prev->next = *tmp;
-  (*tmp)->prev = prev;
-  free(to_free);
-  cor->nb_chmps_alive--;
-}
-
-void	epur_champ(t_cor *cor, t_champ **first)
-{
-  int		i;
-  t_champ	*tmp;
-
-  i = 0;
-  tmp = cor->champ;
-  while (i < 4)
-    {
-      if (tmp->path == NULL && tmp != tmp->next)
-	rm_empty_champ(&tmp, first, cor);
-      else if (tmp->path == NULL)
-	{
-	  free(tmp);
-	  my_putstr(ER_VOID, 2);
-	  exit(1);
-	}
-      else
-	tmp = tmp->next;
-      i++;
-    }
-}
 
 int     get_dump(char *nbr)
 {
@@ -135,16 +95,14 @@ int	main(int argc, char **argv)
   cor.endian = my_endian();
   fill_champ(argv, &cor);
   cor.cycle = 0;
-  my_bzero(cor.champs_nb, 4);  
+  my_mem_set(cor.champs_nb, 4);
   init_adress(cor.champ);
   cor.mem = xmalloc((MEM_SIZE + 1) * sizeof(char));
   cor.mem[MEM_SIZE] = 0;
   fill_mem(&(cor.mem), cor.champ);
   cor.nb_chmps_alive = 4;
-  my_bzero(cor.live, 4);
+  my_mem_set(cor.live, 4);
   init_champs_nb(&cor);
-  init_graphic(&cor);// c'est pour l'aperçu graphique, ne le lance pas maintenant, j'ai pas fini
-  //sleep(5);
   run_corewar(cor.champ, &cor);
   free_graphic();
   return (0);

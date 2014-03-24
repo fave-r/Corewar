@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Sat Mar 22 18:04:51 2014 thibaud
+** Last update Mon Mar 24 14:41:38 2014 Thibaut Lopez
 ** Last update Fri Mar 21 09:23:42 2014 Thibaut Lopez
 */
 
@@ -48,9 +48,7 @@ int	my_live(t_champ *champ, t_cor *cor)
     my_putstr("Live ECHEC\n", 1);
   my_putstr(", avance dans la mémoire de 5\n", 1);
   champ->pc += 5;
-
   my_printf(1, "Num live = %d %d %d %d\n", cor->live[0], cor->live[1], cor->live[2], cor->live[3]);
-
   return (5);
 }
 
@@ -72,77 +70,59 @@ int	my_zjmp(t_champ *champ, t_cor *cor)
 
 t_champ	*champ_dup(t_champ *father, int new_pos)
 {
+  int	i;
   t_champ	*son;
 
-  if ((son = malloc(sizeof(t_champ))) == NULL)
-    exit(-1);
-  son->head = father->head;
+  son = xmalloc(sizeof(t_champ));
   son->path = father->path;
-  son->fd = father->fd;
+  son->fd = open(son->path, O_RDONLY);
+  son->head = xmalloc(sizeof(header_t));
+  read(son->fd, son->head, sizeof(header_t));
+  son->head->magic = father->head->magic;
+  son->head->prog_size = father->head->prog_size;
   son->champ_nb = father->champ_nb;
   son->pc = father->pc + new_pos;
-
-  //son->reg = reg_dup(father->reg);
-  int	i;
   i = 0;
   while (i < REG_NUMBER)
     {
       son->reg[i] = father->reg[i];
       i++;
     }
-
   son->carry = father->carry;
   son->wait = -1;
   son->color = father->color;
-  son->next = NULL;
-  son->prev = NULL;
   return (son);
 }
 
-int	add_champ(t_champ *champ, int new_pos)
+t_champ	*add_champ(t_champ *champ, int new_pos)
 {
   t_champ	*son;
 
-  if ((son = malloc(sizeof(t_champ))) == NULL)
-    exit(-1);
   son = champ_dup(champ, new_pos);
   son->prev = champ;
   son->next = champ->next;
   champ->next = son;
   if (son->next != NULL)
     son->next->prev = son;
-  return (0);
+  return (son);
 }
 
 int	my_fork(t_champ *champ, t_cor *cor)
 {
-  int	fork_dest;
+  int		fork_dest;
+  int		len;
+  t_champ	*son;
 
   fork_dest = get_nbr_action(cor->mem, champ->pc + 1, 2);
-
   my_printf(1, "FORK du champion %s, vers la case mémoire : %d + PC\n", champ->head->prog_name, fork_dest);
-  add_champ(champ, fork_dest);
-  my_printf(1, "Le champion %s(%d) a fait un fils qui porte son nom : %s(%d)\n",champ->head->prog_name, champ->champ_nb, champ->next->head->prog_name, champ->next->champ_nb);
-
-
-  int	len;
-  len = read(champ->next->fd, cor->mem + champ->next->pc, champ->next->head->prog_size);
-  printf("J'ai lu %d byte avec ce putain de read\n", len);
-  if (len < champ->next->head->prog_size)
-    {
-    len = read(champ->next->fd, cor->mem + champ->next->pc + len, champ->next->head->prog_size);
-  printf("J'ai lu %d byte au deuxième essaie.\n", len);
-    }
-  close(champ->next->fd);
-  (void)len;
-//Ca me casse les couilles j'arrive pas a utiliser cette putain de fonction read correctement. FUCK les fonctions système !!
-
-
+  son = add_champ(champ, fork_dest % IDX_MOD);
+  my_printf(1, "Le champion %s(%d) a fait un fils qui porte son nom : %s(%d)\n",champ->head->prog_name, champ->champ_nb, son->head->prog_name, son->champ_nb);
+  len = read(son->fd, cor->mem + son->pc, MEM_SIZE - son->pc);
+  if (len < son->head->prog_size)
+    read(son->fd, cor->mem, son->head->prog_size);
+  close(son->fd);
   aff_memdr(cor->mem);
   my_putstr("\n\n\n", 1);
-  
-  exit(0);
-
   champ->pc += 3;
   my_putstr(", avance dans la mémoire de 2\n", 1);
   return (3);
@@ -150,13 +130,21 @@ int	my_fork(t_champ *champ, t_cor *cor)
 
 int	my_lfork(t_champ *champ, t_cor *cor)
 {
-  int	frk;
+  int		fork_dest;
+  int		len;
+  t_champ	*son;
 
-  my_putstr("lfork du champion : ", 1);
-  my_putstr(champ->head->prog_name, 1);
-  my_putstr(", vers le numéro : ", 1);
-  frk = get_nbr_action(cor->mem, champ->pc + 1, 2);
-  my_putnbr(frk, 1);
+  fork_dest = get_nbr_action(cor->mem, champ->pc + 1, 2);
+  my_printf(1, "LFORK du champion %s, vers la case mémoire : %d + PC\n", champ->head->prog_name, fork_dest);
+  son = add_champ(champ, fork_dest);
+  my_printf(1, "Le champion %s(%d) a fait un fils qui porte son nom : %s(%d)\n",champ->head->prog_name, champ->champ_nb, son->head->prog_name, son->champ_nb);
+  len = read(son->fd, cor->mem + son->pc, MEM_SIZE - son->pc);
+  if (len < son->head->prog_size)
+    read(son->fd, cor->mem, son->head->prog_size);
+  close(son->fd);
+  aff_memdr(cor->mem);
+  my_putstr("\n\n\n", 1);
+  champ->pc += 3;
   my_putstr(", avance dans la mémoire de 2\n", 1);
   return (3);
 }

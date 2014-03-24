@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Mar  2 12:45:35 2014 Thibaut Lopez
-** Last update Sat Mar 22 17:48:34 2014 thibaud
+** Last update Mon Mar 24 14:30:09 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -102,20 +102,16 @@ void	fill_mem(unsigned char **mem, t_champ *champ)
   len = read(tmp->fd, *mem + tmp->pc, MEM_SIZE - tmp->pc);
   if (len < tmp->head->prog_size)
     read(tmp->fd, *mem, tmp->head->prog_size);
-  tmp->reg[0] = tmp->champ_nb;
   close(tmp->fd);
-  printf("path = %s, champ_name = %s, champ_nb = %d\n", tmp->path, tmp->head->prog_name, tmp->champ_nb);
+  tmp->reg[0] = tmp->champ_nb;
   tmp = tmp->next;
   while (tmp != champ)
     {
       len = read(tmp->fd, *mem + tmp->pc, MEM_SIZE - tmp->pc);
-      //c'est pas plutot "tmp->head->prog_size" le dernier paramètre pour read?
       if (len < tmp->head->prog_size)
 	read(tmp->fd, *mem, tmp->head->prog_size);
-      // c'est pas plutot "*mem + tmp->pc + len" juste au dessus à la place de "*mem"?
-      tmp->reg[0] = tmp->champ_nb;
       close(tmp->fd);
-      printf("path = %s, champ_name = %s, champ_nb = %d\n", tmp->path, tmp->head->prog_name, tmp->champ_nb);
+      tmp->reg[0] = tmp->champ_nb;
       tmp = tmp->next;
     }
   champ->prev->next = NULL;
