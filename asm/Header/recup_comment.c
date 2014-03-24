@@ -1,11 +1,11 @@
 /*
 ** recup_comment.c for recup_comment in /home/alex-odet/work/Corewar/asm
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Mon Mar 10 16:12:02 2014 alex-odet
-** Last update Sat Mar 22 04:51:38 2014 alex-odet
+** Last update Mon Mar 24 11:37:19 2014 romaric
 */
 
 #include "struct.h"

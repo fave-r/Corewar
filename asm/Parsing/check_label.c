@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Mon Mar 24 09:42:34 2014 alex-odet
+** Last update Mon Mar 24 11:32:44 2014 romaric
 */
 
 #include "struct.h"
@@ -23,7 +23,7 @@ t_label		*fill_list_of_label(char *str)
       if (tmp[my_strlen(tmp) - 1] == ':' && tmp[my_strlen(tmp) - 2] != '%')
 	list = my_put_in_list(list, tmp);
       else
-	list = check_label(tmp, list); 
+	list = check_label(tmp, list);
     }
   my_show_list(list);
   close (fd);
@@ -32,9 +32,9 @@ t_label		*fill_list_of_label(char *str)
 
 t_label		*check_label(char *tmp, t_label *list)
 {
-  int	i;
-  int	j;
-  char	*save;
+  int		i;
+  int		j;
+  char		*save;
 
   i = 0;
   j = 0;
@@ -50,9 +50,9 @@ t_label		*check_label(char *tmp, t_label *list)
   return (list);
 }
 
-t_label	*copy_label(char *save, char *tmp, int len, t_label *list)
+t_label		*copy_label(char *save, char *tmp, int len, t_label *list)
 {
-  int	j;
+  int		j;
 
   j = 0;
   while (j <= len)

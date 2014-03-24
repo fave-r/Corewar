@@ -1,20 +1,19 @@
 /*
-<<<<<<< HEAD
 ** my_str_to_wordtab.c for my_str_to_wordtab in /home/alex-odet/work/Corewar/asm
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Thu Mar 20 17:04:31 2014 alex-odet
-** Last update Thu Mar 20 23:57:45 2014 alex-odet
+** Last update Mon Mar 24 11:38:32 2014 romaric
 */
 
 #include "struct.h"
 
 int	countword(char *str, char sep)
 {
-  int i;
-  int word;
+  int	i;
+  int	word;
 
   i = 0;
   word = 0;
@@ -30,7 +29,7 @@ int	countword(char *str, char sep)
   return (word);
 }
 
-char	**my_str_to_wordtab(char *str, char sep)
+char		**my_str_to_wordtab(char *str, char sep)
 {
   t_word	w;
 

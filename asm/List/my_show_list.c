@@ -1,11 +1,11 @@
 /*
 ** my_show_list.c for my_show_list in /home/alex-odet/work/Corewar/asm/List
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Fri Mar 21 00:10:32 2014 alex-odet
-** Last update Sat Mar 22 03:49:22 2014 alex-odet
+** Last update Mon Mar 24 11:35:25 2014 romaric
 */
 
 #include "struct.h"

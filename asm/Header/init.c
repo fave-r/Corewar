@@ -1,11 +1,11 @@
 /*
 ** init.c for init in /home/alex-odet/work/Corewar/asm
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Mon Mar 10 15:58:46 2014 alex-odet
-** Last update Sat Mar 22 04:59:47 2014 alex-odet
+** Last update Mon Mar 24 11:36:12 2014 romaric
 */
 
 #include "struct.h"

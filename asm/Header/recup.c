@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Feb 25 18:56:54 2014 romaric
-** Last update Thu Mar 20 20:31:22 2014 romaric
+** Last update Mon Mar 24 11:36:52 2014 romaric
 */
 
 #include "struct.h"
@@ -28,5 +28,6 @@ char	*recup_name(char *str)
       save[j] = str[i];
       j++;
     }
+  save[j] = '\0';
   return (save);
 }
