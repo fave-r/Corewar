@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Fri Mar 21 18:55:55 2014 Thibaut Lopez
+** Last update Mon Mar 24 17:18:40 2014 thibaud
 */
 
 #include "vm.h"
@@ -72,7 +72,7 @@ int	my_and(t_champ *champ, t_cor *cor)
     {
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = arg1 & arg2;
-      my_printf(1, "%d = %d & %d\n", champ->reg[tab[2][2] - 1], arg1, arg2);
+      //my_printf(1, "%d = %d & %d\n", champ->reg[tab[2][2] - 1], arg1, arg2);
       my_printf(1, "AND du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->champ_nb, arg1, arg2, tab[2][2], and);
     }
   else

@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Mon Mar 24 14:15:54 2014 Thibaut Lopez
+** Last update Mon Mar 24 17:18:57 2014 thibaud
 */
 
 #include "vm.h"
@@ -42,7 +42,7 @@ int	my_sti(t_champ *champ, t_cor *cor)
     {
       print_on_mem(cor, champ->reg[tab[0][2] - 1],
 		   champ->pc + tab[1][2] + tab[2][2]);
-      my_printf(1, "STI du champion %s\n", champ->head->prog_name);
+      //my_printf(1, "STI du champion %s\n", champ->head->prog_name);
     }
   else
     my_putstr("STI FAIL\n", 1);
