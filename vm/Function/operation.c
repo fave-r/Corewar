@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Mon Mar 24 17:18:40 2014 thibaud
+** Last update Tue Mar 25 16:57:01 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -24,7 +24,6 @@ int	my_add(t_champ *champ, t_cor *cor)
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = champ->reg[tab[0][2] - 1]
 	+ champ->reg[tab[1][2] - 1];
-      my_printf(1, "ADD du champion : %d, ajout du registre %d au registre %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->champ_nb, tab[0][2], tab[1][2], tab[2][2], 5);
     }
   else
     champ->carry = 0;
@@ -46,7 +45,6 @@ int	my_sub(t_champ *champ, t_cor *cor)
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = champ->reg[tab[0][2] - 1] -
 	champ->reg[tab[1][2] - 1];
-      my_printf(1, "SUB du champion : %d, soustraction du registre %d au registre %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->champ_nb, tab[0][2], tab[1][2], tab[2][2], 5);
     }
   else
     champ->carry = 0;
@@ -72,8 +70,6 @@ int	my_and(t_champ *champ, t_cor *cor)
     {
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = arg1 & arg2;
-      //my_printf(1, "%d = %d & %d\n", champ->reg[tab[2][2] - 1], arg1, arg2);
-      my_printf(1, "AND du champion : %d, '&' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->champ_nb, arg1, arg2, tab[2][2], and);
     }
   else
     champ->carry = 0;
@@ -99,8 +95,6 @@ int	my_or(t_champ *champ, t_cor *cor)
     {
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = arg1 | arg2;
-      my_printf(1, "%d = %d | %d\n", champ->reg[tab[2][2] - 1], arg1, arg2);
-      my_printf(1, "OR du champion : %d, '|' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->champ_nb, arg1, arg2, tab[2][2], or);
     }
   else
     champ->carry = 0;
@@ -128,8 +122,6 @@ int	my_xor(t_champ *champ, t_cor *cor)
       if (tab[0][0] == 3)
 	aff_memdr(cor->mem);
       champ->reg[tab[2][2] - 1] = arg1 ^ arg2;
-      my_printf(1, "%d = %d ^ %d\n", champ->reg[tab[2][2] - 1], arg1, arg2);
-      my_printf(1, "XOR du champion : %d, '^' de la valeur %d avec la valeur %d stocké dans le registre %d, avance dans la mémoire de %d\n", champ->champ_nb, arg1, arg2, tab[2][2], xor);
     }
   else
     champ->carry = 0;

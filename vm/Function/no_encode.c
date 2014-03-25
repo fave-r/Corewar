@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Tue Mar 25 14:09:42 2014 thibaud
+** Last update Tue Mar 25 16:55:08 2014 Thibaut Lopez
 ** Last update Fri Mar 21 09:23:42 2014 Thibaut Lopez
 */
 
@@ -36,14 +36,14 @@ int	my_live(t_champ *champ, t_cor *cor)
 	if (cor->live[i - 1] == 2)
 	  cor->live[i - 1] = 1;
       cor->live[j] = 2;
-      //my_printf(1, "Live du champion %s pour le champion numéro %d\n", champ->head->prog_name, direct_arg);
+      my_printf(1, "Live du champion %s pour le champion numéro %d\n", champ->head->prog_name, direct_arg);
       i = 0;
       while (i++ < 4)
 	if (cor->live[i - 1] == 2)
 	  cor->live[i - 1] = 1;
       cor->live[j] = 2;
       cor->live_done++;
-      //printf("Live_done = %d\n", cor->live_done);
+      printf("Live_done = %d\n", cor->live_done);
     }
   else
     my_putstr("Live ECHEC\n", 1);
@@ -53,9 +53,9 @@ int	my_live(t_champ *champ, t_cor *cor)
   printf("CYCLE DONE = %d\n", cor->cycle);
   printf("TRALALALALALALAL = %d\n", cor->cycle);
   /*
-  static int	x = 0;
-  x++;
-  if (x == 1)
+    static int	x = 0;
+    x++;
+    if (x == 1)
     {
     aff_memdr(cor->mem);
     exit(0);

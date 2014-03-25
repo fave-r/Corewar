@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-** Last update Fri Mar 21 18:47:31 2014 Thibaut Lopez
+** Last update Tue Mar 25 17:27:33 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -19,14 +19,12 @@ int	my_ld(t_champ *champ, t_cor *cor)
 
   tab = get_encode(cor->mem, champ->pc);
   arg = get_dir_ind_arg(tab, 0, champ, cor->mem);
-  if (tab[0][0] == 3)
-    aff_memdr(cor->mem);
-  if (arg != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1)
+  if (arg != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1 &&
+      tab[2][0] == 0 && tab[3][0] == 0)
     {
       champ->carry = 1;
       champ->reg[tab[1][2] - 1] = arg;
       ld = tab[0][1] + tab[1][1] + 2;
-      my_printf(1, "LD du champion %s, load la valeur %d dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg, tab[1][2], ld);
     }
   else
     {
@@ -47,14 +45,13 @@ int	my_ldi(t_champ *champ, t_cor *cor)
   tab = get_encode(cor->mem, champ->pc);
   arg1 = get_all_type_arg(tab, 0, champ, cor->mem);
   arg2 = get_dir_reg_arg(tab, 1, champ, cor->mem);
-  if (arg1 != -1 && arg2 != -1 && (tab[2][0] == 1) && check_reg(tab[2][2]))
+  if (arg1 != -1 && arg2 != -1 &&
+      (tab[2][0] == 1 && check_reg(tab[2][2]) == 1) && tab[3][0] == 0)
     {
-      aff_memdr(cor->mem);
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = get_nbr_action(cor->mem,
 						 champ->pc + arg1 + arg2, 4);
       ldi = tab[0][1] + tab[1][1] + tab[2][1] + 2;
-      my_printf(1, "LDI du champion %s, load la valeur %d dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, champ->reg[tab[2][2] - 1], tab[2][2], ldi);
     }
   else
     ldi = 5;
@@ -70,14 +67,12 @@ int	my_lld(t_champ *champ, t_cor *cor)
 
   tab = get_encode(cor->mem, champ->pc);
   arg = get_dir_ind_arg_noidx(tab, 0, champ, cor->mem);
-  if (tab[0][0] == 3)
-    aff_memdr(cor->mem);
-  if (arg != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1)
+  if (arg != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1 &&
+      tab[2][0] == 0 && tab[3][0] == 0)
     {
       champ->carry = 1;
       champ->reg[tab[1][2] - 1] = arg;
       ld = tab[0][1] + tab[1][1] + 2;
-      my_printf(1, "LLD du champion %s, load la valeur %d dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, arg, tab[1][2], ld);
     }
   else
     {
@@ -98,14 +93,13 @@ int	my_lldi(t_champ *champ, t_cor *cor)
   tab = get_encode(cor->mem, champ->pc);
   arg1 = get_all_type_arg_noidx(tab, 0, champ, cor->mem);
   arg2 = get_dir_reg_arg(tab, 1, champ, cor->mem);
-  if (arg1 != -1 && arg2 != -1 && (tab[2][0] == 1) && check_reg(tab[2][2]))
+  if (arg1 != -1 && arg2 != -1 &&
+      (tab[2][0] == 1 && check_reg(tab[2][2]) == 1) && tab[3][0] == 0)
     {
-      aff_memdr(cor->mem);
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = get_nbr_action(cor->mem,
 						 champ->pc + arg1 + arg2, 4);
       ldi = tab[0][1] + tab[1][1] + tab[2][1] + 2;
-      my_printf(1, "LLDI du champion %s, load la valeur %d dans le registre %d, avance dans la mémoire de %d\n", champ->head->prog_name, champ->reg[tab[2][2] - 1], tab[2][2], ldi);
     }
   else
     ldi = 5;
