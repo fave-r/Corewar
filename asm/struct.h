@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Tue Mar 25 12:54:41 2014 romaric
+** Last update Tue Mar 25 16:08:42 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -72,8 +72,8 @@ void		create_cor(char *name, header_t *header);
 void		print_assembling(char *name, header_t *header);
 void		check_cmd(char *str);
 char		*cmd_exist(char *str, int *bool);
-int		countword(char *str, char sep);
-char		**my_str_to_wordtab(char *str, char sep);
+int		count_words(char *line);
+char		**my_str_to_wordtab(char *line);
 void		my_show_list(t_label *list);
 t_label		*fill_list_of_label(char *str);
 t_label		*my_put_in_list(t_label *list, char *name);
@@ -86,5 +86,7 @@ void		send_file_to_parser(t_file *list);
 void		check_cmd_exist(char *cmd);
 char		*my_get_strdup(char *src);
 char		*cmd_next_label(char *cmd, int *j, int i, char *str);
+int		my_strlen_mod(char *str);
+void		check_cmd_arg(char *args, char *cmd);
 
 #endif

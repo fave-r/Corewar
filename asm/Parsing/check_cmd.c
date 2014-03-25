@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Tue Mar 25 13:22:00 2014 romaric
+** Last update Tue Mar 25 16:10:28 2014 romaric
 */
 
 #include "struct.h"
@@ -23,21 +23,21 @@ void	check_cmd(char *str)
   cmd = NULL;
   while ((tmp = get_next_line(fd)))
     {
-      //my_printf(1, "%s\n", tmp);
+      my_printf(1, "%s\n", tmp);
       if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
 	cmd = cmd_exist(tmp, &i);
       if (cmd != NULL)
 	{
-	  //printf("%d\n", i);
-	  //my_printf(1, "%s\n", cmd);
 	  if (i == 0)
 	    {
-	      line = my_str_to_wordtab(tmp, '\t');
-	      printf("%s\n", line[0]);
+	      line = my_str_to_wordtab(tmp);
+	      if (line[1] != NULL)
+		check_cmd_arg(line[1], cmd);
 	    }
 	  i = 0;
 	}
     }
+
   close (fd);
 }
 
@@ -99,6 +99,30 @@ void	check_cmd_exist(char *cmd)
       my_putstr("The instruction : ", 2);
       my_putstr(cmd, 2);
       my_putstr(" Doesn't exists.\n", 2);
+      exit(EXIT_FAILURE);
+    }
+}
+
+void	check_cmd_arg(char *args, char *cmd)
+{
+  int	i;
+  int	nbr_coma;
+  int	k;
+
+  i = -1;
+  k = 0;
+  nbr_coma = 0;
+  while (args[++i] != '\0')
+    {
+      if (args[i] == ',')
+	nbr_coma++;
+    }
+  while (my_strcmp(op_tab[k].mnemonique, cmd) != 0)
+    k++;
+  nbr_coma++;
+  if (op_tab[k].nbr_args != nbr_coma)
+    {
+      my_printf(2, "The instruction : %s Doesn't take %d arguments but %d\n", cmd, nbr_coma, op_tab[k].nbr_args);
       exit(EXIT_FAILURE);
     }
 }
