@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Mon Mar 24 20:02:05 2014 romaric
+** Last update Tue Mar 25 10:37:31 2014 alex-odet
 */
 
 #include "struct.h"
@@ -19,8 +19,8 @@ void	check_cmd(char *str)
   while ((tmp = get_next_line(fd)))
     {
       my_printf(1, "%s\n", tmp);
-	  if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
-	      	    cmd_exist(tmp);
+      if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
+	cmd_exist(tmp);
     }
   close (fd);
 }
