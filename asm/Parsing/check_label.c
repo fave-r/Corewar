@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Mon Mar 24 11:52:02 2014 romaric
+** Last update Mon Mar 24 18:58:38 2014 romaric
 */
 
 #include "struct.h"
@@ -33,11 +33,9 @@ t_label		*fill_list_of_label(char *str)
 t_label		*check_label(char *tmp, t_label *list)
 {
   int		i;
-  int		j;
   char		*save;
 
   i = 0;
-  j = 0;
   save = xmalloc(sizeof(char) * my_strlen(tmp));
   while (tmp[i])
     {

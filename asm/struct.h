@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Mon Mar 24 12:07:11 2014 alex-odet
+** Last update Tue Mar 25 12:54:41 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -30,6 +30,12 @@ typedef struct	s_get
   int		c;
   int		l;
 }		t_get;
+
+typedef struct	s_buf
+{
+  char		*tmp;
+  char		*buff;
+}		t_buf;
 
 typedef struct s_label
 {
@@ -65,7 +71,7 @@ void		print_header_error();
 void		create_cor(char *name, header_t *header);
 void		print_assembling(char *name, header_t *header);
 void		check_cmd(char *str);
-void		cmd_exist(char *str);
+char		*cmd_exist(char *str, int *bool);
 int		countword(char *str, char sep);
 char		**my_str_to_wordtab(char *str, char sep);
 void		my_show_list(t_label *list);
@@ -79,5 +85,6 @@ t_file		*my_put_in_file_list(t_file *list, char *name);
 void		send_file_to_parser(t_file *list);
 void		check_cmd_exist(char *cmd);
 char		*my_get_strdup(char *src);
+char		*cmd_next_label(char *cmd, int *j, int i, char *str);
 
 #endif
