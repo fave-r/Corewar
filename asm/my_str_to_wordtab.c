@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Dec 18 13:38:53 2013 romaric
-** Last update Tue Mar 25 13:21:36 2014 romaric
+** Last update Tue Mar 25 13:27:12 2014 romaric
 */
 
 #include "struct.h"
@@ -19,11 +19,11 @@ int	countword(char *str, char sep)
   word = 0;
   while (str[i] != '\0')
     {
-      while ((str[i] == sep || str[i] == '\t') && str[i] != '\0')
+      while ((str[i] == sep) && str[i] != '\0')
 	i += 1;
-      if (str[i] != sep && str[i] != '\t' && str[i] != '\0')
+      if (str[i] != sep && str[i] != '\0')
 	word += 1;
-      while (str[i] != sep && str[i] != '\t' && str[i] != '\0')
+      while (str[i] != sep && str[i] != '\0')
 	i += 1;
     }
   return (word);
@@ -41,7 +41,7 @@ char	**my_str_to_wordtab(char *str, char sep)
   w.ptr = my_strcpy(str, w.ptr);
   while (*(w.ptr) != '\0')
     {
-      while ((*(w.ptr) == sep || *(w.ptr) == '\t') && *(w.ptr) != '\0')
+      while ((*(w.ptr) == sep) && *(w.ptr) != '\0')
 	{
 	  *(w.ptr) = '\0';
 	  w.ptr += 1;
