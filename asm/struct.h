@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Tue Mar 25 10:33:49 2014 alex-odet
+** Last update Tue Mar 25 12:54:41 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -71,7 +71,7 @@ void		print_header_error();
 void		create_cor(char *name, header_t *header);
 void		print_assembling(char *name, header_t *header);
 void		check_cmd(char *str);
-void		cmd_exist(char *str);
+char		*cmd_exist(char *str, int *bool);
 int		countword(char *str, char sep);
 char		**my_str_to_wordtab(char *str, char sep);
 void		my_show_list(t_label *list);
