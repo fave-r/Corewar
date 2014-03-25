@@ -1,7 +1,7 @@
 .name           "42"
 .comment        "Just a basic Winner Program"
 
-entree:	coucou	%42		; entree
+entree:	live	%42		; entree
 	fork	%:tir
 	ld	%0,r5
 	zjmp	%:bite
@@ -25,7 +25,7 @@ tirf:	live	%42
 	sti	r10,%-303,%0
 	sti	r10,%-202,%0
 	ld	%0,r11
-	zjmp	%:tirf
+	zjmp	%:tirf,unargumentdetrop
 	
 tirop:	ld	%368,r2
 	ld	%0,r3

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Tue Mar 25 16:10:28 2014 romaric
+** Last update Tue Mar 25 17:13:32 2014 romaric
 */
 
 #include "struct.h"
@@ -53,13 +53,13 @@ char	*cmd_exist(char *str, int *bool)
   str[i - 1] != '\t' ? (cmd[0] = str[i - 1]) : (j = 0);
   while (str[i] != '\t' && str[i] != ' ' && str[i])
     cmd[j++] = str[i++];
-  if (cmd[j - 1] == ':' && str[j + 2] >= 'A')
+  if (cmd[j - 1] == ':' && (str[j + 2] >= 'a' && str[j + 2] <= 'z'))
     {
       cmd = cmd_next_label(cmd, &j, i, str);
       *bool = 1;
     }
   cmd[j] = 0;
-  if (cmd[j - 1] != ':')
+  if (cmd[j - 1] != ':' && my_strlen(cmd) > 1 && my_strchr(':', cmd) != 0)
     {
       check_cmd_exist(cmd);
       return (cmd);
