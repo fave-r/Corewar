@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Mon Mar 24 14:08:46 2014 Thibaut Lopez
+** Last update Wed Mar 26 13:59:19 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -39,6 +39,19 @@ int     get_dump(char *nbr)
   return (ret);
 }
 
+int	get_good_nbr(char *str)
+{
+  int	ret;
+
+  ret = my_getnbr(str);
+  if (ret <= 0)
+    {
+      my_printf(1, "%s is not a good value (needed a number >= 0)\n", str);
+      exit(0);
+    }
+  return (ret);
+}
+
 void	fill_champ(char **argv, t_cor *cor)
 {
   int		addr;
@@ -53,11 +66,11 @@ void	fill_champ(char **argv, t_cor *cor)
 	cor->dump = get_dump(argv[++cor->cycle]);
       else if (my_strcmp(argv[cor->cycle], "-n") == 0)
 	{
-	  if (move_in_list(&cor->champ, my_getnbr(argv[++cor->cycle])) != 0)
+	  if (move_in_list(&cor->champ, get_good_nbr(argv[++cor->cycle])) != 0)
 	    exit(1);
 	}
       else if (my_strcmp(argv[cor->cycle], "-a") == 0)
-	addr = my_getnbr(argv[++cor->cycle]) % MEM_SIZE;
+	addr = get_good_nbr(argv[++cor->cycle]) % MEM_SIZE;
       else if ((addr = check_champ(&(cor->champ),
 				   argv[cor->cycle], addr, cor->endian)) == 1)
 	exit(1);
@@ -103,6 +116,7 @@ int	main(int argc, char **argv)
   cor.nb_chmps_alive = 4;
   my_mem_set(cor.live, 4);
   init_champs_nb(&cor);
+  aff_memdr(cor.mem);
   run_corewar(cor.champ, &cor);
   free_graphic();
   return (0);
