@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Fri Mar 21 09:22:24 2014 Thibaut Lopez
+** Last update Wed Mar 26 16:07:29 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -14,12 +14,26 @@
 int	aff_memdr(unsigned char *mem)
 {
   int	i;
+  int	j;
 
   i = 0;
   while (i < MEM_SIZE)
     {
-      my_printf(1, "%X|", mem[i]);
-      i++;
+      j = 0;
+      if (i < 4096)
+	my_putstr("0", 1);
+      if (i < 256)
+	my_putstr("0", 1);
+      if (i < 16)
+	my_putstr("0", 1);
+      my_printf(1, "%x :", i);
+      while (i + j < MEM_SIZE && j < 16)
+	{
+	  my_printf(1, (mem[i + j] < 16) ? " 0%X" : " %X", mem[i + j]);
+	  j++;
+	}
+      my_putchar('\n', 1);
+      i += j;
     }
   my_putstr("\n", 1);
   return (42);
