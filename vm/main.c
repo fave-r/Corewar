@@ -5,7 +5,11 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
+<<<<<<< HEAD
 ** Last update Wed Mar 26 15:48:02 2014 Thibaut Lopez
+=======
+** Last update Wed Mar 26 14:46:45 2014 thibaud
+>>>>>>> 33e2948e45e1bb48484c1dc0b7f5873d8a400eb6
 */
 
 #include "my.h"
@@ -66,6 +70,12 @@ int	init_champs_nb(t_cor *cor)
       cur_champ = cur_champ->next;
       i++;
     }
+  i = 0;
+  while (i++ < 4)
+    {
+      if (cor->champs_nb[i -1] == 0)
+	cor->champs_nb[i -1] = -42;
+    }
   return (0);
 }
 
@@ -74,7 +84,7 @@ int	main(int argc, char **argv)
   t_cor	cor;
 
   (void)argc;
-  cor.dump = 150;
+  cor.dump = 2500000000;
   cor.cycle = 1;
   cor.cycle_to_die = CYCLE_TO_DIE;
   cor.endian = my_endian();

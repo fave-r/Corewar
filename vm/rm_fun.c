@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 13:57:49 2014 Thibaut Lopez
-** Last update Wed Mar 26 14:08:19 2014 thibaud
+** Last update Wed Mar 26 15:45:06 2014 thibaud
 */
 
 #include "my.h"
@@ -53,7 +53,6 @@ void	epur_champ(t_cor *cor, t_champ **first)
 t_champ	*del_chmp(t_champ *champs, int champ_del)
 {
   t_champ	*tmp;
-  //t_champ	*tmp2;
 
   if (champs == NULL)
     return (NULL);
