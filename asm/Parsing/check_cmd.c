@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Wed Mar 26 16:09:40 2014 romaric
+** Last update Wed Mar 26 20:12:37 2014 romaric
 */
 
 #include "struct.h"
@@ -23,7 +23,7 @@ void	check_cmd(char *str)
   cmd = NULL;
   while ((tmp = get_next_line(fd)))
     {
-      //my_printf(1, "%s\n", tmp);
+      my_printf(1, "%s\n", tmp);
       if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
 	cmd = cmd_exist(tmp, &i);
       if (cmd != NULL)
@@ -59,7 +59,7 @@ char	*cmd_exist(char *str, int *bool)
       *bool = 1;
     }
   cmd[j] = 0;
-  if (cmd[j - 1] != ':' && my_strlen(cmd) > 1 && my_strchr(':', cmd) != 0)
+  if (cmd[j - 1] != ':' && my_strlen(cmd) > 1 && my_strchr(':', cmd) != 0 && my_strchr('#',cmd) == -1 && my_strchr(';',cmd) == -1)
     {
       check_cmd_exist(cmd);
       return (cmd);
@@ -109,7 +109,6 @@ void	check_cmd_arg(char *args, char *cmd)
   int	nbr_coma;
   int	k;
 
-  printf("%s\n", args);
   i = -1;
   k = 0;
   nbr_coma = 0;
