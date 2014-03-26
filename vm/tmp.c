@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Fri Mar 21 09:22:24 2014 Thibaut Lopez
+** Last update Wed Mar 26 15:50:56 2014 thibaud
 */
 
 #include "my.h"
@@ -18,8 +18,13 @@ int	aff_memdr(unsigned char *mem)
   i = 0;
   while (i < MEM_SIZE)
     {
-      my_printf(1, "%X|", mem[i]);
+      my_printf(1, "");
+      while ((i % 16) != 0)
+	{
+      my_printf(1, "%X ", mem[i]);
       i++;
+	}
+      my_printf(1, "\n");
     }
   my_putstr("\n", 1);
   return (42);
