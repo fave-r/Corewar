@@ -5,39 +5,15 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
+<<<<<<< HEAD
+** Last update Wed Mar 26 15:48:02 2014 Thibaut Lopez
+=======
 ** Last update Wed Mar 26 14:46:45 2014 thibaud
+>>>>>>> 33e2948e45e1bb48484c1dc0b7f5873d8a400eb6
 */
 
 #include "my.h"
 #include "vm.h"
-
-int     get_dump(char *nbr)
-{
-  int   i;
-  int   ret;
-  int	len;
-  int	pow;
-  char	*base;
-
-  len = my_strlen(nbr);
-  base = "0123456789ABCDEF";
-  if (len == 0 || len > 2 || my_strchr(nbr[0], base) == -1 ||
-      my_strchr(nbr[1], base) == -1)
-    {
-      my_putstr(ER_DUMP, 2);
-      return (150);
-    }
-  pow = (len == 2) ? 16 : 1;
-  i = 0;
-  ret = 0;
-  while (nbr[i] != 0)
-    {
-      ret += my_strchr(nbr[i], base) * pow;
-      pow /= 16;
-      i++;
-    }
-  return (ret);
-}
 
 int	get_good_nbr(char *str)
 {
@@ -63,7 +39,7 @@ void	fill_champ(char **argv, t_cor *cor)
   while (argv[cor->cycle] != NULL)
     {
       if (my_strcmp(argv[cor->cycle], "-dump") == 0)
-	cor->dump = get_dump(argv[++cor->cycle]);
+	cor->dump = get_good_nbr(argv[++cor->cycle]);
       else if (my_strcmp(argv[cor->cycle], "-n") == 0)
 	{
 	  if (move_in_list(&cor->champ, get_good_nbr(argv[++cor->cycle])) != 0)
