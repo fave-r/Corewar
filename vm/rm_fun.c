@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 13:57:49 2014 Thibaut Lopez
-** Last update Mon Mar 24 14:01:31 2014 Thibaut Lopez
+** Last update Wed Mar 26 14:08:19 2014 thibaud
 */
 
 #include "my.h"
@@ -53,12 +53,15 @@ void	epur_champ(t_cor *cor, t_champ **first)
 t_champ	*del_chmp(t_champ *champs, int champ_del)
 {
   t_champ	*tmp;
+  //t_champ	*tmp2;
 
   if (champs == NULL)
     return (NULL);
   if (champs->champ_nb == champ_del)
     {
       tmp = champs->next;
+      if (champs->prev != NULL)
+	champs->prev->next = champs->next;
       free(champs);
       tmp = del_chmp(tmp, champ_del);
       return (tmp);
@@ -83,7 +86,6 @@ int	kill_champ(t_champ *champs, t_cor *map)
       if (map->live[champ_nb - 1] == 0)
 	{
 	  del_chmp(champs, map->champs_nb[champ_nb - 1]);
-	  //map->nb_chmps_alive--;
 	}
       else
 	nb_alive++;

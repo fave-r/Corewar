@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Mon Mar 24 17:22:09 2014 romaric
+## Last update Wed Mar 26 14:13:47 2014 thibaud
 ##
 
 LIB_S=		my/basic.c \
@@ -44,11 +44,12 @@ LIB_N=		libmy.a
 
 LIB_O=		$(LIB_S:.c=.o)
 
+
 all:		$(LIB_O)
 		ar rc $(LIB_N) $(LIB_O)
 		make -C $(ASM_N)
 		make -C $(VM_N)
-
+		./boobs.sh
 clean:
 		rm -f $(LIB_O)
 		make clean -C $(ASM_N)

@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Tue Mar 25 15:05:54 2014 thibaud
+** Last update Wed Mar 26 13:51:19 2014 thibaud
 */
 
 #include "vm.h"
@@ -74,12 +74,12 @@ int	list_size(t_champ *champ)
   return (nb);
 }
 
-  int	cycle_done  = 0;
 
 int	run_corewar(t_champ *champs, t_cor *map)
 {
   static int	tmp = 0;
   (void)tmp;
+  int	cycle_done  = 0;
 
   cycle_done = 0;
   my_putstr("C'est PARTI !!\n", 1);
@@ -92,6 +92,11 @@ int	run_corewar(t_champ *champs, t_cor *map)
       while (map->cycle !=  map->cycle_to_die)
 	{
 	  cycle_run(champs, map);
+	  if ((map->cycle + cycle_done) >= map->dump)
+	    {
+	      aff_memdr(map->mem);
+	      exit(0);
+	    }
 	  //aff_memdr(map->mem);
 	  if (map->live_done >= NBR_LIVE)
 	    {
@@ -101,11 +106,11 @@ int	run_corewar(t_champ *champs, t_cor *map)
 		  printf("Cycle_done = %d\n", cycle_done + map->cycle);
 		  //printf("Personne n'est MORT bordel !!\n");
 		  map->cycle_to_die -= CYCLE_DELTA;
-		  printf("Cycle_to_die = %d\n", map->cycle_to_die);
-		  printf("Live_done = %d\n\n\n\n", map->live_done);
+		  //printf("Cycle_to_die = %d\n", map->cycle_to_die);
+		  //printf("Live_done = %d\n\n\n\n", map->live_done);
 		  /*
-		  tmp++;
-		  if (tmp == 1)
+		    tmp++;
+		    if (tmp == 1)
 		    exit(0);
 		  */
 		  map->live_done = 0;
