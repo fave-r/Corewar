@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "         {"
+echo "      {   }"
+echo "       }_{ __{"
+echo "    .-{   }   }-."
+echo "   (   }     {   )"
+echo "   |'-.._____..-'|"
+echo "   |             ;--."
+echo "   |            (__  \\"
+echo "   |             | )  )"
+echo "   |    Hot      |/  /"
+echo "   |   coffee    /  /"
+echo "   |            (  /"
+echo "   \             Y'"
+echo "    '-.._____..-'"
