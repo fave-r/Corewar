@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Wed Mar 26 14:13:47 2014 thibaud
+## Last update Wed Mar 26 15:50:50 2014 romaric
 ##
 
 LIB_S=		my/basic.c \
@@ -61,3 +61,9 @@ fclean:		clean
 		make fclean -C $(VM_N)
 
 re:		fclean all
+
+cofee:
+		@./cofee.sh
+
+boobs:
+		@./boobs.sh
