@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 14:11:08 2014 Thibaut Lopez
-** Last update Wed Mar 26 15:38:50 2014 thibaud
+** Last update Wed Mar 26 18:37:09 2014 thibaud
 */
 
 #include "vm.h"
@@ -79,6 +79,6 @@ int	end_game(t_champ *champ, t_cor *map)
     gg++;
   //free_champ(champ);
   free(map->mem);
-  my_printf(1, "Le joueur numéro %d a gagné!\n", map->champs_nb[gg]);
+  my_printf(1, "Le joueur %d(%s) a gagne\n", map->champs_nb[gg], champ->head->prog_name);
   exit(0);
 }

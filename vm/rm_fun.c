@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 13:57:49 2014 Thibaut Lopez
-** Last update Wed Mar 26 15:45:06 2014 thibaud
+** Last update Wed Mar 26 18:36:25 2014 thibaud
 */
 
 #include "my.h"
@@ -50,6 +50,35 @@ void	epur_champ(t_cor *cor, t_champ **first)
     }
 }
 
+t_champ		*del_chmp(t_champ *champs, int champ_del)
+{
+  t_champ	*cur;
+  t_champ	*del;
+
+  cur = champs->next;
+  del = NULL;
+  while (cur != NULL)
+    {
+      if (cur->champ_nb == champ_del)
+	{
+	  del = cur;
+	  cur = cur->next;
+	  if (del == champs->next)
+	    {
+	      champs = champs->next;
+	    }
+	  if (del->prev != NULL)
+	    del->prev->next = cur;
+	  if (del->next != NULL)
+	    del->next->prev = del->prev;
+	  free(del);
+	}
+      cur = cur->next;
+    }
+  return (NULL);
+}
+
+/*
 t_champ	*del_chmp(t_champ *champs, int champ_del)
 {
   t_champ	*tmp;
@@ -61,6 +90,8 @@ t_champ	*del_chmp(t_champ *champs, int champ_del)
       tmp = champs->next;
       if (champs->prev != NULL)
 	champs->prev->next = champs->next;
+      else
+	tmp->prev = NULL;
       free(champs);
       tmp = del_chmp(tmp, champ_del);
       return (tmp);
@@ -72,23 +103,23 @@ t_champ	*del_chmp(t_champ *champs, int champ_del)
     }
   return (NULL);
 }
-
+*/
 int	kill_champ(t_champ *champs, t_cor *map)
 {
-  int	champ_nb;
+  int	i;
   int	nb_alive;
 
   nb_alive = 0;
-  champ_nb = 1;
-  while (champ_nb <= 4)
+  i = 0;
+  while (i < 4)
     {
-      if (map->live[champ_nb - 1] == 0)
+      if (map->live[i] == 0)
 	{
-	  del_chmp(champs, map->champs_nb[champ_nb - 1]);
+	  del_chmp(champs, map->champs_nb[i]);
 	}
       else
 	nb_alive++;
-      champ_nb++;
+      i++;
     }
   if (nb_alive == 1)
     {
