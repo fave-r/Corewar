@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 25 15:50:05 2014 romaric
-** Last update Tue Mar 25 15:50:08 2014 romaric
+** Last update Wed Mar 26 16:25:44 2014 romaric
 */
 
 #include "struct.h"
@@ -19,11 +19,11 @@ int	count_words(char *line)
   i = 0;
   while (line[i])
     {
-      while ((line[i] == ' ' || line[i] == '\t') && line[i] != '\0')
+      while ((line[i] == '\t') && line[i] != '\0')
 	i = i + 1;
-      if (line[i] != ' ' && line[i] !=  '\t' && line[i] != '\0')
+      if (line[i] !=  '\t' && line[i] != '\0')
 	nb_words = nb_words + 1;
-      while (line[i] != ' ' && line[i] !=  '\t' && line[i] != '\0')
+      while (line[i] !=  '\t' && line[i] != '\0')
 	i = i + 1;
     }
   return (nb_words);
@@ -46,11 +46,11 @@ char	**my_str_to_wordtab(char *line)
   i = 0;
   while (*ptr != '\0')
     {
-      while (*ptr != '\0' && (*ptr == ' ' || *ptr == '\t'))
+      while (*ptr != '\0' && (*ptr == '\t'))
 	*ptr++ = '\0';
-      if (*ptr != '\0' && *ptr != ' ' && *ptr != '\t')
+      if (*ptr != '\0' && *ptr != '\t')
 	tab[i++] = ptr;
-      while (*ptr != '\0' && *ptr != ' ' && *ptr != '\t')
+      while (*ptr != '\0' && *ptr != '\t')
 	ptr += 1;
     }
   tab[i] = '\0';

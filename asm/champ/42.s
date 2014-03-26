@@ -25,7 +25,7 @@ tirf:	live	%42
 	sti	r10,%-303,%0
 	sti	r10,%-202,%0
 	ld	%0,r11
-	zjmp	%:tirf,unargumentdetrop
+	zjmp	%:tirf
 	
 tirop:	ld	%368,r2
 	ld	%0,r3
