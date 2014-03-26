@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Wed Mar 26 13:51:19 2014 thibaud
+** Last update Wed Mar 26 15:35:01 2014 thibaud
 */
 
 #include "vm.h"
@@ -86,13 +86,13 @@ int	run_corewar(t_champ *champs, t_cor *map)
   map->cycle_to_die = CYCLE_TO_DIE;
   printf("Num champ = %d %d %d %d\n", map->champs_nb[0], map->champs_nb[1], map->champs_nb[2], map->champs_nb[3]);
   printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
-  //map->cycle = 0;
+  //exit(0);
   while ((map->cycle_to_die) > 100)
     {
       while (map->cycle !=  map->cycle_to_die)
 	{
 	  cycle_run(champs, map);
-	  if ((map->cycle + cycle_done) >= map->dump)
+	  if ((map->cycle + cycle_done) == map->dump)
 	    {
 	      aff_memdr(map->mem);
 	      exit(0);
