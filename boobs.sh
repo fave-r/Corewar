@@ -160,4 +160,4 @@ printf "
                                   MM::::m:MM
                                    MM::::MM
                                     MM::MM
-                                     MMMM"
+                                     MMMM\n"
