@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Wed Mar 26 15:35:01 2014 thibaud
+** Last update Wed Mar 26 15:49:26 2014 thibaud
 */
 
 #include "vm.h"
@@ -82,10 +82,10 @@ int	run_corewar(t_champ *champs, t_cor *map)
   int	cycle_done  = 0;
 
   cycle_done = 0;
-  my_putstr("C'est PARTI !!\n", 1);
+  //my_putstr("C'est PARTI !!\n", 1);
   map->cycle_to_die = CYCLE_TO_DIE;
-  printf("Num champ = %d %d %d %d\n", map->champs_nb[0], map->champs_nb[1], map->champs_nb[2], map->champs_nb[3]);
-  printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
+  //printf("Num champ = %d %d %d %d\n", map->champs_nb[0], map->champs_nb[1], map->champs_nb[2], map->champs_nb[3]);
+  //printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
   //exit(0);
   while ((map->cycle_to_die) > 100)
     {
@@ -100,10 +100,10 @@ int	run_corewar(t_champ *champs, t_cor *map)
 	  //aff_memdr(map->mem);
 	  if (map->live_done >= NBR_LIVE)
 	    {
-	      printf("NBR_LIVE Atteind!!!!!!!!!!!!!!!!!\n\n");
+	      //printf("NBR_LIVE Atteind!!!!!!!!!!!!!!!!!\n\n");
 	      if (someone_is_dead(champs, map))
 		{
-		  printf("Cycle_done = %d\n", cycle_done + map->cycle);
+		  //printf("Cycle_done = %d\n", cycle_done + map->cycle);
 		  //printf("Personne n'est MORT bordel !!\n");
 		  map->cycle_to_die -= CYCLE_DELTA;
 		  //printf("Cycle_to_die = %d\n", map->cycle_to_die);
