@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Wed Mar 26 14:13:47 2014 thibaud
+## Last update Wed Mar 26 15:53:47 2014 romaric
 ##
 
 LIB_S=		my/basic.c \
@@ -49,7 +49,7 @@ all:		$(LIB_O)
 		ar rc $(LIB_N) $(LIB_O)
 		make -C $(ASM_N)
 		make -C $(VM_N)
-		./boobs.sh
+		@./boobs.sh
 clean:
 		rm -f $(LIB_O)
 		make clean -C $(ASM_N)
@@ -61,3 +61,9 @@ fclean:		clean
 		make fclean -C $(VM_N)
 
 re:		fclean all
+
+cofee:
+		@./cofee.sh
+
+boobs:
+		@./boobs.sh

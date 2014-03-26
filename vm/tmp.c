@@ -5,7 +5,11 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
+<<<<<<< HEAD
 ** Last update Wed Mar 26 16:07:29 2014 Thibaut Lopez
+=======
+** Last update Wed Mar 26 15:50:56 2014 thibaud
+>>>>>>> 6ead5372de22acdfb9145f9316d83847f12eea49
 */
 
 #include "my.h"
@@ -19,6 +23,7 @@ int	aff_memdr(unsigned char *mem)
   i = 0;
   while (i < MEM_SIZE)
     {
+<<<<<<< HEAD
       j = 0;
       if (i < 4096)
 	my_putstr("0", 1);
@@ -34,6 +39,15 @@ int	aff_memdr(unsigned char *mem)
 	}
       my_putchar('\n', 1);
       i += j;
+=======
+      my_printf(1, "");
+      while ((i % 16) != 0)
+	{
+      my_printf(1, "%X ", mem[i]);
+      i++;
+	}
+      my_printf(1, "\n");
+>>>>>>> 6ead5372de22acdfb9145f9316d83847f12eea49
     }
   my_putstr("\n", 1);
   return (42);
