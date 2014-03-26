@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Mon Mar 24 13:56:34 2014 Thibaut Lopez
+** Last update Wed Mar 26 14:26:26 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -18,13 +18,13 @@ void	print_on_mem(t_cor *cor, int to_add, int pc)
 
   i = (cor->endian == 1) ? 3 : 1;
   tmp = (char *)&to_add;
-  cor->mem[(pc + i) % MEM_SIZE] = tmp[0];
+  cor->mem[mod_mem(pc + i)] = tmp[0];
   i += (cor->endian == 1) ? -1 : 1;
-  cor->mem[pc + i] = tmp[1];
+  cor->mem[mod_mem(pc + i)] = tmp[1];
   i += (cor->endian == 1) ? -1 : 1;
-  cor->mem[(pc + i) % MEM_SIZE] = tmp[2];
+  cor->mem[mod_mem(pc + i)] = tmp[2];
   i += (cor->endian == 1) ? -1 : 1;
-  cor->mem[(pc + i) % MEM_SIZE] = tmp[3];
+  cor->mem[mod_mem(pc + i)] = tmp[3];
 }
 
 int	get_nbr_action(unsigned char *mem, int pc, int len)
@@ -36,7 +36,7 @@ int	get_nbr_action(unsigned char *mem, int pc, int len)
   nb = 0;
   while (i < len)
     {
-      nb = nb * 256 + mem[pc + i];
+      nb = nb * 256 + mem[mod_mem(pc + i)];
       i++;
     }
   if (len == 2)
@@ -60,7 +60,7 @@ int	**get_encode(unsigned char *mem, int pc)
   while (i < 4)
     {
       tab[i] = xmalloc(3 * sizeof(int));
-      tab[i][0] = mem[pc + 1] % puis / (puis / 4);
+      tab[i][0] = mem[mod_mem(pc + 1)] % puis / (puis / 4);
       puis /= 4;
       if (tab[i][0] == 1)
 	tab[i][1] = 1;
@@ -68,7 +68,7 @@ int	**get_encode(unsigned char *mem, int pc)
 	tab[i][1] = (mem[pc] == 10 || mem[pc] == 11 || mem[pc] == 14) ? 2 : 4;
       else
 	tab[i][1] = (tab[i][0] == 3) ? 2 : 0;
-      tab[i][2] = get_nbr_action(mem, pc + add, tab[i][1]);
+      tab[i][2] = get_nbr_action(mem, mod_mem(pc + add), tab[i][1]);
       add += tab[i][1];
       i++;
     }

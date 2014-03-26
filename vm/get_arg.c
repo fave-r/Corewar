@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Mar 20 16:24:21 2014 Thibaut Lopez
-** Last update Fri Mar 21 18:54:29 2014 Thibaut Lopez
+** Last update Wed Mar 26 14:30:00 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -21,7 +21,7 @@ int	get_all_type_arg(int **tab, int i, t_champ *champ, unsigned char *mem)
     return ((check_reg(tab[i][2]) == 1) ? champ->reg[tab[i][2] - 1] : -1);
   else
     return (get_nbr_action(mem,
-			   (champ->pc + (tab[i][2] % IDX_MOD)) % MEM_SIZE, tab[i][1]));
+			   mod_mem(champ->pc + (tab[i][2] % IDX_MOD)), tab[i][1]));
 }
 
 int	get_dir_ind_arg(int **tab, int i, t_champ *champ, unsigned char *mem)
@@ -32,7 +32,7 @@ int	get_dir_ind_arg(int **tab, int i, t_champ *champ, unsigned char *mem)
     return (tab[i][2]);
   else
     return (get_nbr_action(mem,
-			   (champ->pc + (tab[i][2] % IDX_MOD)) % MEM_SIZE, tab[i][1]));
+			   mod_mem(champ->pc + (tab[i][2] % IDX_MOD)), tab[i][1]));
 }
 
 int	get_dir_reg_arg(int **tab, int i, t_champ *champ, unsigned char *mem)
@@ -55,7 +55,7 @@ int	get_dir_ind_arg_noidx(int **tab, int i,
     return (tab[i][2]);
   else
     return (get_nbr_action(mem,
-			   (champ->pc + tab[i][2]) % MEM_SIZE, tab[i][1]));
+			   mod_mem(champ->pc + tab[i][2]), tab[i][1]));
 }
 
 int	get_all_type_arg_noidx(int **tab, int i,
@@ -69,5 +69,5 @@ int	get_all_type_arg_noidx(int **tab, int i,
     return ((check_reg(tab[i][2]) == 1) ? champ->reg[tab[i][2] - 1] : -1);
   else
     return (get_nbr_action(mem,
-			   (champ->pc + tab[i][2]) % MEM_SIZE, tab[i][1]));
+			   mod_mem(champ->pc + tab[i][2]), tab[i][1]));
 }

@@ -5,10 +5,18 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 17:06:30 2014 Thibaut Lopez
-** Last update Wed Mar 19 17:09:54 2014 Thibaut Lopez
+** Last update Wed Mar 26 14:19:18 2014 Thibaut Lopez
 */
 
+#include "op.h"
 #include "vm.h"
+
+int	mod_mem(int nb)
+{
+  while (nb < 0)
+    nb += MEM_SIZE;
+  return (nb % MEM_SIZE);
+}
 
 void	ifree(int **tab, int len)
 {
