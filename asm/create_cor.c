@@ -5,11 +5,16 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Mar 11 04:03:48 2014 alex-odet
-** Last update Mon Mar 24 11:59:24 2014 romaric
+** Last update Thu Mar 27 16:51:06 2014 alex-odet
 */
 
 #include "struct.h"
 #include "my.h"
+
+int	my_char(int a)
+{
+  write(1, &a, 1);
+}
 
 void	create_cor(char *name, header_t *header)
 {
@@ -41,6 +46,8 @@ void	create_cor(char *name, header_t *header)
 
 void	print_assembling(char *name, header_t *header)
 {
+  char	*flag;
+
   my_putstr("Assembling : ", 1);
   my_putstr(name, 1);
   my_putstr("\n\t", 1);
@@ -48,4 +55,6 @@ void	print_assembling(char *name, header_t *header)
   my_putstr("\n\t", 1);
   my_putstr(header->comment, 1);
   my_putstr("\n", 1);
+  flag = tgetstr("cl", NULL);
+  tputs(flag, 1, &my_char);
 }

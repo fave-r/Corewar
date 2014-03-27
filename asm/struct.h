@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Wed Mar 26 10:13:45 2014 alex-odet
+** Last update Thu Mar 27 16:54:05 2014 alex-odet
 */
 
 #ifndef __COREWAR__
