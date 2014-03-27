@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Wed Mar 26 13:20:01 2014 thibaud
+** Last update Thu Mar 27 10:47:19 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -16,7 +16,6 @@ int	my_add(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
-  //print_encode(tab);
   if (tab[0][0] == 1 && tab[1][0] == 1 && tab[2][0] == 1 &&
       tab[3][0] == 0 && check_reg(tab[0][2]) == 1 &&
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
@@ -37,7 +36,6 @@ int	my_sub(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
-  //print_encode(tab);
   if (tab[0][0] == 1 && tab[1][0] == 1 && tab[2][0] == 1 &&
       tab[3][0] == 0 && check_reg(tab[0][2]) == 1 &&
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
@@ -61,7 +59,6 @@ int	my_and(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
-  //print_encode(tab);
   arg1 = get_all_type_arg(tab, 0, champ, cor->mem);
   arg2 = get_all_type_arg(tab, 1, champ, cor->mem);
   and = tab[0][1] + tab[1][1] + 3;
@@ -86,7 +83,6 @@ int	my_or(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
-  //print_encode(tab);
   arg1 = get_all_type_arg(tab, 0, champ, cor->mem);
   arg2 = get_all_type_arg(tab, 1, champ, cor->mem);
   or = tab[0][1] + tab[1][1] + 3;
