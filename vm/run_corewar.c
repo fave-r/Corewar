@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Wed Mar 26 15:49:26 2014 thibaud
+** Last update Thu Mar 27 08:48:00 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -35,8 +35,8 @@ t_struct	fct_tab[] =
 int	find_in_tab(char octet)
 {
   int	i;
-  i = 0;
 
+  i = 0;
   while (fct_tab[i].mnemonique != 0)
     {
       if (octet == fct_tab[i].mnemonique)

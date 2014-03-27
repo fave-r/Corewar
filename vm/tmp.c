@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Wed Mar 26 16:10:34 2014 Thibaut Lopez
+** Last update Thu Mar 27 08:53:58 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -39,8 +39,14 @@ int	aff_memdr(unsigned char *mem)
   return (42);
 }
 
-int	print_encode(int **tab)
+void	cor_mem_set(unsigned char *mem, int len)
 {
-  printf("ENCODE\n%d %d %d\n%d %d %d\n%d %d %d\n%d %d %d\n", tab[0][0], tab[0][1], tab[0][2], tab[1][0], tab[1][1], tab[1][2], tab[2][0], tab[2][1], tab[2][2], tab[3][0], tab[3][1], tab[3][2]);
-  return (42);
+  int	i;
+
+  i = 0;
+  while (i < len)
+    {
+      mem[i] = 0;
+      i++;
+    }
 }

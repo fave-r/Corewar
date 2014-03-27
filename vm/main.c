@@ -5,11 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-<<<<<<< HEAD
-** Last update Wed Mar 26 15:48:02 2014 Thibaut Lopez
-=======
-** Last update Wed Mar 26 14:46:45 2014 thibaud
->>>>>>> 33e2948e45e1bb48484c1dc0b7f5873d8a400eb6
+** Last update Thu Mar 27 08:53:39 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -85,6 +81,7 @@ int	main(int argc, char **argv)
 
   (void)argc;
   cor.dump = 2500000000;
+  cor.live_done = 0;
   cor.cycle = 1;
   cor.cycle_to_die = CYCLE_TO_DIE;
   cor.endian = my_endian();
@@ -93,13 +90,12 @@ int	main(int argc, char **argv)
   my_mem_set(cor.champs_nb, 4);
   init_adress(cor.champ);
   cor.mem = xmalloc((MEM_SIZE + 1) * sizeof(char));
-  cor.mem[MEM_SIZE] = 0;
+  cor_mem_set(cor.mem, MEM_SIZE);
   fill_mem(&(cor.mem), cor.champ);
   cor.nb_chmps_alive = 4;
   my_mem_set(cor.live, 4);
   init_champs_nb(&cor);
   aff_memdr(cor.mem);
   run_corewar(cor.champ, &cor);
-  free_graphic();
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Wed Mar 26 14:19:17 2014 Thibaut Lopez
+** Last update Thu Mar 27 08:53:53 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -128,5 +128,6 @@ void	epur_champ(t_cor *cor, t_champ **first);
 t_champ	*del_chmp(t_champ *champs, int champ_del);
 int	kill_champ(t_champ *champs, t_cor *map);
 int	mod_mem(int nb);
+void	cor_mem_set(unsigned char *mem, int len);
 
 #endif
