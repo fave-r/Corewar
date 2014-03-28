@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Mon Mar 24 19:03:22 2014 romaric
+** Last update Fri Mar 28 12:34:47 2014 alex-odet
 */
 
 #include "struct.h"
@@ -56,19 +56,19 @@ char	*check_name(char *str)
       if (my_strncmp(tmp, ".name", 5) == 0)
 	{
 	  quotes = count_quotes(tmp, 0);
-	  if (quotes != 2)
+	  if (quotes < 2)
 	    {
 	      my_putstr("Unterminated string in the name.\n", 2);
 	      exit(EXIT_FAILURE);
 	    }
 	  else
-	    name = recup_name(tmp);
+	    return(recup_name(tmp));
 	}
     }
+  close (fd);
   if (name == NULL)
     print_header_error();
-  close (fd);
-  return (name);
+  return (NULL);
 }
 
 int	count_quotes(char *str, int i)

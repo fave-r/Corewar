@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 11:53:25 2014 romaric
-** Last update Thu Mar 27 17:44:16 2014 alex-odet
+** Last update Fri Mar 28 12:15:57 2014 alex-odet
 */
 
 #include "struct.h"
@@ -38,11 +38,9 @@ int	main(int ac, char **av)
 
 void	send_file_to_parser(t_file *list)
 {
-  my_show_file_list(list);
   while (list)
     {
       parser(list->name_file);
-      sleep(20);
       list = list->next;
     }
 }

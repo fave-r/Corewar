@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Thu Mar 27 16:54:05 2014 alex-odet
+** Last update Fri Mar 28 15:12:33 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -41,6 +41,7 @@ typedef struct s_label
 {
   struct s_label *next;
   char		*name;
+  int		line;
 }		t_label;
 
 typedef struct	s_file
@@ -76,9 +77,10 @@ int		count_words(char *line);
 char		**my_str_to_wordtab(char *line);
 void		my_show_list(t_label *list);
 t_label		*fill_list_of_label(char *str);
-t_label		*my_put_in_list(t_label *list, char *name);
-t_label		*check_label(char *tmp, t_label *list);
-t_label		*copy_label(char *save, char *tmp, int len, t_label *list);
+t_label		*my_put_in_list(t_label *list, char *name, int line);
+t_label		*new_node(char *name, int line);
+t_label		*check_label(char *tmp, t_label *list, int line);
+t_label		*copy_label(char *tmp, int len, t_label *list, int line);
 void		my_show_file_list(t_file *list);
 t_file		*create_node(char *name);
 t_file		*my_put_in_file_list(t_file *list, char *name);

@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Sun Feb 23 21:19:02 2014 Thibaut Lopez
-** Last update Mon Mar 24 17:23:14 2014 romaric
+** Last update Fri Mar 28 15:10:10 2014 alex-odet
 */
 
 /*
@@ -68,5 +68,6 @@ int	my_strflen(const char *str);
 int	my_putfstr(const char *str, int fd);
 int	my_printf(int fd, const char *format, ...);
 void    my_memset(char *str, size_t n);
+char	*my_strndup(char *src, int len);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Mar 21 00:10:32 2014 alex-odet
-** Last update Mon Mar 24 11:35:25 2014 romaric
+** Last update Fri Mar 28 15:13:42 2014 alex-odet
 */
 
 #include "struct.h"
@@ -17,8 +17,12 @@ void	my_show_list(t_label *list)
       if (list->name == NULL)
 	return;
       else
-	my_putstr(list->name, 1);
-      my_putchar('\n', 1);
+	{
+	  my_putstr(list->name, 1);
+	  my_putchar(' ', 1);
+	  my_putnbr(list->line, 1);
+	  my_putchar('\n', 1);
+	}
       list = list->next;
     }
 }
