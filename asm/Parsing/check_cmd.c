@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Thu Mar 27 17:24:41 2014 alex-odet
+** Last update Fri Mar 28 16:15:23 2014 alex-odet
 */
 
 #include "struct.h"
@@ -65,6 +65,7 @@ char	*cmd_exist(char *str, int *bool)
     }
   return (NULL);
 }
+
 
 char	*cmd_next_label(char *cmd, int *j, int i, char *str)
 {
