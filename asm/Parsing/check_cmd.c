@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Thu Mar 27 16:53:50 2014 alex-odet
+** Last update Thu Mar 27 17:24:41 2014 alex-odet
 */
 
 #include "struct.h"
@@ -37,7 +37,6 @@ void	check_cmd(char *str)
 	  i = 0;
 	}
     }
-
   close (fd);
 }
 
