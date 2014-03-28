@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Fri Mar 28 16:11:34 2014 alex-odet
+** Last update Fri Mar 28 18:03:28 2014 alex-odet
 */
 
 #include "struct.h"
@@ -33,23 +33,12 @@ int	check(char *str)
   char		*comment;
 
   ptr = init();
-  printf("INITOK\n");
   name = check_name(str);
-  printf("NAMEOK\n");
   comment = check_comment(str);
-  printf("COMMENTOK\n");
   ptr = fill_header(name, comment);
-  printf("HEADEROK\n");
   list = fill_list_of_label(str);
-  printf("LISTOK\n");
   check_cmd(str);
-  printf("CMDOK\n");
   create_cor(str, ptr);
-  printf("COROK\n");
-  free(name);
-  free(comment);
-  free(ptr);
-  free(list);
   return (0);
 }
 
@@ -73,7 +62,7 @@ char	*check_name(char *str)
 	      exit(EXIT_FAILURE);
 	    }
 	  else
-	    return(recup_name(tmp));
+	    return (recup_name(tmp));
 	}
     }
   close (fd);

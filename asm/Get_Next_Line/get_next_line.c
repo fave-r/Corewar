@@ -5,19 +5,23 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 11:49:17 2014 romaric
-** Last update Mon Mar 24 12:06:39 2014 alex-odet
+** Last update Fri Mar 28 18:04:31 2014 alex-odet
 */
 
 #include "struct.h"
 
 char		*my_get_strdup(char *src)
 {
+  int		len;
   char		*dest;
 
-  dest = malloc((my_strlen(src) + 2) * sizeof(char));
+  len = (src == NULL) ? 0 : my_strlen(src);
+  dest = malloc((len + 2) * sizeof(char));
   if (dest == NULL)
     exit (EXIT_FAILURE);
-  my_strcpy(dest, src);
+  if (src != NULL)
+    my_strcpy(dest, src);
+  dest[len + 1] = 0;
   return (dest);
 }
 
@@ -29,7 +33,7 @@ char		*get_next_line(const int fd)
   t_get	l;
 
   l.c = 0;
-  l.s = xmalloc(1 * sizeof(char));
+  l.s = NULL;
   if (i == a)
     {
       a = read(fd, buff, BUFF_SIZE);
@@ -37,6 +41,13 @@ char		*get_next_line(const int fd)
     }
   if (a <= 0)
     return (0);
+  if (buff[i] == '\n')
+    {
+      i++;
+      return (my_strdup(""));
+    }
+  if (buff[i] == 0)
+    return (NULL);
   while (buff[i] != '\n')
     {
       if (buff[i] == '\0')
@@ -47,5 +58,7 @@ char		*get_next_line(const int fd)
       l.c++;
     }
   i++;
+  if (l.s != NULL)
+    l.s[l.c] = 0;
   return (l.s);
 }

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Fri Mar 28 16:15:23 2014 alex-odet
+** Last update Fri Mar 28 18:05:05 2014 alex-odet
 */
 
 #include "struct.h"
@@ -48,17 +48,18 @@ char	*cmd_exist(char *str, int *bool)
 
   i = 1;
   j = 1;
-  cmd = xmalloc(sizeof(char) * 6);
-  str[i - 1] != '\t' ? (cmd[0] = str[i - 1]) : (j = 0);
+  cmd = xmalloc(sizeof(char) * (my_strlen(str) + 1));
+  str[i - 1] != '\t' ? (cmd[0] = str[0]) : (j = 0);
   while (str[i] != '\t' && str[i] != ' ' && str[i])
     cmd[j++] = str[i++];
-  if (cmd[j - 1] == ':' && (str[j + 2] >= 'a' && str[j + 2] <= 'z'))
+  cmd[j] = 0;
+  if (j != 0 && cmd[j - 1] == ':' &&
+      (str[j + 2] >= 'a' && str[j + 2] <= 'z'))
     {
       cmd = cmd_next_label(cmd, &j, i, str);
       *bool = 1;
     }
-  cmd[j] = 0;
-  if (cmd[j - 1] != ':' && my_strlen(cmd) > 1 && my_strchr(':', cmd) != 0 && my_strchr('#', cmd) != 0 && my_strchr(';', cmd) != 0)
+  if (j != 0 && cmd[j - 1] != ':' && my_strlen(cmd) > 1 && my_strchr(':', cmd) != 0 && my_strchr('#', cmd) != 0 && my_strchr(';', cmd) != 0)
     {
       check_cmd_exist(cmd);
       return (cmd);

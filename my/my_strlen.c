@@ -5,14 +5,18 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Feb 23 21:02:50 2014 Thibaut Lopez
-** Last update Sat Mar 22 04:56:33 2014 alex-odet
+** Last update Fri Mar 28 17:24:12 2014 alex-odet
 */
+
+#include <stdlib.h>
 
 int	my_strlen(char *str)
 {
   int	i;
 
   i = 0;
+  if (str == NULL)
+    return (0);
   while (str[i] != 0)
     i++;
   return (i);
