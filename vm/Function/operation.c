@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Thu Mar 27 10:47:19 2014 Thibaut Lopez
+** Last update Sat Mar 29 14:49:08 2014 thibaud
 */
 
 #include "vm.h"
@@ -25,7 +25,10 @@ int	my_add(t_champ *champ, t_cor *cor)
 	+ champ->reg[tab[1][2] - 1];
     }
   else
+    {
+      printf("ADD FAIL\n");
     champ->carry = 0;
+    }
   champ->pc += 5;
   ifree(tab, 4);
   return (5);
@@ -45,7 +48,10 @@ int	my_sub(t_champ *champ, t_cor *cor)
 	champ->reg[tab[1][2] - 1];
     }
   else
+    {
+      printf("SUB FAIL\n");
     champ->carry = 0;
+    }
   champ->pc += 5;
   ifree(tab, 4);
   return (5);
@@ -69,7 +75,10 @@ int	my_and(t_champ *champ, t_cor *cor)
       champ->reg[tab[2][2] - 1] = arg1 & arg2;
     }
   else
+    {
+      printf("AND FAIL\n");
     champ->carry = 0;
+    }
   champ->pc += and;
   ifree(tab, 4);
   return (and);
@@ -93,7 +102,10 @@ int	my_or(t_champ *champ, t_cor *cor)
       champ->reg[tab[2][2] - 1] = arg1 | arg2;
     }
   else
+    {
+      printf("OR FAIL\n");
     champ->carry = 0;
+    }
   champ->pc += or;
   ifree(tab, 4);
   return (or);
@@ -120,7 +132,10 @@ int	my_xor(t_champ *champ, t_cor *cor)
       champ->reg[tab[2][2] - 1] = arg1 ^ arg2;
     }
   else
+    {
+      printf("XOR FAIL\n");
     champ->carry = 0;
+    }
   champ->pc += xor;
   ifree(tab, 4);
   return (xor);

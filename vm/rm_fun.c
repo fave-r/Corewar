@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 13:57:49 2014 Thibaut Lopez
-** Last update Wed Mar 26 18:36:25 2014 thibaud
+** Last update Sat Mar 29 16:34:28 2014 thibaud
 */
 
 #include "my.h"
@@ -50,60 +50,34 @@ void	epur_champ(t_cor *cor, t_champ **first)
     }
 }
 
-t_champ		*del_chmp(t_champ *champs, int champ_del)
+t_champ  *del_chmp(t_champ *list, int nb)
 {
-  t_champ	*cur;
-  t_champ	*del;
+  t_champ        *tmp;
 
-  cur = champs->next;
-  del = NULL;
-  while (cur != NULL)
-    {
-      if (cur->champ_nb == champ_del)
-	{
-	  del = cur;
-	  cur = cur->next;
-	  if (del == champs->next)
-	    {
-	      champs = champs->next;
-	    }
-	  if (del->prev != NULL)
-	    del->prev->next = cur;
-	  if (del->next != NULL)
-	    del->next->prev = del->prev;
-	  free(del);
-	}
-      cur = cur->next;
-    }
-  return (NULL);
-}
-
-/*
-t_champ	*del_chmp(t_champ *champs, int champ_del)
-{
-  t_champ	*tmp;
-
-  if (champs == NULL)
+  if (list == NULL)
     return (NULL);
-  if (champs->champ_nb == champ_del)
+  if (list->champ_nb == nb)
     {
-      tmp = champs->next;
-      if (champs->prev != NULL)
-	champs->prev->next = champs->next;
+      tmp = list->next;
+      if (list->prev != NULL)
+        {
+          list->prev->next = tmp;
+          if (list->next != NULL)
+            list->next->prev = list->prev;
+        }
       else
-	tmp->prev = NULL;
-      free(champs);
-      tmp = del_chmp(tmp, champ_del);
+        tmp->prev = NULL;
+      free(list);
+      tmp = del_chmp(tmp, nb);
       return (tmp);
     }
   else
     {
-      champs->next = del_chmp(champs->next, champ_del);
-      return (champs);
+      list->next = del_chmp(list->next, nb);
+      return (list);
     }
-  return (NULL);
 }
-*/
+
 int	kill_champ(t_champ *champs, t_cor *map)
 {
   int	i;
@@ -115,7 +89,7 @@ int	kill_champ(t_champ *champs, t_cor *map)
     {
       if (map->live[i] == 0)
 	{
-	  del_chmp(champs, map->champs_nb[i]);
+	  champs = del_chmp(champs, map->champs_nb[i]);
 	}
       else
 	nb_alive++;

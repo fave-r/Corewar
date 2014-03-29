@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-** Last update Tue Mar 25 17:27:33 2014 Thibaut Lopez
+** Last update Sat Mar 29 16:31:57 2014 thibaud
 */
 
 #include "vm.h"
@@ -30,6 +30,8 @@ int	my_ld(t_champ *champ, t_cor *cor)
     {
       ld = 5;
       champ->carry = 0;
+      printf("LD FAIL\n");
+      //exit(0);
     }
   champ->pc += ld;
   return (ld);
@@ -52,9 +54,17 @@ int	my_ldi(t_champ *champ, t_cor *cor)
       champ->reg[tab[2][2] - 1] = get_nbr_action(cor->mem,
 						 champ->pc + arg1 + arg2, 4);
       ldi = tab[0][1] + tab[1][1] + tab[2][1] + 2;
+      printf("LDI SUCESS\n");
+      //exit(0);
+
     }
   else
-    ldi = 5;
+    {
+      champ->carry = 0;
+      ldi = 5;
+      printf("LDI FAIL\n");
+      //exit(0);
+    }
   champ->pc += ldi;
   return (ldi);
 }
@@ -78,6 +88,8 @@ int	my_lld(t_champ *champ, t_cor *cor)
     {
       ld = 5;
       champ->carry = 0;
+      printf("LLD FAIL\n");
+      //exit(0);
     }
   champ->pc += ld;
   return (ld);
@@ -102,7 +114,12 @@ int	my_lldi(t_champ *champ, t_cor *cor)
       ldi = tab[0][1] + tab[1][1] + tab[2][1] + 2;
     }
   else
-    ldi = 5;
+    {
+      champ->carry = 0;
+      ldi = 5;
+      printf("LLDI FAIL\n");
+      //exit(0);
+    }
   champ->pc += ldi;
   return (ldi);
 }
