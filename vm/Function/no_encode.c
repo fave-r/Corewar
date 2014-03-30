@@ -5,12 +5,28 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Sat Mar 29 15:39:11 2014 thibaud
+** Last update Sun Mar 30 15:39:27 2014 thibaud
 ** Last update Fri Mar 21 09:23:42 2014 Thibaut Lopez
 */
 
 #include "my.h"
 #include "vm.h"
+
+int	find_champ(t_cor *cor, int direct_arg)
+{
+  int	j;
+  int	i;
+
+  i = 0;
+  j = -1;
+  while (i < 4)
+    {
+      if (cor->champs_nb[i] == direct_arg)
+	j = i;
+      i++;
+    }
+  return (j);
+}
 
 int	my_live(t_champ *champ, t_cor *cor)
 {
@@ -18,16 +34,8 @@ int	my_live(t_champ *champ, t_cor *cor)
   int	j;
   int	direct_arg;
 
-  //my_printf(1, "Compteur de cycle = %d\n", cor->cycle);
-  i = 0;
-  j = -1;
   direct_arg = get_nbr_action(cor->mem, champ->pc + 1, 4);
-  while (i < 4)
-    {
-      if (cor->champs_nb[i] == direct_arg)
-	j = i;
-      i++;
-    }
+  j = find_champ(cor, direct_arg);
   if (j != -1)
     {
       i = 0;
@@ -42,31 +50,13 @@ int	my_live(t_champ *champ, t_cor *cor)
 	  cor->live[i - 1] = 1;
       cor->live[j] = 2;
       cor->live_done++;
-      //printf("Live_done = %d\n", cor->live_done);
     }
   else
     champ->carry = 0;
-  /*
-  else
-      my_printf(1, "ECHEC : Live du champion %s pour le champion numéro %d\n", champ->head->prog_name, direct_arg);
-  */
-  //my_putstr(", avance dans la mémoire de 5\n", 1);
   champ->pc += 5;
-  //my_printf(1, "Compteur de live = %d\n", cor->live_done);
-  //my_printf(1, "Num live = %d %d %d %d\n", cor->live[0], cor->live[1], cor->live[2], cor->live[3]);
-  //printf("CYCLE DONE = %d\n", cor->cycle);
-  //printf("TRALALALALALALAL = %d\n", cor->cycle);
-  /*
-    static int	x = 0;
-    x++;
-    if (x == 1)
-    {
-    aff_memdr(cor->mem);
-    exit(0);
-    }
-  */
   return (5);
 }
+
 
 int	my_zjmp(t_champ *champ, t_cor *cor)
 {
