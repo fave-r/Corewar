@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 11:49:17 2014 romaric
-** Last update Fri Mar 28 18:04:31 2014 alex-odet
+** Last update Mon Mar 31 19:54:49 2014 romaric
 */
 
 #include "struct.h"
@@ -25,40 +25,53 @@ char		*my_get_strdup(char *src)
   return (dest);
 }
 
+void	get_init(t_get *l)
+{
+  l->c = 0;
+  l->s = NULL;
+}
+
+void	init_a(int *i, int *a, int fd, char buff[])
+{
+  if (*i == *a)
+    {
+      *a = xread(fd, buff, BUFF_SIZE);
+      *i = 0;
+    }
+}
+
+void	val(int *i, t_get *l)
+{
+  *i = *i + 1;
+  if (l->s != NULL)
+    l->s[l->c] = 0;
+}
+
 char		*get_next_line(const int fd)
 {
   static char   buff[BUFF_SIZE];
   static int    i = 0;
   static int    a = 0;
-  t_get	l;
+  t_get		l;
 
-  l.c = 0;
-  l.s = NULL;
-  if (i == a)
-    {
-      a = read(fd, buff, BUFF_SIZE);
-      i = 0;
-    }
-  if (a <= 0)
-    return (0);
+  get_init(&l);
+  init_a(&i, &a, fd, buff);
   if (buff[i] == '\n')
     {
       i++;
       return (my_strdup(""));
     }
   if (buff[i] == 0)
-    return (NULL);
+    {
+      operationss(buff, &i, &a);
+      return (NULL);
+    }
   while (buff[i] != '\n')
     {
       if (buff[i] == '\0')
 	return (l.s);
-      l.s = my_get_strdup(l.s);
-      l.s[l.c] = buff[i];
-      i++;
-      l.c++;
+      operations(&l, &i, buff);
     }
-  i++;
-  if (l.s != NULL)
-    l.s[l.c] = 0;
+  val(&i, &l);
   return (l.s);
 }

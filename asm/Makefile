@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Mon Mar 31 13:28:17 2014 romaric
+## Last update Mon Mar 31 19:57:26 2014 romaric
 ##
 
 CC=		clang
@@ -31,6 +31,7 @@ SRCS=		main.c \
 		Header/recup.c \
 		List/my_put_in_list.c \
 		List/my_show_list.c \
+		Get_Next_Line/get_next_line_next.c
 
 OBJS=		$(SRCS:.c=.o)
 
