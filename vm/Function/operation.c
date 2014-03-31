@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Sat Mar 29 14:49:08 2014 thibaud
+** Last update Mon Mar 31 14:26:39 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -62,13 +62,15 @@ int	my_and(t_champ *champ, t_cor *cor)
   int	and;
   int	arg1;
   int	arg2;
+  int	err;
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
-  arg1 = get_all_type_arg(tab, 0, champ, cor->mem);
-  arg2 = get_all_type_arg(tab, 1, champ, cor->mem);
+  err = 0;
+  arg1 = get_all_type_arg(tab[0], champ, cor->mem, &err);
+  arg2 = get_all_type_arg(tab[1], champ, cor->mem, &err);
   and = tab[0][1] + tab[1][1] + 3;
-  if (arg1 != -1 && arg2 != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
+  if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
       champ->carry = 1;
@@ -77,7 +79,7 @@ int	my_and(t_champ *champ, t_cor *cor)
   else
     {
       printf("AND FAIL\n");
-    champ->carry = 0;
+      champ->carry = 0;
     }
   champ->pc += and;
   ifree(tab, 4);
@@ -90,12 +92,14 @@ int	my_or(t_champ *champ, t_cor *cor)
   int	arg1;
   int	arg2;
   int	**tab;
+  int	err;
 
   tab = get_encode(cor->mem, champ->pc);
-  arg1 = get_all_type_arg(tab, 0, champ, cor->mem);
-  arg2 = get_all_type_arg(tab, 1, champ, cor->mem);
+  err = 0;
+  arg1 = get_all_type_arg(tab[0], champ, cor->mem, &err);
+  arg2 = get_all_type_arg(tab[1], champ, cor->mem, &err);
   or = tab[0][1] + tab[1][1] + 3;
-  if (arg1 != -1 && arg2 != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
+  if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
       champ->carry = 1;
@@ -104,7 +108,7 @@ int	my_or(t_champ *champ, t_cor *cor)
   else
     {
       printf("OR FAIL\n");
-    champ->carry = 0;
+      champ->carry = 0;
     }
   champ->pc += or;
   ifree(tab, 4);
@@ -117,13 +121,14 @@ int	my_xor(t_champ *champ, t_cor *cor)
   int	arg1;
   int	arg2;
   int	**tab;
+  int	err;
 
   tab = get_encode(cor->mem, champ->pc);
-  //print_encode(tab);
-  arg1 = get_all_type_arg(tab, 0, champ, cor->mem);
-  arg2 = get_all_type_arg(tab, 1, champ, cor->mem);
+  err = 0;
+  arg1 = get_all_type_arg(tab[0], champ, cor->mem, &err);
+  arg2 = get_all_type_arg(tab[1], champ, cor->mem, &err);
   xor = tab[0][1] + tab[1][1] + 3;
-  if (arg1 != -1 && arg2 != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
+  if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
       champ->carry = 1;
@@ -134,7 +139,7 @@ int	my_xor(t_champ *champ, t_cor *cor)
   else
     {
       printf("XOR FAIL\n");
-    champ->carry = 0;
+      champ->carry = 0;
     }
   champ->pc += xor;
   ifree(tab, 4);

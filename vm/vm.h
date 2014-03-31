@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Thu Mar 27 08:53:53 2014 Thibaut Lopez
+** Last update Mon Mar 31 14:24:28 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -103,13 +103,11 @@ int	my_lldi(t_champ *champ, t_cor *cor);
 int	my_lfork(t_champ *champ, t_cor *cor);
 int	my_aff(t_champ *champ, t_cor *cor);
 int	my_none(t_champ *champ, t_cor *cor);
-int	get_all_type_arg(int **tab, int i, t_champ *champ, unsigned char *mem);
-int	get_dir_ind_arg(int **tab, int i, t_champ *champ, unsigned char *mem);
-int	get_dir_reg_arg(int **tab, int i, t_champ *champ, unsigned char *mem);
-int	get_dir_ind_arg_noidx(int **tab, int i,
-			      t_champ *champ, unsigned char *mem);
-int	get_all_type_arg_noidx(int **tab, int i,
-			       t_champ *champ, unsigned char *mem);
+int	get_all_type_arg(int *tab, t_champ *champ, unsigned char *mem, int *err);
+int	get_dir_ind_arg(int *tab, t_champ *champ, unsigned char *mem, int *err);
+int	get_dir_reg_arg(int *tab, t_champ *champ, unsigned char *mem, int *err);
+int	get_dir_ind_arg_noidx(int *tab, t_champ *champ, unsigned char *mem, int *err);
+int	get_all_type_arg_noidx(int *tab, t_champ *champ, unsigned char *mem, int *err);
 
 int	init_graphic(t_cor *cor);
 void	free_graphic();
