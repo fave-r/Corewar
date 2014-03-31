@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Fri Mar 28 18:03:28 2014 alex-odet
+** Last update Sun Mar 30 14:33:13 2014 alex-odet
 */
 
 #include "struct.h"
@@ -39,6 +39,7 @@ int	check(char *str)
   list = fill_list_of_label(str);
   check_cmd(str);
   create_cor(str, ptr);
+  free(list);
   return (0);
 }
 
