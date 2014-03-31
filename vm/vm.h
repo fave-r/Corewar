@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Mon Mar 31 14:24:28 2014 Thibaut Lopez
+** Last update Mon Mar 31 14:47:44 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -71,7 +71,7 @@ int	move_in_list(t_champ **champ, int nbr);
 int	check_champ(t_champ **champ, char *path, int addr, int endian);
 int	my_list_len(t_champ *champ);
 void	init_adress(t_champ *champ);
-void	fill_mem(unsigned char **mem, t_champ *champ);
+int	fill_mem(unsigned char **mem, t_champ *champ);
 int	get_nbr_action(unsigned char *mem, int pc, int len);
 int	**get_encode(unsigned char *mem, int pc);
 void	ifree(int **tab, int len);
@@ -127,5 +127,6 @@ t_champ	*del_chmp(t_champ *champs, int champ_del);
 int	kill_champ(t_champ *champs, t_cor *map);
 int	mod_mem(int nb);
 void	cor_mem_set(unsigned char *mem, int len);
+int	prog_size_error(char *path);
 
 #endif

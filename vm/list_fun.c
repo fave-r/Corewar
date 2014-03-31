@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Mar  2 12:45:35 2014 Thibaut Lopez
-** Last update Thu Mar 27 08:50:22 2014 Thibaut Lopez
+** Last update Mon Mar 31 14:47:28 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -93,27 +93,30 @@ void	init_adress(t_champ *champ)
   check_adress(champ);
 }
 
-void	fill_mem(unsigned char **mem, t_champ *champ)
+int	fill_mem(unsigned char **mem, t_champ *champ)
 {
   int		len;
   t_champ	*tmp;
 
   tmp = champ;
   len = read(tmp->fd, *mem + tmp->pc, MEM_SIZE - tmp->pc);
-  if (len < tmp->head->prog_size)
-    read(tmp->fd, *mem, tmp->head->prog_size);
+  if (len < tmp->head->prog_size && (len += read(tmp->fd, *mem,
+						 tmp->head->prog_size)) < tmp->head->prog_size)
+    exit(prog_size_error(tmp->path));
   close(tmp->fd);
   tmp->reg[0] = tmp->champ_nb;
   tmp = tmp->next;
   while (tmp != champ)
     {
       len = read(tmp->fd, *mem + tmp->pc, MEM_SIZE - tmp->pc);
-      if (len < tmp->head->prog_size)
-	read(tmp->fd, *mem, tmp->head->prog_size);
+      if (len < tmp->head->prog_size && (len += read(tmp->fd, *mem,
+						     tmp->head->prog_size)) < tmp->head->prog_size)
+	exit(prog_size_error(tmp->path));
       close(tmp->fd);
       tmp->reg[0] = tmp->champ_nb;
       tmp = tmp->next;
     }
   champ->prev->next = NULL;
   champ->prev = NULL;
+  return (0);
 }
