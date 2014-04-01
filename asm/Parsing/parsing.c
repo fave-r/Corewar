@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Tue Apr  1 09:50:51 2014 alex-odet
+** Last update Tue Apr  1 14:18:25 2014 alex-odet
 */
 
 #include "struct.h"
@@ -14,7 +14,7 @@ void	parser(char *str)
 {
   if (str[my_strlen(str) - 1] == 's'
       && str[my_strlen(str) - 2] == '.'
-      && count_dot(str) == 1)
+      && count_dot(str, 0, '.') == 1)
     check(str);
   else
     print_bad_ext(str);
@@ -53,7 +53,7 @@ char	*check_name(char *str)
     {
       if (my_strncmp(tmp, NAME_CMD_STRING, 5) == 0)
 	{
-	  quotes = count_quotes(tmp, 0);
+	  quotes = count_dot(tmp, 0, '"');
 	  if (quotes < 2)
 	    print_bad_name();
 	  else
@@ -64,18 +64,4 @@ char	*check_name(char *str)
   if (name == NULL)
     print_header_error();
   return (NULL);
-}
-
-int	count_quotes(char *str, int i)
-{
-  int	x;
-
-  x = 0;
-  while (str[i] != 0)
-    {
-      if (str[i] == '"')
-	x++;
-      i++;
-    }
-  return (x);
 }

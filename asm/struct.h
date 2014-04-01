@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Tue Apr  1 11:44:36 2014 romaric
+** Last update Tue Apr  1 14:16:42 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -62,7 +62,6 @@ char		*get_next_line(const int fd);
 void		parser(char *str);
 int		check(char *str);
 char		*check_name(char *str);
-int		count_quotes(char *str, int i);
 char		*recup_name(char *str);
 header_t	*fill_header(char *name, char *comment);
 header_t	*init();
@@ -96,7 +95,7 @@ void		check_arg(char *cmd, char *args);
 void		print_bad_ext(char *filename);
 void		print_bad_name();
 void		print_bad_comment();
-int		count_dot(char *str);
+int		count_dot(char *str, int i, char c);
 int		len_tab(char **tab);
 void		print_bad_instruction(char *cmd);
 
