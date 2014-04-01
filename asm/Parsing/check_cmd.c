@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Tue Apr  1 11:45:40 2014 romaric
+** Last update Tue Apr  1 15:06:03 2014 alex-odet
 */
 
 #include "struct.h"
@@ -23,19 +23,15 @@ void	check_cmd(char *str)
   cmd = NULL;
   while ((tmp = get_next_line(fd)))
     {
-      //my_printf(1, "%s\n", tmp);
+      printf("Je boucle dans les commandes.\n");
       if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
 	cmd = cmd_exist(tmp, &i);
       if (cmd != NULL)
 	if (i == 0)
 	  {
 	    line = my_str_to_wordtab(tmp);
-	    printf("%s\n", line[1]);
 	    if (line[1] != NULL)
-	      {
-		check_cmd_arg(line[1], cmd);
-		check_arg(cmd, line[len_tab(line) - 1]);
-	      }
+	      check_cmd_arg(line[1], cmd);
 	  }
       i = 0;
     }
@@ -61,7 +57,9 @@ char	*cmd_exist(char *str, int *bool)
       cmd = cmd_next_label(cmd, &j, i, str);
       *bool = 1;
     }
-  if (j != 0 && cmd[j - 1] != ':' && my_strlen(cmd) > 1 && my_strchr(':', cmd) != 0 && my_strchr('#', cmd) != 0 && my_strchr(';', cmd) != 0)
+  if (j != 0 && cmd[j - 1] != ':' && my_strlen(cmd) > 1
+      && my_strchr(':', cmd) != 0
+      && my_strchr('#', cmd) != 0 && my_strchr(';', cmd) != 0)
     {
       check_cmd_exist(cmd);
       return (cmd);
@@ -124,4 +122,5 @@ void	check_cmd_arg(char *args, char *cmd)
       my_printf(2, "The instruction : %s Doesn't take %d arguments but %d\n", cmd, nbr_coma, op_tab[k].nbr_args);
       exit(EXIT_FAILURE);
     }
+  check_arg(cmd, args);
 }

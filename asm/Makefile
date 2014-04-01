@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Tue Apr  1 09:51:10 2014 alex-odet
+## Last update Tue Apr  1 16:04:31 2014 alex-odet
 ##
 
 CC=		clang
@@ -26,6 +26,7 @@ SRCS=		main.c \
 		Parsing/check_cmd.c \
 		Parsing/check_label.c \
 		Parsing/check_arg.c \
+		Parsing/check_live.c \
 		Get_Next_Line/get_next_line.c \
 		Header/init.c \
 		Header/fill_header.c \
