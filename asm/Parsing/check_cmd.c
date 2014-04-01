@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Tue Apr  1 11:13:26 2014 alex-odet
+** Last update Tue Apr  1 11:17:23 2014 romaric
 */
 
 #include "struct.h"
@@ -23,7 +23,7 @@ void	check_cmd(char *str)
   cmd = NULL;
   while ((tmp = get_next_line(fd)))
     {
-      my_printf(1, "%s\n", tmp);
+      //my_printf(1, "%s\n", tmp);
       if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
 	cmd = cmd_exist(tmp, &i);
       if (cmd != NULL)
@@ -32,7 +32,7 @@ void	check_cmd(char *str)
 	    line = my_str_to_wordtab(tmp);
 	    if (line[1] != NULL)
 	      {
-		printf("Line[len_tab(tab)] = %s\n", line[len_tab(line) - 1]);
+		//printf("Line[len_tab(tab)] = %s\n", line[len_tab(line) - 1]);
 		check_cmd_arg(line[1], cmd);
 		check_arg(cmd, line[len_tab(line) - 1]);
 	      }
@@ -110,7 +110,7 @@ void	check_cmd_arg(char *args, char *cmd)
   i = -1;
   k = 0;
   nbr_coma = 0;
-  printf("args = %s\n", args);
+  printf("cmd = %s ; args = %s\n", cmd, args);
   while (args[++i] != '\0')
     {
       if (args[i] == ',')
