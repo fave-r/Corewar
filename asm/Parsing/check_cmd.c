@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Fri Mar 28 18:05:05 2014 alex-odet
+** Last update Tue Apr  1 09:23:01 2014 alex-odet
 */
 
 #include "struct.h"
@@ -27,15 +27,17 @@ void	check_cmd(char *str)
       if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
 	cmd = cmd_exist(tmp, &i);
       if (cmd != NULL)
-	{
-	  if (i == 0)
-	    {
-	      line = my_str_to_wordtab(tmp);
-	      if (line[1] != NULL)
+	if (i == 0)
+	  {
+	    line = my_str_to_wordtab(tmp);
+	    if (line[1] != NULL)
+	      {
+		printf("Line[1] = %s\n", line[1]);
 		check_cmd_arg(line[1], cmd);
-	    }
-	  i = 0;
-	}
+		check_arg(cmd, line[1]);
+	      }
+	  }
+      i = 0;
     }
   close (fd);
 }

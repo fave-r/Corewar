@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Mar 26 10:43:51 2014 alex-odet
-** Last update Wed Mar 26 20:17:00 2014 romaric
+** Last update Mon Mar 31 13:27:52 2014 alex-odet
 */
 
 #include "struct.h"
@@ -24,6 +24,7 @@ int	size_to_malloc(char *cmd)
     }
   else
     i = 2;
+  return (i);
 }
 
 char	*hexa_value(char *cmd)
@@ -31,7 +32,8 @@ char	*hexa_value(char *cmd)
   char	*str;
   int	i;
 
-  str = xmalloc(sizeof(char) * )
+  str = xmalloc(sizeof(char) * size_to_malloc(cmd));
+  return (str);
 }
 
 char	*write_in_buff(char *buff, char *cmd)

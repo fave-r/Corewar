@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Mon Mar 31 19:55:55 2014 romaric
+** Last update Tue Apr  1 09:51:43 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -92,5 +92,10 @@ int		my_strlen_mod(char *str);
 void		check_cmd_arg(char *args, char *cmd);
 void		operations(t_get *l, int *i, char buff[]);
 void		operationss(char buff[], int *i, int *a);
+void		check_arg(char *cmd, char *args);
+void		print_bad_ext(char *filename);
+void		print_bad_name();
+void		print_bad_comment();
+int		count_dot(char *str);
 
 #endif
