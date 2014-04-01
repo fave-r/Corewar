@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Tue Apr  1 09:23:01 2014 alex-odet
+** Last update Tue Apr  1 11:13:26 2014 alex-odet
 */
 
 #include "struct.h"
@@ -32,9 +32,9 @@ void	check_cmd(char *str)
 	    line = my_str_to_wordtab(tmp);
 	    if (line[1] != NULL)
 	      {
-		printf("Line[1] = %s\n", line[1]);
+		printf("Line[len_tab(tab)] = %s\n", line[len_tab(line) - 1]);
 		check_cmd_arg(line[1], cmd);
-		check_arg(cmd, line[1]);
+		check_arg(cmd, line[len_tab(line) - 1]);
 	      }
 	  }
       i = 0;
@@ -98,12 +98,7 @@ void	check_cmd_exist(char *cmd)
       j++;
     }
   if (op_tab[j].mnemonique == NULL && x == 1)
-    {
-      my_putstr("The instruction : ", 2);
-      my_putstr(cmd, 2);
-      my_putstr(" Doesn't exists.\n", 2);
-      exit(EXIT_FAILURE);
-    }
+    print_bad_instruction(cmd);
 }
 
 void	check_cmd_arg(char *args, char *cmd)
@@ -115,6 +110,7 @@ void	check_cmd_arg(char *args, char *cmd)
   i = -1;
   k = 0;
   nbr_coma = 0;
+  printf("args = %s\n", args);
   while (args[++i] != '\0')
     {
       if (args[i] == ',')

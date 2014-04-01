@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Tue Apr  1 09:51:43 2014 alex-odet
+** Last update Tue Apr  1 11:14:04 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -97,5 +97,7 @@ void		print_bad_ext(char *filename);
 void		print_bad_name();
 void		print_bad_comment();
 int		count_dot(char *str);
+int		len_tab(char **tab);
+void		print_bad_instruction(char *cmd);
 
 #endif
