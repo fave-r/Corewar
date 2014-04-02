@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Wed Apr  2 14:23:22 2014 alex-odet
+** Last update Wed Apr  2 16:38:52 2014 alex-odet
 */
 
 #include "struct.h"
@@ -17,9 +17,9 @@ t_lst		*create_new_node(char *cmd, t_lst **node)
 
   new = xmalloc(sizeof(t_lst));
   new->cmd = my_str_to_wordtab(cmd);
-  if (new->cmd[0][my_strlen(cmd[0]) - 1] == ':')
+  if (new->cmd[0][my_strlen(new->cmd[0]) - 1] == ':')
     {
-      len = my_strlen(cmd[0]);
+      len = my_strlen(new->cmd[0]);
       sfree(new->cmd);
       new->cmd = my_str_to_wordtab(cmd + len);
     }

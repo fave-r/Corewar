@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Wed Apr  2 14:26:04 2014 alex-odet
+** Last update Wed Apr  2 16:39:13 2014 alex-odet
 */
 
 #include "struct.h"
@@ -26,7 +26,6 @@ int	check(char *str)
   header_t	*ptr;
   char		*name;
   char		*comment;
-  char		*big_buff;
 
   ptr = init();
   name = check_name(str);
@@ -34,7 +33,6 @@ int	check(char *str)
   ptr = fill_header(name, comment);
   list = fill_list_of_label(str);
   check_cmd(str);
-  //big = 
   create_cor(str, ptr);
   free(list);
   free(name);
