@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Mon Mar 10 16:12:02 2014 alex-odet
-** Last update Fri Mar 28 18:03:43 2014 alex-odet
+** Last update Tue Apr  1 14:19:40 2014 alex-odet
 */
 
 #include "struct.h"
@@ -22,14 +22,11 @@ char	*check_comment(char *str)
   comment = NULL;
   while ((tmp = get_next_line(fd)))
     {
-      if (my_strncmp(tmp, ".comment", 8) == 0)
+      if (my_strncmp(tmp, COMMENT_CMD_STRING, 8) == 0)
 	{
-	  quotes = count_quotes(tmp, 0);
-	  if (quotes != 2)
-	    {
-	      my_putstr("Unterminated string in the comment", 2);
-	      exit(EXIT_FAILURE);
-	    }
+	  quotes = count_dot(tmp, 0, '"');
+	  if (quotes < 2)
+	    print_bad_comment();
 	  else
 	    return (recup_comment(tmp));
 	}
@@ -51,7 +48,7 @@ char	*recup_comment(char *str)
   while (str[i] != '\"')
     i++;
   save = xmalloc(sizeof(char) * COMMENT_LENGTH + 1);
-  while (str[++i] != '"' && count_quotes(str, i) >= 1)
+  while (str[++i] != '"' && count_dot(str, i, '"') >= 1)
     {
       save[j] = str[i];
       j++;

@@ -5,7 +5,11 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
+<<<<<<< HEAD
 ** Last update Mon Mar 31 16:11:47 2014 thibaud
+=======
+** Last update Mon Mar 31 14:42:53 2014 Thibaut Lopez
+>>>>>>> 6bc7f99d48024bb806f7ee52e3ac6303d13f113f
 */
 
 #include "my.h"
@@ -92,7 +96,10 @@ int	main(int argc, char **argv)
   init_adress(cor.champ);
   cor.mem = xmalloc((MEM_SIZE + 1) * sizeof(char));
   cor_mem_set(cor.mem, MEM_SIZE);
-  fill_mem(&(cor.mem), cor.champ);
+  if (fill_mem(&(cor.mem), cor.champ) == 1)
+    {
+
+    }
   cor.nb_chmps_alive = 0;
   my_mem_set(cor.live, 4);
   init_champs_nb(&cor);

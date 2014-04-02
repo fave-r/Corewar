@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 11:53:25 2014 romaric
-** Last update Mon Mar 31 11:49:48 2014 romaric
+** Last update Mon Mar 31 13:48:32 2014 romaric
 */
 
 #include "struct.h"
@@ -25,6 +25,7 @@ int	main(int ac, char **av)
       return (0);
     }
   else
+    //    parser(av[1]);
     {
       while (av[i])
 	{

@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Mon Mar 24 14:12:59 2014 Thibaut Lopez
+## Last update Wed Apr  2 14:25:40 2014 alex-odet
 ##
 
 VM_S=		champ_fun.c \
@@ -14,7 +14,6 @@ VM_S=		champ_fun.c \
 		list_fun.c \
 		main.c \
 		run_corewar.c \
-		spec_fun.c \
 		get_arg.c \
 		tmp.c \
 		rm_fun.c \

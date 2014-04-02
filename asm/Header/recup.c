@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Feb 25 18:56:54 2014 romaric
-** Last update Fri Mar 28 18:04:00 2014 alex-odet
+** Last update Tue Apr  1 14:18:49 2014 alex-odet
 */
 
 #include "struct.h"
@@ -23,7 +23,7 @@ char	*recup_name(char *str)
   j = 0;
   while (str[i] != '"')
     i++;
-  while (str[++i] != '"' && count_quotes(str, i) >= 1)
+  while (str[++i] != '"' && count_dot(str, i, '"') >= 1)
     {
       save[j] = str[i];
       j++;

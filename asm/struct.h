@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Fri Mar 28 15:12:33 2014 alex-odet
+** Last update Wed Apr  2 15:14:03 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -58,11 +58,16 @@ typedef struct	s_word
   char  *ptr;
 }		t_word;
 
+typedef struct	s_cmd
+{
+  char		*cmd;
+  char		*(*ptr)(char *, int *);
+}		t_cmd;
+
 char		*get_next_line(const int fd);
 void		parser(char *str);
 int		check(char *str);
 char		*check_name(char *str);
-int		count_quotes(char *str, int i);
 char		*recup_name(char *str);
 header_t	*fill_header(char *name, char *comment);
 header_t	*init();
@@ -90,5 +95,15 @@ char		*my_get_strdup(char *src);
 char		*cmd_next_label(char *cmd, int *j, int i, char *str);
 int		my_strlen_mod(char *str);
 void		check_cmd_arg(char *args, char *cmd);
+void		operations(t_get *l, int *i, char buff[]);
+void		operationss(char buff[], int *i, int *a);
+void		check_arg(char *cmd, char *args);
+void		print_bad_ext(char *filename);
+void		print_bad_name();
+void		print_bad_comment();
+int		count_dot(char *str, int i, char c);
+int		len_tab(char **tab);
+void		print_bad_instruction(char *cmd);
+void		check_live(char *args, char *cmd);
 
 #endif

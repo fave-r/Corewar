@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Mar 11 04:03:48 2014 alex-odet
-** Last update Fri Mar 28 18:07:07 2014 alex-odet
+** Last update Wed Apr  2 14:22:44 2014 alex-odet
 */
 
 #include "struct.h"
@@ -47,5 +47,5 @@ void	print_assembling(char *name, header_t *header)
   my_putstr("\n\t", 1);
   my_putstr(header->comment, 1);
   my_putstr("\n", 1);
-  my_putstr("-------------------------------------------------------------\n", 1);
+  my_putstr("-----------------------------------------------------------\n", 1);
 }

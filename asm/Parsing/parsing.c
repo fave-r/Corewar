@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Sun Mar 30 14:33:13 2014 alex-odet
+** Last update Wed Apr  2 14:26:04 2014 alex-odet
 */
 
 #include "struct.h"
@@ -13,16 +13,11 @@
 void	parser(char *str)
 {
   if (str[my_strlen(str) - 1] == 's'
-      && str[my_strlen(str) - 2] == '.')
+      && str[my_strlen(str) - 2] == '.'
+      && count_dot(str, 0, '.') == 1)
     check(str);
   else
-    {
-      my_putstr("Your file : ", 2);
-      my_putstr(str, 2);
-      my_putstr(" Has a bad extension.\n", 2);
-      my_putstr("Please Choose a file with '.s' extension.\n", 2);
-      exit(EXIT_FAILURE);
-    }
+    print_bad_ext(str);
 }
 
 int	check(char *str)
@@ -31,6 +26,7 @@ int	check(char *str)
   header_t	*ptr;
   char		*name;
   char		*comment;
+  char		*big_buff;
 
   ptr = init();
   name = check_name(str);
@@ -38,8 +34,11 @@ int	check(char *str)
   ptr = fill_header(name, comment);
   list = fill_list_of_label(str);
   check_cmd(str);
+  //big = 
   create_cor(str, ptr);
   free(list);
+  free(name);
+  free(comment);
   return (0);
 }
 
@@ -54,14 +53,11 @@ char	*check_name(char *str)
   name = NULL;
   while ((tmp = get_next_line(fd)))
     {
-      if (my_strncmp(tmp, ".name", 5) == 0)
+      if (my_strncmp(tmp, NAME_CMD_STRING, 5) == 0)
 	{
-	  quotes = count_quotes(tmp, 0);
+	  quotes = count_dot(tmp, 0, '"');
 	  if (quotes < 2)
-	    {
-	      my_putstr("Unterminated string in the name.\n", 2);
-	      exit(EXIT_FAILURE);
-	    }
+	    print_bad_name();
 	  else
 	    return (recup_name(tmp));
 	}
@@ -70,18 +66,4 @@ char	*check_name(char *str)
   if (name == NULL)
     print_header_error();
   return (NULL);
-}
-
-int	count_quotes(char *str, int i)
-{
-  int	x;
-
-  x = 0;
-  while (str[i] != 0)
-    {
-      if (str[i] == '"')
-	x++;
-      i++;
-    }
-  return (x);
 }

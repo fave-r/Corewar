@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Sun Mar 30 14:31:47 2014 alex-odet
+** Last update Tue Apr  1 14:57:55 2014 alex-odet
 */
 
 #include "struct.h"
@@ -16,22 +16,23 @@ t_label		*fill_list_of_label(char *str)
   int		fd;
   char		*tmp;
   int		line;
+  char		*save;
 
   line = 1;
   list = NULL;
   fd = xopen(str, O_RDONLY);
   while ((tmp = get_next_line(fd)))
     {
-      if (my_strlen(tmp) > 2 && 
-	  tmp[my_strlen(tmp) - 1] == ':' && tmp[my_strlen(tmp) - 2] != '%')
-	list = my_put_in_list(list, tmp, line);
+      if (tmp[my_strlen(tmp) - 1] == ':' && tmp[my_strlen(tmp) - 2] != '%')
+	{
+	  save = my_strndup(tmp, my_strlen(tmp) - 1);
+	  list = my_put_in_list(list, save, line);
+	}
       else
 	list = check_label(tmp, list, line);
       line++;
     }
-  my_putstr("------------------------------\nList of Label : \n\n", 1);
   my_show_list(list);
-  my_putstr("------------------------------\n", 1);
   close (fd);
   return (list);
 }

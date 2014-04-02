@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Fri Mar 28 18:05:05 2014 alex-odet
+** Last update Wed Apr  2 13:30:48 2014 romaric
 */
 
 #include "struct.h"
@@ -23,19 +23,17 @@ void	check_cmd(char *str)
   cmd = NULL;
   while ((tmp = get_next_line(fd)))
     {
-      my_printf(1, "%s\n", tmp);
+      printf("%s\n", tmp);
       if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
 	cmd = cmd_exist(tmp, &i);
       if (cmd != NULL)
-	{
-	  if (i == 0)
-	    {
-	      line = my_str_to_wordtab(tmp);
-	      if (line[1] != NULL)
-		check_cmd_arg(line[1], cmd);
-	    }
-	  i = 0;
-	}
+	if (i == 0)
+	  {
+	    line = my_str_to_wordtab(tmp);
+	    if (line[1] != NULL)
+	      check_cmd_arg(line[1], cmd);
+	  }
+      i = 0;
     }
   close (fd);
 }
@@ -59,7 +57,9 @@ char	*cmd_exist(char *str, int *bool)
       cmd = cmd_next_label(cmd, &j, i, str);
       *bool = 1;
     }
-  if (j != 0 && cmd[j - 1] != ':' && my_strlen(cmd) > 1 && my_strchr(':', cmd) != 0 && my_strchr('#', cmd) != 0 && my_strchr(';', cmd) != 0)
+  if (j != 0 && cmd[j - 1] != ':' && my_strlen(cmd) > 1
+      && my_strchr(':', cmd) != 0
+      && my_strchr('#', cmd) != 0 && my_strchr(';', cmd) != 0)
     {
       check_cmd_exist(cmd);
       return (cmd);
@@ -96,12 +96,7 @@ void	check_cmd_exist(char *cmd)
       j++;
     }
   if (op_tab[j].mnemonique == NULL && x == 1)
-    {
-      my_putstr("The instruction : ", 2);
-      my_putstr(cmd, 2);
-      my_putstr(" Doesn't exists.\n", 2);
-      exit(EXIT_FAILURE);
-    }
+    print_bad_instruction(cmd);
 }
 
 void	check_cmd_arg(char *args, char *cmd)
@@ -113,6 +108,7 @@ void	check_cmd_arg(char *args, char *cmd)
   i = -1;
   k = 0;
   nbr_coma = 0;
+  //printf("cmd = %s ; args = %s\n", cmd, args);
   while (args[++i] != '\0')
     {
       if (args[i] == ',')
@@ -126,4 +122,5 @@ void	check_cmd_arg(char *args, char *cmd)
       my_printf(2, "The instruction : %s Doesn't take %d arguments but %d\n", cmd, nbr_coma, op_tab[k].nbr_args);
       exit(EXIT_FAILURE);
     }
+  check_arg(cmd, args);
 }
