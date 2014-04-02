@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Mar 26 10:43:51 2014 alex-odet
-** Last update Wed Apr  2 13:47:46 2014 alex-odet
+** Last update Wed Apr  2 15:53:36 2014 alex-odet
 */
 
 #include "struct.h"
@@ -31,6 +31,21 @@ char	*my_write_live(char *value, int *len)
   ret[4] = s_ret[3];
   *len += 5;
   return (ret);
+}
+
+char	*my_write_zjmp(char *value, int *len)
+{
+  int		save;
+  short int	save_v;
+  char		*ret;
+  char		*s_ret;
+
+  if (value[0] != ':')
+    save = my_getnbr(value);
+  else
+    save = 0;
+
+  save_v = save;
 }
 
 char	*write_live(char *buff, char *cmd)
