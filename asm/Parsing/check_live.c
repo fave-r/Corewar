@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr  1 15:32:49 2014 alex-odet
-** Last update Wed Apr  2 17:22:48 2014 romaric
+** Last update Wed Apr  2 17:44:09 2014 alex-odet
 */
 
 #include "struct.h"
@@ -33,7 +33,7 @@ char	*copi_label(char *args)
   return (NULL);
 }
 
-void	check_live(char *args, char *cmd)
+void	check_live(char *args, char *cmd, t_label *list)
 {
   if (args[0] != '%')
     {
@@ -43,9 +43,7 @@ void	check_live(char *args, char *cmd)
       exit(EXIT_FAILURE);
     }
   else if (args[1] == ':' && check_label_exist(&list, copi_label(args) == 1))
-    {
-      cmd[1] = 'c';
-    }
+    cmd[1] = 'c';
   else if ((args[1] < '0' || args[1] > '9') || args[1] == '-')
     {
       if (args[1] != '-')

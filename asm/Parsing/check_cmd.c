@@ -5,12 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Wed Apr  2 13:30:48 2014 romaric
+** Last update Wed Apr  2 17:38:08 2014 alex-odet
 */
 
 #include "struct.h"
 
-void	check_cmd(char *str)
+void	check_cmd(char *str, t_label *list)
 {
   int	fd;
   char	*tmp;
@@ -31,7 +31,7 @@ void	check_cmd(char *str)
 	  {
 	    line = my_str_to_wordtab(tmp);
 	    if (line[1] != NULL)
-	      check_cmd_arg(line[1], cmd);
+	      check_cmd_arg(line[1], cmd, list);
 	  }
       i = 0;
     }
@@ -99,7 +99,7 @@ void	check_cmd_exist(char *cmd)
     print_bad_instruction(cmd);
 }
 
-void	check_cmd_arg(char *args, char *cmd)
+void	check_cmd_arg(char *args, char *cmd, t_label *list)
 {
   int	i;
   int	nbr_coma;
@@ -122,5 +122,5 @@ void	check_cmd_arg(char *args, char *cmd)
       my_printf(2, "The instruction : %s Doesn't take %d arguments but %d\n", cmd, nbr_coma, op_tab[k].nbr_args);
       exit(EXIT_FAILURE);
     }
-  check_arg(cmd, args);
+  check_arg(cmd, args, list);
 }

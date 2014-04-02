@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Wed Apr  2 16:39:13 2014 alex-odet
+** Last update Wed Apr  2 17:37:14 2014 alex-odet
 */
 
 #include "struct.h"
@@ -22,7 +22,7 @@ void	parser(char *str)
 
 int	check(char *str)
 {
-  __attribute__((unused))t_label	*list;
+  t_label	*list;
   header_t	*ptr;
   char		*name;
   char		*comment;
@@ -32,7 +32,7 @@ int	check(char *str)
   comment = check_comment(str);
   ptr = fill_header(name, comment);
   list = fill_list_of_label(str);
-  check_cmd(str);
+  check_cmd(str, list);
   create_cor(str, ptr);
   free(list);
   free(name);
