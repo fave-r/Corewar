@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Sat Mar 29 17:07:03 2014 thibaud
+** Last update Mon Mar 31 16:11:47 2014 thibaud
 */
 
 #include "my.h"
@@ -16,7 +16,7 @@ int	get_good_nbr(char *str)
   int	ret;
 
   ret = my_getnbr(str);
-  if (ret <= 0)
+  if (ret < 0)
     {
       my_printf(1, "%s is not a good value (needed a number >= 0)\n", str);
       exit(0);
