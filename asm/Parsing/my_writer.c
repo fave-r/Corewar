@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Mar 26 10:43:51 2014 alex-odet
-** Last update Wed Apr  2 15:53:36 2014 alex-odet
+** Last update Wed Apr  2 17:25:35 2014 alex-odet
 */
 
 #include "struct.h"
@@ -44,8 +44,16 @@ char	*my_write_zjmp(char *value, int *len)
     save = my_getnbr(value);
   else
     save = 0;
-
+  ret = xmalloc(sizeof(char) * 4);
+  ret[0] = 1;
+  ret[3] = 0;
+  convert_short_endian(&save_v, my_endian());
   save_v = save;
+  s_ret = (char *)&save_v;
+  ret[1] = s_ret[0];
+  ret[2] = s_ret[1];
+  *len += 3;
+  return(ret);
 }
 
 char	*write_live(char *buff, char *cmd)
