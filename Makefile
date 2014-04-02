@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Fri Mar 28 15:09:14 2014 alex-odet
+## Last update Wed Apr  2 14:49:25 2014 alex-odet
 ##
 
 LIB_S=		my/basic.c \
@@ -33,7 +33,8 @@ LIB_S=		my/basic.c \
 		my/my_strncmp.c \
 		my/my_xtest.c \
 		my/my_memset.c \
-		my/my_strndup.c
+		my/my_strndup.c \
+		my/spec_fun.c
 
 ## Mettre ici tous les fichier C de la library avec leur chemin ("my/")
 

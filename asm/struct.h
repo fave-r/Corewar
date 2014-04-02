@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Wed Apr  2 15:03:34 2014 romaric
+** Last update Wed Apr  2 15:14:03 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -57,6 +57,12 @@ typedef struct	s_word
   char  **strpar;
   char  *ptr;
 }		t_word;
+
+typedef struct	s_cmd
+{
+  char		*cmd;
+  char		*(*ptr)(char *, int *);
+}		t_cmd;
 
 char		*get_next_line(const int fd);
 void		parser(char *str);
