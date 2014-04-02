@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Tue Apr  1 15:06:03 2014 alex-odet
+** Last update Wed Apr  2 13:30:48 2014 romaric
 */
 
 #include "struct.h"
@@ -23,7 +23,7 @@ void	check_cmd(char *str)
   cmd = NULL;
   while ((tmp = get_next_line(fd)))
     {
-      printf("Je boucle dans les commandes.\n");
+      printf("%s\n", tmp);
       if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
 	cmd = cmd_exist(tmp, &i);
       if (cmd != NULL)
