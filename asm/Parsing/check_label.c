@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Tue Apr  1 14:57:55 2014 alex-odet
+** Last update Wed Apr  2 17:22:02 2014 romaric
 */
 
 #include "struct.h"
@@ -61,4 +61,22 @@ t_label		*copy_label(char *tmp, int len, t_label *list, int line)
   save = my_strndup(tmp, len);
   list = my_put_in_list(list, save, line);
   return (list);
+}
+
+int	check_label_exist(t_label *list, char *label_check)
+{
+  int	i;
+
+  i = 0;
+  if (label_check != NULL)
+    {
+      while (list != NULL)
+	{
+	  if (my_strcmp(label_check,list->name) == 0)
+	    i = 1;
+	  list = list->next;
+	}
+      return (i);
+    }
+  return (0);
 }

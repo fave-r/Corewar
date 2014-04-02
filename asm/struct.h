@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Wed Apr  2 16:34:53 2014 alex-odet
+** Last update Wed Apr  2 17:21:52 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -112,5 +112,6 @@ int		count_dot(char *str, int i, char c);
 int		len_tab(char **tab);
 void		print_bad_instruction(char *cmd);
 void		check_live(char *args, char *cmd);
+int		check_label_exist(t_label *list, char *label_check);
 
 #endif
