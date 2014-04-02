@@ -6,7 +6,7 @@
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
 <<<<<<< HEAD
-** Last update Mon Mar 31 15:36:05 2014 thibaud
+** Last update Wed Apr  2 16:52:13 2014 Thibaut Lopez
 =======
 ** Last update Wed Apr  2 13:23:50 2014 alex-odet
 >>>>>>> 6bc7f99d48024bb806f7ee52e3ac6303d13f113f
@@ -40,6 +40,7 @@ int	my_ld(t_champ *champ, t_cor *cor)
       printf("Carry = %d", champ->carry);
       printf("LD FAIL\n");
     }
+  change_pos_pc(champ, champ->pc + ld, ld, cor->screen);
   champ->pc += ld;
   return (ld);
 }
@@ -71,6 +72,7 @@ int	my_ldi(t_champ *champ, t_cor *cor)
       ldi = 5;
       printf("LDI FAIL\n");
     }
+  change_pos_pc(champ, champ->pc + ldi, ldi, cor->screen);
   champ->pc += ldi;
   return (ldi);
 }
@@ -98,6 +100,7 @@ int	my_lld(t_champ *champ, t_cor *cor)
       champ->carry = 0;
       printf("LLD FAIL\n");
     }
+  change_pos_pc(champ, champ->pc + ld, ld, cor->screen);
   champ->pc += ld;
   return (ld);
 }
@@ -128,6 +131,7 @@ int	my_lldi(t_champ *champ, t_cor *cor)
       ldi = 5;
       printf("LLDI FAIL\n");
     }
+  change_pos_pc(champ, champ->pc + ldi, ldi, cor->screen);
   champ->pc += ldi;
   return (ldi);
 }

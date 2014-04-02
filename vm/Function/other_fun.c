@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Mon Mar 31 16:53:42 2014 thibaud
+** Last update Wed Apr  2 16:49:00 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -23,9 +23,13 @@ int	my_st(t_champ *champ, t_cor *cor)
       if (tab[1][0] == 1)
 	champ->reg[tab[1][2]] = champ->reg[tab[0][2]];
       else
-	print_on_mem(cor, champ->reg[tab[0][2] - 1], champ->pc + tab[1][2]);
+	{
+	  print_on_mem(cor, champ->reg[tab[0][2] - 1], champ->pc + tab[1][2]);
+	  change_case_mem(champ->pc + tab[1][2], champ->color, cor->screen);
+	}
       my_putstr("ST SUCESS\n", 1);
     }
+  change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, tab[0][1] + tab[1][1] + 2, cor->screen);
   champ->pc += tab[0][1] + tab[1][1] + 2;
   return (tab[0][1] + tab[1][1] + 2);
 }
@@ -42,6 +46,7 @@ int	my_sti(t_champ *champ, t_cor *cor)
     {
       print_on_mem(cor, champ->reg[tab[0][2] - 1],
 		   champ->pc + tab[1][2] + tab[2][2]);
+      change_case_mem(champ->pc + tab[1][2] + tab[2][2], champ->color, cor->screen);
       my_putstr("STI SUCESS\n", 1);
     }
   else
@@ -49,6 +54,7 @@ int	my_sti(t_champ *champ, t_cor *cor)
       my_putstr("STI FAIL\n", 1);
       //exit(0);
     }
+  change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + tab[2][1] + 2, tab[0][1] + tab[1][1] + tab[2][1] + 2, cor->screen);
   champ->pc += tab[0][1] + tab[1][1] + tab[2][1] + 2;
   return (tab[0][1] + tab[1][1] + tab[2][1] + 2);
 }
@@ -64,6 +70,7 @@ int	my_aff(t_champ *champ, t_cor *cor)
       champ->carry = 1;
       my_putchar(champ->reg[tab[0][2]] % 256, 1);
     }
+  change_pos_pc(champ, champ->pc + 6, 6, cor->screen);
   champ->pc += 6;
   return (6);
 }

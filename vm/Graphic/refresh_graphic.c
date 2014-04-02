@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:40:14 2014 Thibaut Lopez
-** Last update Thu Mar 20 16:15:41 2014 Thibaut Lopez
+** Last update Wed Apr  2 16:46:34 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -25,20 +25,26 @@ void	change_pos_pc(t_champ *champ, int pc, int len, SDL_Surface *screen)
       SDL_FillRect(screen, &position, champ->color);
       i++;
     }
-  position.x = (pc + i) % (MEM_SIZE - 1) % 149 * 10;
-  position.y = (pc + i) % (MEM_SIZE - 1) / 149 * 20;
+  position.x = pc % (MEM_SIZE - 1) % 149 * 10;
+  position.y = pc % (MEM_SIZE - 1) / 149 * 20;
   SDL_FillRect(screen, &position, 0xFFFFFF);
   SDL_Flip(screen);
 }
 
 void	change_case_mem(int case_mem, Uint32 color, SDL_Surface *screen)
 {
+  int		i;
   SDL_Rect	position;
 
+  i = 0;
   position.w = 10;
   position.h = 20;
-  position.x = case_mem % (MEM_SIZE - 1) % 149 * 10;
-  position.y = case_mem % (MEM_SIZE - 1) / 149 * 20;
-  SDL_FillRect(screen, &position, color);
+  while (i < 4)
+    {
+      position.x = (case_mem + i) % (MEM_SIZE - 1) % 149 * 10;
+      position.y = (case_mem + i) % (MEM_SIZE - 1) / 149 * 20;
+      SDL_FillRect(screen, &position, color);
+      i++;
+    }
   SDL_Flip(screen);
 }
