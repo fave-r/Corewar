@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:40:14 2014 Thibaut Lopez
-** Last update Wed Apr  2 16:31:25 2014 Thibaut Lopez
+** Last update Wed Apr  2 16:46:34 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -25,8 +25,8 @@ void	change_pos_pc(t_champ *champ, int pc, int len, SDL_Surface *screen)
       SDL_FillRect(screen, &position, champ->color);
       i++;
     }
-  position.x = (pc + i) % (MEM_SIZE - 1) % 149 * 10;
-  position.y = (pc + i) % (MEM_SIZE - 1) / 149 * 20;
+  position.x = pc % (MEM_SIZE - 1) % 149 * 10;
+  position.y = pc % (MEM_SIZE - 1) / 149 * 20;
   SDL_FillRect(screen, &position, 0xFFFFFF);
   SDL_Flip(screen);
 }

@@ -5,11 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-<<<<<<< HEAD
-** Last update Mon Mar 31 16:11:47 2014 thibaud
-=======
-** Last update Mon Mar 31 14:42:53 2014 Thibaut Lopez
->>>>>>> 6bc7f99d48024bb806f7ee52e3ac6303d13f113f
+** Last update Wed Apr  2 16:38:22 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -104,6 +100,8 @@ int	main(int argc, char **argv)
   my_mem_set(cor.live, 4);
   init_champs_nb(&cor);
   aff_memdr(cor.mem);
+  if (init_graphic(&cor) == 1)
+    return (1);
   run_corewar(cor.champ, &cor);
   return (0);
 }

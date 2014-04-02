@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Mon Mar 31 14:26:39 2014 Thibaut Lopez
+** Last update Wed Apr  2 16:52:14 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -29,6 +29,7 @@ int	my_add(t_champ *champ, t_cor *cor)
       printf("ADD FAIL\n");
     champ->carry = 0;
     }
+  change_pos_pc(champ, champ->pc + 5, 5, cor->screen);
   champ->pc += 5;
   ifree(tab, 4);
   return (5);
@@ -52,6 +53,7 @@ int	my_sub(t_champ *champ, t_cor *cor)
       printf("SUB FAIL\n");
     champ->carry = 0;
     }
+  change_pos_pc(champ, champ->pc + 5, 5, cor->screen);
   champ->pc += 5;
   ifree(tab, 4);
   return (5);
@@ -81,6 +83,7 @@ int	my_and(t_champ *champ, t_cor *cor)
       printf("AND FAIL\n");
       champ->carry = 0;
     }
+  change_pos_pc(champ, champ->pc + and, and, cor->screen);
   champ->pc += and;
   ifree(tab, 4);
   return (and);
@@ -110,6 +113,7 @@ int	my_or(t_champ *champ, t_cor *cor)
       printf("OR FAIL\n");
       champ->carry = 0;
     }
+  change_pos_pc(champ, champ->pc + or, or, cor->screen);
   champ->pc += or;
   ifree(tab, 4);
   return (or);
@@ -141,6 +145,7 @@ int	my_xor(t_champ *champ, t_cor *cor)
       printf("XOR FAIL\n");
       champ->carry = 0;
     }
+  change_pos_pc(champ, champ->pc + xor, xor, cor->screen);
   champ->pc += xor;
   ifree(tab, 4);
   return (xor);
