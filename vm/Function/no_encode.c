@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Sun Mar 30 15:39:27 2014 thibaud
+** Last update Mon Mar 31 16:52:58 2014 thibaud
 ** Last update Fri Mar 21 09:23:42 2014 Thibaut Lopez
 */
 
@@ -52,7 +52,9 @@ int	my_live(t_champ *champ, t_cor *cor)
       cor->live_done++;
     }
   else
-    champ->carry = 0;
+    {
+      my_printf(1, "le joueur %d(%s) A FOIRE SON LIVE\n", direct_arg, champ->head->prog_name);
+    }
   champ->pc += 5;
   return (5);
 }
@@ -68,6 +70,7 @@ int	my_zjmp(t_champ *champ, t_cor *cor)
 
       //my_printf(1, "ZJMP du champion %s de %d cases.\n", champ->head->prog_name, direct_arg);
       champ->pc += direct_arg;
+      printf("JUNMP du champion %s\n", champ->head->prog_name);
     }
   else
     my_putstr("ECHEC DE JUMP car carry = 0", 1);
@@ -123,16 +126,6 @@ int	my_fork(t_champ *champ, t_cor *cor)
   fork_dest = get_nbr_action(cor->mem, champ->pc + 1, 2);
   son = add_champ(champ, fork_dest % IDX_MOD);
   my_printf(1, "Le champion %s(%d) a fait un fils qui porte son nom : %s(%d)\n",champ->head->prog_name, champ->champ_nb, son->head->prog_name, son->champ_nb);
-  /*
-  static int cpt = 1;
-
-  if (cpt == 20000000)
-    {
-      printf("Num live = %d %d %d %d\n", cor->live[0], cor->live[1], cor->live[2], cor->live[3]);
-      exit(0);
-    }
-  cpt++;
-  */
   champ->pc += 3;
   return (3);
 }
@@ -144,26 +137,19 @@ int	my_lfork(t_champ *champ, t_cor *cor)
   t_champ	*son;
 
   fork_dest = get_nbr_action(cor->mem, champ->pc + 1, 2);
-  //my_printf(1, "LFORK du champion %s, vers la case mémoire : %d + PC\n", champ->head->prog_name, fork_dest);
   champ->carry = 1;
   son = add_champ(champ, fork_dest);
-  //my_printf(1, "Le champion %s(%d) a fait un fils qui porte son nom : %s(%d)\n",champ->head->prog_name, champ->champ_nb, son->head->prog_name, son->champ_nb);
   len = read(son->fd, cor->mem + son->pc, MEM_SIZE - son->pc);
   if (len < son->head->prog_size)
     read(son->fd, cor->mem, son->head->prog_size);
   close(son->fd);
-  //aff_memdr(cor->mem);
-  //my_putstr("\n\n\n", 1);
   champ->pc += 3;
-  //my_putstr(", avance dans la mémoire de 2\n", 1);
   return (3);
 }
 
 int	my_none(t_champ *champ, t_cor *cor)
 {
   (void)cor;
-  //my_printf(1, "NONE du champion %s\n", champ->head->prog_name);
-  //my_putstr("Avance dans la mémoire de 1\n", 1);
   champ->pc++;
   return (0);
 }

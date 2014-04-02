@@ -5,7 +5,11 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
+<<<<<<< HEAD
+** Last update Mon Mar 31 15:36:05 2014 thibaud
+=======
 ** Last update Wed Apr  2 13:23:50 2014 alex-odet
+>>>>>>> 6bc7f99d48024bb806f7ee52e3ac6303d13f113f
 */
 
 #include "vm.h"
@@ -27,11 +31,13 @@ int	my_ld(t_champ *champ, t_cor *cor)
       champ->carry = 1;
       champ->reg[tab[1][2] - 1] = arg;
       ld = tab[0][1] + tab[1][1] + 2;
+      printf("LD SUCESS\n");
     }
   else
     {
       ld = 5;
       champ->carry = 0;
+      printf("Carry = %d", champ->carry);
       printf("LD FAIL\n");
     }
   champ->pc += ld;
