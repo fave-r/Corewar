@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Mar 11 04:03:48 2014 alex-odet
-** Last update Wed Apr  2 14:22:44 2014 alex-odet
+** Last update Wed Apr  2 20:12:20 2014 Thibaut Lopez
 */
 
 #include "struct.h"
@@ -18,7 +18,7 @@ void	create_cor(char *name, header_t *header)
   int	fd;
 
   i = 0;
-  save_name = xmalloc(sizeof(char) * my_strlen(name) + 3);
+  save_name = xmalloc(sizeof(char) * (my_strlen(name) + 3));
   while (name[i] != '.')
     {
       save_name[i] = name[i];
