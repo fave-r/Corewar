@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Wed Apr  2 16:34:53 2014 alex-odet
+** Last update Wed Apr  2 17:53:51 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -83,7 +83,7 @@ char		*recup_comment(char *str);
 void		print_header_error();
 void		create_cor(char *name, header_t *header);
 void		print_assembling(char *name, header_t *header);
-void		check_cmd(char *str);
+void		check_cmd(char *str, t_label *list);
 char		*cmd_exist(char *str, int *bool);
 int		count_words(char *line);
 char		**my_str_to_wordtab(char *line);
@@ -101,16 +101,19 @@ void		check_cmd_exist(char *cmd);
 char		*my_get_strdup(char *src);
 char		*cmd_next_label(char *cmd, int *j, int i, char *str);
 int		my_strlen_mod(char *str);
-void		check_cmd_arg(char *args, char *cmd);
+void		check_cmd_arg(char *args, char *cmd, t_label *list);
 void		operations(t_get *l, int *i, char buff[]);
 void		operationss(char buff[], int *i, int *a);
-void		check_arg(char *cmd, char *args);
+void		check_arg(char *cmd, char *args, t_label *list);
 void		print_bad_ext(char *filename);
 void		print_bad_name();
 void		print_bad_comment();
 int		count_dot(char *str, int i, char c);
 int		len_tab(char **tab);
 void		print_bad_instruction(char *cmd);
-void		check_live(char *args, char *cmd);
+void		check_live(char *args, char *cmd, t_label *list);
+int		check_label_exist(t_label *list, char *label_check);
+char		*my_write_live(char *value, int *len);
+char		*my_write_zjmp(char *value, int *len);
 
 #endif

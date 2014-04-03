@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Wed Apr  2 14:23:44 2014 alex-odet
+## Last update Thu Apr  3 12:01:29 2014 alex-odet
 ##
 
 CC=		clang
@@ -20,12 +20,14 @@ SRCS=		main.c \
 		create_cor.c \
 		my_str_to_wordtab.c \
 		count_dot.c \
+		cmd.c \
 		../op.c \
 		Parsing/parsing.c \
 		Parsing/check_cmd.c \
 		Parsing/check_label.c \
 		Parsing/check_arg.c \
 		Parsing/check_live.c \
+		Parsing/my_writer.c \
 		Get_Next_Line/get_next_line.c \
 		Header/init.c \
 		Header/fill_header.c \
