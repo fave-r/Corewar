@@ -1,11 +1,11 @@
 /*
-** cmd.c for cmd in /home/alex-odet/work/Corewar/asm
+o** cmd.c for cmd in /home/alex-odet/work/Corewar/asm
 **
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:49:55 2014 alex-odet
-** Last update Thu Apr  3 15:38:37 2014 romaric
+** Last update Thu Apr  3 17:50:13 2014 alex-odet
 */
 
 #include "struct.h"

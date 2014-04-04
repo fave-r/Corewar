@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Wed Apr  2 17:38:08 2014 alex-odet
+** Last update Thu Apr  3 17:18:02 2014 alex-odet
 */
 
 #include "struct.h"
@@ -30,7 +30,7 @@ void	check_cmd(char *str, t_label *list)
 	if (i == 0)
 	  {
 	    line = my_str_to_wordtab(tmp);
-	    if (line[1] != NULL)
+	    if (line != NULL && line [0] != NULL && line[1] != NULL)
 	      check_cmd_arg(line[1], cmd, list);
 	  }
       i = 0;

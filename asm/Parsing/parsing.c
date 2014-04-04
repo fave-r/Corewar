@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Thu Apr  3 02:36:34 2014 alex-odet
+** Last update Fri Apr  4 11:00:57 2014 alex-odet
 */
 
 #include "struct.h"
@@ -24,8 +24,9 @@ void	parser(char *str)
   {
     t_label	*list;
     header_t	*ptr;
-    char		*name;
-    char		*comment;
+    char       	*name;
+    char       	*comment;
+    char	*buff;
 
     ptr = init();
     name = check_name(str);
@@ -33,6 +34,7 @@ void	parser(char *str)
     ptr = fill_header(name, comment);
     list = fill_list_of_label(str);
     check_cmd(str, list);
+    my_fill_buff(str);
     create_cor(str, ptr);
     free(list);
     free(name);

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Wed Apr  2 17:53:51 2014 romaric
+** Last update Fri Apr  4 11:02:36 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -115,5 +115,6 @@ void		check_live(char *args, char *cmd, t_label *list);
 int		check_label_exist(t_label *list, char *label_check);
 char		*my_write_live(char *value, int *len);
 char		*my_write_zjmp(char *value, int *len);
+char		*my_fill_buff(char *str);
 
 #endif
