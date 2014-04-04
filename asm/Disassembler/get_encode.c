@@ -5,29 +5,13 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Thu Mar 27 08:37:44 2014 Thibaut Lopez
+** Last update Fri Apr  4 19:37:12 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 #include "my.h"
 
-void	print_on_mem(t_cor *cor, int to_add, int pc)
-{
-  int	i;
-  char	*tmp;
-
-  i = (cor->endian == 1) ? 3 : 1;
-  tmp = (char *)&to_add;
-  cor->mem[mod_mem(pc + i)] = tmp[0];
-  i += (cor->endian == 1) ? -1 : 1;
-  cor->mem[mod_mem(pc + i)] = tmp[1];
-  i += (cor->endian == 1) ? -1 : 1;
-  cor->mem[mod_mem(pc + i)] = tmp[2];
-  i += (cor->endian == 1) ? -1 : 1;
-  cor->mem[mod_mem(pc + i)] = tmp[3];
-}
-
-int	get_nbr_action(unsigned char *mem, int pc, int len)
+int	get_nbr_action(unsigned char *buff, int pc, int len)
 {
   int	i;
   int	nb;
@@ -36,7 +20,7 @@ int	get_nbr_action(unsigned char *mem, int pc, int len)
   nb = 0;
   while (i < len)
     {
-      nb = nb * 256 + mem[mod_mem(pc + i)];
+      nb = nb * 256 + mem[pc + i];
       i++;
     }
   if (len == 2)
@@ -46,32 +30,46 @@ int	get_nbr_action(unsigned char *mem, int pc, int len)
   return (nb);
 }
 
-int	**get_encode(unsigned char *mem, int pc)
+int	**init_tab()
 {
   int	i;
+  int	**tab;
+
+  tab = xmalloc(4 * sizeof(int *));
+  i = 0;
+  while (i < 4)
+    {
+      tab[i] = xmalloc(3 * sizeof(int));
+      i++;
+    }
+  return (tab);
+}
+
+int	**get_encode(unsigned char *buff, int i, int size)
+{
+  int	j;
   int	add;
   int	puis;
   int	**tab;
 
-  tab = xmalloc(4 * sizeof(int *));
+  tab = init_tab();
   puis = 256;
-  i = 0;
+  j = 0;
   add = 2;
-  while (i < 4)
+  if (i > size - add)
+    return (NULL);
+  while (j < 4)
     {
-      tab[i] = xmalloc(3 * sizeof(int));
-      tab[i][0] = mem[mod_mem(pc + 1)] % puis / (puis / 4);
+      tab[j][0] = buff[i + 1] % puis / (puis / 4);
       puis /= 4;
-      if (tab[i][0] == 1)
-	tab[i][1] = 1;
-      else if (tab[i][0] == 2)
-	tab[i][1] = (mem[mod_mem(pc)] == 10 || mem[mod_mem(pc)] == 11 ||
-		     mem[mod_mem(pc)] == 14) ? 2 : 4;
-      else
-	tab[i][1] = (tab[i][0] == 3) ? 2 : 0;
-      tab[i][2] = get_nbr_action(mem, mod_mem(pc + add), tab[i][1]);
-      add += tab[i][1];
-      i++;
-    }
+      tab[j][1] = (tab[j][0] == 1) ? 1 : (tab[j][0] == 2) ?
+	(buff[i] == 10 || buff[i] == 11 || buff[i] == 14) ?
+	2 : 4 : (tab[j][0] == 3) ? 2 : 0;
+      tab[j][2] = get_nbr_action(buff, i + add, tab[j][1]);
+      add += tab[j][1];
+      if (i > size - add)
+	return (ifree(tab, 4));
+      j++;
+    }  
   return (tab);
 }

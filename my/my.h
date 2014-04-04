@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Sun Feb 23 21:19:02 2014 Thibaut Lopez
-** Last update Wed Apr  2 17:28:39 2014 alex-odet
+** Last update Fri Apr  4 19:32:15 2014 Thibaut Lopez
 */
 
 /*
@@ -71,7 +71,7 @@ void		my_memset(char *str, size_t n);
 char		*my_strndup(char *src, int len);
 int		mod_mem(int nb);
 int		prog_size_error(char *path);
-void		ifree(int **tab, int len);
+int		**ifree(int **tab, int len);
 void		sfree(char **str);
 short int	convert_short_endian(short int *nb, int end);
 

@@ -5,45 +5,25 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Wed Apr  2 14:23:44 2014 alex-odet
+## Last update Thu Apr  3 17:03:44 2014 Thibaut Lopez
 ##
 
-CC=		clang
+CC=		gcc
 
 RM=		rm -f
 
-CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I../ -I../my -I.
+CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I../.. -I../../my -I.
 
-NAME=		asm
+NAME=		dasm
 
-SRCS=		main.c \
-		create_cor.c \
-		my_str_to_wordtab.c \
-		count_dot.c \
-		../op.c \
-		Parsing/parsing.c \
-		Parsing/check_cmd.c \
-		Parsing/check_label.c \
-		Parsing/check_arg.c \
-		Parsing/check_live.c \
-		Get_Next_Line/get_next_line.c \
-		Header/init.c \
-		Header/fill_header.c \
-		Header/recup_comment.c \
-		Header/recup.c \
-		List/my_put_in_list.c \
-		List/my_put_in_cmd_list.c \
-		List/my_show_list.c \
-		Error/error.c \
-		Error/bad_value.c \
-		Get_Next_Line/get_next_line_next.c
+SRCS=		main.c
 
 OBJS=		$(SRCS:.c=.o)
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS) -L../ -lmy
+		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS) -L../../ -lmy
 
 clean:
 		$(RM) $(OBJS)
