@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Fri Apr  4 11:00:57 2014 alex-odet
+** Last update Fri Apr  4 11:51:50 2014 alex-odet
 */
 
 #include "struct.h"
@@ -13,8 +13,8 @@
 void	parser(char *str)
 {
   if (str[my_strlen(str) - 1] == 's'
-      && str[my_strlen(str) - 2] == '.'
-      && count_dot(str, 0, '.') == 1)
+      && str[my_strlen(str) - 2] == '.' &&
+      str[my_strlen(str) - 4] != '.')
     check(str);
   else
     print_bad_ext(str);
@@ -42,28 +42,28 @@ void	parser(char *str)
     return (0);
   }
 
-  char	*check_name(char *str)
-  {
-    int	fd;
-    int	quotes;
-    char	*tmp;
-    char	*name;
+char	*check_name(char *str)
+{
+  int	fd;
+  int	quotes;
+  char	*tmp;
+  char	*name;
 
-    fd = xopen(str, O_RDONLY);
-    name = NULL;
-    while ((tmp = get_next_line(fd)))
-      {
-	if (my_strncmp(tmp, NAME_CMD_STRING, 5) == 0)
-	  {
-	    quotes = count_dot(tmp, 0, '"');
-	    if (quotes < 2)
-	      print_bad_name();
-	    else
-	      return (recup_name(tmp));
-	  }
-      }
-    close (fd);
-    if (name == NULL)
-      print_header_error();
-    return (NULL);
-  }
+  fd = xopen(str, O_RDONLY);
+  name = NULL;
+  while ((tmp = get_next_line(fd)))
+    {
+      if (my_strncmp(tmp, NAME_CMD_STRING, 5) == 0)
+	{
+	  quotes = count_dot(tmp, 0, '"');
+	  if (quotes < 2)
+	    print_bad_name();
+	  else
+	    return (recup_name(tmp));
+	}
+    }
+  close (fd);
+  if (name == NULL)
+    print_header_error();
+  return (NULL);
+}
