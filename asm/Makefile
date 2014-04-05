@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Thu Apr  3 12:01:29 2014 alex-odet
+## Last update Sat Apr  5 17:44:40 2014 alex-odet
 ##
 
 CC=		clang
@@ -28,7 +28,6 @@ SRCS=		main.c \
 		Parsing/check_arg.c \
 		Parsing/check_live.c \
 		Parsing/my_writer.c \
-		Get_Next_Line/get_next_line.c \
 		Header/init.c \
 		Header/fill_header.c \
 		Header/recup_comment.c \
@@ -36,8 +35,10 @@ SRCS=		main.c \
 		List/my_put_in_list.c \
 		List/my_put_in_cmd_list.c \
 		List/my_show_list.c \
+		List/my_list_size.c \
 		Error/error.c \
 		Error/bad_value.c \
+		Get_Next_Line/get_next_line.c \
 		Get_Next_Line/get_next_line_next.c
 
 OBJS=		$(SRCS:.c=.o)
