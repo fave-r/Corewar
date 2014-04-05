@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Nov  6 21:39:29 2013 Thibaut Lopez
-** Last update Fri Mar 14 09:44:30 2014 Thibaut Lopez
+** Last update Sat Apr  5 17:59:16 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -39,7 +39,7 @@ int	my_printnbr(va_list arg, int fd)
 
   i = 0;
   nbr = va_arg(arg, int);
-  my_putf_nbr(nbr, &i, fd);
+  my_putf_nbr(nbr, &i, fd, 0);
   return (i);
 }
 
