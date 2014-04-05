@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Sun Feb 23 21:19:02 2014 Thibaut Lopez
-** Last update Fri Apr  4 19:32:15 2014 Thibaut Lopez
+** Last update Sat Apr  5 17:59:36 2014 Thibaut Lopez
 */
 
 /*
@@ -61,7 +61,7 @@ int		my_printstrsp(va_list arg, int fd);
 int		my_printdec(va_list arg, int fd);
 int		my_printhex(va_list arg, int fd);
 int		my_printhexc(va_list arg, int fd);
-int		my_putf_nbr(int nbr, int *i, int fd);
+int		my_putf_nbr(int nbr, int *i, int fd, int bool);
 int		my_putfnbr_base(unsigned int nb, char *base, int *i, int fd);
 int		my_putlong_base(unsigned long nb, char *base, int *i, int fd);
 int		my_strflen(const char *str);

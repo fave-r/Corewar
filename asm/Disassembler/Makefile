@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Thu Apr  3 17:03:44 2014 Thibaut Lopez
+## Last update Sat Apr  5 17:12:38 2014 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -16,7 +16,13 @@ CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I../.. -I../../my -I.
 
 NAME=		dasm
 
-SRCS=		main.c
+SRCS=		create_dot_s.c \
+		main.c \
+		Function/get_encode.c \
+		Function/ld_fun.c \
+		Function/no_encode.c \
+		Function/operation.c \
+		Function/other_fun.c
 
 OBJS=		$(SRCS:.c=.o)
 

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Feb 26 16:46:01 2014 romaric
-** Last update Mon Mar 24 12:13:07 2014 romaric
+** Last update Sat Apr  5 17:57:03 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -17,7 +17,7 @@ void    my_putnbr(int n, int fd)
       my_putchar('-', fd);
       n = -n;
     }
-  if (n >= 10)
+  if (n == -n || n >= 10)
     {
       my_putnbr(n / 10, fd);
       my_putnbr(n % 10, fd);

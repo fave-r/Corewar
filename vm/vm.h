@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Thu Apr  3 17:54:06 2014 Thibaut Lopez
+** Last update Sat Apr  5 17:51:27 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -74,7 +74,6 @@ void	init_adress(t_champ *champ);
 int	fill_mem(unsigned char **mem, t_champ *champ);
 int	get_nbr_action(unsigned char *mem, int pc, int len);
 int	**get_encode(unsigned char *mem, int pc);
-void	ifree(int **tab, int len);
 void	sfree(char **str);
 
 int	someone_is_dead(t_champ *, t_cor *);

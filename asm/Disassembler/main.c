@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Apr  2 19:53:38 2014 Thibaut Lopez
-** Last update Fri Apr  4 12:09:15 2014 Thibaut Lopez
+** Last update Sat Apr  5 17:13:52 2014 Thibaut Lopez
 */
 
 #include "op.h"
@@ -78,7 +78,7 @@ void	disassembler(char *path)
     return;
   my_printf(new_fd, ".name\t\t\"%s\"\n.comment\t\"%s\"\n\n",
 	    head->prog_name, head->comment);
-  create_dot_s(fd, new_fd, head->prog_size);
+  create_dot_s(fd, new_fd, head->prog_size, path);
   close(fd);
   close(new_fd);
 }
