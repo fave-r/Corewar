@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sat Apr  5 18:21:57 2014 alex-odet
+** Last update Sun Apr  6 13:52:04 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -119,5 +119,7 @@ char		*my_fill_buff(char *str);
 char		*my_write_fork(char *value, int *len);
 char		*my_write_lfork(char *value, int *len);
 int		my_file_list_size(t_file *list);
+void		check_ld(char *args, char *cmd, t_label *list);
+char		*copi_labelde(char *args);
 
 #endif
