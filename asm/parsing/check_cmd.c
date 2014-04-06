@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Sun Apr  6 14:03:58 2014 romaric
+** Last update Sun Apr  6 16:51:23 2014 romaric
 */
 
 #include "struct.h"
@@ -35,6 +35,12 @@ void	check_cmd(char *str, t_label *list)
 	    line = my_str_to_wordtab(tmp);
 	    if (line != NULL && line [0] != NULL && line[1] != NULL)
 	      check_cmd_arg(line[1], cmd, list);
+	  }
+	else
+	  {
+	    line = my_str_to_wordtab(tmp);
+            if (line != NULL && line [0] != NULL && line[1] != NULL)
+              check_cmd_arg(line[2], cmd, list);
 	  }
       i = 0;
       //tamere++;

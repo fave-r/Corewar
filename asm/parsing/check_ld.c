@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sun Apr  6 12:21:40 2014 romaric
-** Last update Sun Apr  6 14:22:04 2014 romaric
+** Last update Sun Apr  6 16:42:43 2014 romaric
 */
 
 #include "struct.h"
@@ -49,10 +49,10 @@ void	check_reg(char *args, char *cmd)
   if (args[i] != 'r')
     printthisseconderror(cmd);
   i++;
-  if (args[i] < '0' || args[i] > '9')
+  if (args[i] < '1' || args[i] > '9')
     errorvaluereg(args);
   else if (args[i + 1] != '\0')
-    if (args[i + 1] < '0' || args[i + 1] > '5')
+    if (args[i + 1] < '0' || args[i + 1] > '6' || args[i] != '1')
       errorvaluereg(args);
 }
 
