@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr  1 09:11:47 2014 alex-odet
-** Last update Sun Apr  6 15:17:24 2014 romaric
+** Last update Sun Apr  6 19:14:35 2014 romaric
 */
 
 #include "struct.h"
@@ -22,4 +22,6 @@ void	check_arg(char *cmd, char *args, t_label *list)
     check_live(args, cmd, list);
   if (my_strcmp(cmd, "ld") == 0)
     check_ld(args, cmd, list);
+  if (my_strcmp(cmd, "st") == 0)
+    check_st(args, cmd);
 }

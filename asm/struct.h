@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sun Apr  6 14:23:40 2014 romaric
+** Last update Sun Apr  6 19:14:02 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -126,5 +126,6 @@ void		printthisseconderror(char *cmd);
 void		errorlabel(void);
 void		errorvalue(char *args);
 void		errorvaluereg(char *args);
+void		check_st(char *args, char *cmd);
 
 #endif

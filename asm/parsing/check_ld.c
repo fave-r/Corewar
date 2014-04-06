@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sun Apr  6 12:21:40 2014 romaric
-** Last update Sun Apr  6 16:42:43 2014 romaric
+** Last update Sun Apr  6 17:44:15 2014 romaric
 */
 
 #include "struct.h"
@@ -58,11 +58,11 @@ void	check_reg(char *args, char *cmd)
 
 void	check_ld(char *args, char *cmd, t_label *list)
 {
-  if (args[0] != '%')
+  if (args[0] != '%' && (args[0] < '0' || args[0] > '9'))
     printthiserror(cmd);
   else if (args[1] == ':' && check_label_exist(list, copi_labelde(args)) != 1)
     errorlabel();
-  else if (args[1] != ':')
+  else if (args[1] != ':' && args[0] == '%')
     {
       if (args[1] < '0' || args[1] > '9' || args[1] == '-')
 	{
