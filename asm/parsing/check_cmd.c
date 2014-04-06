@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Sun Apr  6 12:11:59 2014 romaric
+** Last update Sun Apr  6 14:03:58 2014 romaric
 */
 
 #include "struct.h"
@@ -71,7 +71,6 @@ char	*cmd_exist(char *str, int *bool)
   return (NULL);
 }
 
-
 char	*cmd_next_label(char *cmd, int *j, int i, char *str)
 {
   my_memset(cmd, my_strlen(cmd));
@@ -123,7 +122,8 @@ void	check_cmd_arg(char *args, char *cmd, t_label *list)
   nbr_coma++;
   if (op_tab[k].nbr_args != nbr_coma)
     {
-      my_printf(2, "The instruction : %s Doesn't take %d arguments but %d\n", cmd, nbr_coma, op_tab[k].nbr_args);
+      my_printf(2, "The instruction : %s Doesn't take %d arguments but %d\n"
+		, cmd, nbr_coma, op_tab[k].nbr_args);
       exit(EXIT_FAILURE);
     }
   check_arg(cmd, args, list);

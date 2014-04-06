@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Sun Apr  6 13:52:35 2014 romaric
+## Last update Sun Apr  6 14:24:15 2014 romaric
 ##
 
 CC=		clang
@@ -40,7 +40,8 @@ SRCS=		main.c \
 		error/bad_value.c \
 		get_Next_Line/get_next_line.c \
 		get_Next_Line/get_next_line_next.c \
-		parsing/check_ld.c
+		parsing/check_ld.c \
+		parsing/error_ld.c
 
 OBJS=		$(SRCS:.c=.o)
 

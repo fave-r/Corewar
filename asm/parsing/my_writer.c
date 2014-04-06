@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Mar 26 10:43:51 2014 alex-odet
-** Last update Sun Apr  6 12:01:15 2014 romaric
+** Last update Sun Apr  6 14:02:16 2014 romaric
 */
 
 #include "struct.h"
@@ -59,7 +59,7 @@ char		*my_write_zjmp(char *value, int *len)
   int	i = 0;
   while (ret[i])
     printf("in zjmp ret[i] = %d\n", ret[i++]);
-  return(ret);
+  return (ret);
 }
 
 char		*my_write_fork(char *value, int *len)

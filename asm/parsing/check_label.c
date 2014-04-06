@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Wed Apr  2 17:54:14 2014 romaric
+** Last update Sun Apr  6 14:03:38 2014 romaric
 */
 
 #include "struct.h"
@@ -72,7 +72,7 @@ int	check_label_exist(t_label *list, char *label_check)
     {
       while (list != NULL)
 	{
-	  if (my_strcmp(label_check,list->name) == 0)
+	  if (my_strcmp(label_check, list->name) == 0)
 	    i = 1;
 	  list = list->next;
 	}
