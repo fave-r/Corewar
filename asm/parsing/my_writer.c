@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Mar 26 10:43:51 2014 alex-odet
-** Last update Sat Apr  5 18:05:35 2014 alex-odet
+** Last update Sun Apr  6 11:45:44 2014 romaric
 */
 
 #include "struct.h"
@@ -79,6 +79,7 @@ char		*my_write_fork(char *value, int *len)
   ret[1] = s_ret[0];
   ret[2] = s_ret[1];
   *len += 3;
+  return ("coucou");
 }
 
 char		*my_write_lfork(char *value, int *len)
@@ -98,4 +99,5 @@ char		*my_write_lfork(char *value, int *len)
   ret[1] = s_ret[0];
   ret[2] = s_ret[1];
   *len += 3;
+  return ("coucou");
 }

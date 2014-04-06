@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Sat Apr  5 17:44:40 2014 alex-odet
+## Last update Sun Apr  6 11:55:04 2014 romaric
 ##
 
 CC=		clang
@@ -22,24 +22,24 @@ SRCS=		main.c \
 		count_dot.c \
 		cmd.c \
 		../op.c \
-		Parsing/parsing.c \
-		Parsing/check_cmd.c \
-		Parsing/check_label.c \
-		Parsing/check_arg.c \
-		Parsing/check_live.c \
-		Parsing/my_writer.c \
-		Header/init.c \
-		Header/fill_header.c \
-		Header/recup_comment.c \
-		Header/recup.c \
-		List/my_put_in_list.c \
-		List/my_put_in_cmd_list.c \
-		List/my_show_list.c \
-		List/my_list_size.c \
-		Error/error.c \
-		Error/bad_value.c \
-		Get_Next_Line/get_next_line.c \
-		Get_Next_Line/get_next_line_next.c
+		parsing/parsing.c \
+		parsing/check_cmd.c \
+		parsing/check_label.c \
+		parsing/check_arg.c \
+		parsing/check_live.c \
+		parsing/my_writer.c \
+		header/init.c \
+		header/fill_header.c \
+		header/recup_comment.c \
+		header/recup.c \
+		list/my_put_in_list.c \
+		list/my_put_in_cmd_list.c \
+		list/my_show_list.c \
+		list/my_list_size.c \
+		error/error.c \
+		error/bad_value.c \
+		get_Next_Line/get_next_line.c \
+		get_Next_Line/get_next_line_next.c
 
 OBJS=		$(SRCS:.c=.o)
 

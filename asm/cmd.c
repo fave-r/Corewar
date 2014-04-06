@@ -5,7 +5,7 @@ o** cmd.c for cmd in /home/alex-odet/work/Corewar/asm
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:49:55 2014 alex-odet
-** Last update Thu Apr  3 17:50:13 2014 alex-odet
+** Last update Sun Apr  6 11:50:08 2014 romaric
 */
 
 #include "struct.h"

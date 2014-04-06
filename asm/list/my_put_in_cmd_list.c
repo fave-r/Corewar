@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Fri Apr  4 15:53:50 2014 alex-odet
+** Last update Sun Apr  6 11:46:30 2014 romaric
 */
 
 #include "struct.h"
@@ -65,4 +65,5 @@ char	*my_fill_buff(char *str)
   list = function(fd);
   if (list == NULL)
     my_putstr("Empty file.\n", 2);
+  return ("coucou");
 }

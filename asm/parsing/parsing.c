@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Sat Apr  5 17:46:24 2014 alex-odet
+** Last update Sun Apr  6 11:47:30 2014 romaric
 */
 
 #include "struct.h"
@@ -26,7 +26,7 @@ void	parser(char *str)
     header_t	*ptr;
     char       	*name;
     char       	*comment;
-    char	*buff;
+    __attribute__((unused))    char	*buff;
 
     ptr = init();
     name = check_name(str);
