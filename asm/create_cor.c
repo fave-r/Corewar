@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Mar 11 04:03:48 2014 alex-odet
-** Last update Wed Apr  2 20:12:20 2014 Thibaut Lopez
+** Last update Sun Apr  6 15:19:16 2014 romaric
 */
 
 #include "struct.h"
@@ -47,5 +47,6 @@ void	print_assembling(char *name, header_t *header)
   my_putstr("\n\t", 1);
   my_putstr(header->comment, 1);
   my_putstr("\n", 1);
-  my_putstr("-----------------------------------------------------------\n", 1);
+  my_putstr("-----------------------------------------------------------\n"
+	    , 1);
 }
