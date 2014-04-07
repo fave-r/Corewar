@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Mon Apr  7 13:21:20 2014 romaric
+## Last update Mon Apr  7 14:17:44 2014 romaric
 ##
 
 CC=		clang
@@ -38,8 +38,8 @@ SRCS=		main.c \
 		list/my_list_size.c \
 		error/error.c \
 		error/bad_value.c \
-		get_Next_Line/get_next_line.c \
-		get_Next_Line/get_next_line_next.c \
+		get_next_line/get_next_line.c \
+		get_next_line/get_next_line_next.c \
 		parsing/check_ld.c \
 		parsing/error_ld.c \
 		parsing/check_st.c \
