@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Sun Apr  6 12:00:33 2014 romaric
+** Last update Mon Apr  7 14:29:47 2014 alex-odet
 */
 
 #include "struct.h"
@@ -20,27 +20,27 @@ void	parser(char *str)
     print_bad_ext(str);
 }
 
-  int	check(char *str)
-  {
-    t_label	*list;
-    header_t	*ptr;
-    char       	*name;
-    char       	*comment;
-    __attribute__((unused)) char	*buff;
+int	check(char *str)
+{
+  t_label	*list;
+  header_t	*ptr;
+  char       	*name;
+  char       	*comment;
+  __attribute__((unused)) char	*buff;
 
-    ptr = init();
-    name = check_name(str);
-    comment = check_comment(str);
-    ptr = fill_header(name, comment);
-    list = fill_list_of_label(str);
-    check_cmd(str, list);
-    my_fill_buff(str);
-    create_cor(str, ptr);
-    free(list);
-    free(name);
-    free(comment);
-    return (0);
-  }
+  ptr = init();
+  name = check_name(str);
+  comment = check_comment(str);
+  ptr = fill_header(name, comment);
+  list = fill_list_of_label(str);
+  check_cmd(str, list);
+  my_fill_buff(str);
+  create_cor(str, ptr);
+  free(list);
+  free(name);
+  free(comment);
+  return (0);
+}
 
 char	*check_name(char *str)
 {
