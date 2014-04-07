@@ -1,11 +1,11 @@
 ##
 ## Makefile for makefile in /home/thibaut.lopez/Corewar
-## 
+##
 ## Made by Thibaut Lopez
 ## Login   <thibaut.lopez@epitech.net>
-## 
+##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Wed Apr  2 14:25:40 2014 alex-odet
+## Last update Sun Apr  6 15:08:56 2014 romaric
 ##
 
 VM_S=		champ_fun.c \
@@ -17,13 +17,13 @@ VM_S=		champ_fun.c \
 		get_arg.c \
 		tmp.c \
 		rm_fun.c \
-		Function/ld_fun.c \
-		Function/no_encode.c \
-		Function/operation.c \
-		Function/other_fun.c \
-		Graphic/init_graphic.c \
-		Graphic/free_graphic.c \
-		Graphic/refresh_graphic.c \
+		function/ld_fun.c \
+		function/no_encode.c \
+		function/operation.c \
+		function/other_fun.c \
+		graphic/init_graphic.c \
+		graphic/free_graphic.c \
+		graphic/refresh_graphic.c \
 		check_reg.c
 
 VM_N=		corewar

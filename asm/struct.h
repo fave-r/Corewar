@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Fri Apr  4 11:02:36 2014 alex-odet
+** Last update Mon Apr  7 13:21:02 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -116,5 +116,17 @@ int		check_label_exist(t_label *list, char *label_check);
 char		*my_write_live(char *value, int *len);
 char		*my_write_zjmp(char *value, int *len);
 char		*my_fill_buff(char *str);
+char		*my_write_fork(char *value, int *len);
+char		*my_write_lfork(char *value, int *len);
+int		my_file_list_size(t_file *list);
+void		check_ld(char *args, char *cmd, t_label *list);
+char		*copi_labelde(char *args);
+void		printthiserror(char *cmd);
+void		printthisseconderror(char *cmd);
+void		errorlabel(char *label);
+void		errorvalue(char *args);
+void		errorvaluereg(char *args);
+void		check_st(char *args, char *cmd);
+void		check_add(char *args, char *cmd);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Mar 21 00:10:32 2014 alex-odet
-** Last update Fri Mar 28 15:13:42 2014 alex-odet
+** Last update Sun Apr  6 12:04:12 2014 romaric
 */
 
 #include "struct.h"
@@ -20,7 +20,7 @@ void	my_show_list(t_label *list)
 	{
 	  my_putstr(list->name, 1);
 	  my_putchar(' ', 1);
-	  my_putnbr(list->line, 1);
+	  //my_putnbr(list->line, 1);
 	  my_putchar('\n', 1);
 	}
       list = list->next;

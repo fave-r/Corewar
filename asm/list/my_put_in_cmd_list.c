@@ -1,11 +1,11 @@
 /*
 ** my_put_in_cmd_list.c for my_put_in_cmd_list in /home/alex-odet/work/Corewar/asm/List
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Fri Apr  4 11:01:58 2014 alex-odet
+** Last update Sun Apr  6 12:05:15 2014 romaric
 */
 
 #include "struct.h"
@@ -18,9 +18,10 @@ t_lst		*create_new_node(char *cmd, t_lst **node)
   new = xmalloc(sizeof(t_lst));
   new->cmd = my_str_to_wordtab(cmd);
   len = my_strlen(new->cmd[0]);
-  if (len > 1 && new->cmd[0][len - 1] == ':')
+  if (len > 1 && new->cmd[0][len - 1] == ':'
+      && new->cmd[1] != NULL && new->cmd[0] != NULL)
     {
-      sfree(new->cmd);
+      //sfree(new->cmd);
       new->cmd = my_str_to_wordtab(cmd + len);
     }
   new->next = NULL;
@@ -59,9 +60,12 @@ char	*my_fill_buff(char *str)
 {
   int	fd;
   t_lst	*list;
+  char  *buff;
 
+  buff = xmalloc(sizeof(char) * 4096);
   fd = xopen(str, O_RDONLY);
   list = function(fd);
   if (list == NULL)
     my_putstr("Empty file.\n", 2);
+  return (buff);
 }

@@ -5,14 +5,13 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr  1 09:11:47 2014 alex-odet
-** Last update Wed Apr  2 17:45:16 2014 alex-odet
+** Last update Mon Apr  7 14:28:01 2014 romaric
 */
 
 #include "struct.h"
 
 void	check_arg(char *cmd, char *args, t_label *list)
 {
-  //printf("cmd = %s\nargs = %s\n", cmd, args);
   if (my_strcmp(cmd, "live") == 0)
     check_live(args, cmd, list);
   if (my_strcmp(cmd, "fork") == 0)
@@ -21,15 +20,12 @@ void	check_arg(char *cmd, char *args, t_label *list)
     check_live(args, cmd, list);
   if (my_strcmp(cmd, "zjump") == 0)
     check_live(args, cmd, list);
-  if ((my_strcmp("zjmp", cmd) == 0) || (my_strcmp("fork", cmd) == 0)
-      || (my_strcmp("lfork", cmd) == 0))
-    {
-      if (args[0] != '%')
-	{
-	  my_putstr(cmd, 2);
-	  my_putstr(" has a bad argument.\n", 2);
-	  my_putstr(cmd, 2);
-	  my_putstr(" needs a direct value.\n", 2);
-	}
-    }
+  if (my_strcmp(cmd, "ld") == 0)
+    check_ld(args, cmd, list);
+  if (my_strcmp(cmd, "st") == 0)
+    check_st(args, cmd);
+  if (my_strcmp(cmd, "add") == 0)
+    check_add(args, cmd);
+  if (my_strcmp(cmd, "sub") == 0)
+    check_add(args, cmd);
 }

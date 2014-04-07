@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Thu Apr  3 17:18:02 2014 alex-odet
+** Last update Sun Apr  6 19:27:18 2014 romaric
 */
 
 #include "struct.h"
@@ -17,23 +17,35 @@ void	check_cmd(char *str, t_label *list)
   int	i;
   char	*cmd;
   char	**line;
+  //int	tamere;
 
   i = 0;
   fd = xopen(str, O_RDONLY);
   cmd = NULL;
+  //tamere = 0;
   while ((tmp = get_next_line(fd)))
     {
-      printf("%s\n", tmp);
+      //my_printf(1, "tmp = %s\ntamere = %d\n", tmp, tamere);
+      my_printf(1, "%s\n", tmp);
       if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
 	cmd = cmd_exist(tmp, &i);
       if (cmd != NULL)
-	if (i == 0)
-	  {
-	    line = my_str_to_wordtab(tmp);
-	    if (line != NULL && line [0] != NULL && line[1] != NULL)
-	      check_cmd_arg(line[1], cmd, list);
-	  }
+	{
+	  if (i == 0)
+	    {
+	      line = my_str_to_wordtab(tmp);
+	      if (line != NULL && line [0] != NULL && line[1] != NULL)
+		check_cmd_arg(line[1], cmd, list);
+	    }
+	  else
+	    {
+	      line = my_str_to_wordtab(tmp);
+	      if (line != NULL && line [0] != NULL && line[1] != NULL)
+		check_cmd_arg(line[2], cmd, list);
+	    }
+	}
       i = 0;
+      //tamere++;
     }
   close (fd);
 }
@@ -66,7 +78,6 @@ char	*cmd_exist(char *str, int *bool)
     }
   return (NULL);
 }
-
 
 char	*cmd_next_label(char *cmd, int *j, int i, char *str)
 {
@@ -119,7 +130,8 @@ void	check_cmd_arg(char *args, char *cmd, t_label *list)
   nbr_coma++;
   if (op_tab[k].nbr_args != nbr_coma)
     {
-      my_printf(2, "The instruction : %s Doesn't take %d arguments but %d\n", cmd, nbr_coma, op_tab[k].nbr_args);
+      my_printf(2, "The instruction : %s Doesn't take %d arguments but %d\n"
+		, cmd, nbr_coma, op_tab[k].nbr_args);
       exit(EXIT_FAILURE);
     }
   check_arg(cmd, args, list);
