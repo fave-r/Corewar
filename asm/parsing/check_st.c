@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sun Apr  6 17:09:13 2014 romaric
-** Last update Sun Apr  6 19:24:14 2014 romaric
+** Last update Mon Apr  7 13:12:19 2014 romaric
 */
 
 #include "struct.h"
@@ -20,7 +20,6 @@ void	errorsttwo(void)
 {
   my_printf(2, "wrong value for reg\n");
   exit(EXIT_FAILURE);
-
 }
 
 void	check_stmore(char *args, int i)
