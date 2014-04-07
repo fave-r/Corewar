@@ -48,7 +48,7 @@ char		*my_write_zjmp(char *value, int *len)
   else
     save = 0;
   ret = xmalloc(sizeof(char) * 4);
-  ret[0] = 1;
+  ret[0] = 9;
   ret[3] = 0;
   convert_short_endian(&save_v, my_endian());
   save_v = save;
@@ -71,7 +71,7 @@ char		*my_write_fork(char *value, int *len)
 
   save = (value[0] != ':') ? my_getnbr(value) : 0;
   ret = xmalloc(sizeof(char) * 4);
-  ret[0] = 1;
+  ret[0] = c;
   ret[3] = 0;
   convert_short_endian(&save_v, my_endian());
   save_v = save;
@@ -82,16 +82,16 @@ char		*my_write_fork(char *value, int *len)
   return (ret);
 }
 
-char		*my_write_lfork(char *value, int *len)
+char	 *my_write_lfork(char *value, int *len)
 {
-    int		save;
+  int		save;
   short int	save_v;
   char		*ret;
   char		*s_ret;
 
   save = (value[0] != ':') ? my_getnbr(value) : 0;
   ret = xmalloc(sizeof(char) * 4);
-  ret[0] = 1;
+  ret[0] = f;
   ret[3] = 0;
   convert_short_endian(&save_v, my_endian());
   save_v = save;
@@ -100,4 +100,29 @@ char		*my_write_lfork(char *value, int *len)
   ret[2] = s_ret[1];
   *len += 3;
   return (ret);
+}
+
+char    *my_write_ld(char *args, int *len)
+{
+  int   i;
+  int   save;
+  char  *ret;
+  char  *s_ret;
+  char  *t_ret;
+  char  *tmp;
+
+  i = 0;
+  ret = xmalloc(sizeof(char) * 18);
+  tmp = xmalloc(sizeof(char) * 5);
+  while (args[i] != ',')
+  {
+tmp[i] = args[i];
+i++;
+  }
+  tmp[i] = 0;
+  save = my_getnbr(tmp);
+  free(tmp);
+  ret[0] = 1;
+  ret[1] = encode_octet(args);
+  ret[17] = 0;
 }
