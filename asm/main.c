@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 11:53:25 2014 romaric
-** Last update Sat Apr  5 18:21:44 2014 alex-odet
+** Last update Mon Apr  7 14:34:50 2014 romaric
 */
 
 #include "struct.h"
@@ -40,10 +40,11 @@ void	send_file_to_parser(t_file *list)
 {
   int	i;
   int	len;
+
   my_show_file_list(list);
   i = 0;
   len = my_file_list_size(list);
-  while (i < len)
+  while (i != len)
     {
       parser(list->name_file);
       list = list->next;
