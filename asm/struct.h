@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sun Apr  6 19:14:02 2014 romaric
+** Last update Mon Apr  7 11:59:50 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -123,7 +123,7 @@ void		check_ld(char *args, char *cmd, t_label *list);
 char		*copi_labelde(char *args);
 void		printthiserror(char *cmd);
 void		printthisseconderror(char *cmd);
-void		errorlabel(void);
+void		errorlabel(char *label);
 void		errorvalue(char *args);
 void		errorvaluereg(char *args);
 void		check_st(char *args, char *cmd);

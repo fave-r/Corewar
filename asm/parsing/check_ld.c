@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sun Apr  6 12:21:40 2014 romaric
-** Last update Sun Apr  6 17:44:15 2014 romaric
+** Last update Mon Apr  7 11:58:47 2014 romaric
 */
 
 #include "struct.h"
@@ -21,7 +21,10 @@ char    *copi_labelde(char *args)
   j = 0;
   size = 0;
   while (args[i] != ',')
-    size++;
+    {
+      size++;
+      i++;
+    }
   i = 2;
   str = xmalloc((size + 1) * sizeof(char));
   if (args[1] == ':')
@@ -61,7 +64,7 @@ void	check_ld(char *args, char *cmd, t_label *list)
   if (args[0] != '%' && (args[0] < '0' || args[0] > '9'))
     printthiserror(cmd);
   else if (args[1] == ':' && check_label_exist(list, copi_labelde(args)) != 1)
-    errorlabel();
+    errorlabel(copi_labelde(args));
   else if (args[1] != ':' && args[0] == '%')
     {
       if (args[1] < '0' || args[1] > '9' || args[1] == '-')
