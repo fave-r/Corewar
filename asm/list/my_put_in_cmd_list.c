@@ -60,9 +60,12 @@ char	*my_fill_buff(char *str)
 {
   int	fd;
   t_lst	*list;
+  char  *buff;
 
+  buff = xmalloc(sizeof(char) * 4096);
   fd = xopen(str, O_RDONLY);
   list = function(fd);
   if (list == NULL)
     my_putstr("Empty file.\n", 2);
+  return (buff);
 }

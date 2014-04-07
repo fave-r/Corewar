@@ -26,7 +26,7 @@ void	parser(char *str)
     header_t	*ptr;
     char       	*name;
     char       	*comment;
-    char	*buff;
+    __attribute__((unused)) char	*buff;
 
     ptr = init();
     name = check_name(str);

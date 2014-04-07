@@ -79,6 +79,7 @@ char		*my_write_fork(char *value, int *len)
   ret[1] = s_ret[0];
   ret[2] = s_ret[1];
   *len += 3;
+  return (ret);
 }
 
 char		*my_write_lfork(char *value, int *len)
@@ -98,4 +99,5 @@ char		*my_write_lfork(char *value, int *len)
   ret[1] = s_ret[0];
   ret[2] = s_ret[1];
   *len += 3;
+  return (ret);
 }
