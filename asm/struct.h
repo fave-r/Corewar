@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Tue Apr  8 13:19:44 2014 romaric
+** Last update Tue Apr  8 15:58:57 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -71,6 +71,15 @@ typedef struct	s_cmd
   char		*(*ptr)(char *, int *);
 }		t_cmd;
 
+typedef struct	s_chkcmd
+{
+  int   fd;
+  char  *tmp;
+  int   i;
+  char  *cmd;
+  char  **line;
+}		t_chkcmd;
+
 char		*get_next_line(const int fd);
 void		parser(char *str);
 int		check(char *str);
@@ -135,5 +144,7 @@ char		*my_write_ld_next(char *args, char *ret, int save);
 char		*copi_labeldei(char *args, int x);
 void		check_ldi(char *args, char *cmd, t_label *list);
 void		check_stinext(char *args, char *cmd, t_label *list);
+void		check_cmdini(int *i, int *fd, char *cmd, char *str);
+void		check_cmdnext(char *tmp, char *cmd, int *i);
 
 #endif

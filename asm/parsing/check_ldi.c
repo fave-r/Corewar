@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Apr  8 12:34:05 2014 romaric
-** Last update Tue Apr  8 12:45:33 2014 romaric
+** Last update Tue Apr  8 15:13:46 2014 romaric
 */
 
 #include "struct.h"
@@ -81,14 +81,13 @@ void    check_ldinext(char *args, char *cmd, t_label *list)
   check_ldinextn(args, cmd, list, i);
 }
 
-
 void    check_ldi(char *args, char *cmd, t_label *list)
 {
   if (args[0] != '%' && (args[0] < '0' || args[0] > '9')
       && args[0] != 'r' && args[0] != '-')
     {
-      my_printf(2
-                , "Bad argument u can put an indirect, a direct value, a reg\n");
+      my_printf(2, "Bad argument u can put an indirect");
+      my_printf(2, ", a direct value, a reg\n");
       exit(EXIT_FAILURE);
     }
   else if (args[0] == '%' && args[1] == ':'

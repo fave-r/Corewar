@@ -5,49 +5,40 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Sun Apr  6 19:27:18 2014 romaric
+** Last update Tue Apr  8 15:59:49 2014 romaric
 */
 
 #include "struct.h"
 
 void	check_cmd(char *str, t_label *list)
 {
-  int	fd;
-  char	*tmp;
-  int	i;
-  char	*cmd;
-  char	**line;
-  //int	tamere;
+  t_chkcmd	ch;
 
-  i = 0;
-  fd = xopen(str, O_RDONLY);
-  cmd = NULL;
-  //tamere = 0;
-  while ((tmp = get_next_line(fd)))
+  check_cmdini(&(ch.i), &(ch.fd), ch.cmd, str);
+  while ((ch.tmp = get_next_line(ch.fd)))
     {
-      //my_printf(1, "tmp = %s\ntamere = %d\n", tmp, tamere);
-      my_printf(1, "%s\n", tmp);
-      if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
-	cmd = cmd_exist(tmp, &i);
-      if (cmd != NULL)
+      //my_printf(1, "%s\n", ch.tmp);
+      //if (ch.tmp[0] == '\t' || my_strchr(':', ch.tmp) != -1)
+      //ch.cmd = cmd_exist(ch.tmp, &(ch.i));
+      check_cmdnext(ch.tmp, ch.cmd, &(ch.i));
+      if (ch.cmd != NULL)
 	{
-	  if (i == 0)
+	  if (ch.i == 0)
 	    {
-	      line = my_str_to_wordtab(tmp);
-	      if (line != NULL && line [0] != NULL && line[1] != NULL)
-		check_cmd_arg(line[1], cmd, list);
+	      ch.line = my_str_to_wordtab(ch.tmp);
+	      if (ch.line != NULL && ch.line [0] != NULL && ch.line[1] != NULL)
+		check_cmd_arg(ch.line[1], ch.cmd, list);
 	    }
 	  else
 	    {
-	      line = my_str_to_wordtab(tmp);
-	      if (line != NULL && line [0] != NULL && line[1] != NULL)
-		check_cmd_arg(line[2], cmd, list);
+	      ch.line = my_str_to_wordtab(ch.tmp);
+	      if (ch.line != NULL && ch.line [0] != NULL && ch.line[1] != NULL)
+		check_cmd_arg(ch.line[2], ch.cmd, list);
 	    }
 	}
-      i = 0;
-      //tamere++;
+      ch.i = 0;
     }
-  close (fd);
+  close (ch.fd);
 }
 
 char	*cmd_exist(char *str, int *bool)
@@ -119,7 +110,6 @@ void	check_cmd_arg(char *args, char *cmd, t_label *list)
   i = -1;
   k = 0;
   nbr_coma = 0;
-  //printf("cmd = %s ; args = %s\n", cmd, args);
   while (args[++i] != '\0')
     {
       if (args[i] == ',')

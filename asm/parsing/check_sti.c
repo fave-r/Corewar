@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Apr  8 12:51:16 2014 romaric
-** Last update Tue Apr  8 13:28:42 2014 romaric
+** Last update Tue Apr  8 15:15:16 2014 romaric
 */
 
 #include "struct.h"
@@ -29,7 +29,8 @@ void    check_stinextnn(char *args, char *cmd, t_label *list, int i)
   i++;
   if (args[i] != 'r' && args[i] != '%')
     {
-      my_printf(2, "Bad last argument it must be a reg or a direct for : %s\n", cmd);
+      my_printf(2, "Bad last argument it must be");
+      my_printf(2, " a reg or a direct for : %s\n", cmd);
       exit(EXIT_FAILURE);
     }
   else if (args[i] == 'r')
