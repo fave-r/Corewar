@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Mon Apr  7 17:51:48 2014 romaric
+** Last update Tue Apr  8 10:26:05 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -129,5 +129,8 @@ void		errorvaluereg(char *args);
 void		check_st(char *args, char *cmd);
 void		check_add(char *args, char *cmd);
 void		check_and(char *args, char *cmd, t_label *list);
+int		encode_octet(char *args);
+char		*my_write_ld(char *args, int *len);
+char		*my_write_ld_next(char *args, char *ret, int save);
 
 #endif
