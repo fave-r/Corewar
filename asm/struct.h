@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Tue Apr  8 15:58:57 2014 romaric
+** Last update Tue Apr  8 16:07:18 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -90,7 +90,7 @@ header_t	*init();
 char		*check_comment(char *str);
 char		*recup_comment(char *str);
 void		print_header_error();
-void		create_cor(char *name, header_t *header);
+int		create_cor(char *name, header_t *header);
 void		print_assembling(char *name, header_t *header);
 void		check_cmd(char *str, t_label *list);
 char		*cmd_exist(char *str, int *bool);
@@ -124,7 +124,7 @@ void		check_live(char *args, char *cmd, t_label *list);
 int		check_label_exist(t_label *list, char *label_check);
 char		*my_write_live(char *value, int *len);
 char		*my_write_zjmp(char *value, int *len);
-char		*my_fill_buff(char *str);
+char		*my_fill_buff(char *str, int fd);
 char		*my_write_fork(char *value, int *len);
 char		*my_write_lfork(char *value, int *len);
 int		my_file_list_size(t_file *list);
