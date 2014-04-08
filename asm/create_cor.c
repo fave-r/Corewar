@@ -5,12 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Mar 11 04:03:48 2014 alex-odet
-** Last update Sun Apr  6 15:19:16 2014 romaric
+** Last update Tue Apr  8 14:58:11 2014 alex-odet
 */
 
 #include "struct.h"
 
-void	create_cor(char *name, header_t *header)
+int	create_cor(char *name, header_t *header)
 {
   char	*new_name;
   char	*save_name;
@@ -36,6 +36,7 @@ void	create_cor(char *name, header_t *header)
   print_assembling(name, header);
   write(fd, header, sizeof(header_t));
   free (new_name);
+  return (fd);
 }
 
 void	print_assembling(char *name, header_t *header)

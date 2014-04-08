@@ -5,10 +5,16 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sun Apr  6 12:21:40 2014 romaric
-** Last update Mon Apr  7 16:39:50 2014 romaric
+** Last update Tue Apr  8 15:10:01 2014 romaric
 */
 
 #include "struct.h"
+
+void	moresize(int *size, int *i)
+{
+  *size = *size + 1;
+  *i = *i + 1;
+}
 
 char    *copi_labelde(char *args)
 {
@@ -21,10 +27,7 @@ char    *copi_labelde(char *args)
   j = 0;
   size = 0;
   while (args[i] != ',')
-    {
-      size++;
-      i++;
-    }
+    moresize(&size, &i);
   i = 2;
   str = xmalloc((size + 1) * sizeof(char));
   if (args[1] == ':')

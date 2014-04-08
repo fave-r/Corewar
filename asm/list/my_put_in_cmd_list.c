@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Sun Apr  6 12:05:15 2014 romaric
+** Last update Tue Apr  8 16:01:48 2014 alex-odet
 */
 
 #include "struct.h"
@@ -18,8 +18,7 @@ t_lst		*create_new_node(char *cmd, t_lst **node)
   new = xmalloc(sizeof(t_lst));
   new->cmd = my_str_to_wordtab(cmd);
   len = my_strlen(new->cmd[0]);
-  if (len > 1 && new->cmd[0][len - 1] == ':'
-      && new->cmd[1] != NULL && new->cmd[0] != NULL)
+  if (len > 1 && new->cmd[0][len - 1] == ':')
     {
       //sfree(new->cmd);
       new->cmd = my_str_to_wordtab(cmd + len);
@@ -56,16 +55,16 @@ t_lst		*function(int fd)
   return (first);
 }
 
-char	*my_fill_buff(char *str)
+char	*my_fill_buff(char *str, int fd)
 {
-  int	fd;
+  int	new_fd;
   t_lst	*list;
   char  *buff;
 
   buff = xmalloc(sizeof(char) * 4096);
-  fd = xopen(str, O_RDONLY);
-  list = function(fd);
-  if (list == NULL)
-    my_putstr("Empty file.\n", 2);
+  new_fd = xopen(str, O_RDONLY);
+  list = function(new_fd);
+  (list == NULL) ? my_putstr("Empty file.\n", 2) : parse_list(list, fd);
   return (buff);
 }
+

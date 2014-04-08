@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Mon Apr  7 17:51:48 2014 romaric
+** Last update Tue Apr  8 16:07:18 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -71,6 +71,15 @@ typedef struct	s_cmd
   char		*(*ptr)(char *, int *);
 }		t_cmd;
 
+typedef struct	s_chkcmd
+{
+  int   fd;
+  char  *tmp;
+  int   i;
+  char  *cmd;
+  char  **line;
+}		t_chkcmd;
+
 char		*get_next_line(const int fd);
 void		parser(char *str);
 int		check(char *str);
@@ -81,7 +90,7 @@ header_t	*init();
 char		*check_comment(char *str);
 char		*recup_comment(char *str);
 void		print_header_error();
-void		create_cor(char *name, header_t *header);
+int		create_cor(char *name, header_t *header);
 void		print_assembling(char *name, header_t *header);
 void		check_cmd(char *str, t_label *list);
 char		*cmd_exist(char *str, int *bool);
@@ -115,7 +124,7 @@ void		check_live(char *args, char *cmd, t_label *list);
 int		check_label_exist(t_label *list, char *label_check);
 char		*my_write_live(char *value, int *len);
 char		*my_write_zjmp(char *value, int *len);
-char		*my_fill_buff(char *str);
+char		*my_fill_buff(char *str, int fd);
 char		*my_write_fork(char *value, int *len);
 char		*my_write_lfork(char *value, int *len);
 int		my_file_list_size(t_file *list);
@@ -129,5 +138,13 @@ void		errorvaluereg(char *args);
 void		check_st(char *args, char *cmd);
 void		check_add(char *args, char *cmd);
 void		check_and(char *args, char *cmd, t_label *list);
+int		encode_octet(char *args);
+char		*my_write_ld(char *args, int *len);
+char		*my_write_ld_next(char *args, char *ret, int save);
+char		*copi_labeldei(char *args, int x);
+void		check_ldi(char *args, char *cmd, t_label *list);
+void		check_stinext(char *args, char *cmd, t_label *list);
+void		check_cmdini(int *i, int *fd, char *cmd, char *str);
+void		check_cmdnext(char *tmp, char *cmd, int *i);
 
 #endif
