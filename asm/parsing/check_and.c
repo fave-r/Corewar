@@ -5,46 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Apr  7 15:11:31 2014 romaric
-** Last update Mon Apr  7 18:27:10 2014 romaric
+** Last update Tue Apr  8 15:04:20 2014 romaric
 */
 
 #include "struct.h"
-
-void	init_labeldei(int *i, int *x, int *j, int *size)
-{
-  *x = *x + 2;
-  *i = *x;
-  *j = 0;
-  *size = 0;
-}
-
-char    *copi_labeldei(char *args, int x)
-{
-  char  *str;
-  int	i;
-  int   j;
-  int   size;
-
-  init_labeldei(&i, &x, &j, &size);
-  while (args[x + 2] != ',')
-    {
-      size++;
-      x++;
-    }
-  str = xmalloc((size + 1) * sizeof(char));
-  if (args[i - 1] == ':')
-    {
-      while (args[i] != ',')
-        {
-	  str[j] = args[i];
-          j++;
-          i++;
-        }
-      str[j++] = '\0';
-      return (str);
-    }
-  return (NULL);
-}
 
 void    check_andnextnn(char *args, char *cmd, int i)
 {
@@ -111,8 +75,8 @@ void	check_andnext(char *args, char *cmd, t_label *list)
   if (args[i] != '%' && (args[i] < '0' || args[i] > '9')
       && args[i] != 'r' && args[i] != '-')
     {
-      my_printf(2
-                , "Bad argument u can put an indirect, a direct value, a reg\n");
+      my_printf(2, "Bad argument u can put an indirect");
+      my_printf(2, ", a direct value, a reg\n");
       exit(EXIT_FAILURE);
     }
   check_andnextn(args, cmd, list, i);
