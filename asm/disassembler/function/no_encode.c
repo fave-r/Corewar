@@ -5,8 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Sat Apr  5 17:14:26 2014 Thibaut Lopez
-** Last update Fri Mar 21 09:23:42 2014 Thibaut Lopez
+** Last update Tue Apr  8 15:20:33 2014 Thibaut Lopez
 */
 
 #include "dasm.h"
@@ -22,7 +21,6 @@ int	my_live(unsigned char *buff, int fd, int i, int size)
   my_printf(fd, "\tlive %%%d\n", direct_arg);
   return (5);
 }
-
 
 int	my_zjmp(unsigned char *buff, int fd, int i, int size)
 {

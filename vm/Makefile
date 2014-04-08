@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Sun Apr  6 15:08:56 2014 romaric
+## Last update Tue Apr  8 15:04:33 2014 Thibaut Lopez
 ##
 
 VM_S=		champ_fun.c \
@@ -17,6 +17,7 @@ VM_S=		champ_fun.c \
 		get_arg.c \
 		tmp.c \
 		rm_fun.c \
+		function/fork_fun.c \
 		function/ld_fun.c \
 		function/no_encode.c \
 		function/operation.c \

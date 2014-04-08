@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Tue Apr  8 10:58:11 2014 Thibaut Lopez
+** Last update Tue Apr  8 15:08:55 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -106,8 +106,10 @@ void	my_none(t_champ *champ, t_cor *cor);
 int	get_all_type_arg(int *tab, t_champ *champ, unsigned char *mem, int *err);
 int	get_dir_ind_arg(int *tab, t_champ *champ, unsigned char *mem, int *err);
 int	get_dir_reg_arg(int *tab, t_champ *champ, unsigned char *mem, int *err);
-int	get_dir_ind_arg_noidx(int *tab, t_champ *champ, unsigned char *mem, int *err);
-int	get_all_type_arg_noidx(int *tab, t_champ *champ, unsigned char *mem, int *err);
+int	get_dir_ind_arg_noidx(int *tab, t_champ *champ,
+			      unsigned char *mem, int *err);
+int	get_all_type_arg_noidx(int *tab, t_champ *champ,
+			       unsigned char *mem, int *err);
 
 int	init_graphic(t_cor *cor);
 void	free_graphic();

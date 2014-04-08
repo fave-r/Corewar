@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Fri Apr  4 12:32:31 2014 Thibaut Lopez
+** Last update Tue Apr  8 15:16:10 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -77,15 +77,10 @@ int	list_size(t_champ *champ)
 
 int	run_corewar(t_champ *champs, t_cor *map)
 {
-  static int	tmp = 0;
-  (void)tmp;
-  int	cycle_done  = 0;
+  int	cycle_done;
 
   cycle_done = 0;
-  //my_putstr("C'est PARTI !!\n", 1);
   map->cycle_to_die = CYCLE_TO_DIE;
-  //printf("Num champ = %d %d %d %d\n", map->champs_nb[0], map->champs_nb[1], map->champs_nb[2], map->champs_nb[3]);
-    //exit(0);
   while ((map->cycle_to_die) > 100)
     {
       my_mem_set(map->live, 4);
@@ -97,34 +92,19 @@ int	run_corewar(t_champ *champs, t_cor *map)
 	      exit(0);
 	    }
 	  cycle_run(champs, map);
-	  //printf("Cycle_done = %d\n", cycle_done);
-	  //aff_memdr(map->mem);
 	  if (map->live_done >= NBR_LIVE)
 	    {
-	      //printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-	      //printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
 	      if (!someone_is_dead(champs, map))
 		{
 		  printf("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n");
 		  printf("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n");
 		  printf("Cycle_done = %d\n", cycle_done + map->cycle);
 		  printf("Personne n'est MORT bordel !!\n");
-		  //exit(0);
 		  map->cycle_to_die -= CYCLE_DELTA;
 		  printf("Cycle_to_die = %d\n", map->cycle_to_die);
-		  //printf("Live_done = %d\n\n\n\n", map->live_done);
-		  /*
-		    tmp++;
-		    if (tmp == 1)
-		    exit(0);
-		  */
 		  map->live_done = 0;
 		}
 	    }
-	  /*
-	  printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
-	  printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
-	  */
 	}
 
       printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
@@ -132,10 +112,6 @@ int	run_corewar(t_champ *champs, t_cor *map)
       kill_champ(champs, map);
       cycle_done += map->cycle;
       map->cycle = 0;
-      //map->live_done = 0;
-      //printf("Cycle_done = %d\n", cycle_done);
-      //printf("Cycle_to_die = %d\n", map->cycle_to_die);
-      //printf("Live_done = %d\n", map->live_done);
     }
   end_game(champs, map);
   return (0);

@@ -5,10 +5,22 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:40:14 2014 Thibaut Lopez
-** Last update Tue Apr  8 11:02:56 2014 Thibaut Lopez
+** Last update Tue Apr  8 15:06:52 2014 Thibaut Lopez
 */
 
 #include "vm.h"
+
+void	delete_killed_curs(t_champ *champ, SDL_Surface *screen)
+{
+  SDL_Rect	position;
+
+  position.w = 10;
+  position.h = 20;
+  position.x = champ->pc % (MEM_SIZE - 1) % 149 * 10;
+  position.y = champ->pc % (MEM_SIZE - 1) / 149 * 20;
+  champ->a_col = champ->color;
+  SDL_FillRect(screen, &position, champ->a_col);
+}
 
 void	change_pos_pc(t_champ *champ, int pc, SDL_Surface *screen)
 {

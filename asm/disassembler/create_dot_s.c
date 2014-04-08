@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Fri Apr  4 12:09:28 2014 Thibaut Lopez
-** Last update Sat Apr  5 17:21:42 2014 Thibaut Lopez
+** Last update Tue Apr  8 15:19:53 2014 Thibaut Lopez
 */
 
 #include "dasm.h"
@@ -29,10 +29,8 @@ int	(*command[])() =
  &my_lfork,
  &my_aff};
 
-void	create_dot_s(int fd, int new_fd, int size, char *path)
+unsigned char	*read_file(int size, int fd, char *path)
 {
-  int		i;
-  int		add;
   unsigned int	r_len;
   unsigned char	*buff;
 
@@ -41,9 +39,21 @@ void	create_dot_s(int fd, int new_fd, int size, char *path)
   if (r_len != (unsigned int)size)
     {
       my_printf(1, "Error : %s : Wrong prog_size\n", path);
-      return;
+      return (NULL);
     }
   buff[r_len] = 0;
+  return (buff);
+}
+
+void	create_dot_s(int fd, int new_fd, int size, char *path)
+{
+  int		i;
+  int		add;
+  unsigned char	*buff;
+
+  buff = read_file(size, fd, path);
+  if (buff == NULL)
+    return;
   i = 0;
   while (i < size)
     {
