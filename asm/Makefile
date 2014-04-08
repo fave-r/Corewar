@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Tue Apr  8 12:44:19 2014 romaric
+## Last update Tue Apr  8 13:20:02 2014 romaric
 ##
 
 CC=		clang
@@ -46,7 +46,8 @@ SRCS=		main.c \
 		parsing/check_st.c \
 		parsing/check_add.c \
 		parsing/check_and.c \
-		parsing/check_ldi.c
+		parsing/check_ldi.c \
+		parsing/check_sti.c
 
 OBJS=		$(SRCS:.c=.o)
 

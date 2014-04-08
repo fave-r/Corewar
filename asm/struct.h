@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Tue Apr  8 12:43:42 2014 romaric
+** Last update Tue Apr  8 13:19:44 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -134,5 +134,6 @@ char		*my_write_ld(char *args, int *len);
 char		*my_write_ld_next(char *args, char *ret, int save);
 char		*copi_labeldei(char *args, int x);
 void		check_ldi(char *args, char *cmd, t_label *list);
+void		check_stinext(char *args, char *cmd, t_label *list);
 
 #endif

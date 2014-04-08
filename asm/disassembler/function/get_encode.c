@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Sat Apr  5 17:14:13 2014 Thibaut Lopez
+** Last update Tue Apr  8 13:22:53 2014 romaric
 */
 
 #include "dasm.h"
@@ -70,6 +70,6 @@ int	**get_encode(unsigned char *buff, int i, int size)
       if (i > size - add)
 	return (ifree(tab, 4));
       j++;
-    }  
+    }
   return (tab);
 }
