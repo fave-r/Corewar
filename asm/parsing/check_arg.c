@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr  1 09:11:47 2014 alex-odet
-** Last update Mon Apr  7 17:53:03 2014 romaric
+** Last update Tue Apr  8 12:30:20 2014 romaric
 */
 
 #include "struct.h"
@@ -29,5 +29,7 @@ void	check_arg(char *cmd, char *args, t_label *list)
   else if (my_strcmp(cmd, "sub") == 0)
     check_add(args, cmd);
   else if (my_strcmp(cmd, "and") == 0)
+    check_and(args, cmd, list);
+  else if (my_strcmp(cmd, "or") == 0)
     check_and(args, cmd, list);
 }
