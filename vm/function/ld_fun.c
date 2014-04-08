@@ -5,20 +5,15 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-<<<<<<< HEAD
-** Last update Wed Apr  2 16:52:13 2014 Thibaut Lopez
-=======
-** Last update Wed Apr  2 13:23:50 2014 alex-odet
->>>>>>> 6bc7f99d48024bb806f7ee52e3ac6303d13f113f
+** Last update Tue Apr  8 10:46:45 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 #include "my.h"
 
-int	my_ld(t_champ *champ, t_cor *cor)
+void	my_ld(t_champ *champ, t_cor *cor)
 {
   int	**tab;
-  int	ld;
   int	arg;
   int	err;
 
@@ -30,25 +25,20 @@ int	my_ld(t_champ *champ, t_cor *cor)
     {
       champ->carry = 1;
       champ->reg[tab[1][2] - 1] = arg;
-      ld = tab[0][1] + tab[1][1] + 2;
-      printf("LD SUCESS\n");
+      change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, cor->screen);
+      champ->pc += tab[0][1] + tab[1][1] + 2;
     }
   else
     {
-      ld = 5;
+      my_none(champ, cor);
       champ->carry = 0;
-      printf("Carry = %d", champ->carry);
-      printf("LD FAIL\n");
     }
-  change_pos_pc(champ, champ->pc + ld, ld, cor->screen);
-  champ->pc += ld;
-  return (ld);
+  ifree(tab, 4);
 }
 
-int	my_ldi(t_champ *champ, t_cor *cor)
+void	my_ldi(t_champ *champ, t_cor *cor)
 {
   int	**tab;
-  int	ldi;
   int	arg1;
   int	arg2;
   int	err;
@@ -63,24 +53,21 @@ int	my_ldi(t_champ *champ, t_cor *cor)
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = get_nbr_action(cor->mem,
 						 champ->pc + arg1 + arg2, 4);
-      ldi = tab[0][1] + tab[1][1] + tab[2][1] + 2;
-      printf("LDI SUCESS\n");
+      change_pos_pc(champ,
+		    champ->pc + tab[0][1] + tab[1][1] + tab[2][1] + 2, cor->screen);
+      champ->pc += tab[0][1] + tab[1][1] + tab[2][1] + 2;
     }
   else
     {
       champ->carry = 0;
-      ldi = 5;
-      printf("LDI FAIL\n");
+      my_none(champ, cor);
     }
-  change_pos_pc(champ, champ->pc + ldi, ldi, cor->screen);
-  champ->pc += ldi;
-  return (ldi);
+  ifree(tab, 4);
 }
 
-int	my_lld(t_champ *champ, t_cor *cor)
+void	my_lld(t_champ *champ, t_cor *cor)
 {
   int	**tab;
-  int	ld;
   int	arg;
   int	err;
 
@@ -92,23 +79,20 @@ int	my_lld(t_champ *champ, t_cor *cor)
     {
       champ->carry = 1;
       champ->reg[tab[1][2] - 1] = arg;
-      ld = tab[0][1] + tab[1][1] + 2;
+      change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, cor->screen);
+      champ->pc += tab[0][1] + tab[1][1] + 2;
     }
   else
     {
-      ld = 5;
+      my_none(champ, cor);
       champ->carry = 0;
-      printf("LLD FAIL\n");
     }
-  change_pos_pc(champ, champ->pc + ld, ld, cor->screen);
-  champ->pc += ld;
-  return (ld);
+  ifree(tab, 4);
 }
 
-int	my_lldi(t_champ *champ, t_cor *cor)
+void	my_lldi(t_champ *champ, t_cor *cor)
 {
   int	**tab;
-  int	ldi;
   int	arg1;
   int	arg2;
   int	err;
@@ -123,15 +107,14 @@ int	my_lldi(t_champ *champ, t_cor *cor)
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = get_nbr_action(cor->mem,
 						 champ->pc + arg1 + arg2, 4);
-      ldi = tab[0][1] + tab[1][1] + tab[2][1] + 2;
+      change_pos_pc(champ,
+		    champ->pc + tab[0][1] + tab[1][1] + tab[2][1] + 2, cor->screen);
+      champ->pc += tab[0][1] + tab[1][1] + tab[2][1] + 2;
     }
   else
     {
       champ->carry = 0;
-      ldi = 5;
-      printf("LLDI FAIL\n");
+      my_none(champ, cor);
     }
-  change_pos_pc(champ, champ->pc + ldi, ldi, cor->screen);
-  champ->pc += ldi;
-  return (ldi);
+  ifree(tab, 4);
 }

@@ -5,28 +5,28 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:40:14 2014 Thibaut Lopez
-** Last update Wed Apr  2 16:46:34 2014 Thibaut Lopez
+** Last update Tue Apr  8 11:02:56 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 
-void	change_pos_pc(t_champ *champ, int pc, int len, SDL_Surface *screen)
+void	change_pos_pc(t_champ *champ, int pc, SDL_Surface *screen)
 {
-  int		i;
+  unsigned int	color;
   SDL_Rect	position;
 
   position.w = 10;
   position.h = 20;
-  i = 0;
-  while (i < len)
-    {
-      position.x = (champ->pc + i) % (MEM_SIZE - 1) % 149 * 10;
-      position.y = (champ->pc + i) % (MEM_SIZE - 1) / 149 * 20;
-      SDL_FillRect(screen, &position, champ->color);
-      i++;
-    }
-  position.x = pc % (MEM_SIZE - 1) % 149 * 10;
-  position.y = pc % (MEM_SIZE - 1) / 149 * 20;
+  position.x = champ->pc % (MEM_SIZE - 1) % 149 * 10;
+  position.y = champ->pc % (MEM_SIZE - 1) / 149 * 20;
+  SDL_FillRect(screen, &position, champ->a_col);
+  position.x = pc % (MEM_SIZE - 1) % 149 * 10 + 1;
+  position.y = pc % (MEM_SIZE - 1) / 149 * 20 + 1;
+  color = ((unsigned int*)screen->pixels)
+    [position.y * (screen->pitch / sizeof(unsigned int)) + position.x];
+  position.x--;
+  position.y--;
+  champ->a_col = color;
   SDL_FillRect(screen, &position, 0xFFFFFF);
   SDL_Flip(screen);
 }

@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Wed Apr  2 16:51:17 2014 Thibaut Lopez
+** Last update Tue Apr  8 10:59:45 2014 Thibaut Lopez
 ** Last update Fri Mar 21 09:23:42 2014 Thibaut Lopez
 */
 
@@ -28,7 +28,7 @@ int	find_champ(t_cor *cor, int direct_arg)
   return (j);
 }
 
-int	my_live(t_champ *champ, t_cor *cor)
+void	my_live(t_champ *champ, t_cor *cor)
 {
   int	i;
   int	j;
@@ -43,42 +43,32 @@ int	my_live(t_champ *champ, t_cor *cor)
 	if (cor->live[i - 1] == 2)
 	  cor->live[i - 1] = 1;
       cor->live[j] = 2;
-      my_printf(1, "le joueur %d(%s) est en vie\n", direct_arg, champ->head->prog_name);
       i = 0;
       while (i++ < 4)
 	if (cor->live[i - 1] == 2)
 	  cor->live[i - 1] = 1;
       cor->live[j] = 2;
       cor->live_done++;
+      change_pos_pc(champ, champ->pc + 5, cor->screen);
+      champ->pc += 5;
     }
   else
-    {
-      my_printf(1, "le joueur %d(%s) A FOIRE SON LIVE\n", direct_arg, champ->head->prog_name);
-    }
-  change_pos_pc(champ, champ->pc + 5, 5, cor->screen);
-  champ->pc += 5;
-  return (5);
+    my_none(champ, cor);
 }
 
 
-int	my_zjmp(t_champ *champ, t_cor *cor)
+void	my_zjmp(t_champ *champ, t_cor *cor)
 {
   int	direct_arg;
 
   if (champ->carry == 1)
     {
       direct_arg = get_nbr_action(cor->mem, champ->pc + 1, 2);
-      //my_printf(1, "ZJMP du champion %s de %d cases.\n", champ->head->prog_name, direct_arg);
-      change_pos_pc(champ, champ->pc + direct_arg, 3, cor->screen);
+      change_pos_pc(champ, champ->pc + direct_arg, cor->screen);
       champ->pc += direct_arg;
-      printf("JUNMP du champion %s\n", champ->head->prog_name);
     }
   else
-    {
-      my_putstr("ECHEC DE JUMP car carry = 0", 1);
-      change_pos_pc(champ, champ->pc + 3, 3, cor->screen);
-    }
-  return (3);
+    my_none(champ, cor);
 }
 
 t_champ	*champ_dup(t_champ *father, int new_pos)
@@ -109,7 +99,7 @@ t_champ	*champ_dup(t_champ *father, int new_pos)
   return (son);
 }
 
-t_champ	*add_champ(t_champ *champ, int new_pos)
+void	add_champ(t_champ *champ, int new_pos)
 {
   t_champ	*son;
 
@@ -119,43 +109,30 @@ t_champ	*add_champ(t_champ *champ, int new_pos)
   champ->next = son;
   if (son->next != NULL)
     son->next->prev = son;
-  return (son);
 }
 
-int	my_fork(t_champ *champ, t_cor *cor)
+void	my_fork(t_champ *champ, t_cor *cor)
 {
   int		fork_dest;
-  t_champ	*son;
 
   fork_dest = get_nbr_action(cor->mem, champ->pc + 1, 2);
-  son = add_champ(champ, fork_dest % IDX_MOD);
-  my_printf(1, "Le champion %s(%d) a fait un fils qui porte son nom : %s(%d)\n",champ->head->prog_name, champ->champ_nb, son->head->prog_name, son->champ_nb);
-  change_pos_pc(champ, champ->pc + 3, 3, cor->screen);
+  add_champ(champ, fork_dest % IDX_MOD);
+  change_pos_pc(champ, champ->pc + 3, cor->screen);
   champ->pc += 3;
-  return (3);
 }
 
-int	my_lfork(t_champ *champ, t_cor *cor)
+void	my_lfork(t_champ *champ, t_cor *cor)
 {
   int		fork_dest;
-  int		len;
-  t_champ	*son;
 
   fork_dest = get_nbr_action(cor->mem, champ->pc + 1, 2);
-  champ->carry = 1;
-  son = add_champ(champ, fork_dest);
-  len = read(son->fd, cor->mem + son->pc, MEM_SIZE - son->pc);
-  if (len < son->head->prog_size)
-    read(son->fd, cor->mem, son->head->prog_size);
-  close(son->fd);
-  change_pos_pc(champ, champ->pc + 3, 3, cor->screen);
+  add_champ(champ, fork_dest);
+  change_pos_pc(champ, champ->pc + 3, cor->screen);
   champ->pc += 3;
-  return (3);
 }
 
-int	my_none(t_champ *champ, t_cor *cor)
+void	my_none(t_champ *champ, t_cor *cor)
 {
-  (void)cor;
+  change_pos_pc(champ, champ->pc + 1, cor->screen);
   champ->pc++;
-  return (0);
 }
