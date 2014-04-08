@@ -5,13 +5,13 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Wed Apr  2 16:49:00 2014 Thibaut Lopez
+** Last update Tue Apr  8 11:00:32 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 #include "my.h"
 
-int	my_st(t_champ *champ, t_cor *cor)
+void	my_st(t_champ *champ, t_cor *cor)
 {
   int	**tab;
 
@@ -27,14 +27,15 @@ int	my_st(t_champ *champ, t_cor *cor)
 	  print_on_mem(cor, champ->reg[tab[0][2] - 1], champ->pc + tab[1][2]);
 	  change_case_mem(champ->pc + tab[1][2], champ->color, cor->screen);
 	}
-      my_putstr("ST SUCESS\n", 1);
+      change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, cor->screen);
+      champ->pc += tab[0][1] + tab[1][1] + 2;
     }
-  change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, tab[0][1] + tab[1][1] + 2, cor->screen);
-  champ->pc += tab[0][1] + tab[1][1] + 2;
-  return (tab[0][1] + tab[1][1] + 2);
+  else
+    my_none(champ, cor);
+  ifree(tab, 4);
 }
 
-int	my_sti(t_champ *champ, t_cor *cor)
+void	my_sti(t_champ *champ, t_cor *cor)
 {
   int	**tab;
 
@@ -46,20 +47,18 @@ int	my_sti(t_champ *champ, t_cor *cor)
     {
       print_on_mem(cor, champ->reg[tab[0][2] - 1],
 		   champ->pc + tab[1][2] + tab[2][2]);
-      change_case_mem(champ->pc + tab[1][2] + tab[2][2], champ->color, cor->screen);
-      my_putstr("STI SUCESS\n", 1);
+      change_case_mem(champ->pc + tab[1][2] + tab[2][2],
+		      champ->color, cor->screen);
+      change_pos_pc(champ,
+		    champ->pc + tab[0][1] + tab[1][1] + tab[2][1] + 2, cor->screen);
+      champ->pc += tab[0][1] + tab[1][1] + tab[2][1] + 2;
     }
   else
-    {
-      my_putstr("STI FAIL\n", 1);
-      //exit(0);
-    }
-  change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + tab[2][1] + 2, tab[0][1] + tab[1][1] + tab[2][1] + 2, cor->screen);
-  champ->pc += tab[0][1] + tab[1][1] + tab[2][1] + 2;
-  return (tab[0][1] + tab[1][1] + tab[2][1] + 2);
+    my_none(champ, cor);
+  ifree(tab, 4);
 }
 
-int	my_aff(t_champ *champ, t_cor *cor)
+void	my_aff(t_champ *champ, t_cor *cor)
 {
   int	**tab;
 
@@ -69,8 +68,10 @@ int	my_aff(t_champ *champ, t_cor *cor)
     {
       champ->carry = 1;
       my_putchar(champ->reg[tab[0][2]] % 256, 1);
+      change_pos_pc(champ, champ->pc + 6, cor->screen);
+      champ->pc += 6;
     }
-  change_pos_pc(champ, champ->pc + 6, 6, cor->screen);
-  champ->pc += 6;
-  return (6);
+  else
+    my_none(champ, cor);
+  ifree(tab, 4);
 }
