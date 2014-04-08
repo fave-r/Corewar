@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Tue Apr  8 15:16:10 2014 Thibaut Lopez
+** Last update Tue Apr  8 16:54:10 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -96,19 +96,18 @@ int	run_corewar(t_champ *champs, t_cor *map)
 	    {
 	      if (!someone_is_dead(champs, map))
 		{
-		  printf("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n");
-		  printf("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n");
-		  printf("Cycle_done = %d\n", cycle_done + map->cycle);
-		  printf("Personne n'est MORT bordel !!\n");
+		  // printf("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n");
+		  //printf("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n");
+		  //printf("Cycle_done = %d\n", cycle_done + map->cycle);
+		  //printf("Personne n'est MORT bordel !!\n");
 		  map->cycle_to_die -= CYCLE_DELTA;
-		  printf("Cycle_to_die = %d\n", map->cycle_to_die);
+		  //printf("Cycle_to_die = %d\n", map->cycle_to_die);
 		  map->live_done = 0;
 		}
 	    }
 	}
-
-      printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
-      printf("Live_done = %d\n\n\n\n", map->live_done);
+      //printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
+      //printf("Live_done = %d\n\n\n\n", map->live_done);
       kill_champ(champs, map);
       cycle_done += map->cycle;
       map->cycle = 0;
