@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Mar 26 10:43:51 2014 alex-odet
-** Last update Tue Apr  8 11:22:49 2014 alex-odet
+** Last update Tue Apr  8 14:56:00 2014 alex-odet
 */
 
 #include "struct.h"
@@ -48,7 +48,7 @@ char		*my_write_zjmp(char *value, int *len)
   else
     save = 0;
   ret = xmalloc(sizeof(char) * 4);
-  ret[0] = 9;
+  ret[0] = 1;
   ret[3] = 0;
   convert_short_endian(&save_v, my_endian());
   save_v = save;
@@ -71,7 +71,7 @@ char		*my_write_fork(char *value, int *len)
 
   save = (value[0] != ':') ? my_getnbr(value) : 0;
   ret = xmalloc(sizeof(char) * 4);
-  ret[0] = 12;
+  ret[0] = 1;
   ret[3] = 0;
   convert_short_endian(&save_v, my_endian());
   save_v = save;
@@ -91,7 +91,7 @@ char	 *my_write_lfork(char *value, int *len)
 
   save = (value[0] != ':') ? my_getnbr(value) : 0;
   ret = xmalloc(sizeof(char) * 4);
-  ret[0] = 16;
+  ret[0] = 1;
   ret[3] = 0;
   convert_short_endian(&save_v, my_endian());
   save_v = save;
@@ -122,7 +122,7 @@ char    *my_write_ld(char *args, int *len)
   tmp[i] = 0;
   save = my_getnbr(tmp);
   free(tmp);
-  ret[0] = 2;
+  ret[0] = 1;
   ret[1] = encode_octet(args);
   ret[7] = 0;
   ret = my_write_ld_next(args, ret, save);
