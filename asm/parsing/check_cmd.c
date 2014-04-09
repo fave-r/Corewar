@@ -5,37 +5,37 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Wed Apr  2 13:30:48 2014 romaric
+** Last update Tue Apr  8 16:01:51 2014 romaric
 */
 
 #include "struct.h"
 
-void	check_cmd(char *str)
+void	check_cmd(char *str, t_label *list)
 {
-  int	fd;
-  char	*tmp;
-  int	i;
-  char	*cmd;
-  char	**line;
+  t_chkcmd	ch;
 
-  i = 0;
-  fd = xopen(str, O_RDONLY);
-  cmd = NULL;
-  while ((tmp = get_next_line(fd)))
+  check_cmdini(&(ch.i), &(ch.fd), ch.cmd, str);
+  while ((ch.tmp = get_next_line(ch.fd)))
     {
-      printf("%s\n", tmp);
-      if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
-	cmd = cmd_exist(tmp, &i);
-      if (cmd != NULL)
-	if (i == 0)
-	  {
-	    line = my_str_to_wordtab(tmp);
-	    if (line[1] != NULL)
-	      check_cmd_arg(line[1], cmd);
-	  }
-      i = 0;
+      check_cmdnext(ch.tmp, ch.cmd, &(ch.i));
+      if (ch.cmd != NULL)
+	{
+	  if (ch.i == 0)
+	    {
+	      ch.line = my_str_to_wordtab(ch.tmp);
+	      if (ch.line != NULL && ch.line [0] != NULL && ch.line[1] != NULL)
+		check_cmd_arg(ch.line[1], ch.cmd, list);
+	    }
+	  else
+	    {
+	      ch.line = my_str_to_wordtab(ch.tmp);
+	      if (ch.line != NULL && ch.line [0] != NULL && ch.line[1] != NULL)
+		check_cmd_arg(ch.line[2], ch.cmd, list);
+	    }
+	}
+      ch.i = 0;
     }
-  close (fd);
+  close (ch.fd);
 }
 
 char	*cmd_exist(char *str, int *bool)
@@ -66,7 +66,6 @@ char	*cmd_exist(char *str, int *bool)
     }
   return (NULL);
 }
-
 
 char	*cmd_next_label(char *cmd, int *j, int i, char *str)
 {
@@ -99,7 +98,7 @@ void	check_cmd_exist(char *cmd)
     print_bad_instruction(cmd);
 }
 
-void	check_cmd_arg(char *args, char *cmd)
+void	check_cmd_arg(char *args, char *cmd, t_label *list)
 {
   int	i;
   int	nbr_coma;
@@ -108,7 +107,6 @@ void	check_cmd_arg(char *args, char *cmd)
   i = -1;
   k = 0;
   nbr_coma = 0;
-  //printf("cmd = %s ; args = %s\n", cmd, args);
   while (args[++i] != '\0')
     {
       if (args[i] == ',')
@@ -119,8 +117,9 @@ void	check_cmd_arg(char *args, char *cmd)
   nbr_coma++;
   if (op_tab[k].nbr_args != nbr_coma)
     {
-      my_printf(2, "The instruction : %s Doesn't take %d arguments but %d\n", cmd, nbr_coma, op_tab[k].nbr_args);
+      my_printf(2, "The instruction : %s Doesn't take %d arguments but %d\n"
+		, cmd, nbr_coma, op_tab[k].nbr_args);
       exit(EXIT_FAILURE);
     }
-  check_arg(cmd, args);
+  check_arg(cmd, args, list);
 }

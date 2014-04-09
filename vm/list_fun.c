@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sun Mar  2 12:45:35 2014 Thibaut Lopez
-** Last update Mon Mar 31 14:47:28 2014 Thibaut Lopez
+** Last update Tue Apr  8 15:12:28 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -100,8 +100,8 @@ int	fill_mem(unsigned char **mem, t_champ *champ)
 
   tmp = champ;
   len = read(tmp->fd, *mem + tmp->pc, MEM_SIZE - tmp->pc);
-  if (len < tmp->head->prog_size && (len += read(tmp->fd, *mem,
-						 tmp->head->prog_size)) < tmp->head->prog_size)
+  if (len != tmp->head->prog_size && (len += read(tmp->fd, *mem,
+						  tmp->head->prog_size + 1)) != tmp->head->prog_size)
     exit(prog_size_error(tmp->path));
   close(tmp->fd);
   tmp->reg[0] = tmp->champ_nb;
@@ -109,8 +109,9 @@ int	fill_mem(unsigned char **mem, t_champ *champ)
   while (tmp != champ)
     {
       len = read(tmp->fd, *mem + tmp->pc, MEM_SIZE - tmp->pc);
-      if (len < tmp->head->prog_size && (len += read(tmp->fd, *mem,
-						     tmp->head->prog_size)) < tmp->head->prog_size)
+      if (len != tmp->head->prog_size &&
+	  (len += read(tmp->fd, *mem,
+		       tmp->head->prog_size + 1)) != tmp->head->prog_size)
 	exit(prog_size_error(tmp->path));
       close(tmp->fd);
       tmp->reg[0] = tmp->champ_nb;

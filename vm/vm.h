@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Mon Mar 31 14:47:44 2014 Thibaut Lopez
+** Last update Wed Apr  9 10:08:48 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -38,6 +38,7 @@ typedef struct		s_champ
   int			carry;
   int			wait;
   Uint32		color;
+  Uint32		a_col;
   struct s_champ	*next;
   struct s_champ	*prev;
 }			t_champ;
@@ -60,7 +61,7 @@ typedef struct	s_cor
 typedef struct	s_struct
 {
   char		mnemonique;
-  int		(* ptr_fct)(t_champ *, t_cor *);
+  void		(* ptr_fct)(t_champ *, t_cor *);
   int		wait;
 }		t_struct;
 
@@ -74,7 +75,6 @@ void	init_adress(t_champ *champ);
 int	fill_mem(unsigned char **mem, t_champ *champ);
 int	get_nbr_action(unsigned char *mem, int pc, int len);
 int	**get_encode(unsigned char *mem, int pc);
-void	ifree(int **tab, int len);
 void	sfree(char **str);
 
 int	someone_is_dead(t_champ *, t_cor *);
@@ -86,34 +86,36 @@ int	champ_play(t_champ *, t_cor *);
 int	find_in_tab(char);
 int	end_game(t_champ *, t_cor *);
 
-int	my_live(t_champ *champ, t_cor *cor);
-int	my_ld(t_champ *champ, t_cor *cor);
-int	my_st(t_champ *champ, t_cor *cor);
-int	my_add(t_champ *champ, t_cor *cor);
-int	my_sub(t_champ *champ, t_cor *cor);
-int	my_and(t_champ *champ, t_cor *cor);
-int	my_or(t_champ *champ, t_cor *cor);
-int	my_xor(t_champ *champ, t_cor *cor);
-int	my_zjmp(t_champ *champ, t_cor *cor);
-int	my_ldi(t_champ *champ, t_cor *cor);
-int	my_sti(t_champ *champ, t_cor *cor);
-int	my_fork(t_champ *champ, t_cor *cor);
-int	my_lld(t_champ *champ, t_cor *cor);
-int	my_lldi(t_champ *champ, t_cor *cor);
-int	my_lfork(t_champ *champ, t_cor *cor);
-int	my_aff(t_champ *champ, t_cor *cor);
-int	my_none(t_champ *champ, t_cor *cor);
+void	my_live(t_champ *champ, t_cor *cor);
+void	my_ld(t_champ *champ, t_cor *cor);
+void	my_st(t_champ *champ, t_cor *cor);
+void	my_add(t_champ *champ, t_cor *cor);
+void	my_sub(t_champ *champ, t_cor *cor);
+void	my_and(t_champ *champ, t_cor *cor);
+void	my_or(t_champ *champ, t_cor *cor);
+void	my_xor(t_champ *champ, t_cor *cor);
+void	my_zjmp(t_champ *champ, t_cor *cor);
+void	my_ldi(t_champ *champ, t_cor *cor);
+void	my_sti(t_champ *champ, t_cor *cor);
+void	my_fork(t_champ *champ, t_cor *cor);
+void	my_lld(t_champ *champ, t_cor *cor);
+void	my_lldi(t_champ *champ, t_cor *cor);
+void	my_lfork(t_champ *champ, t_cor *cor);
+void	my_aff(t_champ *champ, t_cor *cor);
+void	my_none(t_champ *champ, t_cor *cor);
 int	get_all_type_arg(int *tab, t_champ *champ, unsigned char *mem, int *err);
 int	get_dir_ind_arg(int *tab, t_champ *champ, unsigned char *mem, int *err);
 int	get_dir_reg_arg(int *tab, t_champ *champ, unsigned char *mem, int *err);
-int	get_dir_ind_arg_noidx(int *tab, t_champ *champ, unsigned char *mem, int *err);
-int	get_all_type_arg_noidx(int *tab, t_champ *champ, unsigned char *mem, int *err);
+int	get_dir_ind_arg_noidx(int *tab, t_champ *champ,
+			      unsigned char *mem, int *err);
+int	get_all_type_arg_noidx(int *tab, t_champ *champ,
+			       unsigned char *mem, int *err);
 
 int	init_graphic(t_cor *cor);
 void	free_graphic();
-void	change_pos_pc(t_champ *champ, int pc, int len, SDL_Surface *screen);
+void	change_pos_pc(t_champ *champ, int pc, SDL_Surface *screen);
 void	change_case_mem(int case_mem, Uint32 color, SDL_Surface *screen);
-int	aff_memdr(unsigned char *mem);
+int	aff_mem(unsigned char *mem);
 int	print_encode(int **tab);
 int	check_reg(int);
 void	print_on_mem(t_cor *cor, int to_add, int pc);

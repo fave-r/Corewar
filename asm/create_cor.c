@@ -5,12 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Mar 11 04:03:48 2014 alex-odet
-** Last update Wed Apr  2 14:22:44 2014 alex-odet
+** Last update Tue Apr  8 14:58:11 2014 alex-odet
 */
 
 #include "struct.h"
 
-void	create_cor(char *name, header_t *header)
+int	create_cor(char *name, header_t *header)
 {
   char	*new_name;
   char	*save_name;
@@ -18,7 +18,7 @@ void	create_cor(char *name, header_t *header)
   int	fd;
 
   i = 0;
-  save_name = xmalloc(sizeof(char) * my_strlen(name) + 3);
+  save_name = xmalloc(sizeof(char) * (my_strlen(name) + 3));
   while (name[i] != '.')
     {
       save_name[i] = name[i];
@@ -36,6 +36,7 @@ void	create_cor(char *name, header_t *header)
   print_assembling(name, header);
   write(fd, header, sizeof(header_t));
   free (new_name);
+  return (fd);
 }
 
 void	print_assembling(char *name, header_t *header)
@@ -47,5 +48,6 @@ void	print_assembling(char *name, header_t *header)
   my_putstr("\n\t", 1);
   my_putstr(header->comment, 1);
   my_putstr("\n", 1);
-  my_putstr("-----------------------------------------------------------\n", 1);
+  my_putstr("-----------------------------------------------------------\n"
+	    , 1);
 }

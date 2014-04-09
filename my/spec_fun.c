@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 17:06:30 2014 Thibaut Lopez
-** Last update Wed Apr  2 14:49:47 2014 alex-odet
+** Last update Fri Apr  4 19:31:43 2014 Thibaut Lopez
 */
 
 #include "../op.h"
@@ -24,7 +24,7 @@ int	prog_size_error(char *path)
   return (1);
 }
 
-void	ifree(int **tab, int len)
+int	**ifree(int **tab, int len)
 {
   int	i;
 
@@ -35,6 +35,7 @@ void	ifree(int **tab, int len)
       i++;
     }
   free(tab);
+  return (NULL);
 }
 
 void	sfree(char **str)

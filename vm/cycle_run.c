@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 14:11:08 2014 Thibaut Lopez
-** Last update Sat Mar 29 16:51:01 2014 thibaud
+** Last update Tue Apr  8 16:54:38 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -48,8 +48,8 @@ int	someone_is_dead(t_champ *champs, t_cor *map)
 	cpt++;
       i++;
     }
-  printf("Nombre de champions en vie : %d\n", map->nb_chmps_alive);
-  printf("Cycle : %d\n", map->cycle);
+  //printf("Nombre de champions en vie : %d\n", map->nb_chmps_alive);
+  //printf("Cycle : %d\n", map->cycle);
   if (map->nb_chmps_alive != cpt)
     return (1);
   return (0);

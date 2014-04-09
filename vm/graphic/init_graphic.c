@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Wed Mar 19 16:24:38 2014 Thibaut Lopez
+** Last update Wed Apr  9 00:45:03 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -25,6 +25,7 @@ void	init_color_champ(t_cor *cor, t_champ *champ)
 	champ->color = SDL_MapRGB(cor->screen->format, 0, 0, 255);
       else
 	champ->color = SDL_MapRGB(cor->screen->format, 255, 255, 0);
+      champ->a_col = champ->color;
       i++;
       champ = champ->next;
     }

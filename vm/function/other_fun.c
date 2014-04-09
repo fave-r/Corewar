@@ -5,13 +5,17 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
+<<<<<<< HEAD:vm/Function/other_fun.c
 ** Last update Wed Apr  2 18:00:12 2014 thibaud
+=======
+** Last update Wed Apr  9 10:17:33 2014 Thibaut Lopez
+>>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/other_fun.c
 */
 
 #include "vm.h"
 #include "my.h"
 
-int	my_st(t_champ *champ, t_cor *cor)
+void	my_st(t_champ *champ, t_cor *cor)
 {
   int	**tab;
 
@@ -20,6 +24,8 @@ int	my_st(t_champ *champ, t_cor *cor)
       && ((tab[1][0] == 1 && check_reg(tab[1][2])) || tab[1][0] == 3) &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
+      if (champ->champ_nb == 1)
+	printf("ST\n");
       if (tab[1][0] == 1)
 	champ->reg[tab[1][2]] = champ->reg[tab[0][2]];
       else
@@ -27,10 +33,12 @@ int	my_st(t_champ *champ, t_cor *cor)
 	  print_on_mem(cor, champ->reg[tab[0][2] - 1], champ->pc + tab[1][2]);
 	  change_case_mem(champ->pc + tab[1][2], champ->color, cor->screen);
 	}
-      my_putstr("ST SUCESS\n", 1);
+      change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, cor->screen);
+      champ->pc += tab[0][1] + tab[1][1] + 2;
     }
   else
     {
+<<<<<<< HEAD:vm/Function/other_fun.c
       my_putstr("ST FAIL\n", 1);
       aff_memdr(cor->mem);
       printf("PC = %X\n", champ->pc + 1);
@@ -39,9 +47,16 @@ int	my_st(t_champ *champ, t_cor *cor)
   change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, tab[0][1] + tab[1][1] + 2, cor->screen);
   champ->pc += tab[0][1] + tab[1][1] + 2;
   return (tab[0][1] + tab[1][1] + 2);
+=======
+      if (champ->champ_nb == 1)
+	printf("ST (fail)\n");
+      my_none(champ, cor);
+    }
+  ifree(tab, 4);
+>>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/other_fun.c
 }
 
-int	my_sti(t_champ *champ, t_cor *cor)
+void	my_sti(t_champ *champ, t_cor *cor)
 {
   int	**tab;
 
@@ -51,22 +66,31 @@ int	my_sti(t_champ *champ, t_cor *cor)
       && ((tab[2][0] == 1 && check_reg(tab[2][2])) || tab[2][0] == 2) &&
       tab[3][0] == 0)
     {
+      if (champ->champ_nb == 1)
+	printf("STI\n");
       print_on_mem(cor, champ->reg[tab[0][2] - 1],
 		   champ->pc + tab[1][2] + tab[2][2]);
-      change_case_mem(champ->pc + tab[1][2] + tab[2][2], champ->color, cor->screen);
-      my_putstr("STI SUCESS\n", 1);
+      change_case_mem(champ->pc + tab[1][2] + tab[2][2],
+		      champ->color, cor->screen);
+      change_pos_pc(champ,
+		    champ->pc + tab[0][1] + tab[1][1] + tab[2][1] + 2, cor->screen);
+      champ->pc += tab[0][1] + tab[1][1] + tab[2][1] + 2;
     }
   else
     {
+<<<<<<< HEAD:vm/Function/other_fun.c
       my_putstr("STI FAIL\n", 1);
       exit(0);
+=======
+      if (champ->champ_nb == 1)
+	printf("STI (fail)\n");
+      my_none(champ, cor);
+>>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/other_fun.c
     }
-  change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + tab[2][1] + 2, tab[0][1] + tab[1][1] + tab[2][1] + 2, cor->screen);
-  champ->pc += tab[0][1] + tab[1][1] + tab[2][1] + 2;
-  return (tab[0][1] + tab[1][1] + tab[2][1] + 2);
+  ifree(tab, 4);
 }
 
-int	my_aff(t_champ *champ, t_cor *cor)
+void	my_aff(t_champ *champ, t_cor *cor)
 {
   int	**tab;
 
@@ -74,11 +98,23 @@ int	my_aff(t_champ *champ, t_cor *cor)
   if (tab[0][0] == 1 && check_reg(tab[0][2]) && tab[1][0] == 0 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
+<<<<<<< HEAD:vm/Function/other_fun.c
       //champ->carry *= -1;
       //champ->carry = 1;
+=======
+      if (champ->champ_nb == 1)
+	printf("AFF\n");
+      champ->carry = 1;
+>>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/other_fun.c
       my_putchar(champ->reg[tab[0][2]] % 256, 1);
+      change_pos_pc(champ, champ->pc + 6, cor->screen);
+      champ->pc += 6;
     }
-  change_pos_pc(champ, champ->pc + 6, 6, cor->screen);
-  champ->pc += 6;
-  return (6);
+  else
+    {
+      if (champ->champ_nb == 1)
+	printf("AFF (fail)\n");
+      my_none(champ, cor);
+    }
+  ifree(tab, 4);
 }

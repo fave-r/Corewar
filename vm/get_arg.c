@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Mar 20 16:24:21 2014 Thibaut Lopez
-** Last update Mon Mar 31 14:24:01 2014 Thibaut Lopez
+** Last update Tue Apr  8 15:08:37 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -61,7 +61,8 @@ int	get_dir_reg_arg(int *tab, t_champ *champ, unsigned char *mem, int *err)
     }
 }
 
-int	get_dir_ind_arg_noidx(int *tab, t_champ *champ, unsigned char *mem, int *err)
+int	get_dir_ind_arg_noidx(int *tab, t_champ *champ,
+			      unsigned char *mem, int *err)
 {
   if (tab[0] <= 1)
     {
@@ -75,7 +76,8 @@ int	get_dir_ind_arg_noidx(int *tab, t_champ *champ, unsigned char *mem, int *err
 			   mod_mem(champ->pc + tab[2]), tab[1]));
 }
 
-int	get_all_type_arg_noidx(int *tab, t_champ *champ, unsigned char *mem, int *err)
+int	get_all_type_arg_noidx(int *tab, t_champ *champ,
+			       unsigned char *mem, int *err)
 {
   if (tab[0] == 0)
     {

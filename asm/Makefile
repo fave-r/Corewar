@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Wed Apr  2 14:23:44 2014 alex-odet
+## Last update Wed Apr  9 13:15:51 2014 romaric
 ##
 
 CC=		clang
@@ -20,23 +20,38 @@ SRCS=		main.c \
 		create_cor.c \
 		my_str_to_wordtab.c \
 		count_dot.c \
+		cmd.c \
 		../op.c \
-		Parsing/parsing.c \
-		Parsing/check_cmd.c \
-		Parsing/check_label.c \
-		Parsing/check_arg.c \
-		Parsing/check_live.c \
-		Get_Next_Line/get_next_line.c \
-		Header/init.c \
-		Header/fill_header.c \
-		Header/recup_comment.c \
-		Header/recup.c \
-		List/my_put_in_list.c \
-		List/my_put_in_cmd_list.c \
-		List/my_show_list.c \
-		Error/error.c \
-		Error/bad_value.c \
-		Get_Next_Line/get_next_line_next.c
+		parsing/parsing.c \
+		parsing/check_cmd.c \
+		parsing/check_label.c \
+		parsing/check_arg.c \
+		parsing/check_live.c \
+		header/init.c \
+		header/fill_header.c \
+		header/recup_comment.c \
+		header/recup.c \
+		list/my_put_in_list.c \
+		list/my_put_in_cmd_list.c \
+		list/my_show_list.c \
+		list/my_list_size.c \
+		error/error.c \
+		error/bad_value.c \
+		get_next_line/get_next_line.c \
+		get_next_line/get_next_line_next.c \
+		parsing/check_ld.c \
+		parsing/encodage.c \
+		parsing/error_ld.c \
+		parsing/check_st.c \
+		parsing/check_add.c \
+		parsing/check_and.c \
+		parsing/check_ldi.c \
+		parsing/check_sti.c \
+		parsing/copi_labeldei.c \
+		parsing/check_cmdini.c \
+		writer/my_writer.c \
+		parsing/check_aff.c \
+		writer/encode_function.c
 
 OBJS=		$(SRCS:.c=.o)
 

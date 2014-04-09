@@ -1,17 +1,17 @@
 /*
-** tmp.c for tmp in /home/thibaut.lopez/Corewar/Corewar/vm
+** mem_fun.c for mem_fun in /home/thibaut.lopez/Corewar/Corewar/vm
 ** 
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
 ** 
-** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Thu Mar 27 08:53:58 2014 Thibaut Lopez
+** Started on  Wed Apr  9 00:46:06 2014 Thibaut Lopez
+** Last update Wed Apr  9 00:46:06 2014 Thibaut Lopez
 */
 
 #include "my.h"
 #include "vm.h"
 
-int	aff_memdr(unsigned char *mem)
+int	aff_mem(unsigned char *mem)
 {
   int	i;
   int	j;

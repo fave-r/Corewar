@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Wed Apr  2 16:39:13 2014 alex-odet
+** Last update Tue Apr  8 15:06:04 2014 alex-odet
 */
 
 #include "struct.h"
@@ -14,7 +14,7 @@ void	parser(char *str)
 {
   if (str[my_strlen(str) - 1] == 's'
       && str[my_strlen(str) - 2] == '.'
-      && count_dot(str, 0, '.') == 1)
+      && str[my_strlen(str) - 4] != '.')
     check(str);
   else
     print_bad_ext(str);
@@ -22,18 +22,21 @@ void	parser(char *str)
 
 int	check(char *str)
 {
-  __attribute__((unused))t_label	*list;
+  t_label	*list;
   header_t	*ptr;
-  char		*name;
-  char		*comment;
+  char       	*name;
+  char       	*comment;
+  int		fd;
+  __attribute__((unused)) char	*buff;
 
   ptr = init();
   name = check_name(str);
   comment = check_comment(str);
   ptr = fill_header(name, comment);
   list = fill_list_of_label(str);
-  check_cmd(str);
-  create_cor(str, ptr);
+  check_cmd(str, list);
+  fd = create_cor(str, ptr);
+  my_fill_buff(str, fd);
   free(list);
   free(name);
   free(comment);
