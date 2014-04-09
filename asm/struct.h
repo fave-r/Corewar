@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Tue Apr  8 16:07:18 2014 alex-odet
+** Last update Wed Apr  9 13:13:26 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -146,5 +146,6 @@ void		check_ldi(char *args, char *cmd, t_label *list);
 void		check_stinext(char *args, char *cmd, t_label *list);
 void		check_cmdini(int *i, int *fd, char *cmd, char *str);
 void		check_cmdnext(char *tmp, char *cmd, int *i);
+void		check_aff(char *args, char *cmd);
 
 #endif

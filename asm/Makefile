@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Tue Apr  8 16:06:24 2014 alex-odet
+## Last update Wed Apr  9 13:15:51 2014 romaric
 ##
 
 CC=		clang
@@ -49,7 +49,9 @@ SRCS=		main.c \
 		parsing/check_sti.c \
 		parsing/copi_labeldei.c \
 		parsing/check_cmdini.c \
-		writer/my_writer.c
+		writer/my_writer.c \
+		parsing/check_aff.c \
+		writer/encode_function.c
 
 OBJS=		$(SRCS:.c=.o)
 
