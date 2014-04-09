@@ -5,11 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-<<<<<<< HEAD:vm/Function/operation.c
-** Last update Wed Apr  2 17:59:03 2014 thibaud
-=======
-** Last update Wed Apr  9 10:16:23 2014 Thibaut Lopez
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/operation.c
+** Last update Wed Apr  9 15:22:52 2014 thibaud
 */
 
 #include "vm.h"
@@ -24,14 +20,11 @@ void	my_add(t_champ *champ, t_cor *cor)
       tab[3][0] == 0 && check_reg(tab[0][2]) == 1 &&
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
     {
-<<<<<<< HEAD:vm/Function/operation.c
       //champ->carry *= -1;
       //champ->carry = 1;
-=======
       if (champ->champ_nb == 1)
 	printf("ADD\n");
       champ->carry = 1;
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/operation.c
       champ->reg[tab[2][2] - 1] = champ->reg[tab[0][2] - 1]
 	+ champ->reg[tab[1][2] - 1];
       change_pos_pc(champ, champ->pc + 5, cor->screen);
@@ -39,16 +32,13 @@ void	my_add(t_champ *champ, t_cor *cor)
     }
   else
     {
-<<<<<<< HEAD:vm/Function/operation.c
       printf("ADD FAIL\n");
       //champ->carry = -1;
       exit(0);
-=======
       if (champ->champ_nb == 1)
 	printf("ADD (fail)\n");
       my_none(champ, cor);
       champ->carry = 0;
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/operation.c
     }
   ifree(tab, 4);
 }
@@ -62,14 +52,11 @@ void	my_sub(t_champ *champ, t_cor *cor)
       tab[3][0] == 0 && check_reg(tab[0][2]) == 1 &&
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
     {
-<<<<<<< HEAD:vm/Function/operation.c
       //champ->carry *= -1;
       //champ->carry = 1;
-=======
       if (champ->champ_nb == 1)
 	printf("SUB\n");
       champ->carry = 1;
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/operation.c
       champ->reg[tab[2][2] - 1] = champ->reg[tab[0][2] - 1] -
 	champ->reg[tab[1][2] - 1];
       change_pos_pc(champ, champ->pc + 5, cor->screen);
@@ -77,16 +64,13 @@ void	my_sub(t_champ *champ, t_cor *cor)
     }
   else
     {
-<<<<<<< HEAD:vm/Function/operation.c
       printf("SUB FAIL\n");
       exit(0);
       //champ->carry = -1;
-=======
       if (champ->champ_nb == 1)
 	printf("SUB (fail)\n");
       my_none(champ, cor);
       champ->carry = 0;
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/operation.c
     }
   ifree(tab, 4);
 }
@@ -105,31 +89,25 @@ void	my_and(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
-<<<<<<< HEAD:vm/Function/operation.c
       //champ->carry *= -1;
 
       //champ->carry = 1;
-=======
       if (champ->champ_nb == 1)
 	printf("AND\n");
       champ->carry = 1;
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/operation.c
       champ->reg[tab[2][2] - 1] = arg1 & arg2;
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 3, cor->screen);
       champ->pc += tab[0][1] + tab[1][1] + 3;
     }
   else
     {
-<<<<<<< HEAD:vm/Function/operation.c
       printf("AND FAIL\n");
       exit(0);
       //champ->carry = -1;
-=======
       if (champ->champ_nb == 1)
 	printf("AND (fail)\n");
       my_none(champ, cor);
       champ->carry = 0;
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/operation.c
     }
   ifree(tab, 4);
 }
@@ -148,30 +126,24 @@ void	my_or(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
-<<<<<<< HEAD:vm/Function/operation.c
       //champ->carry *= -1;
       //champ->carry = 1;
-=======
       if (champ->champ_nb == 1)
 	printf("OR\n");
       champ->carry = 1;
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/operation.c
       champ->reg[tab[2][2] - 1] = arg1 | arg2;
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 3, cor->screen);
       champ->pc += tab[0][1] + tab[1][1] + 3;
     }
   else
     {
-<<<<<<< HEAD:vm/Function/operation.c
       printf("OR FAIL\n");
       exit(0);
       //champ->carry = -1;
-=======
       if (champ->champ_nb == 1)
 	printf("OR (fail)\n");
       my_none(champ, cor);
       champ->carry = 0;
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/operation.c
     }
   ifree(tab, 4);
 }
@@ -190,32 +162,26 @@ void	my_xor(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
-<<<<<<< HEAD:vm/Function/operation.c
       //champ->carry = 1;
       //champ->carry *= -1;
       if (tab[0][0] == 3)
-	aff_memdr(cor->mem);
-=======
+	aff_mem(cor->mem);
       if (champ->champ_nb == 1)
 	printf("XOR\n");
       champ->carry = 1;
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/operation.c
       champ->reg[tab[2][2] - 1] = arg1 ^ arg2;
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 3, cor->screen);
       champ->pc += tab[0][1] + tab[1][1] + 3;
     }
   else
     {
-<<<<<<< HEAD:vm/Function/operation.c
       printf("XOR FAIL\n");
       exit(0);
       //champ->carry = -1;
-=======
       if (champ->champ_nb == 1)
 	printf("XOR (fail)\n");
       my_none(champ, cor);
       champ->carry = 0;
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/operation.c
     }
   ifree(tab, 4);
 }

@@ -5,11 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-<<<<<<< HEAD:vm/Function/other_fun.c
-** Last update Wed Apr  2 18:00:12 2014 thibaud
-=======
-** Last update Wed Apr  9 10:17:33 2014 Thibaut Lopez
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/other_fun.c
+** Last update Wed Apr  9 15:30:55 2014 thibaud
 */
 
 #include "vm.h"
@@ -38,22 +34,18 @@ void	my_st(t_champ *champ, t_cor *cor)
     }
   else
     {
-<<<<<<< HEAD:vm/Function/other_fun.c
       my_putstr("ST FAIL\n", 1);
-      aff_memdr(cor->mem);
+      aff_mem(cor->mem);
       printf("PC = %X\n", champ->pc + 1);
       exit(0);
     }
-  change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, tab[0][1] + tab[1][1] + 2, cor->screen);
+  change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, cor->screen);
   champ->pc += tab[0][1] + tab[1][1] + 2;
-  return (tab[0][1] + tab[1][1] + 2);
-=======
-      if (champ->champ_nb == 1)
-	printf("ST (fail)\n");
-      my_none(champ, cor);
-    }
+  return; //(tab[0][1] + tab[1][1] + 2);
+  if (champ->champ_nb == 1)
+    printf("ST (fail)\n");
+  my_none(champ, cor);
   ifree(tab, 4);
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/other_fun.c
 }
 
 void	my_sti(t_champ *champ, t_cor *cor)
@@ -78,14 +70,11 @@ void	my_sti(t_champ *champ, t_cor *cor)
     }
   else
     {
-<<<<<<< HEAD:vm/Function/other_fun.c
       my_putstr("STI FAIL\n", 1);
       exit(0);
-=======
       if (champ->champ_nb == 1)
 	printf("STI (fail)\n");
       my_none(champ, cor);
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/other_fun.c
     }
   ifree(tab, 4);
 }
@@ -98,14 +87,11 @@ void	my_aff(t_champ *champ, t_cor *cor)
   if (tab[0][0] == 1 && check_reg(tab[0][2]) && tab[1][0] == 0 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
-<<<<<<< HEAD:vm/Function/other_fun.c
       //champ->carry *= -1;
       //champ->carry = 1;
-=======
       if (champ->champ_nb == 1)
 	printf("AFF\n");
       champ->carry = 1;
->>>>>>> 0bdc69373077ab9e9596fe66f10e1dabcab981e4:vm/function/other_fun.c
       my_putchar(champ->reg[tab[0][2]] % 256, 1);
       change_pos_pc(champ, champ->pc + 6, cor->screen);
       champ->pc += 6;
