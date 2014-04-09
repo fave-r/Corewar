@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-** Last update Tue Apr  8 10:46:45 2014 Thibaut Lopez
+** Last update Wed Apr  9 10:13:14 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -23,6 +23,8 @@ void	my_ld(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
+      if (champ->champ_nb == 1)
+	printf("LD\n");
       champ->carry = 1;
       champ->reg[tab[1][2] - 1] = arg;
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, cor->screen);
@@ -30,6 +32,8 @@ void	my_ld(t_champ *champ, t_cor *cor)
     }
   else
     {
+      if (champ->champ_nb == 1)
+	printf("LD (fail)\n");
       my_none(champ, cor);
       champ->carry = 0;
     }
@@ -50,6 +54,8 @@ void	my_ldi(t_champ *champ, t_cor *cor)
   if (err != -1 &&
       (tab[2][0] == 1 && check_reg(tab[2][2]) == 1) && tab[3][0] == 0)
     {
+      if (champ->champ_nb == 1)
+	printf("LDI\n");
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = get_nbr_action(cor->mem,
 						 champ->pc + arg1 + arg2, 4);
@@ -59,6 +65,8 @@ void	my_ldi(t_champ *champ, t_cor *cor)
     }
   else
     {
+      if (champ->champ_nb == 1)
+	printf("LDI (fail)\n");
       champ->carry = 0;
       my_none(champ, cor);
     }
@@ -77,6 +85,8 @@ void	my_lld(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
+      if (champ->champ_nb == 1)
+	printf("LLD\n");
       champ->carry = 1;
       champ->reg[tab[1][2] - 1] = arg;
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, cor->screen);
@@ -84,6 +94,8 @@ void	my_lld(t_champ *champ, t_cor *cor)
     }
   else
     {
+      if (champ->champ_nb == 1)
+	printf("LLD (fail)\n");
       my_none(champ, cor);
       champ->carry = 0;
     }
@@ -104,6 +116,8 @@ void	my_lldi(t_champ *champ, t_cor *cor)
   if (err != -1 &&
       (tab[2][0] == 1 && check_reg(tab[2][2]) == 1) && tab[3][0] == 0)
     {
+      if (champ->champ_nb == 1)
+	printf("LLDI\n");
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = get_nbr_action(cor->mem,
 						 champ->pc + arg1 + arg2, 4);
@@ -113,6 +127,8 @@ void	my_lldi(t_champ *champ, t_cor *cor)
     }
   else
     {
+      if (champ->champ_nb == 1)
+	printf("LLDI (fail)\n");
       champ->carry = 0;
       my_none(champ, cor);
     }

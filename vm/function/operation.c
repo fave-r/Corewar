@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Tue Apr  8 11:00:10 2014 Thibaut Lopez
+** Last update Wed Apr  9 10:16:23 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -20,6 +20,8 @@ void	my_add(t_champ *champ, t_cor *cor)
       tab[3][0] == 0 && check_reg(tab[0][2]) == 1 &&
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
     {
+      if (champ->champ_nb == 1)
+	printf("ADD\n");
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = champ->reg[tab[0][2] - 1]
 	+ champ->reg[tab[1][2] - 1];
@@ -28,6 +30,8 @@ void	my_add(t_champ *champ, t_cor *cor)
     }
   else
     {
+      if (champ->champ_nb == 1)
+	printf("ADD (fail)\n");
       my_none(champ, cor);
       champ->carry = 0;
     }
@@ -43,6 +47,8 @@ void	my_sub(t_champ *champ, t_cor *cor)
       tab[3][0] == 0 && check_reg(tab[0][2]) == 1 &&
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
     {
+      if (champ->champ_nb == 1)
+	printf("SUB\n");
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = champ->reg[tab[0][2] - 1] -
 	champ->reg[tab[1][2] - 1];
@@ -51,6 +57,8 @@ void	my_sub(t_champ *champ, t_cor *cor)
     }
   else
     {
+      if (champ->champ_nb == 1)
+	printf("SUB (fail)\n");
       my_none(champ, cor);
       champ->carry = 0;
     }
@@ -71,6 +79,8 @@ void	my_and(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
+      if (champ->champ_nb == 1)
+	printf("AND\n");
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = arg1 & arg2;
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 3, cor->screen);
@@ -78,6 +88,8 @@ void	my_and(t_champ *champ, t_cor *cor)
     }
   else
     {
+      if (champ->champ_nb == 1)
+	printf("AND (fail)\n");
       my_none(champ, cor);
       champ->carry = 0;
     }
@@ -98,6 +110,8 @@ void	my_or(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
+      if (champ->champ_nb == 1)
+	printf("OR\n");
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = arg1 | arg2;
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 3, cor->screen);
@@ -105,6 +119,8 @@ void	my_or(t_champ *champ, t_cor *cor)
     }
   else
     {
+      if (champ->champ_nb == 1)
+	printf("OR (fail)\n");
       my_none(champ, cor);
       champ->carry = 0;
     }
@@ -125,6 +141,8 @@ void	my_xor(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
+      if (champ->champ_nb == 1)
+	printf("XOR\n");
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = arg1 ^ arg2;
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 3, cor->screen);
@@ -132,6 +150,8 @@ void	my_xor(t_champ *champ, t_cor *cor)
     }
   else
     {
+      if (champ->champ_nb == 1)
+	printf("XOR (fail)\n");
       my_none(champ, cor);
       champ->carry = 0;
     }

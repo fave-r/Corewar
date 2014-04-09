@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Tue Apr  8 16:54:10 2014 Thibaut Lopez
+** Last update Wed Apr  9 10:08:18 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -88,7 +88,7 @@ int	run_corewar(t_champ *champs, t_cor *map)
 	{
 	  if ((map->cycle + cycle_done) == map->dump)
 	    {
-	      aff_memdr(map->mem);
+	      aff_mem(map->mem);
 	      exit(0);
 	    }
 	  cycle_run(champs, map);
