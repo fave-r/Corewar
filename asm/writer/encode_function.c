@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr  9 13:04:49 2014 alex-odet
-** Last update Wed Apr  9 13:05:22 2014 alex-odet
+** Last update Wed Apr  9 15:18:38 2014 alex-odet
 */
 
 #include "struct.h"
@@ -56,4 +56,28 @@ char	*my_write_ld_next(char *args, char *ret, int save)
   ret[5] = s_ret[3];
   ret[6] = s_ret[4];
   return (ret);  
+}
+
+char	*my_write_st(char *args, int *len)
+{
+  int	end;
+  char	*ret;
+  char	*s_ret;
+  int	reg_value;
+  char	*tmp;
+
+  tmp = xmalloc(sizeof(char) * 3);
+  ret = xmalloc(sizeof(char) * 7);
+  ret[0] = op_tab[2].code;
+  ret[1] = encode_octet(args);
+  ret[6] = 0;
+  tmp = copy_reg_value(args);
+  reg_value = my_getnbr(tmp);
+  free(tmp);
+  *len += 6;
+  convert_endian(&end, my_endian());
+  end = reg_value;
+  s_ret = (char *)&end;
+  ret[2] = s_ret[0];
+  return (ret);
 }
