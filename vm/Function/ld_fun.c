@@ -5,11 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-<<<<<<< HEAD
-** Last update Wed Apr  2 16:52:13 2014 Thibaut Lopez
-=======
-** Last update Wed Apr  2 13:23:50 2014 alex-odet
->>>>>>> 6bc7f99d48024bb806f7ee52e3ac6303d13f113f
+** Last update Wed Apr  2 17:55:47 2014 thibaud
 */
 
 #include "vm.h"
@@ -25,10 +21,13 @@ int	my_ld(t_champ *champ, t_cor *cor)
   err = 0;
   tab = get_encode(cor->mem, champ->pc);
   arg = get_dir_ind_arg(tab[0], champ, cor->mem, &err);
+  printf("Octet d'encodage : %X\n", cor->mem[champ->pc + 1]);
+  printf("%d != -1\n%d == 1\n %d == 1\n%d == 0\n%d == 0\n", err, tab[1][0], check_reg(tab[1][2]), tab[2][0], tab[3][0]);
   if (err != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
-      champ->carry = 1;
+      //champ->carry *= -1;
+      //champ->carry = 1;
       champ->reg[tab[1][2] - 1] = arg;
       ld = tab[0][1] + tab[1][1] + 2;
       printf("LD SUCESS\n");
@@ -36,9 +35,12 @@ int	my_ld(t_champ *champ, t_cor *cor)
   else
     {
       ld = 5;
-      champ->carry = 0;
-      printf("Carry = %d", champ->carry);
+      //champ->carry = -1;
+      printf("Carry = %d\n", champ->carry);
       printf("LD FAIL\n");
+      aff_memdr(cor->mem);
+      printf("PC = %X\n\n", champ->pc);
+      //exit(0);
     }
   change_pos_pc(champ, champ->pc + ld, ld, cor->screen);
   champ->pc += ld;
@@ -60,7 +62,8 @@ int	my_ldi(t_champ *champ, t_cor *cor)
   if (err != -1 &&
       (tab[2][0] == 1 && check_reg(tab[2][2]) == 1) && tab[3][0] == 0)
     {
-      champ->carry = 1;
+      //champ->carry = 1;
+      //champ->carry *= -1;
       champ->reg[tab[2][2] - 1] = get_nbr_action(cor->mem,
 						 champ->pc + arg1 + arg2, 4);
       ldi = tab[0][1] + tab[1][1] + tab[2][1] + 2;
@@ -68,9 +71,10 @@ int	my_ldi(t_champ *champ, t_cor *cor)
     }
   else
     {
-      champ->carry = 0;
+      //champ->carry = -1;
       ldi = 5;
       printf("LDI FAIL\n");
+      exit(0);
     }
   change_pos_pc(champ, champ->pc + ldi, ldi, cor->screen);
   champ->pc += ldi;
@@ -90,14 +94,15 @@ int	my_lld(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
-      champ->carry = 1;
+      //champ->carry = 1;
+      //champ->carry *= -1;
       champ->reg[tab[1][2] - 1] = arg;
       ld = tab[0][1] + tab[1][1] + 2;
     }
   else
     {
       ld = 5;
-      champ->carry = 0;
+      //champ->carry = -1;
       printf("LLD FAIL\n");
     }
   change_pos_pc(champ, champ->pc + ld, ld, cor->screen);
@@ -120,16 +125,18 @@ int	my_lldi(t_champ *champ, t_cor *cor)
   if (err != -1 &&
       (tab[2][0] == 1 && check_reg(tab[2][2]) == 1) && tab[3][0] == 0)
     {
-      champ->carry = 1;
+      //champ->carry = 1;
+      //champ->carry *= -1;
       champ->reg[tab[2][2] - 1] = get_nbr_action(cor->mem,
 						 champ->pc + arg1 + arg2, 4);
       ldi = tab[0][1] + tab[1][1] + tab[2][1] + 2;
     }
   else
     {
-      champ->carry = 0;
+      //champ->carry = -1;
       ldi = 5;
       printf("LLDI FAIL\n");
+      exit(0);
     }
   change_pos_pc(champ, champ->pc + ldi, ldi, cor->screen);
   champ->pc += ldi;

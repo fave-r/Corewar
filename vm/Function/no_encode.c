@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Wed Apr  2 16:51:17 2014 Thibaut Lopez
+** Last update Wed Apr  2 17:56:46 2014 thibaud
 ** Last update Fri Mar 21 09:23:42 2014 Thibaut Lopez
 */
 
@@ -77,6 +77,8 @@ int	my_zjmp(t_champ *champ, t_cor *cor)
     {
       my_putstr("ECHEC DE JUMP car carry = 0", 1);
       change_pos_pc(champ, champ->pc + 3, 3, cor->screen);
+      champ->pc += 3;
+      exit(0);
     }
   return (3);
 }
@@ -142,7 +144,8 @@ int	my_lfork(t_champ *champ, t_cor *cor)
   t_champ	*son;
 
   fork_dest = get_nbr_action(cor->mem, champ->pc + 1, 2);
-  champ->carry = 1;
+
+  //champ->carry *= -1;
   son = add_champ(champ, fork_dest);
   len = read(son->fd, cor->mem + son->pc, MEM_SIZE - son->pc);
   if (len < son->head->prog_size)

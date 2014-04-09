@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Wed Feb 26 13:43:48 2014 Thibaut Lopez
-** Last update Mon Mar 24 14:34:41 2014 Thibaut Lopez
+** Last update Wed Apr  2 17:17:07 2014 thibaud
 */
 
 #include "vm.h"
@@ -19,7 +19,7 @@ void	set_var(t_champ *champ)
   champ->pc = -1;
   champ->wait = -1;
   my_mem_set(champ->reg, REG_NUMBER);
-  champ->carry = 0;
+  champ->carry = 1;
 }
 
 t_champ	*init_champ()
