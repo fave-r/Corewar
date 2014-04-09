@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Wed Apr  9 13:15:51 2014 romaric
+## Last update Wed Apr  9 15:39:08 2014 alex-odet
 ##
 
 CC=		clang
@@ -19,6 +19,7 @@ NAME=		asm
 SRCS=		main.c \
 		create_cor.c \
 		my_str_to_wordtab.c \
+		args_to_wordtab.c \
 		count_dot.c \
 		cmd.c \
 		../op.c \
@@ -51,7 +52,8 @@ SRCS=		main.c \
 		parsing/check_cmdini.c \
 		writer/my_writer.c \
 		parsing/check_aff.c \
-		writer/encode_function.c
+		writer/encode_function.c \
+		writer/copy_reg_value.c
 
 OBJS=		$(SRCS:.c=.o)
 

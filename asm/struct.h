@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Wed Apr  9 13:13:26 2014 romaric
+** Last update Wed Apr  9 15:41:55 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -57,14 +57,6 @@ typedef struct	s_file
   char		*name_file;
 }		t_file;
 
-typedef struct	s_word
-{
-  int   nbwords;
-  int   i;
-  char  **strpar;
-  char  *ptr;
-}		t_word;
-
 typedef struct	s_cmd
 {
   char		*cmd;
@@ -73,11 +65,11 @@ typedef struct	s_cmd
 
 typedef struct	s_chkcmd
 {
-  int   fd;
-  char  *tmp;
-  int   i;
-  char  *cmd;
-  char  **line;
+  int		fd;
+  char		*tmp;
+  int		i;
+  char		*cmd;
+  char		**line;
 }		t_chkcmd;
 
 char		*get_next_line(const int fd);
@@ -147,5 +139,9 @@ void		check_stinext(char *args, char *cmd, t_label *list);
 void		check_cmdini(int *i, int *fd, char *cmd, char *str);
 void		check_cmdnext(char *tmp, char *cmd, int *i);
 void		check_aff(char *args, char *cmd);
+char		*copy_reg_value(char *args);
+int		len_args(char **args_tab);
+int		count_args(char *args);
+char		**args_to_wordtab(char *args);
 
 #endif
