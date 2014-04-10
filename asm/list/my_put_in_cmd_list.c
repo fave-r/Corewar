@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Tue Apr  8 16:01:48 2014 alex-odet
+** Last update Thu Apr 10 11:28:06 2014 romaric
 */
 
 #include "struct.h"
@@ -19,10 +19,7 @@ t_lst		*create_new_node(char *cmd, t_lst **node)
   new->cmd = my_str_to_wordtab(cmd);
   len = my_strlen(new->cmd[0]);
   if (len > 1 && new->cmd[0][len - 1] == ':')
-    {
-      //sfree(new->cmd);
       new->cmd = my_str_to_wordtab(cmd + len);
-    }
   new->next = NULL;
   new->prev = *node;
   if (*node != NULL)
