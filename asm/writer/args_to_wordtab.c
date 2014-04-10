@@ -1,11 +1,11 @@
 /*
 ** args_to_wordtab.c for args_to_wordtab in /home/alex-odet/work/Corewar/asm
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Wed Apr  9 15:19:03 2014 alex-odet
-** Last update Wed Apr  9 15:45:36 2014 alex-odet
+** Last update Thu Apr 10 18:01:07 2014 romaric
 */
 
 #include "struct.h"
@@ -49,7 +49,7 @@ char	**args_to_wordtab(char *args)
   nb_args = count_args(args);
   args_tab = xmalloc(sizeof(char *) * (nb_args + 1) + (my_strlen(args) + 1));
   if (args_tab == NULL)
-    exit(1);
+    exit(EXIT_FAILURE);
   ptr = (char *)args_tab;
   ptr += sizeof(char *) * (nb_args + 1);
   ptr = my_strcpy(ptr, args);

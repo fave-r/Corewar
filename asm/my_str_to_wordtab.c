@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 25 15:50:05 2014 romaric
-** Last update Tue Apr  1 10:38:07 2014 alex-odet
+** Last update Thu Apr 10 17:58:30 2014 romaric
 */
 
 #include "struct.h"
@@ -49,7 +49,7 @@ char	**my_str_to_wordtab(char *line)
   nb_words = count_words(line);
   tab = xmalloc(sizeof(char *) * (nb_words + 1) + my_strlen(line) + 1);
   if (tab == NULL)
-    exit(1);
+    exit(EXIT_FAILURE);
   ptr = (char *)tab;
   ptr += sizeof(char *) * (nb_words + 1);
   ptr = my_strcpy(ptr, line);
