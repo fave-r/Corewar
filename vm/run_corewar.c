@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Wed Apr  9 16:51:28 2014 thibaud
+** Last update Thu Apr 10 13:57:14 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -81,27 +81,25 @@ int	run_corewar(t_champ *champs, t_cor *map)
 
   cycle_done = 0;
   map->cycle_to_die = CYCLE_TO_DIE;
-  //aff_mem(map->mem);
-  //exit(0);
-  while ((map->cycle_to_die) > 100)
+  my_mem_set(map->live, 4);
+  while (champs != NULL && (map->cycle_to_die) > 0)
     {
-      my_mem_set(map->live, 4);
       while (map->cycle <=  map->cycle_to_die)
 	{
 	  if ((map->cycle + cycle_done) == map->dump)
 	    {
 	      aff_mem(map->mem);
-	      exit(0);
+	      return (0);
 	    }
 	  cycle_run(champs, map);
 	  if (map->live_done >= NBR_LIVE)
-	      if (!someone_is_dead(champs, map))
-		{
-		  map->cycle_to_die -= CYCLE_DELTA;
-		  map->live_done = 0;
-		}
+	    if (!someone_is_dead(champs, map))
+	      {
+		map->cycle_to_die -= CYCLE_DELTA;
+		map->live_done = 0;
+	      }
 	}
-      kill_champ(champs, map);
+      kill_champ(&champs, map);
       cycle_done += map->cycle;
       map->cycle = 0;
     }
