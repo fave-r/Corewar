@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 14:11:08 2014 Thibaut Lopez
-** Last update Tue Apr  8 16:54:38 2014 Thibaut Lopez
+** Last update Wed Apr  9 23:46:50 2014 thibaud
 */
 
 #include "vm.h"
@@ -18,13 +18,13 @@ int	cycle_run(t_champ *champs, t_cor *map)
   cur_champ = champs;
   while (cur_champ != NULL)
     {
-      if (cur_champ->wait < 0)
+	if (cur_champ->wait < 0)
 	get_wait(cur_champ, map);
-      if (cur_champ->wait == 0)
+	if (cur_champ->wait == 0)
 	{
-	  //printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
-	  champ_play(cur_champ, map);
-	  get_wait(cur_champ, map);
+	//printf("Num live = %d %d %d %d\n", map->live[0], map->live[1], map->live[2], map->live[3]);
+	champ_play(cur_champ, map);
+	get_wait(cur_champ, map);
 	}
       cur_champ->wait -= 1;
       cur_champ = cur_champ->next;

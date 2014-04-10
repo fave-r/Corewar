@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Tue Apr  8 15:03:11 2014 Thibaut Lopez
-** Last update Wed Apr  9 10:13:12 2014 Thibaut Lopez
+** Last update Wed Apr  9 23:51:52 2014 thibaud
 */
 
 #include "my.h"
@@ -56,8 +56,8 @@ void	my_fork(t_champ *champ, t_cor *cor)
 {
   int		fork_dest;
 
-  if (champ->champ_nb == 1)
-    printf("FORK\n");
+  //if (champ->champ_nb == 1)
+  printf("FORK\n");
   fork_dest = get_nbr_action(cor->mem, champ->pc + 1, 2);
   add_champ(champ, fork_dest % IDX_MOD);
   change_pos_pc(champ, champ->pc + 3, cor->screen);

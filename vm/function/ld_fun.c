@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-** Last update Wed Apr  9 15:38:19 2014 thibaud
+** Last update Thu Apr 10 00:22:01 2014 thibaud
 */
 
 #include "vm.h"
@@ -25,10 +25,7 @@ void	my_ld(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
-      //champ->carry *= -1;
-      //champ->carry = 1;
-      if (champ->champ_nb == 1)
-	printf("LD\n");
+      printf("LD\n");
       champ->carry = 1;
       champ->reg[tab[1][2] - 1] = arg;
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, cor->screen);
@@ -81,7 +78,7 @@ void	my_ldi(t_champ *champ, t_cor *cor)
       //champ->carry = -1;
       //ldi = 5;
       printf("LDI FAIL\n");
-      exit(0);
+      //exit(0);
       if (champ->champ_nb == 1)
 	printf("LDI (fail)\n");
       champ->carry = 0;

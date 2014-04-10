@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Wed Apr  9 15:39:44 2014 thibaud
+** Last update Wed Apr  9 16:51:28 2014 thibaud
 */
 
 #include "vm.h"
@@ -81,6 +81,8 @@ int	run_corewar(t_champ *champs, t_cor *map)
 
   cycle_done = 0;
   map->cycle_to_die = CYCLE_TO_DIE;
+  //aff_mem(map->mem);
+  //exit(0);
   while ((map->cycle_to_die) > 100)
     {
       my_mem_set(map->live, 4);
