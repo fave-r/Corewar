@@ -5,11 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-<<<<<<< HEAD
-** Last update Thu Apr 10 14:01:45 2014 Thibaut Lopez
-=======
-** Last update Wed Apr  9 19:08:36 2014 thibaud
->>>>>>> 4ad2f484284c52b9c07384694fb5e93f501fc3c6
+** Last update Thu Apr 10 14:19:25 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -20,11 +16,12 @@ void	my_add(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
+  my_printf(1, "\t(%X)", champ->pc);
   if (tab[0][0] == 1 && tab[1][0] == 1 && tab[2][0] == 1 &&
       tab[3][0] == 0 && check_reg(tab[0][2]) == 1 &&
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
     {
-      my_printf(1, "\tadd r%d, r%d, r%d\n", tab[0][2], tab[1][2], tab[2][2]);
+      my_printf(1, "add r%d, r%d, r%d\n", tab[0][2], tab[1][2], tab[2][2]);
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = champ->reg[tab[0][2] - 1]
 	+ champ->reg[tab[1][2] - 1];
@@ -34,7 +31,7 @@ void	my_add(t_champ *champ, t_cor *cor)
     }
   else
     {
-      my_printf(1, "\tadd r%d, r%d, r%d (fail)\n", tab[0][2], tab[1][2], tab[2][2]);
+      my_printf(1, "add r%d, r%d, r%d (fail)\n", tab[0][2], tab[1][2], tab[2][2]);
       my_none(champ, cor);
       champ->carry = 0;
     }
@@ -46,11 +43,12 @@ void	my_sub(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
+  my_printf(1, "\t(%X)", champ->pc);
   if (tab[0][0] == 1 && tab[1][0] == 1 && tab[2][0] == 1 &&
       tab[3][0] == 0 && check_reg(tab[0][2]) == 1 &&
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
     {
-      my_printf(1, "\tsub r%d, r%d, r%d\n", tab[0][2], tab[1][2], tab[2][2]);
+      my_printf(1, "sub r%d, r%d, r%d\n", tab[0][2], tab[1][2], tab[2][2]);
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = champ->reg[tab[0][2] - 1] -
 	champ->reg[tab[1][2] - 1];
@@ -60,7 +58,7 @@ void	my_sub(t_champ *champ, t_cor *cor)
     }
   else
     {
-      my_printf(1, "\tsub r%d, r%d, r%d (fail)\n", tab[0][2], tab[1][2], tab[2][2]);
+      my_printf(1, "sub r%d, r%d, r%d (fail)\n", tab[0][2], tab[1][2], tab[2][2]);
       my_none(champ, cor);
       champ->carry = 0;
     }
@@ -78,10 +76,11 @@ void	my_and(t_champ *champ, t_cor *cor)
   err = 0;
   arg1 = get_all_type_arg(tab[0], champ, cor->mem, &err);
   arg2 = get_all_type_arg(tab[1], champ, cor->mem, &err);
+  my_printf(1, "\t(%X)", champ->pc);
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
-      my_putstr("\tand ", 1);
+      my_putstr("and ", 1);
       my_printf(1, (tab[0][0] == 1) ? "r%d," :
 		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, (tab[1][0] == 1) ? "r%d," :
@@ -95,7 +94,7 @@ void	my_and(t_champ *champ, t_cor *cor)
     }
   else
     {
-      my_putstr("\tand ", 1);
+      my_putstr("and ", 1);
       my_printf(1, (tab[0][0] == 1) ? "r%d," :
 		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, (tab[1][0] == 1) ? "r%d," :
@@ -118,10 +117,11 @@ void	my_or(t_champ *champ, t_cor *cor)
   err = 0;
   arg1 = get_all_type_arg(tab[0], champ, cor->mem, &err);
   arg2 = get_all_type_arg(tab[1], champ, cor->mem, &err);
+  my_printf(1, "\t(%X)", champ->pc);
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
-      my_putstr("\tor ", 1);
+      my_putstr("or ", 1);
       my_printf(1, (tab[0][0] == 1) ? "r%d," :
 		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, (tab[1][0] == 1) ? "r%d," :
@@ -135,7 +135,7 @@ void	my_or(t_champ *champ, t_cor *cor)
     }
   else
     {
-      my_putstr("\tor ", 1);
+      my_putstr("or ", 1);
       my_printf(1, (tab[0][0] == 1) ? "r%d," :
 		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, (tab[1][0] == 1) ? "r%d," :
@@ -158,10 +158,11 @@ void	my_xor(t_champ *champ, t_cor *cor)
   err = 0;
   arg1 = get_all_type_arg(tab[0], champ, cor->mem, &err);
   arg2 = get_all_type_arg(tab[1], champ, cor->mem, &err);
+  my_printf(1, "\t(%X)", champ->pc);
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
-      my_putstr("\txor ", 1);
+      my_putstr("xor ", 1);
       my_printf(1, (tab[0][0] == 1) ? "r%d," :
 		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, (tab[1][0] == 1) ? "r%d," :
@@ -175,7 +176,7 @@ void	my_xor(t_champ *champ, t_cor *cor)
     }
   else
     {
-      my_putstr("\txor ", 1);
+      my_putstr("xor ", 1);
       my_printf(1, (tab[0][0] == 1) ? "r%d," :
 		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, (tab[1][0] == 1) ? "r%d," :

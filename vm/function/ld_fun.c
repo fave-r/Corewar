@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-** Last update Thu Apr 10 14:04:43 2014 Thibaut Lopez
+** Last update Thu Apr 10 14:18:58 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -20,12 +20,11 @@ void	my_ld(t_champ *champ, t_cor *cor)
   err = 0;
   tab = get_encode(cor->mem, champ->pc);
   arg = get_dir_ind_arg(tab[0], champ, cor->mem, &err);
-  printf("Octet d'encodage : %X\n", cor->mem[champ->pc + 1]);
-  printf("%d != -1\n%d == 1\n %d == 1\n%d == 0\n%d == 0\n", err, tab[1][0], check_reg(tab[1][2]), tab[2][0], tab[3][0]);
+  my_printf(1, "\t(%X)", champ->pc);
   if (err != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
-      my_putstr("\tld ", 1);
+      my_putstr("ld ", 1);
       my_printf(1, (tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, "r%d\n", tab[1][2]);
       champ->carry = 1;
@@ -37,7 +36,7 @@ void	my_ld(t_champ *champ, t_cor *cor)
     }
   else
     {
-      my_putstr("\tld ", 1);
+      my_putstr("ld ", 1);
       my_printf(1, (tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, "r%d (%b)(fail)\n", tab[1][2], cor->mem[mod_mem(champ->pc + 1)]);
       my_none(champ, cor);
@@ -57,10 +56,11 @@ void	my_ldi(t_champ *champ, t_cor *cor)
   err = 0;
   arg1 = get_all_type_arg(tab[0], champ, cor->mem, &err);
   arg2 = get_dir_reg_arg(tab[1], champ, cor->mem, &err);
+  my_printf(1, "\t(%X)", champ->pc);
   if (err != -1 &&
       (tab[2][0] == 1 && check_reg(tab[2][2]) == 1) && tab[3][0] == 0)
     {
-      my_putstr("\tldi ", 1);
+      my_putstr("ldi ", 1);
       my_printf(1, (tab[0][0] == 1) ? "r%d," :
 		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, (tab[1][0] == 1) ? "r%d," : "%%%d,", tab[1][2]);
@@ -75,7 +75,7 @@ void	my_ldi(t_champ *champ, t_cor *cor)
     }
   else
     {
-      my_putstr("\tldi ", 1);
+      my_putstr("ldi ", 1);
       my_printf(1, (tab[0][0] == 1) ? "r%d," :
 		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, (tab[1][0] == 1) ? "r%d," : "%%%d,", tab[1][2]);
@@ -95,10 +95,11 @@ void	my_lld(t_champ *champ, t_cor *cor)
   tab = get_encode(cor->mem, champ->pc);
   err = 0;
   arg = get_dir_ind_arg_noidx(tab[0], champ, cor->mem, &err);
+  my_printf(1, "\t(%X)", champ->pc);
   if (err != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
-      my_putstr("\tlld ", 1);
+      my_putstr("lld ", 1);
       my_printf(1, (tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, "r%d\n", tab[1][2]);
       champ->carry = 1;
@@ -109,7 +110,7 @@ void	my_lld(t_champ *champ, t_cor *cor)
     }
   else
     {
-      my_putstr("\tlld ", 1);
+      my_putstr("lld ", 1);
       my_printf(1, (tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, "r%d (fail)\n", tab[1][2]);
       my_none(champ, cor);
@@ -129,10 +130,11 @@ void	my_lldi(t_champ *champ, t_cor *cor)
   err = 0;
   arg1 = get_all_type_arg_noidx(tab[0], champ, cor->mem, &err);
   arg2 = get_dir_reg_arg(tab[1], champ, cor->mem, &err);
+  my_printf(1, "\t(%X)", champ->pc);
   if (err != -1 &&
       (tab[2][0] == 1 && check_reg(tab[2][2]) == 1) && tab[3][0] == 0)
     {
-      my_putstr("\tlldi ", 1);
+      my_putstr("lldi ", 1);
       my_printf(1, (tab[0][0] == 1) ? "r%d," :
 		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, (tab[1][0] == 1) ? "r%d," : "%%%d,", tab[1][2]);
@@ -147,7 +149,7 @@ void	my_lldi(t_champ *champ, t_cor *cor)
     }
   else
     {
-      my_putstr("\tlldi ", 1);
+      my_putstr("lldi ", 1);
       my_printf(1, (tab[0][0] == 1) ? "r%d," :
 		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
       my_printf(1, (tab[1][0] == 1) ? "r%d," : "%%%d,", tab[1][2]);
