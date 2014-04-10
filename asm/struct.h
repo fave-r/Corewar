@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Thu Apr 10 11:33:18 2014 romaric
+** Last update Thu Apr 10 13:42:35 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -20,7 +20,7 @@
 #include "op.h"
 #include "my.h"
 
-#define BUFF_SIZE 1024
+#define BUFF_SIZE 4096
 #define COR_EXT ".cor"
 #define COR_SEP "%:,"
 
