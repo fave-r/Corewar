@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Wed Apr  9 15:41:55 2014 alex-odet
+** Last update Wed Apr  9 17:15:35 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -140,8 +140,10 @@ void		check_cmdini(int *i, int *fd, char *cmd, char *str);
 void		check_cmdnext(char *tmp, char *cmd, int *i);
 void		check_aff(char *args, char *cmd);
 char		*copy_reg_value(char *args);
+char		*copy_dir_value(char *args);
 int		len_args(char **args_tab);
 int		count_args(char *args);
 char		**args_to_wordtab(char *args);
+int		size_to_malloc(char **args);
 
 #endif
