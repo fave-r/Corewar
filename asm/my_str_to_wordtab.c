@@ -5,20 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 25 15:50:05 2014 romaric
-** Last update Thu Apr 10 17:58:30 2014 romaric
+** Last update Thu Apr 10 18:07:50 2014 romaric
 */
 
 #include "struct.h"
-
-int	len_tab(char **tab)
-{
-  int	i;
-
-  i = 0;
-  while (tab[i])
-    i++;
-  return (i);
-}
 
 int	count_words(char *line)
 {

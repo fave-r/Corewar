@@ -5,20 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  9 15:19:03 2014 alex-odet
-** Last update Thu Apr 10 18:01:07 2014 romaric
+** Last update Thu Apr 10 18:08:19 2014 romaric
 */
 
 #include "struct.h"
-
-int	len_args(char **args_tab)
-{
-  int	i;
-
-  i = 0;
-  while (args_tab[i])
-    i++;
-  return (i);
-}
 
 int	count_args(char *args)
 {
