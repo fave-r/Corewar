@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Wed Apr  9 10:16:23 2014 Thibaut Lopez
+** Last update Wed Apr  9 18:22:25 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -20,18 +20,17 @@ void	my_add(t_champ *champ, t_cor *cor)
       tab[3][0] == 0 && check_reg(tab[0][2]) == 1 &&
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
     {
-      if (champ->champ_nb == 1)
-	printf("ADD\n");
+      my_printf(1, "\tadd r%d, r%d, r%d\n", tab[0][2], tab[1][2], tab[2][2]);
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = champ->reg[tab[0][2] - 1]
 	+ champ->reg[tab[1][2] - 1];
+      my_printf(1, "\t\treg[%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d]\n", champ->reg[0], champ->reg[1], champ->reg[2], champ->reg[3], champ->reg[4], champ->reg[5], champ->reg[6], champ->reg[7], champ->reg[8], champ->reg[9], champ->reg[10], champ->reg[11], champ->reg[12], champ->reg[13], champ->reg[14], champ->reg[15]);
       change_pos_pc(champ, champ->pc + 5, cor->screen);
       champ->pc += 5;
     }
   else
     {
-      if (champ->champ_nb == 1)
-	printf("ADD (fail)\n");
+      my_printf(1, "\tadd r%d, r%d, r%d (fail)\n", tab[0][2], tab[1][2], tab[2][2]);
       my_none(champ, cor);
       champ->carry = 0;
     }
@@ -47,18 +46,17 @@ void	my_sub(t_champ *champ, t_cor *cor)
       tab[3][0] == 0 && check_reg(tab[0][2]) == 1 &&
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
     {
-      if (champ->champ_nb == 1)
-	printf("SUB\n");
+      my_printf(1, "\tsub r%d, r%d, r%d\n", tab[0][2], tab[1][2], tab[2][2]);
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = champ->reg[tab[0][2] - 1] -
 	champ->reg[tab[1][2] - 1];
+      my_printf(1, "\t\treg[%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d]\n", champ->reg[0], champ->reg[1], champ->reg[2], champ->reg[3], champ->reg[4], champ->reg[5], champ->reg[6], champ->reg[7], champ->reg[8], champ->reg[9], champ->reg[10], champ->reg[11], champ->reg[12], champ->reg[13], champ->reg[14], champ->reg[15]);
       change_pos_pc(champ, champ->pc + 5, cor->screen);
       champ->pc += 5;
     }
   else
     {
-      if (champ->champ_nb == 1)
-	printf("SUB (fail)\n");
+      my_printf(1, "\tsub r%d, r%d, r%d (fail)\n", tab[0][2], tab[1][2], tab[2][2]);
       my_none(champ, cor);
       champ->carry = 0;
     }
@@ -79,17 +77,26 @@ void	my_and(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
-      if (champ->champ_nb == 1)
-	printf("AND\n");
+      my_putstr("\tand ", 1);
+      my_printf(1, (tab[0][0] == 1) ? "r%d," :
+		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
+      my_printf(1, (tab[1][0] == 1) ? "r%d," :
+		(tab[1][0] == 2) ? "%%%d," : "%d,", tab[1][2]);
+      my_printf(1, "r%d\n", tab[2][2]);
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = arg1 & arg2;
+      my_printf(1, "\t\treg[%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d]\n", champ->reg[0], champ->reg[1], champ->reg[2], champ->reg[3], champ->reg[4], champ->reg[5], champ->reg[6], champ->reg[7], champ->reg[8], champ->reg[9], champ->reg[10], champ->reg[11], champ->reg[12], champ->reg[13], champ->reg[14], champ->reg[15]);
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 3, cor->screen);
       champ->pc += tab[0][1] + tab[1][1] + 3;
     }
   else
     {
-      if (champ->champ_nb == 1)
-	printf("AND (fail)\n");
+      my_putstr("\tand ", 1);
+      my_printf(1, (tab[0][0] == 1) ? "r%d," :
+		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
+      my_printf(1, (tab[1][0] == 1) ? "r%d," :
+		(tab[1][0] == 2) ? "%%%d," : "%d,", tab[1][2]);
+      my_printf(1, "r%d (fail)\n", tab[2][2]);
       my_none(champ, cor);
       champ->carry = 0;
     }
@@ -110,17 +117,26 @@ void	my_or(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
-      if (champ->champ_nb == 1)
-	printf("OR\n");
+      my_putstr("\tor ", 1);
+      my_printf(1, (tab[0][0] == 1) ? "r%d," :
+		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
+      my_printf(1, (tab[1][0] == 1) ? "r%d," :
+		(tab[1][0] == 2) ? "%%%d," : "%d,", tab[1][2]);
+      my_printf(1, "r%d\n", tab[2][2]);
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = arg1 | arg2;
+      my_printf(1, "\t\treg[%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d]\n", champ->reg[0], champ->reg[1], champ->reg[2], champ->reg[3], champ->reg[4], champ->reg[5], champ->reg[6], champ->reg[7], champ->reg[8], champ->reg[9], champ->reg[10], champ->reg[11], champ->reg[12], champ->reg[13], champ->reg[14], champ->reg[15]);
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 3, cor->screen);
       champ->pc += tab[0][1] + tab[1][1] + 3;
     }
   else
     {
-      if (champ->champ_nb == 1)
-	printf("OR (fail)\n");
+      my_putstr("\tor ", 1);
+      my_printf(1, (tab[0][0] == 1) ? "r%d," :
+		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
+      my_printf(1, (tab[1][0] == 1) ? "r%d," :
+		(tab[1][0] == 2) ? "%%%d," : "%d,", tab[1][2]);
+      my_printf(1, "r%d (fail)\n", tab[2][2]);
       my_none(champ, cor);
       champ->carry = 0;
     }
@@ -141,17 +157,26 @@ void	my_xor(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
-      if (champ->champ_nb == 1)
-	printf("XOR\n");
+      my_putstr("\txor ", 1);
+      my_printf(1, (tab[0][0] == 1) ? "r%d," :
+		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
+      my_printf(1, (tab[1][0] == 1) ? "r%d," :
+		(tab[1][0] == 2) ? "%%%d," : "%d,", tab[1][2]);
+      my_printf(1, "r%d\n", tab[2][2]);
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = arg1 ^ arg2;
+      my_printf(1, "\t\treg[%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d]\n", champ->reg[0], champ->reg[1], champ->reg[2], champ->reg[3], champ->reg[4], champ->reg[5], champ->reg[6], champ->reg[7], champ->reg[8], champ->reg[9], champ->reg[10], champ->reg[11], champ->reg[12], champ->reg[13], champ->reg[14], champ->reg[15]);
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 3, cor->screen);
       champ->pc += tab[0][1] + tab[1][1] + 3;
     }
   else
     {
-      if (champ->champ_nb == 1)
-	printf("XOR (fail)\n");
+      my_putstr("\txor ", 1);
+      my_printf(1, (tab[0][0] == 1) ? "r%d," :
+		(tab[0][0] == 2) ? "%%%d," : "%d,", tab[0][2]);
+      my_printf(1, (tab[1][0] == 1) ? "r%d," :
+		(tab[1][0] == 2) ? "%%%d," : "%d,", tab[1][2]);
+      my_printf(1, "r%d (fail)\n", tab[2][2]);
       my_none(champ, cor);
       champ->carry = 0;
     }

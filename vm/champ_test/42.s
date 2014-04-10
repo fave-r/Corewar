@@ -1,8 +1,6 @@
 .name		"42"
 .comment	"Just a basic Winner Program"
 
-	registre[1, 0, 0, 0, 42991616, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-	
 	live %42
 	fork %13
 	ld %0,r5

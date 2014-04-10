@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Wed Apr  9 10:16:21 2014 Thibaut Lopez
+** Last update Wed Apr  9 14:49:54 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -33,12 +33,12 @@ void	my_live(t_champ *champ, t_cor *cor)
   int	j;
   int	direct_arg;
 
+  //printf("pc : %d\n", champ->pc);
   direct_arg = get_nbr_action(cor->mem, champ->pc + 1, 4);
   j = find_champ(cor, direct_arg);
   if (j != -1)
     {
-      if (champ->champ_nb == 1)
-	printf("LIVE\n");
+      my_printf(1, "\tlive %%%d\n", direct_arg);
       i = 0;
       while (i++ < 4)
 	if (cor->live[i - 1] == 2)
@@ -55,8 +55,7 @@ void	my_live(t_champ *champ, t_cor *cor)
     }
   else
     {
-      if (champ->champ_nb == 1)
-	printf("LIVE (fail)\n");
+      my_printf(1, "\tlive %%%d (fail)\n", direct_arg);
       my_none(champ, cor);
     }
 }
@@ -65,18 +64,16 @@ void	my_zjmp(t_champ *champ, t_cor *cor)
 {
   int	direct_arg;
 
+  direct_arg = get_nbr_action(cor->mem, champ->pc + 1, 2);
   if (champ->carry == 1)
     {
-      if (champ->champ_nb == 1)
-	printf("ZJMP\n");
-      direct_arg = get_nbr_action(cor->mem, champ->pc + 1, 2);
+      my_printf(1, "\tzjmp %%%d\n", direct_arg);
       change_pos_pc(champ, champ->pc + direct_arg, cor->screen);
       champ->pc += direct_arg;
     }
   else
     {
-      if (champ->champ_nb == 1)
-	printf("ZJMP (fail)\n");
+      my_printf(1, "\tzjmp %%%d (fail)\n", direct_arg);
       my_none(champ, cor);
     }
 }
