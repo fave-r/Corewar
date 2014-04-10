@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 18:52:51 2014 Thibaut Lopez
-** Last update Wed Apr  9 10:16:23 2014 Thibaut Lopez
+** Last update Wed Apr  9 19:08:36 2014 thibaud
 */
 
 #include "vm.h"
@@ -20,6 +20,8 @@ void	my_add(t_champ *champ, t_cor *cor)
       tab[3][0] == 0 && check_reg(tab[0][2]) == 1 &&
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
     {
+      //champ->carry *= -1;
+      //champ->carry = 1;
       if (champ->champ_nb == 1)
 	printf("ADD\n");
       champ->carry = 1;
@@ -30,6 +32,9 @@ void	my_add(t_champ *champ, t_cor *cor)
     }
   else
     {
+      printf("ADD FAIL\n");
+      //champ->carry = -1;
+      //exit(0);
       if (champ->champ_nb == 1)
 	printf("ADD (fail)\n");
       my_none(champ, cor);
@@ -47,6 +52,8 @@ void	my_sub(t_champ *champ, t_cor *cor)
       tab[3][0] == 0 && check_reg(tab[0][2]) == 1 &&
       check_reg(tab[1][2]) == 1 && check_reg(tab[2][2]) == 1)
     {
+      //champ->carry *= -1;
+      //champ->carry = 1;
       if (champ->champ_nb == 1)
 	printf("SUB\n");
       champ->carry = 1;
@@ -57,6 +64,9 @@ void	my_sub(t_champ *champ, t_cor *cor)
     }
   else
     {
+      printf("SUB FAIL\n");
+      exit(0);
+      //champ->carry = -1;
       if (champ->champ_nb == 1)
 	printf("SUB (fail)\n");
       my_none(champ, cor);
@@ -79,6 +89,9 @@ void	my_and(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
+      //champ->carry *= -1;
+
+      //champ->carry = 1;
       if (champ->champ_nb == 1)
 	printf("AND\n");
       champ->carry = 1;
@@ -88,6 +101,15 @@ void	my_and(t_champ *champ, t_cor *cor)
     }
   else
     {
+      printf("AND FAIL\n");
+      printf("err = %d != -1\n", err);
+      printf("Octet d'encodage : %X\n", cor->mem[champ->pc + 1]);
+      printf("Pc = %X\n", champ->pc + 1);
+      printf("%d != ...\n%d == ...\n %d == 1\n%d == 1\n%d == 0\n", err, tab[1][0], check_reg(tab[1][2]), tab[2][0], tab[3][0]);
+      aff_mem(cor->mem);
+      //exit(0);
+      //exit(0);
+      //champ->carry = -1;
       if (champ->champ_nb == 1)
 	printf("AND (fail)\n");
       my_none(champ, cor);
@@ -110,6 +132,8 @@ void	my_or(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
+      //champ->carry *= -1;
+      //champ->carry = 1;
       if (champ->champ_nb == 1)
 	printf("OR\n");
       champ->carry = 1;
@@ -119,6 +143,9 @@ void	my_or(t_champ *champ, t_cor *cor)
     }
   else
     {
+      printf("OR FAIL\n");
+      exit(0);
+      //champ->carry = -1;
       if (champ->champ_nb == 1)
 	printf("OR (fail)\n");
       my_none(champ, cor);
@@ -141,6 +168,10 @@ void	my_xor(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[2][0] == 1 && tab[3][0] == 0 &&
       check_reg(tab[2][2]) == 1)
     {
+      //champ->carry = 1;
+      //champ->carry *= -1;
+      if (tab[0][0] == 3)
+	aff_mem(cor->mem);
       if (champ->champ_nb == 1)
 	printf("XOR\n");
       champ->carry = 1;
@@ -150,6 +181,9 @@ void	my_xor(t_champ *champ, t_cor *cor)
     }
   else
     {
+      printf("XOR FAIL\n");
+      exit(0);
+      //champ->carry = -1;
       if (champ->champ_nb == 1)
 	printf("XOR (fail)\n");
       my_none(champ, cor);

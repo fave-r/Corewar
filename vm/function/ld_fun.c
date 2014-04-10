@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-** Last update Wed Apr  9 10:13:14 2014 Thibaut Lopez
+** Last update Thu Apr 10 00:22:01 2014 thibaud
 */
 
 #include "vm.h"
@@ -20,11 +20,12 @@ void	my_ld(t_champ *champ, t_cor *cor)
   err = 0;
   tab = get_encode(cor->mem, champ->pc);
   arg = get_dir_ind_arg(tab[0], champ, cor->mem, &err);
+  printf("Octet d'encodage : %X\n", cor->mem[champ->pc + 1]);
+  printf("%d != -1\n%d == 1\n %d == 1\n%d == 0\n%d == 0\n", err, tab[1][0], check_reg(tab[1][2]), tab[2][0], tab[3][0]);
   if (err != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
-      if (champ->champ_nb == 1)
-	printf("LD\n");
+      printf("LD\n");
       champ->carry = 1;
       champ->reg[tab[1][2] - 1] = arg;
       change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, cor->screen);
@@ -32,6 +33,13 @@ void	my_ld(t_champ *champ, t_cor *cor)
     }
   else
     {
+      //ld = 5;
+      //champ->carry = -1;
+      printf("Carry = %d\n", champ->carry);
+      printf("LD FAIL\n");
+      aff_mem(cor->mem);
+      printf("PC = %X\n\n", champ->pc);
+      //exit(0);
       if (champ->champ_nb == 1)
 	printf("LD (fail)\n");
       my_none(champ, cor);
@@ -54,6 +62,8 @@ void	my_ldi(t_champ *champ, t_cor *cor)
   if (err != -1 &&
       (tab[2][0] == 1 && check_reg(tab[2][2]) == 1) && tab[3][0] == 0)
     {
+      //champ->carry = 1;
+      //champ->carry *= -1;
       if (champ->champ_nb == 1)
 	printf("LDI\n");
       champ->carry = 1;
@@ -65,6 +75,10 @@ void	my_ldi(t_champ *champ, t_cor *cor)
     }
   else
     {
+      //champ->carry = -1;
+      //ldi = 5;
+      printf("LDI FAIL\n");
+      //exit(0);
       if (champ->champ_nb == 1)
 	printf("LDI (fail)\n");
       champ->carry = 0;
@@ -85,6 +99,8 @@ void	my_lld(t_champ *champ, t_cor *cor)
   if (err != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
+      //champ->carry = 1;
+      //champ->carry *= -1;
       if (champ->champ_nb == 1)
 	printf("LLD\n");
       champ->carry = 1;
@@ -94,6 +110,9 @@ void	my_lld(t_champ *champ, t_cor *cor)
     }
   else
     {
+      //ld = 5;
+      //champ->carry = -1;
+      printf("LLD FAIL\n");
       if (champ->champ_nb == 1)
 	printf("LLD (fail)\n");
       my_none(champ, cor);
@@ -116,6 +135,8 @@ void	my_lldi(t_champ *champ, t_cor *cor)
   if (err != -1 &&
       (tab[2][0] == 1 && check_reg(tab[2][2]) == 1) && tab[3][0] == 0)
     {
+      //champ->carry = 1;
+      //champ->carry *= -1;
       if (champ->champ_nb == 1)
 	printf("LLDI\n");
       champ->carry = 1;
@@ -127,6 +148,10 @@ void	my_lldi(t_champ *champ, t_cor *cor)
     }
   else
     {
+      //champ->carry = -1;
+      //ldi = 5;
+      printf("LLDI FAIL\n");
+      //exit(0);
       if (champ->champ_nb == 1)
 	printf("LLDI (fail)\n");
       champ->carry = 0;

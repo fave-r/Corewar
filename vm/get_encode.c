@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Tue Apr  8 15:13:11 2014 Thibaut Lopez
+** Last update Wed Apr  9 19:45:01 2014 thibaud
 */
 
 #include "vm.h"
@@ -14,10 +14,10 @@
 void	print_on_mem(t_cor *cor, int to_add, int pc)
 {
   int	i;
-  char	*tmp;
+  unsigned char	*tmp;
 
   i = (cor->endian == 1) ? 3 : 1;
-  tmp = (char *)&to_add;
+  tmp = (unsigned char *)&to_add;
   cor->mem[mod_mem(pc + i)] = tmp[0];
   i += (cor->endian == 1) ? -1 : 1;
   cor->mem[mod_mem(pc + i)] = tmp[1];
@@ -42,7 +42,7 @@ int	get_nbr_action(unsigned char *mem, int pc, int len)
   if (len == 2)
     nb = (short int)nb;
   else if (len == 1)
-    nb = (char)nb;
+    nb = (unsigned char)nb;
   return (nb);
 }
 
