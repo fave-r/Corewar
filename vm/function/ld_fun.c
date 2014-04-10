@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-** Last update Thu Apr 10 14:18:58 2014 Thibaut Lopez
+** Last update Thu Apr 10 14:58:01 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -67,7 +67,7 @@ void	my_ldi(t_champ *champ, t_cor *cor)
       my_printf(1, "r%d\n", tab[2][2]);
       champ->carry = 1;
       champ->reg[tab[2][2] - 1] = get_nbr_action(cor->mem,
-						 champ->pc + arg1 + arg2, 4);
+						 champ->pc + (arg1 + arg2) % IDX_MOD, 4);
       my_printf(1, "\t\treg[%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d]\n", champ->reg[0], champ->reg[1], champ->reg[2], champ->reg[3], champ->reg[4], champ->reg[5], champ->reg[6], champ->reg[7], champ->reg[8], champ->reg[9], champ->reg[10], champ->reg[11], champ->reg[12], champ->reg[13], champ->reg[14], champ->reg[15]);
       change_pos_pc(champ,
 		    champ->pc + tab[0][1] + tab[1][1] + tab[2][1] + 2, cor->screen);
