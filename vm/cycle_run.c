@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 14:11:08 2014 Thibaut Lopez
-** Last update Wed Apr  9 18:28:13 2014 Thibaut Lopez
+** Last update Thu Apr 10 14:05:27 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -18,9 +18,9 @@ int	cycle_run(t_champ *champs, t_cor *map)
   cur_champ = champs;
   while (cur_champ != NULL)
     {
-      if (cur_champ->wait < 0)
+	if (cur_champ->wait < 0)
 	get_wait(cur_champ, map);
-      if (cur_champ->wait == 0)
+	if (cur_champ->wait == 0)
 	{
 	  champ_play(cur_champ, map);
 	  get_wait(cur_champ, map);

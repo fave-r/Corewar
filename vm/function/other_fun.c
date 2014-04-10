@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Wed Apr  9 18:21:49 2014 Thibaut Lopez
+** Last update Thu Apr 10 14:00:01 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -16,6 +16,9 @@ void	my_st(t_champ *champ, t_cor *cor)
   int	**tab;
 
   tab = get_encode(cor->mem, champ->pc);
+
+  printf("Octet d'encodage : %X\n", cor->mem[champ->pc + 1]);
+  printf("Encode = \n%d %d %d\n %d %d %d\n", tab[0][0], tab[0][1], tab[0][2], tab[1][0], tab[1][1], tab[1][2]);
   if ((tab[0][0] == 1 && check_reg(tab[0][2]))
       && ((tab[1][0] == 1 && check_reg(tab[1][2])) || tab[1][0] == 3) &&
       tab[2][0] == 0 && tab[3][0] == 0)
@@ -43,6 +46,7 @@ void	my_st(t_champ *champ, t_cor *cor)
       my_printf(1, "r%d (fail)\n", tab[1][2]);
       my_none(champ, cor);
     }
+  change_pos_pc(champ, champ->pc + tab[0][1] + tab[1][1] + 2, cor->screen);
   ifree(tab, 4);
 }
 
@@ -87,7 +91,7 @@ void	my_aff(t_champ *champ, t_cor *cor)
   if (tab[0][0] == 1 && check_reg(tab[0][2]) && tab[1][0] == 0 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
-    my_printf(1, "\taff r%d\n", tab[0][2]);
+      my_printf(1, "\taff r%d\n", tab[0][2]);
       champ->carry = 1;
       my_putchar(champ->reg[tab[0][2]] % 256, 1);
       change_pos_pc(champ, champ->pc + 6, cor->screen);
@@ -95,7 +99,7 @@ void	my_aff(t_champ *champ, t_cor *cor)
     }
   else
     {
-    my_printf(1, "\taff r%d (fail)\n", tab[0][2]);
+      my_printf(1, "\taff r%d (fail)\n", tab[0][2]);
       my_none(champ, cor);
     }
   ifree(tab, 4);

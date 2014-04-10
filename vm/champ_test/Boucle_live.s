@@ -3,8 +3,13 @@
 
 
 label1:
+	ld %:live,%:label1
 	sti r1,%:live,%1
 	and r1,%0,r1
 live:
 	live %42
+<<<<<<< HEAD
+=======
+	fork %:live
+>>>>>>> 4ad2f484284c52b9c07384694fb5e93f501fc3c6
 	zjmp %:live

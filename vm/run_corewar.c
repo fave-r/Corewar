@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Wed Apr  9 14:22:31 2014 Thibaut Lopez
+** Last update Thu Apr 10 13:57:14 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -93,13 +93,11 @@ int	run_corewar(t_champ *champs, t_cor *map)
 	    }
 	  cycle_run(champs, map);
 	  if (map->live_done >= NBR_LIVE)
-	    {
-	      if (!someone_is_dead(champs, map))
-		{
-		  map->cycle_to_die -= CYCLE_DELTA;
-		  map->live_done = 0;
-		}
-	    }
+	    if (!someone_is_dead(champs, map))
+	      {
+		map->cycle_to_die -= CYCLE_DELTA;
+		map->live_done = 0;
+	      }
 	}
       kill_champ(&champs, map);
       cycle_done += map->cycle;

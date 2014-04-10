@@ -4,8 +4,8 @@
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
 ** 
-** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Wed Apr  9 14:49:54 2014 Thibaut Lopez
+** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
+** Last update Thu Apr 10 14:03:19 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -45,10 +45,7 @@ void	my_live(t_champ *champ, t_cor *cor)
 	  cor->live[i - 1] = 1;
       cor->live[j] = 2;
       i = 0;
-      while (i++ < 4)
-	if (cor->live[i - 1] == 2)
-	  cor->live[i - 1] = 1;
-      cor->live[j] = 2;
+      my_printf(1,"Live du champion %s(%d)\n", champ->head->prog_name, champ->champ_nb);
       cor->live_done++;
       change_pos_pc(champ, champ->pc + 5, cor->screen);
       champ->pc += 5;
@@ -80,6 +77,7 @@ void	my_zjmp(t_champ *champ, t_cor *cor)
 
 void	my_none(t_champ *champ, t_cor *cor)
 {
+  printf("MY_NONE\n");
   change_pos_pc(champ, champ->pc + 1, cor->screen);
   champ->pc++;
 }

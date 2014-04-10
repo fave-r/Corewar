@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-** Last update Wed Apr  9 18:24:20 2014 Thibaut Lopez
+** Last update Thu Apr 10 14:04:43 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -20,6 +20,8 @@ void	my_ld(t_champ *champ, t_cor *cor)
   err = 0;
   tab = get_encode(cor->mem, champ->pc);
   arg = get_dir_ind_arg(tab[0], champ, cor->mem, &err);
+  printf("Octet d'encodage : %X\n", cor->mem[champ->pc + 1]);
+  printf("%d != -1\n%d == 1\n %d == 1\n%d == 0\n%d == 0\n", err, tab[1][0], check_reg(tab[1][2]), tab[2][0], tab[3][0]);
   if (err != -1 && tab[1][0] == 1 && check_reg(tab[1][2]) == 1 &&
       tab[2][0] == 0 && tab[3][0] == 0)
     {
