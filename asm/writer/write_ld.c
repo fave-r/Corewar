@@ -1,11 +1,11 @@
 /*
 ** write_ld.c for write_ld in /home/alex-odet/work/Corewar/asm/writer
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Wed Apr  9 17:16:18 2014 alex-odet
-** Last update Thu Apr 10 01:17:36 2014 alex-odet
+** Last update Thu Apr 10 11:34:01 2014 romaric
 */
 
 #include "struct.h"
@@ -40,7 +40,7 @@ char		*my_write_ld_args(char **args, char *ret, int size)
   save_end = my_getnbr(tmp);
   free(tmp);
   (args[0][0] == '%') ? convert_short_endian(&save_end, my_endian()) :
-    conver_endian(&save, my_endian());
+    convert_endian(&save, my_endian());
   s_ret = (args[0][0] == '%') ? (char *)&save_end : (char *)&save;
   ret[2] = s_ret[0];
   ret[3] = s_ret[1];

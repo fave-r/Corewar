@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Thu Apr 10 11:28:06 2014 romaric
+** Last update Thu Apr 10 11:38:15 2014 romaric
 */
 
 #include "struct.h"
@@ -61,7 +61,7 @@ char	*my_fill_buff(char *str, int fd)
   buff = xmalloc(sizeof(char) * 4096);
   new_fd = xopen(str, O_RDONLY);
   list = function(new_fd);
-  (list == NULL) ? my_putstr("Empty file.\n", 2) : parse_list(list, fd);
+  //(list == NULL) ? my_putstr("Empty file.\n", 2) : parse_list(list, fd);
   return (buff);
 }
 

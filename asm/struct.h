@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Wed Apr  9 17:15:35 2014 alex-odet
+** Last update Thu Apr 10 11:33:18 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -145,5 +145,7 @@ int		len_args(char **args_tab);
 int		count_args(char *args);
 char		**args_to_wordtab(char *args);
 int		size_to_malloc(char **args);
+char		*write_ind_st(char *args, char *tmp);
+char		*my_write_ld_args(char **args, char *ret, int size);
 
 #endif
