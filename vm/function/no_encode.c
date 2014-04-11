@@ -5,24 +5,11 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-** Last update Thu Apr 10 15:48:15 2014 Thibaut Lopez
+** Last update Fri Apr 11 18:21:31 2014 thibaud
 */
 
 #include "my.h"
 #include "vm.h"
-
-/*{
-  my_printf(1, "\t(%X)", champ->pc);
-  my_printf(1, "live %%%d\n", direct_arg);
-
-  my_printf(1, "live %%%d (fail)\n", direct_arg);
-}
-{
-  my_printf(1, "\t(%X)", champ->pc);
-  my_printf(1, "zjmp %%%d\n", direct_arg);
-
-  my_printf(1, "zjmp %%%d (fail)\n", direct_arg);
-  }*/
 
 int	find_champ(t_cor *cor, int direct_arg)
 {
@@ -58,6 +45,8 @@ void	my_live(t_champ *champ, t_cor *cor)
       i = 0;
       cor->live_done++;
       champ->pc += 5;
+      my_printf(1, "Live du champion %s(%d)\n",
+	       champ->head->prog_name, champ->champ_nb);
     }
   else
     my_none(champ, cor);
@@ -69,9 +58,7 @@ void	my_zjmp(t_champ *champ, t_cor *cor)
 
   direct_arg = get_nbr_action(cor->mem, champ->pc + 1, 2);
   if (champ->carry == 1)
-    {
-      champ->pc += direct_arg;
-    }
+    champ->pc += direct_arg;
   else
     my_none(champ, cor);
 }

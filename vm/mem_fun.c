@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Apr  9 00:46:06 2014 Thibaut Lopez
-** Last update Thu Apr 10 13:57:36 2014 Thibaut Lopez
+** Last update Fri Apr 11 18:15:48 2014 thibaud
 */
 
 #include "my.h"
@@ -36,6 +36,7 @@ int	aff_mem(unsigned char *mem)
       i += j;
     }
   my_putstr("\n", 1);
+  exit(0);
   return (42);
 }
 

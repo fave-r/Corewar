@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Thu Apr 10 15:31:01 2014 Thibaut Lopez
+** Last update Fri Apr 11 18:05:36 2014 thibaud
 */
 
 #ifndef VM_H
@@ -38,7 +38,6 @@ typedef struct		s_champ
   int			carry;
   int			wait;
   Uint32		color;
-  Uint32		a_col;
   struct s_champ	*next;
   struct s_champ	*prev;
 }			t_champ;

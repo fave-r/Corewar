@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Wed Apr  9 00:45:03 2014 Thibaut Lopez
+** Last update Fri Apr 11 18:06:33 2014 thibaud
 */
 
 #include "vm.h"
@@ -25,7 +25,6 @@ void	init_color_champ(t_cor *cor, t_champ *champ)
 	champ->color = SDL_MapRGB(cor->screen->format, 0, 0, 255);
       else
 	champ->color = SDL_MapRGB(cor->screen->format, 255, 255, 0);
-      champ->a_col = champ->color;
       i++;
       champ = champ->next;
     }
@@ -45,7 +44,7 @@ void	fill_screen(t_cor *cor, t_champ *champ)
 	{
 	  position.x = (champ->pc + i) % (MEM_SIZE - 1) % 149 * 10;
 	  position.y = (champ->pc + i) % (MEM_SIZE - 1) / 149 * 20;
-	  SDL_FillRect(cor->screen, &position, (i == 0) ? 0xFFFFFF : champ->color);
+	  SDL_FillRect(cor->screen, &position, champ->color);
 	  i++;
 	}
       champ = champ->next;

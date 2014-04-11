@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 13:57:49 2014 Thibaut Lopez
-** Last update Wed Apr  9 14:16:57 2014 Thibaut Lopez
+** Last update Fri Apr 11 18:18:30 2014 thibaud
 */
 
 #include "my.h"
@@ -59,18 +59,20 @@ t_champ  *del_chmp(t_champ *list, int nb)
   if (list->champ_nb == nb)
     {
       tmp = list->next;
-      if (list->prev != NULL && tmp != NULL)
+      if (list->prev != NULL)
         {
           list->prev->next = tmp;
-          if (tmp != NULL)
-            tmp->prev = list->prev;
+          if (list->next != NULL)
+            list->next->prev = list->prev;
         }
       else if (tmp != NULL)
         tmp->prev = NULL;
+      free(list->head);
+      free(list->path);
       free(list);
       tmp = del_chmp(tmp, nb);
       return (tmp);
-    }  
+    }
   else
     {
       list->next = del_chmp(list->next, nb);
@@ -88,17 +90,12 @@ int	kill_champ(t_champ **champs, t_cor *map)
   while (i < 4)
     {
       if (map->live[i] == 0)
-	{
-	  *champs = del_chmp(*champs, map->champs_nb[i]);
-	}
+	*champs = del_chmp(*champs, map->champs_nb[i]);
       else
 	nb_alive++;
       i++;
     }
-  /*  if (nb_alive == 1)
-    {
-      printf("Il n'en reste qu'un\n");
-      end_game(champs, map);
-      }*/
+  if (nb_alive == 1)
+      end_game(*champs, map);
   return (0);
 }

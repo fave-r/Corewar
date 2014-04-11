@@ -5,57 +5,17 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Thu Apr 10 15:52:44 2014 Thibaut Lopez
+** Last update Fri Apr 11 17:21:53 2014 thibaud
 */
 
 #include "vm.h"
 #include "my.h"
-
-void	tmp_print(int pc, unsigned char *mem)
-{
-  int	i;
-  int	line1;
-  int	line2;
-
-  line1 = mod_mem(pc) / 16 * 16;
-  line2 = mod_mem(pc + 16) / 16 * 16;
-  i = 0;
-  if (line1 < 4096)
-    my_putstr("\t\t0", 1);
-  if (line1 < 256)
-    my_putstr("0", 1);
-  if (line1 < 16)
-    my_putstr("0", 1);
-  my_printf(1, (line1 < 4096) ? "%x :" : "\t\t%x :", line1);
-  while (i < 16)
-    {
-      my_printf(1, (mem[i + line1] < 16) ? " 0%X" : " %X", mem[i + line1]);
-      i++;
-    }
-  my_putchar('\n', 1);
-  i = 0;
-  if (line2 < 4096)
-    my_putstr("\t\t0", 1);
-  if (line2 < 256)
-    my_putstr("0", 1);
-  if (line2 < 16)
-    my_putstr("0", 1);
-  my_printf(1, (line2 < 4096) ? "%x :" : "\t\t%x :", line2);
-  while (i < 16)
-    {
-      my_printf(1, (mem[i + line2] < 16) ? " 0%X" : " %X", mem[i + line2]);
-      i++;
-    }
-  my_putchar('\n', 1);
-}
 
 void	print_on_mem(t_cor *cor, int to_add, int pc)
 {
   int	i;
   unsigned char	*tmp;
 
-  //tmp_print(pc, cor->mem);
-  //my_printf(1, "\t\t%d / %b / %X\n", to_add, to_add, to_add);
   i = (cor->endian == 1) ? 3 : 1;
   tmp = (unsigned char *)&to_add;
   cor->mem[mod_mem(pc + i)] = tmp[0];
@@ -65,7 +25,6 @@ void	print_on_mem(t_cor *cor, int to_add, int pc)
   cor->mem[mod_mem(pc + i)] = tmp[2];
   i += (cor->endian == 1) ? -1 : 1;
   cor->mem[mod_mem(pc + i)] = tmp[3];
-  //tmp_print(pc, cor->mem);
 }
 
 int	get_nbr_action(unsigned char *mem, int pc, int len)
