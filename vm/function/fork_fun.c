@@ -5,8 +5,17 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Tue Apr  8 15:03:11 2014 Thibaut Lopez
-** Last update Thu Apr 10 14:18:56 2014 Thibaut Lopez
+** Last update Thu Apr 10 15:42:16 2014 Thibaut Lopez
 */
+
+/*{
+  my_printf(1, "\t(%X)", champ->pc);
+  my_printf(1, "fork %%%d\n", fork_dest);
+}
+{
+  my_printf(1, "\t(%X)", champ->pc);
+  my_printf(1, "lfork %%%d\n", fork_dest);
+}*/
 
 #include "my.h"
 #include "vm.h"
@@ -57,11 +66,7 @@ void	my_fork(t_champ *champ, t_cor *cor)
   int		fork_dest;
 
   fork_dest = get_nbr_action(cor->mem, champ->pc + 1, 2);
-  my_printf(1, "\t(%X)", champ->pc);
-  my_printf(1, "fork %%%d\n", fork_dest);
   add_champ(champ, fork_dest % IDX_MOD);
-  change_pos_pc(champ, champ->pc + 3, cor->screen);
-  change_pos_pc(champ->next, fork_dest, cor->screen);
   champ->pc += 3;
 }
 
@@ -70,10 +75,6 @@ void	my_lfork(t_champ *champ, t_cor *cor)
   int		fork_dest;
 
   fork_dest = get_nbr_action(cor->mem, champ->pc + 1, 2);
-  my_printf(1, "\t(%X)", champ->pc);
-  my_printf(1, "lfork %%%d\n", fork_dest);
   add_champ(champ, fork_dest);
-  change_pos_pc(champ, champ->pc + 3, cor->screen);
-  change_pos_pc(champ->next, fork_dest, cor->screen);
   champ->pc += 3;
 }

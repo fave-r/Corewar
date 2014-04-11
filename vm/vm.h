@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Thu Apr 10 13:55:51 2014 Thibaut Lopez
+** Last update Thu Apr 10 15:31:01 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -113,7 +113,6 @@ int	get_all_type_arg_noidx(int *tab, t_champ *champ,
 
 int	init_graphic(t_cor *cor);
 void	free_graphic();
-void	change_pos_pc(t_champ *champ, int pc, SDL_Surface *screen);
 void	change_case_mem(int case_mem, Uint32 color, SDL_Surface *screen);
 int	aff_mem(unsigned char *mem);
 int	print_encode(int **tab);

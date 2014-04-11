@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Thu Apr 10 13:57:53 2014 Thibaut Lopez
+** Last update Thu Apr 10 15:52:44 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -54,8 +54,8 @@ void	print_on_mem(t_cor *cor, int to_add, int pc)
   int	i;
   unsigned char	*tmp;
 
-  tmp_print(pc, cor->mem);
-  my_printf(1, "\t\t%d / %b / %X\n", to_add, to_add, to_add);
+  //tmp_print(pc, cor->mem);
+  //my_printf(1, "\t\t%d / %b / %X\n", to_add, to_add, to_add);
   i = (cor->endian == 1) ? 3 : 1;
   tmp = (unsigned char *)&to_add;
   cor->mem[mod_mem(pc + i)] = tmp[0];
@@ -65,7 +65,7 @@ void	print_on_mem(t_cor *cor, int to_add, int pc)
   cor->mem[mod_mem(pc + i)] = tmp[2];
   i += (cor->endian == 1) ? -1 : 1;
   cor->mem[mod_mem(pc + i)] = tmp[3];
-  tmp_print(pc, cor->mem);
+  //tmp_print(pc, cor->mem);
 }
 
 int	get_nbr_action(unsigned char *mem, int pc, int len)
