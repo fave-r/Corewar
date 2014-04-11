@@ -5,17 +5,8 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Tue Apr  8 15:03:11 2014 Thibaut Lopez
-** Last update Thu Apr 10 15:42:16 2014 Thibaut Lopez
+** Last update Fri Apr 11 18:02:58 2014 thibaud
 */
-
-/*{
-  my_printf(1, "\t(%X)", champ->pc);
-  my_printf(1, "fork %%%d\n", fork_dest);
-}
-{
-  my_printf(1, "\t(%X)", champ->pc);
-  my_printf(1, "lfork %%%d\n", fork_dest);
-}*/
 
 #include "my.h"
 #include "vm.h"
@@ -26,7 +17,7 @@ t_champ	*champ_dup(t_champ *father, int new_pos)
   t_champ	*son;
 
   son = xmalloc(sizeof(t_champ));
-  son->path = father->path;
+  son->path = my_strdup(father->path);
   son->fd = father->fd;
   son->head = xmalloc(sizeof(header_t));
   son->head->magic = father->head->magic;
@@ -45,7 +36,6 @@ t_champ	*champ_dup(t_champ *father, int new_pos)
   son->carry = father->carry;
   son->wait = -1;
   son->color = father->color;
-  son->a_col = father->a_col;
   return (son);
 }
 

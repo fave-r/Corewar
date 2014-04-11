@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 14:11:08 2014 Thibaut Lopez
-** Last update Thu Apr 10 14:05:27 2014 Thibaut Lopez
+** Last update Fri Apr 11 18:14:02 2014 thibaud
 */
 
 #include "vm.h"
@@ -18,9 +18,9 @@ int	cycle_run(t_champ *champs, t_cor *map)
   cur_champ = champs;
   while (cur_champ != NULL)
     {
-	if (cur_champ->wait < 0)
+      if (cur_champ->wait < 0)
 	get_wait(cur_champ, map);
-	if (cur_champ->wait == 0)
+      if (cur_champ->wait == 0)
 	{
 	  champ_play(cur_champ, map);
 	  get_wait(cur_champ, map);
@@ -74,25 +74,21 @@ int	end_game(t_champ *champ, t_cor *map)
   (void)champ;
   gg = -1;
   cpt = 0;
-  while (cpt < 4)
+  if (champ != NULL)
     {
-      if (map->live[cpt] == 2)
-	gg = cpt;
-      cpt++;
-    }
-  //if (cpt = -1)
-  //my_printf(1, "Egalite\n", map->champs_nb[gg], champ->head->prog_name);
-  //printf("gg = %d\n", gg);
-  //printf("Champ_nb :%d %d %d %d \n\n", map->champs_nb[0] , map->champs_nb[1] , map->champs_nb[2] , map->champs_nb[3]);
-  if (champ == NULL)
-    my_putstr("Aucun joueur à gagné !\n", 2);
-  else
-    {
+      while (cpt < 4)
+	{
+	  if (map->live[cpt] == 2)
+	    gg = cpt;
+	  cpt++;
+	}
       while (champ->champ_nb != map->champs_nb[gg])
 	champ = champ->next;
       my_printf(1, "Le joueur %d(%s) a gagne\n", map->champs_nb[gg], champ->head->prog_name);
     }
-  //free_champ(champ);
+  else
+    my_printf(1, "Egalite\n");
+   free_champ(champ);
   free(map->mem);
   exit(0);
 }
