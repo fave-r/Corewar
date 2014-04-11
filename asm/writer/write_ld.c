@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  9 17:16:18 2014 alex-odet
-** Last update Thu Apr 10 11:34:01 2014 romaric
+** Last update Fri Apr 11 18:28:58 2014 romaric
 */
 
 #include "struct.h"
@@ -16,7 +16,7 @@ char		*my_write_ld(char *args, int *len)
   char		*ret;
   char		**args_tab;
 
-  args_tab = args_to_wordtab(args);
+  args_tab = my_str_to_wordtab(args, "\t,");
   size = size_to_malloc(args_tab);
   ret = xmalloc(sizeof(char) * (size + 1));
   ret[0] = op_tab[1].code;
