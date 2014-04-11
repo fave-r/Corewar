@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Fri Apr 11 15:13:53 2014 romaric
+## Last update Fri Apr 11 21:48:48 2014 romaric
 ##
 
 CC=		clang
@@ -53,7 +53,6 @@ SRCS=		main.c \
 		writer/write_st.c \
 		writer/copy_reg_value.c \
 		writer/size_to_malloc.c \
-		writer/args_to_wordtab.c \
 		writer/write_ld.c
 
 OBJS=		$(SRCS:.c=.o)
