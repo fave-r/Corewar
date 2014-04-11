@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr  1 15:32:49 2014 alex-odet
-** Last update Thu Apr  3 15:35:39 2014 romaric
+** Last update Fri Apr 11 16:35:09 2014 romaric
 */
 
 #include "struct.h"
@@ -42,19 +42,17 @@ void	check_live(char *args, char *cmd, t_label *list)
       my_putstr("a direct value is writed like this : %value.\n", 2);
       exit(EXIT_FAILURE);
     }
-  else if (args[1] == ':' && check_label_exist(list, copi_label(args)) == 1)
-    cmd[1] = 'c';
-  else if ((args[1] < '0' || args[1] > '9') || args[1] == '-')
+  else if (args[0] == '%' && args[1] == ':'
+	   && check_label_exist(list, copi_label(args)) != 1)
+    errorlabel(copi_label(args));
+  else if (args[1] != ':' && args[0] == '%')
     {
-      if (args[1] != '-')
-	{
-	  my_printf(2, "Wrong Value: %s\n", args);
-	  exit(EXIT_FAILURE);
-	}
-      else if (args[2] < '0' || args[2] > '9')
-	{
-	  my_printf(2, "Wrong Value: %s\n", args);
-	  exit(EXIT_FAILURE);
+      if (args[1] < '0' || args[1] > '9' || args[1] == '-')
+        {
+          if (args[1] != '-')
+            errorvalue(args);
+          else if (args[2] < '0' || args[2] > '9')
+            errorvalue(args);
 	}
     }
 }
