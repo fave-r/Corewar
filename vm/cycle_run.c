@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 14:11:08 2014 Thibaut Lopez
-** Last update Fri Apr 11 18:14:02 2014 thibaud
+** Last update Fri Apr 11 18:32:56 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -84,11 +84,12 @@ int	end_game(t_champ *champ, t_cor *map)
 	}
       while (champ->champ_nb != map->champs_nb[gg])
 	champ = champ->next;
-      my_printf(1, "Le joueur %d(%s) a gagne\n", map->champs_nb[gg], champ->head->prog_name);
+      my_printf(1, "Le joueur %d(%s) a gagne\n",
+		map->champs_nb[gg], champ->head->prog_name);
     }
   else
     my_printf(1, "Egalite\n");
-   free_champ(champ);
+  free_champ(champ);
   free(map->mem);
   exit(0);
 }
