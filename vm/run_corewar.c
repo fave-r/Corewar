@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Fri Apr 11 18:16:08 2014 thibaud
+** Last update Fri Apr 11 18:34:08 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -52,7 +52,6 @@ int	champ_play(t_champ *cur_champ, t_cor *map)
   return (0);
 }
 
-
 int	get_wait(t_champ *cur_champ, t_cor *map)
 {
   cur_champ->wait = fct_tab[find_in_tab(map->mem[cur_champ->pc])].wait;
@@ -73,7 +72,6 @@ int	list_size(t_champ *champ)
     }
   return (nb);
 }
-
 
 int	run_corewar(t_champ *champs, t_cor *map)
 {

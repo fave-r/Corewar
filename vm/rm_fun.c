@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 13:57:49 2014 Thibaut Lopez
-** Last update Fri Apr 11 18:18:30 2014 thibaud
+** Last update Fri Apr 11 20:25:00 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -62,16 +62,15 @@ t_champ  *del_chmp(t_champ *list, int nb)
       if (list->prev != NULL)
         {
           list->prev->next = tmp;
-          if (list->next != NULL)
-            list->next->prev = list->prev;
+	  if (tmp != NULL)
+	    tmp->prev = list->prev;
         }
       else if (tmp != NULL)
         tmp->prev = NULL;
       free(list->head);
       free(list->path);
       free(list);
-      tmp = del_chmp(tmp, nb);
-      return (tmp);
+      return (del_chmp(tmp, nb));
     }
   else
     {
