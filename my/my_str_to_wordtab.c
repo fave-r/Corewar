@@ -5,14 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 11 15:10:11 2014 romaric
-** Last update Fri Apr 11 15:10:17 2014 romaric
+** Last update Fri Apr 11 15:25:04 2014 romaric
 */
 
-#include "my_str_to.h"
+#include "my.h"
 
-char	*my_strncpy(char *dest, char *src, int n);
-
-int	strlen_1word(const char *str, char *sep)
+int	strlen_word(const char *str, char *sep)
 {
   int	i;
 
@@ -63,11 +61,11 @@ char	**my_str_to_wordtab(char *str, char *sep)
   first = str;
   while (j != tmp && *str != 0)
     {
-      if (strlen_1word(str, sep) > 0)
+      if (strlen_word(str, sep) > 0)
 	{
-	  tb[j] = xmalloc((strlen_1word(str, sep) + 1) * sizeof(char));
-	  tb[j] = my_strncpy(tb[j], str, strlen_1word(str, sep));
-	  str = str + strlen_1word(str, sep) + 1;
+	  tb[j] = xmalloc((strlen_word(str, sep) + 1) * sizeof(char));
+	  tb[j] = my_strncpy(tb[j], str, strlen_word(str, sep));
+	  str = str + strlen_word(str, sep) + 1;
 	  j++;
 	}
       else

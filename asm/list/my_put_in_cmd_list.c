@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Thu Apr 10 11:38:15 2014 romaric
+** Last update Fri Apr 11 15:24:01 2014 romaric
 */
 
 #include "struct.h"
@@ -16,10 +16,10 @@ t_lst		*create_new_node(char *cmd, t_lst **node)
   t_lst		*new;
 
   new = xmalloc(sizeof(t_lst));
-  new->cmd = my_str_to_wordtab(cmd);
+  new->cmd = my_str_to_wordtab(cmd, "\t");
   len = my_strlen(new->cmd[0]);
   if (len > 1 && new->cmd[0][len - 1] == ':')
-      new->cmd = my_str_to_wordtab(cmd + len);
+    new->cmd = my_str_to_wordtab(cmd + len, "\t");
   new->next = NULL;
   new->prev = *node;
   if (*node != NULL)
