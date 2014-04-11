@@ -5,27 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Sat Apr 12 00:14:08 2014 thibaud
+** Last update Sat Apr 12 00:26:24 2014 romaric
 */
 
 #include "struct.h"
-
-int	crade(t_chkcmd ch,t_label *list)
-{
-  if (ch.i == 0)
-    {
-      ch.line = my_str_to_wordtab(ch.tmp, "\t");
-      if (ch.line != NULL && ch.line[0] != NULL && ch.line[1] != NULL)
-	check_cmd_arg(ch.line[1], ch.cmd, list);
-    }
-  else
-    {
-      ch.line = my_str_to_wordtab(ch.tmp, "\t");
-      if (ch.line != NULL && ch.line[0] != NULL && ch.line[2] != NULL)
-	check_cmd_arg(ch.line[2], ch.cmd, list);
-    }
-  return(0);
-}
 
 void	check_cmd(char *str, t_label *list)
 {
@@ -40,7 +23,7 @@ void	check_cmd(char *str, t_label *list)
       if (ch.tmp[0] == '\t' || my_strchr(':', ch.tmp) != -1)
 	ch.cmd = cmd_exist(ch.tmp, &(ch.i));
       if (ch.cmd != NULL)
-	  crade(ch, list);
+	  check_cmd_n(ch, list);
       ch.i = 0;
     }
   close(ch.fd);

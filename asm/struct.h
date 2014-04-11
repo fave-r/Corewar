@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Fri Apr 11 22:58:23 2014 alex-odet
+** Last update Sat Apr 12 00:25:18 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -133,8 +133,6 @@ char		*my_write_ld_next(char *args, char *ret, int save);
 char		*copi_labeldei(char *args, int x);
 void		check_ldi(char *args, char *cmd, t_label *list);
 void		check_stinext(char *args, char *cmd, t_label *list);
-void		check_cmdini(int *i, int *fd, char *cmd, char *str);
-void		check_cmdnext(char *tmp, char *cmd, int *i);
 void		check_aff(char *args, char *cmd);
 char		*copy_reg_value(char *args);
 char		*copy_dir_value(char *args);
@@ -162,5 +160,6 @@ char		*my_write_st(char *args, int *len);
 char		*write_ind_st(char *args, char *tmp);
 char		*write_sti(char *args, int *len);
 int		copy_arg_first(char *arg, char *ret, int index);
+void		check_cmd_n(t_chkcmd ch, t_label *list);
 
 #endif
