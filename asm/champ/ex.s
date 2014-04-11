@@ -7,6 +7,6 @@ l2:	sti	r1,%:live,%0x1
 live:	live	%1
 	zjmp	%:live
 
-.code 42 DE AD C0 DE 12 34 61 34 61 23 61
+	.code 42 DE AD C0 DE 12 34 61 34 61 23 61
 
 

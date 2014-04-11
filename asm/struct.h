@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Thu Apr 10 11:33:18 2014 romaric
+** Last update Thu Apr 10 18:08:40 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -20,7 +20,7 @@
 #include "op.h"
 #include "my.h"
 
-#define BUFF_SIZE 1024
+#define BUFF_SIZE 4096
 #define COR_EXT ".cor"
 #define COR_SEP "%:,"
 
@@ -110,7 +110,6 @@ void		print_bad_ext(char *filename);
 void		print_bad_name();
 void		print_bad_comment();
 int		count_dot(char *str, int i, char c);
-int		len_tab(char **tab);
 void		print_bad_instruction(char *cmd);
 void		check_live(char *args, char *cmd, t_label *list);
 int		check_label_exist(t_label *list, char *label_check);
@@ -141,7 +140,6 @@ void		check_cmdnext(char *tmp, char *cmd, int *i);
 void		check_aff(char *args, char *cmd);
 char		*copy_reg_value(char *args);
 char		*copy_dir_value(char *args);
-int		len_args(char **args_tab);
 int		count_args(char *args);
 char		**args_to_wordtab(char *args);
 int		size_to_malloc(char **args);
