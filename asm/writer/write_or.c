@@ -5,12 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 14:47:57 2014 alex-odet
-** Last update Fri Apr 11 14:50:00 2014 alex-odet
+** Last update Fri Apr 11 23:12:37 2014 alex-odet
 */
 
 #include "struct.h"
 
-char    *write_or(char **args, int *len)
+char    *write_or(char *args, int *len)
 {
   char  **args_tab;
   int   size;
@@ -19,8 +19,8 @@ char    *write_or(char **args, int *len)
   int   tmp_size;
 
   tmp_size = 3;
-  args_tab = args_to_wordtab(args);
-  size = size_to_malloc(args_tab);
+  args_tab = my_str_to_wordtab(args, ",");
+  size = size_to_malloc(args_tab, 0);
   ret = xmalloc(sizeof(char) * (size + 1));
   ret[0] = op_tab[6].code;
   ret[1] = encode_octet(args);
@@ -34,7 +34,7 @@ char    *write_or(char **args, int *len)
   return (ret);
 }
 
-char	*write_xor(char **args, int *len)
+char	*write_xor(char *args, int *len)
 {
   char  **args_tab;
   int   size;
@@ -43,8 +43,8 @@ char	*write_xor(char **args, int *len)
   int   tmp_size;
 
   tmp_size = 3;
-  args_tab = args_to_wordtab(args);
-  size = size_to_malloc(args_tab);
+  args_tab = my_str_to_wordtab(args, ",");
+  size = size_to_malloc(args_tab, 0);
   ret = xmalloc(sizeof(char) * (size + 1));
   ret[0] = op_tab[7].code;
   ret[1] = encode_octet(args);

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Fri Apr 11 15:19:18 2014 romaric
+** Last update Fri Apr 11 22:58:23 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -140,8 +140,27 @@ char		*copy_reg_value(char *args);
 char		*copy_dir_value(char *args);
 int		count_args(char *args);
 char		**args_to_wordtab(char *args);
-int		size_to_malloc(char **args);
+int		size_to_malloc(char **args, int boool);
 char		*write_ind_st(char *args, char *tmp);
 char		*my_write_ld_args(char **args, char *ret, int size);
+char		*write_add(char *args, int *len);
+char		*write_sub(char *args, int *len);
+char		*write_aff(char *arg, int *len);
+char		*write_and(char *args, int *len);
+int		write_first_arg(char *arg, char *ret, int index);
+void		write_ind_value(char *arg, char *ret, int index);
+char		*write_ldi(char *args, int *len);
+void		copy_arg(char *arg, char *ret);
+void		copy_arg_second(char *arg, char *ret);
+char		*write_lld(char *args, int *len);
+void		copy_arg_lld(char *arg, char *ret);
+char		*write_lldi(char *args, int *len);
+int		copy_arg_lldi(char *args, char *ret, int index);
+char		*write_or(char *args, int *len);
+char		*write_xor(char *args, int *len);
+char		*my_write_st(char *args, int *len);
+char		*write_ind_st(char *args, char *tmp);
+char		*write_sti(char *args, int *len);
+int		copy_arg_first(char *arg, char *ret, int index);
 
 #endif

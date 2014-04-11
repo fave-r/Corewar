@@ -5,33 +5,34 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 14:53:20 2014 alex-odet
-** Last update Fri Apr 11 15:24:06 2014 alex-odet
+** Last update Fri Apr 11 23:09:33 2014 alex-odet
 */
 
 #include "struct.h"
 
-char	*write_ldi(char **args, int *len)
+char	*write_ldi(char *args, int *len)
 {
+  char	**args_tab;
   char	*ret;
   int	size;
 
-  tmp = xmalloc(sizeof(char) * my_strlen(args[0]));
-  size = size_to_malloc(args);
+  args_tab = my_str_to_wordtab(args, ",");
+  size = size_to_malloc(args_tab, 1);
   len += size;
   ret = xmalloc(sizeof(char) * (size + 1));
   ret[0] = op_tab[9].code;
   ret[1] = encode_octet(args);
-  ret[size] = my_getnbr(copy_reg_value(args[2]));
+  ret[size] = my_getnbr(copy_reg_value(args_tab[2]));
   ret[size + 1] = 0;
-  if (args[0][0] == 'r' && args[1][0] == 'r')
+  if (args_tab[0][0] == 'r' && args_tab[1][0] == 'r')
     {
-      ret[2] = my_getnbr(copy_reg_value(args[0]));
-      ret[3] = my_getnbr(copy_reg_value(args[1]));
+      ret[2] = my_getnbr(copy_reg_value(args_tab[0]));
+      ret[3] = my_getnbr(copy_reg_value(args_tab[1]));
     }
-  else if (args[0][0] == '%')
-    copy_arg(args[0], ret);
-  else if (args[1][0] == '%')
-    copy_arg_second(args[1], ret);
+  else if (args_tab[0][0] == '%')
+    copy_arg(args_tab[0], ret);
+  else if (args_tab[1][0] == '%')
+    copy_arg_second(args_tab[1], ret);
   return (ret);
 }
 
@@ -66,7 +67,7 @@ void	copy_arg_second(char *arg, char *ret)
 {
   char		*tmp;
   short int	end;
-  char		s_ret;
+  char		*s_ret;
 
   if (arg[0] == '%')
     {
