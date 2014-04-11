@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Wed Apr  9 23:01:02 2014 alex-odet
+## Last update Fri Apr 11 15:13:53 2014 romaric
 ##
 
 CC=		clang
@@ -18,7 +18,6 @@ NAME=		asm
 
 SRCS=		main.c \
 		create_cor.c \
-		my_str_to_wordtab.c \
 		count_dot.c \
 		cmd.c \
 		../op.c \

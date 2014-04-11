@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Tue Apr  8 16:01:51 2014 romaric
+** Last update Fri Apr 11 17:44:50 2014 romaric
 */
 
 #include "struct.h"
@@ -14,28 +14,32 @@ void	check_cmd(char *str, t_label *list)
 {
   t_chkcmd	ch;
 
-  check_cmdini(&(ch.i), &(ch.fd), ch.cmd, str);
+  ch.i = 0;
+  ch.fd = xopen(str, O_RDONLY);
+  ch.cmd = NULL;
   while ((ch.tmp = get_next_line(ch.fd)))
     {
-      check_cmdnext(ch.tmp, ch.cmd, &(ch.i));
+      my_printf(1, "%s\n", ch.tmp);
+      if (ch.tmp[0] == '\t' || my_strchr(':', ch.tmp) != -1)
+	ch.cmd = cmd_exist(ch.tmp, &(ch.i));
       if (ch.cmd != NULL)
 	{
 	  if (ch.i == 0)
 	    {
-	      ch.line = my_str_to_wordtab(ch.tmp);
-	      if (ch.line != NULL && ch.line [0] != NULL && ch.line[1] != NULL)
+	      ch.line = my_str_to_wordtab(ch.tmp, "\t");
+	      if (ch.line != NULL && ch.line[0] != NULL && ch.line[1] != NULL)
 		check_cmd_arg(ch.line[1], ch.cmd, list);
 	    }
 	  else
 	    {
-	      ch.line = my_str_to_wordtab(ch.tmp);
-	      if (ch.line != NULL && ch.line [0] != NULL && ch.line[1] != NULL)
+	      ch.line = my_str_to_wordtab(ch.tmp, "\t");
+	      if (ch.line != NULL && ch.line[0] != NULL && ch.line[1] != NULL)
 		check_cmd_arg(ch.line[2], ch.cmd, list);
 	    }
 	}
       ch.i = 0;
     }
-  close (ch.fd);
+  close(ch.fd);
 }
 
 char	*cmd_exist(char *str, int *bool)
@@ -57,7 +61,7 @@ char	*cmd_exist(char *str, int *bool)
       cmd = cmd_next_label(cmd, &j, i, str);
       *bool = 1;
     }
-  if (j != 0 && cmd[j - 1] != ':' && my_strlen(cmd) > 1
+  if (j != 0 && cmd[j - 1] != ':' && my_strlen(cmd) > 0
       && my_strchr(':', cmd) != 0
       && my_strchr('#', cmd) != 0 && my_strchr(';', cmd) != 0)
     {
