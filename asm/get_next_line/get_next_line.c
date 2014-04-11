@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 11:49:17 2014 romaric
-** Last update Thu Apr 10 14:08:57 2014 romaric
+** Last update Fri Apr 11 23:18:28 2014 romaric
 */
 
 #include "struct.h"
@@ -69,7 +69,7 @@ char		*get_next_line(const int fd)
   while (buff[i] != '\n')
     {
       if (buff[i] == '\0')
-	return (l.s);
+	  return (NULL);
       operations(&l, &i, buff);
     }
   val(&i, &l);

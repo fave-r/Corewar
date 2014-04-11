@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Fri Apr 11 17:44:50 2014 romaric
+** Last update Fri Apr 11 23:34:34 2014 romaric
 */
 
 #include "struct.h"
@@ -33,7 +33,7 @@ void	check_cmd(char *str, t_label *list)
 	  else
 	    {
 	      ch.line = my_str_to_wordtab(ch.tmp, "\t");
-	      if (ch.line != NULL && ch.line[0] != NULL && ch.line[1] != NULL)
+	      if (ch.line != NULL && ch.line[0] != NULL && ch.line[2] != NULL)
 		check_cmd_arg(ch.line[2], ch.cmd, list);
 	    }
 	}

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Tue Apr  8 15:06:04 2014 alex-odet
+** Last update Fri Apr 11 23:20:19 2014 romaric
 */
 
 #include "struct.h"
@@ -13,8 +13,7 @@
 void	parser(char *str)
 {
   if (str[my_strlen(str) - 1] == 's'
-      && str[my_strlen(str) - 2] == '.'
-      && str[my_strlen(str) - 4] != '.')
+      && str[my_strlen(str) - 2] == '.')
     check(str);
   else
     print_bad_ext(str);
