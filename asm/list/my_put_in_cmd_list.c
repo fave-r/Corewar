@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Fri Apr 11 15:24:01 2014 romaric
+** Last update Fri Apr 11 23:15:27 2014 alex-odet
 */
 
 #include "struct.h"
@@ -58,6 +58,7 @@ char	*my_fill_buff(char *str, int fd)
   t_lst	*list;
   char  *buff;
 
+  (void)fd;
   buff = xmalloc(sizeof(char) * 4096);
   new_fd = xopen(str, O_RDONLY);
   list = function(new_fd);
