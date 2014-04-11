@@ -1,14 +1,13 @@
 /*
-** my_str_to_wordtab.c for my_str_to_wordtab in /home/thibaut.lopez/Piscine-C-Jour_08/ex_04
-** 
-** Made by Thibaut Lopez
-** Login   <thibaut.lopez@epitech.net>
-** 
-** Started on  Wed Oct  9 18:47:09 2013 Thibaut Lopez
-** Last update Fri Apr 11 15:06:13 2014 Thibaut Lopez
+** my_str_to_wordtab.c for corewar in /home/blackbird/work/Corewar/my
+**
+** Made by romaric
+** Login   <fave_r@epitech.net>
+**
+** Started on  Fri Apr 11 15:10:11 2014 romaric
+** Last update Fri Apr 11 15:10:17 2014 romaric
 */
 
-#include "minishell.h"
 #include "my_str_to.h"
 
 char	*my_strncpy(char *dest, char *src, int n);

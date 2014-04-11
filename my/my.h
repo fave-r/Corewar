@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Sun Feb 23 21:19:02 2014 Thibaut Lopez
-** Last update Sat Apr  5 17:59:36 2014 Thibaut Lopez
+** Last update Fri Apr 11 15:08:26 2014 romaric
 */
 
 /*
@@ -74,5 +74,6 @@ int		prog_size_error(char *path);
 int		**ifree(int **tab, int len);
 void		sfree(char **str);
 short int	convert_short_endian(short int *nb, int end);
+char		*my_strncat(char *dest, char *src, int len);
 
 #endif
