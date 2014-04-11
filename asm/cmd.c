@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:49:55 2014 alex-odet
-** Last update Fri Apr 11 22:23:01 2014 alex-odet
+** Last update Sat Apr 12 00:36:07 2014 alex-odet
 */
 
 #include "struct.h"
@@ -31,17 +31,15 @@ t_cmd	tab[]=
     {NULL, NULL}
   };
 
-char	*write_in_buff(char **cmd)
+char	*write_in_buff(char **cmd, int *len, char *dest)
 {
-  int	len;
   int	i;
   int	j;
   int	x;
-  char	*tmp;
   char	*big_buff;
 
+  *len = 0;
   i = 0;
-  len = 0;
   while (cmd[i])
     {
       j = 0;
@@ -50,8 +48,10 @@ char	*write_in_buff(char **cmd)
 	  x = my_strcmp(cmd[i], tab[j].cmd);
 	  j++;
 	}
-      tmp = NULL;
-      big_buff = tab[j].ptr(cmd[i + 1], &len);
+      big_buff = tab[j].ptr(cmd[i + 1], len);
+      strncat(dest, big_buff, len);
+      //      free(big_buff);
+      big_buff = dest;
       i += 2;
     }
   return (big_buff);

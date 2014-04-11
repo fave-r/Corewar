@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sat Apr 12 00:25:18 2014 romaric
+** Last update Sat Apr 12 00:35:13 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -161,5 +161,7 @@ char		*write_ind_st(char *args, char *tmp);
 char		*write_sti(char *args, int *len);
 int		copy_arg_first(char *arg, char *ret, int index);
 void		check_cmd_n(t_chkcmd ch, t_label *list);
+void		parse_list(t_lst *list, int fd);
+char		*write_in_buff(char **cmd, int *len, char *dest);
 
 #endif

@@ -4,7 +4,7 @@
 entree:	live	%42		; entree
 	fork	%:tir
 	ld	%0,r5
-	jmp	%:bite
+	zjmp	%:bite
 
 tir:	sti	r1,%:tirb,%1
 	ld	%2304,r10

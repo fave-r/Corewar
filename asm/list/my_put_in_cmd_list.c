@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Fri Apr 11 23:15:27 2014 alex-odet
+** Last update Sat Apr 12 00:46:06 2014 alex-odet
 */
 
 #include "struct.h"
@@ -56,13 +56,54 @@ char	*my_fill_buff(char *str, int fd)
 {
   int	new_fd;
   t_lst	*list;
-  char  *buff;
+  char	*buff;
 
-  (void)fd;
-  buff = xmalloc(sizeof(char) * 4096);
+  buff = xmalloc(sizeof(char) * 2);
   new_fd = xopen(str, O_RDONLY);
   list = function(new_fd);
-  //(list == NULL) ? my_putstr("Empty file.\n", 2) : parse_list(list, fd);
+  if (list == NULL)
+    {
+      my_putstr("Empty file.\n", 2);
+      exit(EXIT_SUCCESS);
+    }
+  else
+    parse_list(list, fd);
   return (buff);
 }
 
+int	my_cmd_list_size(t_lst *list)
+{
+  int	i;
+
+  i = 0;
+  while (list)
+    {
+      i++;
+      list = list->next;
+    }
+  return (i);
+}
+
+void	parse_list(t_lst *list, int fd)
+{
+  char	*biggy_buff;
+  int	len;
+  int	i;
+
+  i = 0;
+  if (fd == -1)
+    printf("Bad fd\n");
+  biggy_buff = xmalloc(sizeof(char) * 1);
+  if (list != NULL)
+    {
+      while (list)
+	{
+	  write_in_buff(list->cmd, &len, biggy_buff);
+	  list = list->next;
+	  printf("i = %dsize = %d\n", i, my_cmd_list_size(list));
+	  i++;
+	}
+      printf("parsage : OK\n");
+      write(fd, biggy_buff, len);
+    }
+}
