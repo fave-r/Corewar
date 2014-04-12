@@ -5,16 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Sun Feb 23 21:19:02 2014 Thibaut Lopez
-** Last update Fri Apr 11 15:18:29 2014 romaric
-*/
-
-/*
-**Mettre les infos du fichier dans ce sens si
-**possible avec 2 retour à la ligne entre chaque type d'info:
-**#define
-**#include system
-**typedef struct
-**prototype de fonction
+** Last update Sat Apr 12 21:10:06 2014 Thibaut Lopez
 */
 
 #ifndef MY_H
@@ -77,5 +68,6 @@ short int	convert_short_endian(short int *nb, int end);
 char		*my_strncat(char *dest, char *src, int len);
 char		**my_str_to_wordtab(char *str, char *sep);
 char		*my_strncpy(char *dest, char *src, int len);
+char		*my_nbr_to_char(int nb, int tmp_nb);
 
 #endif

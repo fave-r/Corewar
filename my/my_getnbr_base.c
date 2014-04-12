@@ -5,19 +5,10 @@
 ** Login   <odet_a@epitech.net>
 **
 ** Started on  Wed Oct  9 09:38:10 2013 alexandre.odet
-** Last update Mon Mar 24 12:11:27 2014 romaric
+** Last update Sat Apr 12 21:15:58 2014 Thibaut Lopez
 */
 
-//#include "my.h"
-
-int	my_strlen(char *str)
-{
-  int	i;
-  i = 0;
-  while (str[i])
-    i++;
-  return (i);
-}
+#include "my.h"
 
 int     init(char *base, int *nbr, int *j, int *i)
 {

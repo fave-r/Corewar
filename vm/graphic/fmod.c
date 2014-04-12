@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Apr 12 16:52:24 2014 romaric
-** Last update Sat Apr 12 17:42:19 2014 romaric
+** Last update Sat Apr 12 20:31:25 2014 romaric
 */
 
 #include "fmod.h"
@@ -20,12 +20,11 @@ void		fmode(void)
   FMOD_RESULT	resultat;
   char		*str;
 
-  str = "Martin Garrix - Animals.mp3";
+  str = "./graphic/Martin Garrix - Animals.mp3";
   FMOD_System_Create(&system);
   FMOD_System_Init(system, 2, FMOD_INIT_NORMAL, NULL);
-  FMOD_Sound_SetLoopCount(musique, -1);
   resultat = FMOD_System_CreateSound(system, str, FMOD_SOFTWARE
-                                     | FMOD_2D | FMOD_CREATESTREAM, 0, &musique);
+				     | FMOD_2D | FMOD_CREATESTREAM, 0, &musique);
   if (resultat != FMOD_OK)
     {
       my_printf(2, "Cannot find ");
@@ -35,6 +34,7 @@ void		fmode(void)
     }
   else
     {
+      FMOD_Sound_SetLoopCount(musique, -1);
       FMOD_System_GetChannel(system, 9, &channel);
       FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, musique, 0, NULL);
     }

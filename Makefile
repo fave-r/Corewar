@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Fri Apr 11 15:13:26 2014 romaric
+## Last update Sat Apr 12 21:16:47 2014 Thibaut Lopez
 ##
 
 LIB_S=		my/basic.c \
@@ -13,6 +13,7 @@ LIB_S=		my/basic.c \
 		my/my_endian.c \
 		my/my_getnbr_base.c \
 		my/my_getnbr.c \
+		my/my_nbr_to_char.c \
 		my/my_printf.c \
 		my/my_print_num.c \
 		my/my_print_ptr.c \
@@ -29,7 +30,6 @@ LIB_S=		my/basic.c \
 		my/my_strcmp.c \
 		my/my_strdup.c \
 		my/my_strflen.c \
-		my/my_strlen.c \
 		my/my_strncmp.c \
 		my/my_xtest.c \
 		my/my_memset.c \
