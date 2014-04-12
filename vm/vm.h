@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Fri Apr 11 18:05:36 2014 thibaud
+** Last update Sat Apr 12 14:45:02 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -26,6 +26,13 @@
 #include <stdlib.h>
 #include <strings.h>
 #include "op.h"
+
+typedef struct	s_sdl
+{
+  SDL_Surface	*screen;
+  SDL_Surface	*arena;
+  SDL_Surface	*name[4];
+}		t_sdl;
 
 typedef struct		s_champ
 {
@@ -54,7 +61,7 @@ typedef struct	s_cor
   int		live[4];
   int		champs_nb[4];
   int		nb_chmps_alive;
-  SDL_Surface	*screen;
+  t_sdl		graphic;
 }		t_cor;
 
 typedef struct	s_struct
@@ -110,9 +117,10 @@ int	get_dir_ind_arg_noidx(int *tab, t_champ *champ,
 int	get_all_type_arg_noidx(int *tab, t_champ *champ,
 			       unsigned char *mem, int *err);
 
-int	init_graphic(t_cor *cor);
+int	init_graphic(t_sdl *cor, t_champ *champ);
 void	free_graphic();
-void	change_case_mem(int case_mem, Uint32 color, SDL_Surface *screen);
+int	get_escape();
+void	change_case_mem(int case_mem, Uint32 color, t_sdl *cor);
 int	aff_mem(unsigned char *mem);
 int	print_encode(int **tab);
 int	check_reg(int);

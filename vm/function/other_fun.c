@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Fri Apr 11 17:20:18 2014 thibaud
+** Last update Sat Apr 12 14:44:14 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -25,7 +25,7 @@ void	my_st(t_champ *champ, t_cor *cor)
       else
 	{
 	  print_on_mem(cor, champ->reg[tab[0][2] - 1], champ->pc + tab[1][2]);
-	  change_case_mem(champ->pc + tab[1][2], champ->color, cor->screen);
+	  change_case_mem(champ->pc + tab[1][2], champ->color, &(cor->graphic));
 	}
       champ->pc += tab[0][1] + tab[1][1] + 2;
     }
@@ -49,7 +49,7 @@ void	my_sti(t_champ *champ, t_cor *cor)
       a = (tab[1][0] == 1) ? champ->reg[tab[1][2] - 1] : tab[1][2];
       b = (tab[2][0] == 1) ? champ->reg[tab[2][2] - 1] : tab[2][2];
       print_on_mem(cor, champ->reg[tab[0][2] - 1], champ->pc + a + b);
-      change_case_mem(champ->pc + a + b, champ->color, cor->screen);
+      change_case_mem(champ->pc + a + b, champ->color, &(cor->graphic));
       champ->pc += tab[0][1] + tab[1][1] + tab[2][1] + 2;
     }
   else

@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Fri Apr 11 18:33:12 2014 Thibaut Lopez
+** Last update Sat Apr 12 14:45:41 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -96,7 +96,7 @@ int	main(int argc, char **argv)
   cor.nb_chmps_alive = 0;
   my_mem_set(cor.live, 4);
   init_champs_nb(&cor);
-  if (init_graphic(&cor) == 1)
+  if (init_graphic(&(cor.graphic), cor.champ) == 1)
     return (1);
   run_corewar(cor.champ, &cor);
   return (0);
