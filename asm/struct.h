@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sat Apr 12 00:35:13 2014 alex-odet
+** Last update Sat Apr 12 01:35:51 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -30,12 +30,6 @@ typedef struct	s_get
   int		c;
   int		l;
 }		t_get;
-
-typedef struct	s_buf
-{
-  char		*tmp;
-  char		*buff;
-}		t_buf;
 
 typedef struct	s_lst
 {
