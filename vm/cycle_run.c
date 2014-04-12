@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 14:11:08 2014 Thibaut Lopez
-** Last update Fri Apr 11 18:32:56 2014 Thibaut Lopez
+** Last update Sat Apr 12 21:37:58 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -61,6 +61,7 @@ int	free_champ(t_champ *champ)
       champ = champ->next;
       free(tmp->head);
       free(tmp->path);
+      free(tmp->graphic_name);
       free(tmp);
     }
   return (0);

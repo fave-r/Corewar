@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Sat Apr 12 17:04:30 2014 Thibaut Lopez
+** Last update Sat Apr 12 22:56:13 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -48,13 +48,15 @@ int	find_in_tab(char octet)
 
 int	champ_play(t_champ *cur_champ, t_cor *map)
 {
-  fct_tab[find_in_tab(map->mem[mod_mem(cur_champ->pc)])].ptr_fct(cur_champ, map);
+  fct_tab[find_in_tab(map->mem[mod_mem(cur_champ->pc)])].
+    ptr_fct(cur_champ, map);
   return (0);
 }
 
 int	get_wait(t_champ *cur_champ, t_cor *map)
 {
-  cur_champ->wait = fct_tab[find_in_tab(map->mem[mod_mem(cur_champ->pc)])].wait;
+  cur_champ->wait = fct_tab[find_in_tab(map->mem[mod_mem(cur_champ->pc)])].
+    wait;
   return (cur_champ->wait);
 }
 
@@ -92,7 +94,7 @@ int	run_corewar(t_champ *champs, t_cor *map)
 	      map->cycle_to_die -= CYCLE_DELTA;
 	      map->live_done = 0;
 	    }
-	  map->cycle_to_die = (get_escape() == 1) ? 0 : map->cycle_to_die;
+	  map->cycle_to_die = (get_escape(map) == 1) ? 0 : map->cycle_to_die;
 	}
       kill_champ(&champs, map);
       cycle_done += map->cycle;

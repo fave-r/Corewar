@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Sat Apr 12 20:09:55 2014 Thibaut Lopez
+** Last update Sat Apr 12 23:02:36 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -28,6 +28,8 @@
 #define ER_POS3	".\n"
 #define	ER_FULL "Can't find place to another champ: places already taken.\n"
 #define ER_VOID	"You haven't gave a single correct champion.\n"
+#define MAIN_BG "graphic/BackGround.bmp"
+#define MAIN_TF "graphic/varsity_regular.ttf"
 
 typedef struct	s_sdl
 {
@@ -35,6 +37,7 @@ typedef struct	s_sdl
   SDL_Surface	*arena;
   SDL_Surface	*bg;
   SDL_Surface	*name[4];
+  SDL_Surface	*ctd[2];
   TTF_Font	*font;
 }		t_sdl;
 
@@ -48,6 +51,7 @@ typedef struct		s_champ
   int			reg[REG_NUMBER];
   int			carry;
   int			wait;
+  char			*graphic_name;
   Uint32		color;
   struct s_champ	*next;
   struct s_champ	*prev;
@@ -124,7 +128,8 @@ int	get_all_type_arg_noidx(int *tab, t_champ *champ,
 
 int	init_graphic(t_sdl *cor, t_champ *champ);
 void	free_graphic(t_sdl *cor);
-int	get_escape();
+int	get_escape(t_cor *cor);
+void	init_information(t_sdl *cor);
 void	change_case_mem(int case_mem, Uint32 color, t_sdl *cor);
 int	aff_mem(unsigned char *mem);
 int	print_encode(int **tab);
@@ -142,5 +147,6 @@ int	mod_mem(int nb);
 void	cor_mem_set(unsigned char *mem, int len);
 int	prog_size_error(char *path);
 void    fmode(void);
+void	refresh_info(t_cor *cor);
 
 #endif

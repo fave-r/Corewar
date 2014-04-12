@@ -5,31 +5,42 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:40:14 2014 Thibaut Lopez
-** Last update Sat Apr 12 14:58:08 2014 Thibaut Lopez
+** Last update Sat Apr 12 23:11:42 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 
-int	get_escape()
+int	my_pause()
 {
   int		wait;
   SDL_Event	event;
 
+  wait = 0;
+  while (wait == 0)
+    {
+      SDL_WaitEvent(&event);
+      if (event.key.keysym.sym == SDLK_ESCAPE)
+	return (1);
+      else if (event.key.keysym.sym == SDLK_SPACE &&
+	       event.type == SDL_KEYDOWN)
+	wait = 1;
+    }
+  return (0);
+}
+
+int	get_escape(t_cor *cor)
+{
+  SDL_Event	event;
+
+  refresh_info(cor);
   if (SDL_PollEvent(&event) &&
       (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP))
     {
       if (event.key.keysym.sym == SDLK_ESCAPE)
 	return (1);
       else if (event.key.keysym.sym == SDLK_SPACE && event.type == SDL_KEYDOWN)
-	while (wait == 0)
-	  {
-	    SDL_WaitEvent(&event);
-	    if (event.key.keysym.sym == SDLK_ESCAPE)
-	      return (1);
-	    else if (event.key.keysym.sym == SDLK_SPACE &&
-		     event.type == SDL_KEYDOWN)
-	      wait = 1;
-	  }
+	if (my_pause() == 1)
+	  return (1);
     }
   return (0);
 }
