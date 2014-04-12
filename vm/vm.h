@@ -5,19 +5,11 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Fri Apr 11 18:05:36 2014 thibaud
+** Last update Sat Apr 12 14:23:29 2014 romaric
 */
 
 #ifndef VM_H
 #define VM_H
-#define ER_DUMP	"Warning : Wrong value for nbr_cycle. Have been initialized at 0x68.\n"
-#define ER_COR	" is not a corewar executable.\n"
-#define ER_SIZE	" take to much memory to be launched.\n"
-#define ER_POS1	"Error : the position "
-#define	ER_POS2	"  is already taken by the file "
-#define ER_POS3	".\n"
-#define	ER_FULL	"Cannot find a new place for another champ : places already taken.\n"
-#define ER_VOID	"You haven't gave a single correct champion.\n"
 #include <sys/stat.h>
 #include <SDL/SDL.h>
 #include <fcntl.h>
@@ -26,6 +18,14 @@
 #include <stdlib.h>
 #include <strings.h>
 #include "op.h"
+#define ER_DUMP	"Warning : Wrong value for nbr_cycle. Have been initialized at 0x68.\n"
+#define ER_COR	" is not a corewar executable.\n"
+#define ER_SIZE	" take to much memory to be launched.\n"
+#define ER_POS1	"Error : the position "
+#define	ER_POS2	"  is already taken by the file "
+#define ER_POS3	".\n"
+#define	ER_FULL	"Cannot find a new place for another champ : places already taken.\n"
+#define ER_VOID	"You haven't gave a single correct champion.\n"
 
 typedef struct		s_champ
 {
