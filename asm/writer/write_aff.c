@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Apr 10 14:47:40 2014 alex-odet
-** Last update Thu Apr 10 14:51:20 2014 alex-odet
+** Last update Fri Apr 11 23:14:57 2014 alex-odet
 */
 
 #include "struct.h"
@@ -13,7 +13,6 @@
 char	*write_aff(char *arg, int *len)
 {
   char	*ret;
-  char	first;
   int	size;
 
   size = 3;

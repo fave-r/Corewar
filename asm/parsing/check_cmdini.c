@@ -5,21 +5,23 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Apr  8 15:28:07 2014 romaric
-** Last update Tue Apr  8 15:59:00 2014 romaric
+** Last update Sat Apr 12 00:25:21 2014 romaric
 */
 
 #include "struct.h"
 
-void	check_cmdini(int *i, int *fd, char *cmd, char *str)
+void   check_cmd_n(t_chkcmd ch, t_label *list)
 {
-  *i = 0;
-  *fd = xopen(str, O_RDONLY);
-  cmd = NULL;
-}
-
-void	check_cmdnext(char *tmp, char *cmd, int *i)
-{
-  my_printf(1, "%s\n", tmp);
-  if (tmp[0] == '\t' || my_strchr(':', tmp) != -1)
-    cmd = cmd_exist(tmp, &(*i));
+  if (ch.i == 0)
+    {
+      ch.line = my_str_to_wordtab(ch.tmp, "\t");
+      if (ch.line != NULL && ch.line[0] != NULL && ch.line[1] != NULL)
+        check_cmd_arg(ch.line[1], ch.cmd, list);
+    }
+  else
+    {
+      ch.line = my_str_to_wordtab(ch.tmp, "\t");
+      if (ch.line != NULL && ch.line[0] != NULL && ch.line[2] != NULL)
+        check_cmd_arg(ch.line[2], ch.cmd, list);
+    }
 }

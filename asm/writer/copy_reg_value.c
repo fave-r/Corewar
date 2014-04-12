@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr  9 14:58:40 2014 alex-odet
-** Last update Thu Apr 10 01:18:14 2014 alex-odet
+** Last update Sat Apr 12 13:19:28 2014 alex-odet
 */
 
 #include "struct.h"
@@ -40,7 +40,7 @@ char	*copy_dir_value(char *args)
   tmp = xmalloc(sizeof(char) * 10);
   i = 0;
   j = 0;
-  while (args[i] != ',')
+  while (args[i] != ',' && args[i])
     {
       if (args[i] == '%')
 	i++;

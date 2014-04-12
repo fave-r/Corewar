@@ -5,10 +5,33 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Fri Apr 11 15:24:01 2014 romaric
+** Last update Sat Apr 12 13:57:24 2014 alex-odet
 */
 
 #include "struct.h"
+
+void	my_show_tab(char **tab)
+{
+  int	i;
+
+  i = 0;
+  printf("----------------------------\n");
+  while (tab[i])
+    {
+      printf("%s\n", tab[i]);
+      i++;
+    }
+  printf("------------------------------\n");
+}
+
+void		my_show_list_cmd(t_lst *list)
+{
+  while (list)
+    {
+      my_show_tab(list->cmd);
+      list = list->next;
+    }
+}
 
 t_lst		*create_new_node(char *cmd, t_lst **node)
 {
@@ -34,7 +57,14 @@ t_lst		*function(int fd)
   t_lst		*first;
   char		*tmp;
   char		*buff;
-
+  int	i = 0;
+  /*
+  buff = xmalloc(sizeof(char *) * 4);
+  buff[0] = "test:\tzjmp\t%0";
+  buff[1] = "\tlive\t%42";
+  buff[2] = "\tlive\t%21";
+  buff[3] = NULL;
+  */
   ret = NULL;
   first = NULL;
   while ((buff = get_next_line(fd)))
@@ -48,7 +78,10 @@ t_lst		*function(int fd)
 	  if (first == NULL)
 	    first = ret;
 	}
+      i++;
     }
+  //  my_show_list_cmd(first);
+  close (fd);
   return (first);
 }
 
@@ -56,12 +89,47 @@ char	*my_fill_buff(char *str, int fd)
 {
   int	new_fd;
   t_lst	*list;
-  char  *buff;
+  char	*buff;
 
-  buff = xmalloc(sizeof(char) * 4096);
+  buff = xmalloc(sizeof(char) * 2);
   new_fd = xopen(str, O_RDONLY);
   list = function(new_fd);
-  //(list == NULL) ? my_putstr("Empty file.\n", 2) : parse_list(list, fd);
+  if (list == NULL)
+    {
+      my_putstr("Empty file.\n", 2);
+      exit(EXIT_SUCCESS);
+    }
+  else
+    parse_list(list, fd);
   return (buff);
 }
 
+int	my_cmd_list_size(t_lst *list)
+{
+  int	i;
+
+  i = 0;
+  while (list)
+    {
+      i++;
+      list = list->next;
+    }
+  return (i);
+}
+
+void	parse_list(t_lst *list, int fd)
+{
+  char	*biggy_buff;
+  int	len;
+  int	i;
+
+  i = 0;
+  biggy_buff = xmalloc(sizeof(char) * 1);
+  while (list)
+    {
+      write_in_buff(list->cmd, &len, biggy_buff);
+      list = list->next;
+      i++;
+    }
+  write(fd, biggy_buff, len);
+}

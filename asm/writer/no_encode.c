@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Mar 26 10:43:51 2014 alex-odet
-** Last update Wed Apr  9 13:05:24 2014 alex-odet
+** Last update Sat Apr 12 14:10:10 2014 alex-odet
 */
 
 #include "struct.h"
@@ -17,7 +17,7 @@ char		*my_write_live(char *value, int *len)
   char		*s_ret;
 
   if (value[0] != ':')
-    save = my_getnbr(value);
+    save = my_getnbr(copy_dir_value(value));
   else
     save = 0;
   ret = xmalloc(sizeof(char) * 6);
@@ -30,74 +30,78 @@ char		*my_write_live(char *value, int *len)
   ret[3] = s_ret[2];
   ret[4] = s_ret[3];
   *len += 5;
-  int	i = 0;
-  while (ret[i])
-    printf("in live ret[i] = %d\n", ret[i++]);
-  return (ret);
-}
-
-char		*my_write_zjmp(char *value, int *len)
-{
-  int		save;
-  short int	save_v;
-  char		*ret;
-  char		*s_ret;
-
-  if (value[0] != ':')
-    save = my_getnbr(value);
+  
+  /*  if (value[0] ==' %')
+    {
+      value++;
+      save = my_getnbr(value);
+    }
   else
-    save = 0;
-  ret = xmalloc(sizeof(char) * 4);
-  ret[0] = op_tab[8].code;
-  ret[3] = 0;
-  convert_short_endian(&save_v, my_endian());
-  save_v = save;
-  s_ret = (char *)&save_v;
-  ret[1] = s_ret[0];
-  ret[2] = s_ret[1];
-  *len += 3;
-  int	i = 0;
-  while (ret[i])
-    printf("in zjmp ret[i] = %d\n", ret[i++]);
-  return (ret);
+    save = 0; // ERRROR
+  convert_endiant(&save, my_endian());
+  len = write(fd, &save, sizeof(int))*/
+    return (ret);
 }
 
-char		*my_write_fork(char *value, int *len)
-{
-  int		save;
-  short int	save_v;
-  char		*ret;
-  char		*s_ret;
+  char		*my_write_zjmp(char *value, int *len)
+  {
+    int		save;
+    short int	save_v;
+    char		*ret;
+    char		*s_ret;
 
-  save = (value[0] != ':') ? my_getnbr(value) : 0;
-  ret = xmalloc(sizeof(char) * 4);
-  ret[0] = op_tab[11].code;
-  ret[3] = 0;
-  convert_short_endian(&save_v, my_endian());
-  save_v = save;
-  s_ret = (char *)&save_v;
-  ret[1] = s_ret[0];
-  ret[2] = s_ret[1];
-  *len += 3;
-  return (ret);
-}
+    if (value[0] != ':')
+      save = my_getnbr(value);
+    else
+      save = 0;
+    ret = xmalloc(sizeof(char) * 4);
+    ret[0] = op_tab[8].code;
+    ret[3] = 0;
+    convert_short_endian(&save_v, my_endian());
+    save_v = save;
+    s_ret = (char *)&save_v;
+    ret[1] = s_ret[0];
+    ret[2] = s_ret[1];
+    *len += 3;
+    return (ret);
+  }
 
-char	 *my_write_lfork(char *value, int *len)
-{
-  int		save;
-  short int	save_v;
-  char		*ret;
-  char		*s_ret;
+  char		*my_write_fork(char *value, int *len)
+  {
+    int		save;
+    short int	save_v;
+    char		*ret;
+    char		*s_ret;
 
-  save = (value[0] != ':') ? my_getnbr(value) : 0;
-  ret = xmalloc(sizeof(char) * 4);
-  ret[0] = op_tab[14].code;
-  ret[3] = 0;
-  convert_short_endian(&save_v, my_endian());
-  save_v = save;
-  s_ret = (char *)&save_v;
-  ret[1] = s_ret[0];
-  ret[2] = s_ret[1];
-  *len += 3;
-  return (ret);
-}
+    save = (value[0] != ':') ? my_getnbr(value) : 0;
+    ret = xmalloc(sizeof(char) * 4);
+    ret[0] = op_tab[11].code;
+    ret[3] = 0;
+    convert_short_endian(&save_v, my_endian());
+    save_v = save;
+    s_ret = (char *)&save_v;
+    ret[1] = s_ret[0];
+    ret[2] = s_ret[1];
+    *len += 3;
+    return (ret);
+  }
+
+  char	 *my_write_lfork(char *value, int *len)
+  {
+    int		save;
+    short int	save_v;
+    char		*ret;
+    char		*s_ret;
+
+    save = (value[0] != ':') ? my_getnbr(value) : 0;
+    ret = xmalloc(sizeof(char) * 4);
+    ret[0] = op_tab[14].code;
+    ret[3] = 0;
+    convert_short_endian(&save_v, my_endian());
+    save_v = save;
+    s_ret = (char *)&save_v;
+    ret[1] = s_ret[0];
+    ret[2] = s_ret[1];
+    *len += 3;
+    return (ret);
+  }

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 15:44:53 2014 alex-odet
-** Last update Fri Apr 11 21:35:10 2014 alex-odet
+** Last update Fri Apr 11 23:11:00 2014 alex-odet
 */
 
 #include "struct.h"
@@ -18,8 +18,8 @@ char		*write_sti(char *args, int *len)
   int		index;
   int		tmp;
 
-  args_tab = args_to_wordtab(args);
-  size = size_to_malloc(args_tab);
+  args_tab = my_str_to_wordtab(args, ",");
+  size = size_to_malloc(args_tab, 1);
   ret = xmalloc(sizeof(char) * (size + 1));
   ret[0] = op_tab[10].code;
   ret[1] = encode_octet(args);
@@ -33,10 +33,10 @@ char		*write_sti(char *args, int *len)
   return (ret);
 }
 
-int	copy_arg_first(char *arg, char *ret, int index)
+int		copy_arg_first(char *arg, char *ret, int index)
 {
-  char	*s_ret;
-  int	end;
+  char		*s_ret;
+  short int	end;
 
   if (arg[0] == 'r')
     {

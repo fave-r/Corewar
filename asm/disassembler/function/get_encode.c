@@ -1,15 +1,11 @@
 /*
 ** get_encode.c for get_encode in /home/thibaut.lopez/Corewar/Corewar/vm
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-<<<<<<< HEAD
-** Last update Tue Apr  8 15:20:14 2014 Thibaut Lopez
-=======
-** Last update Tue Apr  8 13:22:53 2014 romaric
->>>>>>> cd3824237037d1b10a309149b5eb2ccf7314fa97
+** Last update Sat Apr 12 14:50:08 2014 romaric
 */
 
 #include "dasm.h"

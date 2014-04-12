@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Fri Apr 11 17:44:50 2014 romaric
+** Last update Sat Apr 12 13:56:28 2014 alex-odet
 */
 
 #include "struct.h"
@@ -19,24 +19,11 @@ void	check_cmd(char *str, t_label *list)
   ch.cmd = NULL;
   while ((ch.tmp = get_next_line(ch.fd)))
     {
-      my_printf(1, "%s\n", ch.tmp);
+      //      my_printf(1, "%s\n", ch.tmp);
       if (ch.tmp[0] == '\t' || my_strchr(':', ch.tmp) != -1)
 	ch.cmd = cmd_exist(ch.tmp, &(ch.i));
       if (ch.cmd != NULL)
-	{
-	  if (ch.i == 0)
-	    {
-	      ch.line = my_str_to_wordtab(ch.tmp, "\t");
-	      if (ch.line != NULL && ch.line[0] != NULL && ch.line[1] != NULL)
-		check_cmd_arg(ch.line[1], ch.cmd, list);
-	    }
-	  else
-	    {
-	      ch.line = my_str_to_wordtab(ch.tmp, "\t");
-	      if (ch.line != NULL && ch.line[0] != NULL && ch.line[1] != NULL)
-		check_cmd_arg(ch.line[2], ch.cmd, list);
-	    }
-	}
+	  check_cmd_n(ch, list);
       ch.i = 0;
     }
   close(ch.fd);
