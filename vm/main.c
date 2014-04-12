@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Sat Apr 12 16:10:25 2014 Thibaut Lopez
+** Last update Sat Apr 12 17:29:53 2014 romaric
 */
 
 #include "my.h"
@@ -76,11 +76,11 @@ int	init_champs_nb(t_cor *cor)
   return (0);
 }
 
-int	main(int argc, char **argv)
+int	main(__attribute__((unused))int argc, char **argv)
 {
   t_cor	cor;
 
-  (void)argc;
+  fmode();
   cor.dump = 2500000000;
   cor.live_done = 0;
   cor.cycle = 1;

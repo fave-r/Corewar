@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Sat Apr 12 15:47:43 2014 Thibaut Lopez
+## Last update Sat Apr 12 17:38:45 2014 romaric
 ##
 
 VM_S=		champ_fun.c \
@@ -25,13 +25,14 @@ VM_S=		champ_fun.c \
 		graphic/init_graphic.c \
 		graphic/free_graphic.c \
 		graphic/refresh_graphic.c \
-		check_reg.c
+		check_reg.c \
+		graphic/fmod.c
 
 VM_N=		corewar
 
 VM_O=		$(VM_S:.c=.o)
 
-CC=		gcc -g3 -W -Wall -Werror -I ../my/ -I ../ -I . -lSDL_image -lSDL_ttf -lSDL -lGL -lGLU 
+CC=		gcc -g3 -W -Wall -Werror -I ../my/ -I ../ -I . -I ./graphic/fmodapi44432linux/api/inc -lSDL_image -lSDL_ttf -lSDL -lGL -lGLU ./graphic/fmodapi44432linux/api/lib/libfmodex64-4.44.32.so
 
 all:		$(VM_N)
 
