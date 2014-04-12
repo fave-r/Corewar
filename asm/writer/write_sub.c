@@ -5,26 +5,28 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Apr 10 09:56:35 2014 alex-odet
-** Last update Fri Apr 11 23:12:58 2014 alex-odet
+** Last update Sat Apr 12 16:53:16 2014 alex-odet
 */
 
 #include "struct.h"
 
-char	*write_sub(char *args, int *len)
+int	*write_sub(char *args, int *len, int fd)
 {
   char	**args_tab;
-  char	*ret;
-  int	size;
+  char	val;
 
   args_tab = my_str_to_wordtab(args, ",");
-  size = size_to_malloc(args_tab, 0);
-  ret = xmalloc(sizeof(char) * (size + 1));
-  ret[0] = op_tab[4].code;
-  ret[1] = encode_octet(args);
-  ret[2] = my_getnbr(copy_reg_value(args_tab[0]));
-  ret[3] = my_getnbr(copy_reg_value(args_tab[1]));
-  ret[4] = my_getnbr(copy_reg_value(args_tab[2]));
-  ret[size + 1] = 0;
-  len += size;
-  return (ret);
+  len += write(fd, &op_tab[4].code, 1);
+  val = encode_octet(args);
+  len += write(fd, &val, 1);
+  args_tab[0]++;
+  val = my_getnbr(args_tab[0]);
+  len += write(fd, &val, REG_SIZE);
+  args_tab[1]++;
+  val = my_getnbr(args_tab[1]);
+  len += write(fd, &val, REG_SIZE);
+  args_tab[2]++;
+  val = my_getnbr(args_tab[2]);
+  len += write(fd, &val, REG_SIZE);
+  return (len);
 }

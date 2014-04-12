@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Mon Mar 10 16:12:02 2014 alex-odet
-** Last update Sat Apr 12 01:59:07 2014 alex-odet
+** Last update Sun Apr 13 00:46:20 2014 alex-odet
 */
 
 #include "struct.h"
@@ -31,9 +31,9 @@ char	*check_comment(char *str)
 	    return (recup_comment(tmp));
 	}
     }
+  close(fd);
   if (comment == NULL)
     print_header_error();
-  close(fd);
   return (NULL);
 }
 

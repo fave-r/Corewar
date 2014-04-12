@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sat Apr 12 01:35:51 2014 alex-odet
+** Last update Sun Apr 13 01:05:46 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -42,7 +42,6 @@ typedef struct s_label
 {
   struct s_label *next;
   char		*name;
-  int		line;
 }		t_label;
 
 typedef struct	s_file
@@ -54,7 +53,7 @@ typedef struct	s_file
 typedef struct	s_cmd
 {
   char		*cmd;
-  char		*(*ptr)(char *, int *);
+  int		*(*ptr)(char *, int *, int fd);
 }		t_cmd;
 
 typedef struct	s_chkcmd
@@ -65,6 +64,13 @@ typedef struct	s_chkcmd
   char		*cmd;
   char		**line;
 }		t_chkcmd;
+
+typedef struct	s_chklab
+{
+  int	fd;
+  char	*tmp;
+  char	*save;
+}		t_chklab;
 
 char		*get_next_line(const int fd);
 void		parser(char *str);
@@ -82,10 +88,10 @@ void		check_cmd(char *str, t_label *list);
 char		*cmd_exist(char *str, int *bool);
 void		my_show_list(t_label *list);
 t_label		*fill_list_of_label(char *str);
-t_label		*my_put_in_list(t_label *list, char *name, int line);
-t_label		*new_node(char *name, int line);
-t_label		*check_label(char *tmp, t_label *list, int line);
-t_label		*copy_label(char *tmp, int len, t_label *list, int line);
+t_label		*my_put_in_list(t_label *list, char *name);
+t_label		*new_node(char *name);
+t_label		*check_label(char *tmp, t_label *list);
+t_label		*copy_label(char *tmp, int len, t_label *list);
 void		my_show_file_list(t_file *list);
 t_file		*create_node(char *name);
 t_file		*my_put_in_file_list(t_file *list, char *name);
@@ -105,11 +111,11 @@ int		count_dot(char *str, int i, char c);
 void		print_bad_instruction(char *cmd);
 void		check_live(char *args, char *cmd, t_label *list);
 int		check_label_exist(t_label *list, char *label_check);
-char		*my_write_live(char *value, int *len);
-char		*my_write_zjmp(char *value, int *len);
+int		*my_write_live(char *value, int *len, int fd);
+int		*my_write_zjmp(char *value, int *len, int fd);
 char		*my_fill_buff(char *str, int fd);
-char		*my_write_fork(char *value, int *len);
-char		*my_write_lfork(char *value, int *len);
+int		*my_write_fork(char *value, int *len, int fd);
+int		*my_write_lfork(char *value, int *len, int fd);
 int		my_file_list_size(t_file *list);
 void		check_ld(char *args, char *cmd, t_label *list);
 char		*copi_labelde(char *args);
@@ -121,41 +127,34 @@ void		errorvaluereg(char *args);
 void		check_st(char *args, char *cmd);
 void		check_add(char *args, char *cmd);
 void		check_and(char *args, char *cmd, t_label *list);
-int		encode_octet(char *args);
-char		*my_write_ld(char *args, int *len);
-char		*my_write_ld_next(char *args, char *ret, int save);
+char		encode_octet(char *args);
+int		*my_write_ld(char *args, int *len, int fd);
 char		*copi_labeldei(char *args, int x);
 void		check_ldi(char *args, char *cmd, t_label *list);
 void		check_stinext(char *args, char *cmd, t_label *list);
 void		check_aff(char *args, char *cmd);
-char		*copy_reg_value(char *args);
-char		*copy_dir_value(char *args);
 int		count_args(char *args);
-char		**args_to_wordtab(char *args);
-int		size_to_malloc(char **args, int boool);
-char		*write_ind_st(char *args, char *tmp);
-char		*my_write_ld_args(char **args, char *ret, int size);
-char		*write_add(char *args, int *len);
-char		*write_sub(char *args, int *len);
-char		*write_aff(char *arg, int *len);
-char		*write_and(char *args, int *len);
-int		write_first_arg(char *arg, char *ret, int index);
-void		write_ind_value(char *arg, char *ret, int index);
-char		*write_ldi(char *args, int *len);
-void		copy_arg(char *arg, char *ret);
-void		copy_arg_second(char *arg, char *ret);
-char		*write_lld(char *args, int *len);
-void		copy_arg_lld(char *arg, char *ret);
-char		*write_lldi(char *args, int *len);
-int		copy_arg_lldi(char *args, char *ret, int index);
-char		*write_or(char *args, int *len);
-char		*write_xor(char *args, int *len);
-char		*my_write_st(char *args, int *len);
-char		*write_ind_st(char *args, char *tmp);
-char		*write_sti(char *args, int *len);
-int		copy_arg_first(char *arg, char *ret, int index);
+int		*write_add(char *args, int *len, int fd);
+int		*write_sub(char *args, int *len, int fd);
+int		*write_aff(char *arg, int *len, int fd);
+int		*write_and(char *args, int *len, int fd);
+int		*write_arg_and(char *args, int *len, int fd);
+int		*write_ldi(char *args, int *len, int fd);
+int		*write_ldi_arg(char *arg, int *len, int fd);
+int		*write_lld(char *args, int *len, int fd);
+int		*write_lld_arg(char *arg, int *len, int fd);
+int		*write_lldi(char *args, int *len, int fd);
+int    		*write_lldi_arg(char *args, int *len, int fd);
+int		*write_or(char *args, int *len, int fd);
+int		*write_arg_or(char *args, int *len, int fd);
+int		*write_xor(char *args, int *len, int fd);
+int		*write_arg_xor(char *args, int *len, int fd);
+int		*my_write_st(char *args, int *len, int fd);
+int		*write_sti(char *args, int *len, int fd);
+void		write_sti_arg(char *arg, int *len, int fd);
 void		check_cmd_n(t_chkcmd ch, t_label *list);
 void		parse_list(t_lst *list, int fd);
-char		*write_in_buff(char **cmd, int *len, char *dest);
+void		write_in_buff(char **cmd, int *len, int fd);
+int		*write_ld_first(char *args, int *len, int fd);
 
 #endif

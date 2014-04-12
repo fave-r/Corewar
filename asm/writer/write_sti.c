@@ -5,61 +5,48 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 15:44:53 2014 alex-odet
-** Last update Fri Apr 11 23:11:00 2014 alex-odet
+** Last update Sun Apr 13 00:12:38 2014 alex-odet
 */
 
 #include "struct.h"
 
-char		*write_sti(char *args, int *len)
+int		*write_sti(char *args, int *len, int fd)
 {
-  int		size;
-  char		*ret;
   char		**args_tab;
-  int		index;
-  int		tmp;
+  char		val;
 
   args_tab = my_str_to_wordtab(args, ",");
-  size = size_to_malloc(args_tab, 1);
-  ret = xmalloc(sizeof(char) * (size + 1));
-  ret[0] = op_tab[10].code;
-  ret[1] = encode_octet(args);
-  ret[2] = my_getnbr(copy_reg_value(args_tab[0]));
-  index = 3;
-  tmp = copy_arg_first(args_tab[1], ret, index);
-  index += tmp;
-  copy_arg_first(args_tab[2], ret, index);
-  ret[size + 1] = 0;
-  len += size;
-  return (ret);
+  len += write(fd, &op_tab[10].code, 1);
+  val = encode_octet(args);
+  len += write(fd, &val, 1);
+  write_sti_arg(args_tab[0], len, fd);
+  write_sti_arg(args_tab[1], len, fd);
+  write_sti_arg(args_tab[2], len, fd);
+  return (len);
 }
 
-int		copy_arg_first(char *arg, char *ret, int index)
+void		write_sti_arg(char *arg, int *len, int fd)
 {
-  char		*s_ret;
-  short int	end;
-
-  if (arg[0] == 'r')
+  char		val;
+  short int	size_s;
+  
+if (arg[0] == 'r')
     {
-      ret[index] = my_getnbr(copy_reg_value(arg));
-      index += 1;
+      arg++;
+      val = my_getnbr(arg);
+      len += write(fd, &val, REG_SIZE);
     }
   else if (arg[0] == '%')
     {
-      end = my_getnbr(copy_dir_value(arg));
-      convert_short_endian(&end, my_endian());
-      s_ret = (char *)&end;
-      ret[index] = s_ret[0];
-      ret[index + 1] = s_ret[1];
-      index += 2;
+      arg++;
+      size_s = (arg[1] != ':') ? my_getnbr(arg) : 0;
+      convert_short_endian(&size_s, my_endian());
+      len += write(fd, &size_s, sizeof(short int));
     }
   else
     {
-      end = my_getnbr(arg);
-      convert_short_endian(&end, my_endian());
-      s_ret = (char *)&end;
-      ret[index] = s_ret[0];
-      ret[index + 1] = s_ret[1];
-      index += 2;
+      size_s = my_getnbr(arg);
+      convert_short_endian(&size_s, my_endian());
+      len += write(fd, &size_s, sizeof(short int));
     }
-  return (index);
 }

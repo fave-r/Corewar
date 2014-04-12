@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Sat Apr 12 13:57:24 2014 alex-odet
+** Last update Sun Apr 13 01:08:06 2014 alex-odet
 */
 
 #include "struct.h"
@@ -15,13 +15,11 @@ void	my_show_tab(char **tab)
   int	i;
 
   i = 0;
-  printf("----------------------------\n");
   while (tab[i])
     {
       printf("%s\n", tab[i]);
       i++;
     }
-  printf("------------------------------\n");
 }
 
 void		my_show_list_cmd(t_lst *list)
@@ -39,10 +37,10 @@ t_lst		*create_new_node(char *cmd, t_lst **node)
   t_lst		*new;
 
   new = xmalloc(sizeof(t_lst));
-  new->cmd = my_str_to_wordtab(cmd, "\t");
+  new->cmd = my_str_to_wordtab(cmd, "\t ");
   len = my_strlen(new->cmd[0]);
   if (len > 1 && new->cmd[0][len - 1] == ':')
-    new->cmd = my_str_to_wordtab(cmd + len, "\t");
+    new->cmd = my_str_to_wordtab(cmd + len, "\t ");
   new->next = NULL;
   new->prev = *node;
   if (*node != NULL)
@@ -57,14 +55,7 @@ t_lst		*function(int fd)
   t_lst		*first;
   char		*tmp;
   char		*buff;
-  int	i = 0;
-  /*
-  buff = xmalloc(sizeof(char *) * 4);
-  buff[0] = "test:\tzjmp\t%0";
-  buff[1] = "\tlive\t%42";
-  buff[2] = "\tlive\t%21";
-  buff[3] = NULL;
-  */
+
   ret = NULL;
   first = NULL;
   while ((buff = get_next_line(fd)))
@@ -78,9 +69,7 @@ t_lst		*function(int fd)
 	  if (first == NULL)
 	    first = ret;
 	}
-      i++;
     }
-  //  my_show_list_cmd(first);
   close (fd);
   return (first);
 }
@@ -101,6 +90,8 @@ char	*my_fill_buff(char *str, int fd)
     }
   else
     parse_list(list, fd);
+  close (new_fd);
+  close (fd);
   return (buff);
 }
 
@@ -119,17 +110,12 @@ int	my_cmd_list_size(t_lst *list)
 
 void	parse_list(t_lst *list, int fd)
 {
-  char	*biggy_buff;
   int	len;
-  int	i;
 
-  i = 0;
-  biggy_buff = xmalloc(sizeof(char) * 1);
   while (list)
     {
-      write_in_buff(list->cmd, &len, biggy_buff);
+      write_in_buff(list->cmd, &len, fd);
       list = list->next;
-      i++;
     }
-  write(fd, biggy_buff, len);
+  close (fd);
 }

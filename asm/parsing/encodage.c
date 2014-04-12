@@ -5,13 +5,13 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Mon Apr  7 18:19:53 2014 alex-odet
-** Last update Sat Apr 12 13:50:19 2014 alex-odet
+** Last update Sat Apr 12 20:32:51 2014 alex-odet
 */
 
-int	encode_octet(char *args)
+char	encode_octet(char *args)
 {
   int	i;
-  int nb;
+  char nb;
   int power;
 
   i = 0;
@@ -30,6 +30,5 @@ int	encode_octet(char *args)
       i++;
       power /= 4;
     }
-  printf("\n\nencode = %.2x\n", nb);
   return (nb);
 }

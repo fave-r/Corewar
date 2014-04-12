@@ -5,51 +5,43 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  9 17:16:18 2014 alex-odet
-** Last update Sat Apr 12 13:51:59 2014 alex-odet
+** Last update Sat Apr 12 23:19:25 2014 alex-odet
 */
 
 #include "struct.h"
 
-char		*my_write_ld(char *args, int *len)
+int		*my_write_ld(char *args, int *len, int fd)
 {
-  int		size;
-  char		*ret;
+  char		reg;
   char		**args_tab;
 
-  args_tab = my_str_to_wordtab(args, "\t,");
-  size = size_to_malloc(args_tab, 0);
-  ret = xmalloc(sizeof(char) * (size + 1));
-  ret[0] = op_tab[1].code;
-  ret[1] = encode_octet(args);
-  my_write_ld_args(args_tab, ret, size);
-  ret[size + 1] = 0;
-  *len += size;
-  return (ret);
+  args_tab = my_str_to_wordtab(args, ",");
+  len += write(fd, &op_tab[1].code, 1);
+  write_ld_first(args_tab[0], len, fd);
+  if (args_tab[1][0] == 'r')
+    args_tab[1]++;
+  reg = my_getnbr(args_tab[1]);
+  len += write(fd, &reg, REG_SIZE);
+  return (len);
 }
 
-char		*my_write_ld_args(char **args, char *ret, int size)
+int		*write_ld_first(char *args, int *len, int fd)
 {
-  char		reg_value;
-  int		save;
-  short int	save_end;
-  char		*tmp;
-  char		*s_ret;
+  short int	ind;
+  int		direct;
 
-  tmp = (args[0][0] == '%') ? copy_dir_value(args[0]) : my_strdup(args[0]);
-  save = my_getnbr(tmp);
-  save_end = my_getnbr(tmp);
-  free(tmp);
-  (args[0][0] == '%') ? convert_short_endian(&save_end, my_endian()) :
-    convert_endian(&save, my_endian());
-  s_ret = (args[0][0] == '%') ? (char *)&save_end : (char *)&save;
-  ret[2] = s_ret[0];
-  ret[3] = s_ret[1];
-  if (args[0][0] != '%')
+  if (args[0] == '%' && args[1] != ':')
     {
-      ret[4] = s_ret[2];
-      ret[5] = s_ret[3];
+      args++;
+      direct = (args[1] != ':') ? my_getnbr(args) : 0;
+      convert_endian(&direct, my_endian());
+      len += write(fd, &direct, sizeof(int));
     }
-  reg_value = my_getnbr(copy_reg_value(args[1]));
-  ret[size] = reg_value;
-  return (ret);
+  else if (args[0] != '%')
+    {
+      ind = my_getnbr(args);
+      convert_short_endian(&ind, my_endian());
+      len += write(fd, &ind, sizeof(short int));
+    }
+  return (len);  
 }

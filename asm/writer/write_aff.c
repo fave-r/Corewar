@@ -5,22 +5,20 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Apr 10 14:47:40 2014 alex-odet
-** Last update Fri Apr 11 23:14:57 2014 alex-odet
+** Last update Sat Apr 12 20:01:03 2014 alex-odet
 */
 
 #include "struct.h"
 
-char	*write_aff(char *arg, int *len)
+int	*write_aff(char *arg, int *len, int fd)
 {
-  char	*ret;
-  int	size;
+  char	val;
 
-  size = 3;
-  len += size;
-  ret = xmalloc(sizeof(char) * (size + 1));
-  ret[0] = op_tab[15].code;
-  ret[1] = encode_octet(arg);
-  ret[2] = my_getnbr(copy_reg_value(arg));
-  ret[3] = 0;
-  return (ret);
+  len += write(fd, &op_tab[15].code, 1);
+  val = encode_octet(arg);
+  len += write(fd, &val, 1); 
+  arg++;
+  val = my_getnbr(arg);
+  len += write(fd, &val, REG_SIZE);
+  return (len);
 }
