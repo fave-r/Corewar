@@ -5,48 +5,43 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 21:43:59 2014 alex-odet
-** Last update Fri Apr 11 22:56:45 2014 alex-odet
+** Last update Sat Apr 12 23:03:56 2014 alex-odet
 */
 
 #include "struct.h"
 
-char	*write_lld(char *args, int *len)
+int		*write_lld(char *args, int *len, int fd)
 {
-  int	size;
-  char	**args_tab;
-  char	*ret;
+  char		val;
+  char		**args_tab;
 
   args_tab = my_str_to_wordtab(args, ",");
-  size = size_to_malloc(args_tab, 0);
-  ret = xmalloc(sizeof(char) * (size + 1));
-  ret[0] = op_tab[12].code;
-  ret[1] = encode_octet(args);
-  copy_arg_lld(args_tab[0], ret);
-   ret[size] = my_getnbr(copy_reg_value(args_tab[1]));
-  ret[size + 1] = 0;
-  len += size;
-  return (ret);
+  len += write(fd, &op_tab[12].code, 1);
+  val = encode_octet(args);
+  len += write(fd, &val, 1);
+  write_lld_arg(args_tab[0], len, fd);
+  args_tab[1]++;
+  val = my_getnbr(args_tab[1]);
+  write(fd, &val, REG_SIZE);
 }
 
-void	copy_arg_lld(char *arg, char *ret)
+int		*write_lld_arg(char *arg, int *len, int fd)
 {
-  int	end;
-  char	*s_ret;
+  int		size;
+  short	int	size_end;
 
   if (arg[0] == '%')
     {
-      end = my_getnbr(copy_dir_value(arg));
-      convert_endian(&end, my_endian());
-      s_ret = (char *)&end;
-      ret[2] = s_ret[0];
-      ret[3] = s_ret[1];
+
+      arg[0]++;
+      size = (arg[1] != ':') ? my_getnbr(arg) : 0;
+      convert_endian(&size, my_endian());
+      len += write(fd, &size, sizeof(int));
     }
   else
     {
-      end = my_getnbr(arg);
-      convert_endian(&end, my_endian());
-      s_ret = (char *)&end;
-      ret[2] = s_ret[0];
-      ret[3] = s_ret[1];
-    } 
+      size_end = my_getnbr(arg);
+      convert_short_endian(&size_end, my_endian());
+      len += write(fd, &size_end, sizeof(short int));
+    }  
 }

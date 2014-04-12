@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Sat Apr 12 13:57:24 2014 alex-odet
+** Last update Sat Apr 12 14:45:27 2014 alex-odet
 */
 
 #include "struct.h"
@@ -57,14 +57,7 @@ t_lst		*function(int fd)
   t_lst		*first;
   char		*tmp;
   char		*buff;
-  int	i = 0;
-  /*
-  buff = xmalloc(sizeof(char *) * 4);
-  buff[0] = "test:\tzjmp\t%0";
-  buff[1] = "\tlive\t%42";
-  buff[2] = "\tlive\t%21";
-  buff[3] = NULL;
-  */
+
   ret = NULL;
   first = NULL;
   while ((buff = get_next_line(fd)))
@@ -78,9 +71,7 @@ t_lst		*function(int fd)
 	  if (first == NULL)
 	    first = ret;
 	}
-      i++;
     }
-  //  my_show_list_cmd(first);
   close (fd);
   return (first);
 }
@@ -119,17 +110,11 @@ int	my_cmd_list_size(t_lst *list)
 
 void	parse_list(t_lst *list, int fd)
 {
-  char	*biggy_buff;
   int	len;
-  int	i;
 
-  i = 0;
-  biggy_buff = xmalloc(sizeof(char) * 1);
   while (list)
     {
-      write_in_buff(list->cmd, &len, biggy_buff);
+      write_in_buff(list->cmd, &len, fd);
       list = list->next;
-      i++;
     }
-  write(fd, biggy_buff, len);
 }

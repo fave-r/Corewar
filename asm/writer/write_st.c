@@ -5,43 +5,36 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  9 13:04:49 2014 alex-odet
-** Last update Fri Apr 11 22:48:01 2014 alex-odet
+** Last update Sat Apr 12 15:36:03 2014 alex-odet
 */
 
 #include "struct.h"
 
-char	*my_write_st(char *args, int *len)
+int	*my_write_st(char *args, int *len, int fd)
 {
   char	**args_tab;
-  char	*tmp;
   int	size;
+  char	encode;
+  char	val;
 
   args_tab = my_str_to_wordtab(args, "\t,");
-  size = size_to_malloc(args_tab, 0);
-  tmp = xmalloc(sizeof(char) * (size + 1));
-  tmp[0] = op_tab[2].code;
-  tmp[1] = encode_octet(args);
-  tmp[2] = my_getnbr(copy_reg_value(args_tab[0]));
+  len += write(fd, &op_tab[2].code, 1);
+  encode = encode_octet(args);
+  len += write(fd, &encode, 1);
+  args_tab[0]++;
+  val = my_getnbr(args_tab[0]);
+  len += write(fd, &val, REG_SIZE);
   if (args_tab[1][0] == 'r')
-    tmp[size] = my_getnbr(copy_reg_value(args_tab[1]));
+    {
+      args_tab[1]++;
+      val = my_getnbr(args_tab[1]);
+      len += write(fd, &val, REG_SIZE);
+    }
   else
-    write_ind_st(args_tab[1], tmp);
-  tmp[size + 1] = 0;
-    len += size;
-  return (tmp);
-}
-
-char	*write_ind_st(char *args, char *tmp)
-{
-  int	end;
-  char	*s_ret;
-
-  end = my_getnbr(args);
-  convert_endian(&end, my_endian());
-  s_ret = (char *)&end;
-  tmp[3] = s_ret[0];
-  tmp[4] = s_ret[1];
-  tmp[5] = s_ret[2];
-  tmp[6] = s_ret[3];
-  return (tmp);
+    {
+      size = my_getnbr(args_tab[1]);
+      convert_endian(&size, my_endian());
+      write(fd, &size, sizeof(short int));
+    }
+  return (len);
 }
