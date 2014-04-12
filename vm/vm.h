@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Sat Apr 12 15:11:04 2014 Thibaut Lopez
+** Last update Sat Apr 12 16:08:05 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
+#include "SDL/SDL_ttf.h"
 #include "op.h"
 
 #define ER_COR	" is not a corewar executable.\n"
@@ -33,6 +34,7 @@ typedef struct	s_sdl
   SDL_Surface	*screen;
   SDL_Surface	*arena;
   SDL_Surface	*name[4];
+  TTF_Font	*font;
 }		t_sdl;
 
 typedef struct		s_champ
@@ -120,7 +122,7 @@ int	get_all_type_arg_noidx(int *tab, t_champ *champ,
 			       unsigned char *mem, int *err);
 
 int	init_graphic(t_sdl *cor, t_champ *champ);
-void	free_graphic();
+void	free_graphic(t_sdl *cor);
 int	get_escape();
 void	change_case_mem(int case_mem, Uint32 color, t_sdl *cor);
 int	aff_mem(unsigned char *mem);

@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Sat Apr 12 14:45:41 2014 Thibaut Lopez
+** Last update Sat Apr 12 16:10:25 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -99,5 +99,6 @@ int	main(int argc, char **argv)
   if (init_graphic(&(cor.graphic), cor.champ) == 1)
     return (1);
   run_corewar(cor.champ, &cor);
+  free_graphic(&(cor.graphic));
   return (0);
 }

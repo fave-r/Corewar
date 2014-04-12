@@ -5,12 +5,23 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:18:05 2014 Thibaut Lopez
-** Last update Wed Mar 19 09:21:23 2014 Thibaut Lopez
+** Last update Sat Apr 12 16:10:38 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 
-void	free_graphic()
+void	free_graphic(t_sdl *cor)
 {
+  int	i;
+
+  i = 0;
+  while (cor->name[i] != NULL)
+    {
+      SDL_FreeSurface(cor->name[i]);
+      i++;
+    }
+  SDL_FreeSurface(cor->arena);
+  TTF_CloseFont(cor->font);
+  TTF_Quit();
   SDL_Quit();
 }

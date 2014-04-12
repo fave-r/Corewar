@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Sat Apr 12 15:08:41 2014 Thibaut Lopez
+** Last update Sat Apr 12 16:08:59 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -61,7 +61,39 @@ void	fill_arena(t_sdl *cor, t_champ *champ)
 
 void	name_champ(t_sdl *cor, t_champ *champ)
 {
-varsity_regular.ttf
+  int		i;
+  t_champ	*tmp;
+  SDL_Rect	position;
+  SDL_Color	color;
+
+  position.x = 100;
+  position.y = 20;
+  color.r = 0;
+  color.g = 0;
+  color.b = 0;
+  i = 0;
+  cor->font = TTF_OpenFont("graphic/varsity_regular.ttf", 30);
+  tmp = champ;
+  while (tmp != NULL)
+    {
+      position.w = 20;
+      position.h = 40;
+      SDL_FillRect(cor->screen, &position, tmp->color);
+      position.x += 50;
+      cor->name[i] = TTF_RenderText_Solid(cor->font, tmp->head->prog_name, color);
+      SDL_BlitSurface(cor->name[i], NULL, cor->screen, &position);
+      position.x -= 50;
+      position.y += 50;
+      i++;
+      if (i == 2)
+	{
+	  position.x = 900;
+	  position.y = 20;
+	}
+      tmp = tmp->next;
+    }  
+  if (i < 4)
+    cor->name[i] = NULL;
 }
 
 int	init_graphic(t_sdl *cor, t_champ *champ)
@@ -77,6 +109,7 @@ int	init_graphic(t_sdl *cor, t_champ *champ)
   cor->arena = SDL_CreateRGBSurface(SDL_HWSURFACE, 1490, 840, 32, 0, 0, 0, 0);
   SDL_FillRect(cor->arena, NULL, SDL_MapRGB(cor->arena->format, 0, 0, 0));
   init_color_champ(cor, champ);
+  name_champ(cor, champ);
   fill_arena(cor, champ);
   SDL_Flip(cor->screen);
   return (0);
