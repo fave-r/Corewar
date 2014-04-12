@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Fri Apr 11 23:13:36 2014 Thibaut Lopez
+** Last update Sat Apr 12 17:04:30 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -48,13 +48,13 @@ int	find_in_tab(char octet)
 
 int	champ_play(t_champ *cur_champ, t_cor *map)
 {
-  fct_tab[find_in_tab(map->mem[cur_champ->pc])].ptr_fct(cur_champ, map);
+  fct_tab[find_in_tab(map->mem[mod_mem(cur_champ->pc)])].ptr_fct(cur_champ, map);
   return (0);
 }
 
 int	get_wait(t_champ *cur_champ, t_cor *map)
 {
-  cur_champ->wait = fct_tab[find_in_tab(map->mem[cur_champ->pc])].wait;
+  cur_champ->wait = fct_tab[find_in_tab(map->mem[mod_mem(cur_champ->pc)])].wait;
   return (cur_champ->wait);
 }
 
