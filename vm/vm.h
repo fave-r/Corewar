@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Sat Apr 12 16:08:05 2014 Thibaut Lopez
+** Last update Sat Apr 12 17:29:19 2014 romaric
 */
 
 #ifndef VM_H
@@ -140,5 +140,6 @@ int	kill_champ(t_champ **champs, t_cor *map);
 int	mod_mem(int nb);
 void	cor_mem_set(unsigned char *mem, int len);
 int	prog_size_error(char *path);
+void    fmode(void);
 
 #endif

@@ -5,12 +5,14 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Apr 12 16:52:24 2014 romaric
-** Last update Sat Apr 12 17:11:13 2014 romaric
+** Last update Sat Apr 12 17:42:19 2014 romaric
 */
 
+#include "fmod.h"
 #include "vm.h"
+#include "my.h"
 
-void    fmode(void)
+void		fmode(void)
 {
   FMOD_SYSTEM	*system;
   FMOD_SOUND	*musique;
@@ -26,9 +28,9 @@ void    fmode(void)
                                      | FMOD_2D | FMOD_CREATESTREAM, 0, &musique);
   if (resultat != FMOD_OK)
     {
-      my_putstr("Cannot find ", 2);
-      my_putstr(str, 2);
-      my_putstr(", put this file next to the executable 'corewar'", 2);
+      my_printf(2, "Cannot find ");
+      my_printf(2, "%s", str);
+      my_printf(2, ", put this file next to the executable 'corewar'");
       write(2, "\n", 1);
     }
   else

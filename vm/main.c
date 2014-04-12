@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Sat Apr 12 16:57:55 2014 romaric
+** Last update Sat Apr 12 17:29:53 2014 romaric
 */
 
 #include "my.h"
@@ -80,7 +80,7 @@ int	main(__attribute__((unused))int argc, char **argv)
 {
   t_cor	cor;
 
-  fmode(void);
+  fmode();
   cor.dump = 2500000000;
   cor.live_done = 0;
   cor.cycle = 1;

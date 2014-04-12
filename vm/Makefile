@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Sat Apr 12 17:11:53 2014 romaric
+## Last update Sat Apr 12 17:38:45 2014 romaric
 ##
 
 VM_S=		champ_fun.c \
@@ -32,7 +32,7 @@ VM_N=		corewar
 
 VM_O=		$(VM_S:.c=.o)
 
-CC=		gcc -g3 -W -Wall -Werror -I ../my/ -I ../ -I . -lSDL_image -lSDL_ttf -lSDL -lGL -lGLU ./graphic/fmodapi44432linux/api/lib/libfmodex64-4.44.32.so
+CC=		gcc -g3 -W -Wall -Werror -I ../my/ -I ../ -I . -I ./graphic/fmodapi44432linux/api/inc -lSDL_image -lSDL_ttf -lSDL -lGL -lGLU ./graphic/fmodapi44432linux/api/lib/libfmodex64-4.44.32.so
 
 all:		$(VM_N)
 
