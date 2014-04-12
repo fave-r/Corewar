@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 21:43:59 2014 alex-odet
-** Last update Sat Apr 12 23:03:56 2014 alex-odet
+** Last update Sat Apr 12 23:47:50 2014 alex-odet
 */
 
 #include "struct.h"
@@ -23,6 +23,7 @@ int		*write_lld(char *args, int *len, int fd)
   args_tab[1]++;
   val = my_getnbr(args_tab[1]);
   write(fd, &val, REG_SIZE);
+  return (len);
 }
 
 int		*write_lld_arg(char *arg, int *len, int fd)
@@ -43,5 +44,6 @@ int		*write_lld_arg(char *arg, int *len, int fd)
       size_end = my_getnbr(arg);
       convert_short_endian(&size_end, my_endian());
       len += write(fd, &size_end, sizeof(short int));
-    }  
+    }
+  return (len);
 }

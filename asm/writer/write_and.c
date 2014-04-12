@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Apr 10 10:01:35 2014 alex-odet
-** Last update Sat Apr 12 23:16:19 2014 alex-odet
+** Last update Sun Apr 13 00:09:56 2014 alex-odet
 */
 
 #include "struct.h"
@@ -33,9 +33,9 @@ int		*write_arg_and(char *args, int *len, int fd)
 
   if (args[0] == 'r')
     {
-      args[0]++;
+      args++;
       val = my_getnbr(args);
-      len += (write, &val, REG_SIZE);
+      len += write(fd, &val, REG_SIZE);
     }
   else if (args[0] == '%')
     {

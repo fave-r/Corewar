@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:49:55 2014 alex-odet
-** Last update Sat Apr 12 23:23:42 2014 alex-odet
+** Last update Sat Apr 12 23:49:42 2014 alex-odet
 */
 
 #include "struct.h"
@@ -34,9 +34,7 @@ t_cmd	tab[]=
 void	write_in_buff(char **cmd, int *len, int fd)
 {
   int	j;
-  char	*big_buff;
 
-  printf("cmd[0] = %s\narg = %s\n", cmd[0], cmd[1]);
   *len = 0;
   j = 0;
   if (cmd[0] != NULL)

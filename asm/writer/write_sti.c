@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 15:44:53 2014 alex-odet
-** Last update Sat Apr 12 20:34:08 2014 alex-odet
+** Last update Sun Apr 13 00:12:38 2014 alex-odet
 */
 
 #include "struct.h"
@@ -20,15 +20,14 @@ int		*write_sti(char *args, int *len, int fd)
   val = encode_octet(args);
   len += write(fd, &val, 1);
   write_sti_arg(args_tab[0], len, fd);
-  write_sti_arg(args_tab[0], len, fd);
-  write_sti_arg(args_tab[0], len, fd);
+  write_sti_arg(args_tab[1], len, fd);
+  write_sti_arg(args_tab[2], len, fd);
   return (len);
 }
 
 void		write_sti_arg(char *arg, int *len, int fd)
 {
   char		val;
-  int		size_i;
   short int	size_s;
   
 if (arg[0] == 'r')
@@ -40,9 +39,9 @@ if (arg[0] == 'r')
   else if (arg[0] == '%')
     {
       arg++;
-      size_i = my_getnbr(arg);
-      convert_endian(&size_i, my_endian());
-      len += write(fd, &size_i, sizeof(int));
+      size_s = (arg[1] != ':') ? my_getnbr(arg) : 0;
+      convert_short_endian(&size_s, my_endian());
+      len += write(fd, &size_s, sizeof(short int));
     }
   else
     {

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 14:53:20 2014 alex-odet
-** Last update Sat Apr 12 20:20:00 2014 alex-odet
+** Last update Sun Apr 13 00:12:03 2014 alex-odet
 */
 
 #include "struct.h"
@@ -27,9 +27,9 @@ int		*write_ldi(char *args, int *len, int fd)
 
 int		*write_ldi_arg(char *arg, int *len, int fd)
 {
-  int		size;
   char		val;
   short int	size_end;
+
   if (arg[0] == 'r')
     {
       arg++;
@@ -39,9 +39,9 @@ int		*write_ldi_arg(char *arg, int *len, int fd)
   else if (arg[0] == '%')
     {
       arg++;
-      size = my_getnbr(arg);
-      convert_endian(&size, my_endian());
-      len += write(fd, &size, sizeof(int));
+      size_end = (arg[1] != ':') ? my_getnbr(arg) : 0;
+      convert_short_endian(&size_end, my_endian());
+      len += write(fd, &size_end, sizeof(short int));
     }
   else
     {

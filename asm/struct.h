@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sat Apr 12 23:01:52 2014 alex-odet
+** Last update Sun Apr 13 01:05:46 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -42,7 +42,6 @@ typedef struct s_label
 {
   struct s_label *next;
   char		*name;
-  int		line;
 }		t_label;
 
 typedef struct	s_file
@@ -66,6 +65,13 @@ typedef struct	s_chkcmd
   char		**line;
 }		t_chkcmd;
 
+typedef struct	s_chklab
+{
+  int	fd;
+  char	*tmp;
+  char	*save;
+}		t_chklab;
+
 char		*get_next_line(const int fd);
 void		parser(char *str);
 int		check(char *str);
@@ -82,10 +88,10 @@ void		check_cmd(char *str, t_label *list);
 char		*cmd_exist(char *str, int *bool);
 void		my_show_list(t_label *list);
 t_label		*fill_list_of_label(char *str);
-t_label		*my_put_in_list(t_label *list, char *name, int line);
-t_label		*new_node(char *name, int line);
-t_label		*check_label(char *tmp, t_label *list, int line);
-t_label		*copy_label(char *tmp, int len, t_label *list, int line);
+t_label		*my_put_in_list(t_label *list, char *name);
+t_label		*new_node(char *name);
+t_label		*check_label(char *tmp, t_label *list);
+t_label		*copy_label(char *tmp, int len, t_label *list);
 void		my_show_file_list(t_file *list);
 t_file		*create_node(char *name);
 t_file		*my_put_in_file_list(t_file *list, char *name);
@@ -137,8 +143,8 @@ int		*write_ldi(char *args, int *len, int fd);
 int		*write_ldi_arg(char *arg, int *len, int fd);
 int		*write_lld(char *args, int *len, int fd);
 int		*write_lld_arg(char *arg, int *len, int fd);
-char		*write_lldi(char *args, int *len);
-int		copy_arg_lldi(char *args, char *ret, int index);
+int		*write_lldi(char *args, int *len, int fd);
+int    		*write_lldi_arg(char *args, int *len, int fd);
 int		*write_or(char *args, int *len, int fd);
 int		*write_arg_or(char *args, int *len, int fd);
 int		*write_xor(char *args, int *len, int fd);

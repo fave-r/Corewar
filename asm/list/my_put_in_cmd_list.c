@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Sat Apr 12 14:45:27 2014 alex-odet
+** Last update Sun Apr 13 01:08:06 2014 alex-odet
 */
 
 #include "struct.h"
@@ -15,13 +15,11 @@ void	my_show_tab(char **tab)
   int	i;
 
   i = 0;
-  printf("----------------------------\n");
   while (tab[i])
     {
       printf("%s\n", tab[i]);
       i++;
     }
-  printf("------------------------------\n");
 }
 
 void		my_show_list_cmd(t_lst *list)
@@ -39,10 +37,10 @@ t_lst		*create_new_node(char *cmd, t_lst **node)
   t_lst		*new;
 
   new = xmalloc(sizeof(t_lst));
-  new->cmd = my_str_to_wordtab(cmd, "\t");
+  new->cmd = my_str_to_wordtab(cmd, "\t ");
   len = my_strlen(new->cmd[0]);
   if (len > 1 && new->cmd[0][len - 1] == ':')
-    new->cmd = my_str_to_wordtab(cmd + len, "\t");
+    new->cmd = my_str_to_wordtab(cmd + len, "\t ");
   new->next = NULL;
   new->prev = *node;
   if (*node != NULL)
@@ -92,6 +90,8 @@ char	*my_fill_buff(char *str, int fd)
     }
   else
     parse_list(list, fd);
+  close (new_fd);
+  close (fd);
   return (buff);
 }
 
@@ -117,4 +117,5 @@ void	parse_list(t_lst *list, int fd)
       write_in_buff(list->cmd, &len, fd);
       list = list->next;
     }
+  close (fd);
 }

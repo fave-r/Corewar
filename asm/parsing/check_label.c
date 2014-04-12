@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Sat Apr 12 23:20:42 2014 alex-odet
+** Last update Sun Apr 13 01:13:07 2014 alex-odet
 */
 
 #include "struct.h"
@@ -13,31 +13,28 @@
 t_label		*fill_list_of_label(char *str)
 {
   t_label	*list;
-  int		fd;
-  char		*tmp;
-  int		line;
-  char		*save;
+  t_chklab	p;
 
-  line = 1;
   list = NULL;
-  fd = xopen(str, O_RDONLY);
-  while ((tmp = get_next_line(fd)))
+  p.fd = xopen(str, O_RDONLY);
+  while ((p.tmp = get_next_line(p.fd)))
     {
-      if (tmp[my_strlen(tmp) - 1] == ':' && tmp[my_strlen(tmp) - 2] != '%')
+      if ((p.tmp[0] >= 'a' && p.tmp[0] <= 'z') 
+	  && p.tmp[my_strlen(p.tmp) - 1] == ':')
 	{
-	  save = my_strndup(tmp, my_strlen(tmp) - 1);
-	  list = my_put_in_list(list, save, line);
+	  p.save = my_strndup(p.tmp, my_strlen(p.tmp) - 1);
+	  if ((check_label_exist(list, p.save)) != 1)
+	    list = my_put_in_list(list, p.save);
 	}
       else
-	list = check_label(tmp, list, line);
-      line++;
+	list = check_label(p.tmp, list);
     }
-  //  my_show_list(list);
-  close (fd);
+  my_show_list(list);
+  close (p.fd);
   return (list);
 }
 
-t_label		*check_label(char *tmp, t_label *list, int line)
+t_label		*check_label(char *tmp, t_label *list)
 {
   int		i;
 
@@ -48,18 +45,19 @@ t_label		*check_label(char *tmp, t_label *list, int line)
 	  && tmp[i - 1] != ',' && tmp[i - 1] != ' '
 	  && tmp[i - 1] != '\t' && tmp[i - 3] != ','
 	  && (tmp[i + 1] == '\t' || tmp[i + 1] == ' '))
-	list = copy_label(tmp, i, list, line);
+	list = copy_label(tmp, i, list);
       i++;
     }
   return (list);
 }
 
-t_label		*copy_label(char *tmp, int len, t_label *list, int line)
+t_label		*copy_label(char *tmp, int len, t_label *list)
 {
   char	*save;
 
   save = my_strndup(tmp, len);
-  list = my_put_in_list(list, save, line);
+  if ((check_label_exist(list, save)) != 1)
+    list = my_put_in_list(list, save);
   return (list);
 }
 
@@ -80,3 +78,4 @@ int	check_label_exist(t_label *list, char *label_check)
     }
   return (0);
 }
+

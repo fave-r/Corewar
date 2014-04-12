@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Sat Apr 12 01:59:18 2014 alex-odet
+** Last update Sun Apr 13 00:46:52 2014 alex-odet
 */
 
 #include "struct.h"
@@ -26,7 +26,6 @@ int	check(char *str)
   char       	*name;
   char       	*comment;
   int		fd;
-  __attribute__((unused)) char	*buff;
 
   ptr = init();
   name = check_name(str);
@@ -39,6 +38,7 @@ int	check(char *str)
   free(list);
   free(name);
   free(comment);
+  close (fd);
   return (0);
 }
 
