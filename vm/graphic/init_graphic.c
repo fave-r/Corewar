@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Sat Apr 12 16:59:45 2014 Thibaut Lopez
+** Last update Sat Apr 12 20:16:10 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -63,20 +63,18 @@ void	loop_name(SDL_Rect *position, t_sdl *cor, int i, t_champ *tmp)
 {
   SDL_Color	color;
 
-  color.r = 0;
-  color.g = 0;
-  color.b = 0;
-  position->w = 20;
-  position->h = 40;
+  color.r = 255;
+  color.g = 255;
+  color.b = 255;
+  position->w = 15;
+  position->h = 30;
   SDL_FillRect(cor->screen, position, tmp->color);
   position->x += 50;
   cor->name[i] = TTF_RenderText_Solid(cor->font,
 				      tmp->head->prog_name, color);
   SDL_BlitSurface(cor->name[i], NULL, cor->screen, position);
   position->x -= 50;
-  i++;
-  position->x = (i == 2) ? 900 : position->x;
-  position->y = (i == 2) ? 20 : position->y + 50;
+  position->y += 35;
 }
 
 void	name_champ(t_sdl *cor, t_champ *champ)
@@ -86,9 +84,9 @@ void	name_champ(t_sdl *cor, t_champ *champ)
   SDL_Rect	position;
 
   position.x = 100;
-  position.y = 20;
+  position.y = 10;
   i = 0;
-  if ((cor->font = TTF_OpenFont("graphic/varsity_regular.ttf", 30)) == NULL)
+  if ((cor->font = TTF_OpenFont("graphic/varsity_regular.ttf", 20)) == NULL)
     exit(0);
   tmp = champ;
   while (tmp != NULL)
@@ -103,6 +101,8 @@ void	name_champ(t_sdl *cor, t_champ *champ)
 
 int	init_graphic(t_sdl *cor, t_champ *champ)
 {
+  SDL_Rect	position;
+
   if (SDL_Init(SDL_INIT_VIDEO) == -1)
     return (1);
   if (TTF_Init() == -1)
@@ -111,6 +111,11 @@ int	init_graphic(t_sdl *cor, t_champ *champ)
     return (1);
   SDL_WM_SetCaption("Corewar VM", NULL);
   SDL_FillRect(cor->screen, NULL, SDL_MapRGB(cor->screen->format, 150, 150, 150));
+  position.x = 0;
+  position.y = 0;
+  cor->bg = SDL_LoadBMP("graphic/cyber-photo-2.bmp");
+  if (cor->bg != NULL)
+    SDL_BlitSurface(cor->bg, NULL, cor->screen, &position);
   cor->arena = SDL_CreateRGBSurface(SDL_HWSURFACE, 1490, 840, 32, 0, 0, 0, 0);
   SDL_FillRect(cor->arena, NULL, SDL_MapRGB(cor->arena->format, 0, 0, 0));
   init_color_champ(cor, champ);

@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Sat Apr 12 17:29:19 2014 romaric
+** Last update Sat Apr 12 20:09:55 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -33,6 +33,7 @@ typedef struct	s_sdl
 {
   SDL_Surface	*screen;
   SDL_Surface	*arena;
+  SDL_Surface	*bg;
   SDL_Surface	*name[4];
   TTF_Font	*font;
 }		t_sdl;
