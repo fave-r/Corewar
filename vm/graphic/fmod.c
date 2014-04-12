@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Apr 12 16:52:24 2014 romaric
-** Last update Sat Apr 12 20:27:52 2014 Thibaut Lopez
+** Last update Sat Apr 12 20:31:25 2014 romaric
 */
 
 #include "fmod.h"
@@ -20,7 +20,7 @@ void		fmode(void)
   FMOD_RESULT	resultat;
   char		*str;
 
-  str = "graphic/Martin Garrix - Animals.mp3";
+  str = "./graphic/Martin Garrix - Animals.mp3";
   FMOD_System_Create(&system);
   FMOD_System_Init(system, 2, FMOD_INIT_NORMAL, NULL);
   resultat = FMOD_System_CreateSound(system, str, FMOD_SOFTWARE
