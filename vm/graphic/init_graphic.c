@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Sat Apr 12 16:08:59 2014 Thibaut Lopez
+** Last update Sat Apr 12 16:29:59 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -73,6 +73,8 @@ void	name_champ(t_sdl *cor, t_champ *champ)
   color.b = 0;
   i = 0;
   cor->font = TTF_OpenFont("graphic/varsity_regular.ttf", 30);
+  if (cor->font == NULL)
+    exit(0);
   tmp = champ;
   while (tmp != NULL)
     {
