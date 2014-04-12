@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Sat Apr 12 00:26:24 2014 romaric
+** Last update Sat Apr 12 13:56:28 2014 alex-odet
 */
 
 #include "struct.h"
@@ -19,7 +19,7 @@ void	check_cmd(char *str, t_label *list)
   ch.cmd = NULL;
   while ((ch.tmp = get_next_line(ch.fd)))
     {
-      my_printf(1, "%s\n", ch.tmp);
+      //      my_printf(1, "%s\n", ch.tmp);
       if (ch.tmp[0] == '\t' || my_strchr(':', ch.tmp) != -1)
 	ch.cmd = cmd_exist(ch.tmp, &(ch.i));
       if (ch.cmd != NULL)

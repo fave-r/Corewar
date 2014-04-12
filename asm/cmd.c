@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:49:55 2014 alex-odet
-** Last update Sat Apr 12 01:08:04 2014 romaric
+** Last update Sat Apr 12 13:47:07 2014 alex-odet
 */
 
 #include "struct.h"
@@ -35,31 +35,22 @@ char	*write_in_buff(char **cmd, int *len, char *dest)
 {
   int	i;
   int	j;
-  int	x;
   char	*big_buff;
 
   *len = 0;
-  i = 1;
-  while (cmd[i])
+  i = 0;
+  j = 0;
+  printf("cmd[0] = %s\n\targ = %s\n", cmd[0], cmd[1]);
+  while (j <= 15)
     {
-      printf("1\n");
-      j = 0;
-      while (tab[j].cmd)
+      if ((my_strcmp(cmd[0], tab[j].cmd)) == 0)
 	{
-	  printf("2\n");
-	  x = my_strcmp(cmd[i], tab[j].cmd);
-	  printf("cmd[i] = %s", cmd[i]);
-	  j++;
-	}
-      if (tab[j].cmd != NULL)
-	{
-	  big_buff = tab[j].ptr(cmd[i + 1], len);
+	  big_buff = tab[j].ptr(cmd[1], len);
 	  strncat(dest, big_buff, *len);
 	  //      free(big_buff);
 	  big_buff = dest;
-	  i += 2;
 	}
-      i++;
+      j++;
     }
   return (big_buff);
 }
