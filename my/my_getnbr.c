@@ -4,35 +4,55 @@
 ** Made by romaric
 ** Login   <fave_r@epitech.net>
 **
-** Started on  Mon Mar 24 12:00:36 2014 romaric
-** Last update Mon Mar 24 12:00:39 2014 romaric
+** Started on  Sun Apr 13 00:13:39 2014 romaric
+** Last update Sun Apr 13 00:13:42 2014 romaric
 */
 
-#include "my.h"
-
-int     my_getnbr(char *str)
+int	nbrsign(char *str)
 {
-  int   cpt;
-  int   i;
-  int   result;
+  int	i;
+  int	k;
 
-  if (str == NULL)
-    return (0);
-  result = 0;
   i = 0;
-  cpt = 1;
-  while (str[i] >= 48 && str[i] <= 57)
+  k = 0;
+  while (*(str + i) == '-' || *(str + i) == '+')
     {
-      cpt = cpt * 10;
-      i++;
+      if (*(str + i) == '-')
+	{
+	  k = k + 1;
+	}
+      i = i + 1;
     }
-  cpt = cpt / 10;
-  i = 0;
-  while (str[i] >= 48 && str[i] <= 57)
-    {
-      result = result + ((str[i] - 48) * cpt);
-      cpt = cpt / 10;
-      i++;
-    }
-  return (result);
+  k = k % 2;
+  return (k);
+
 }
+
+int	my_getnbr(char *str)
+{
+  int	i;
+  int	j;
+  int	k;
+
+  i = 0;
+  j = 0;
+  k = nbrsign(str);
+  while (*(str + i) < '0' || *(str + i) > '9')
+    {
+      i = i + 1;
+    }
+  while (*(str + i) >= '0' && *(str + i) <= '9')
+    {
+      if (j < ((-2147483647 - k + (*(str + i) - 48)) / 10))
+	return (0);
+      else
+	{
+	  j = (10 * j) - (*(str + i) - 48);
+	  i = i + 1;
+	}
+    }
+  if (k == 0)
+    j = j * -1;
+  return (j);
+}
+
