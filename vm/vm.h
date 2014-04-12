@@ -5,11 +5,12 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Sat Apr 12 14:41:35 2014 romaric
+** Last update Sat Apr 12 14:46:46 2014 romaric
 */
 
 #ifndef VM_H
 #define VM_H
+
 #include <sys/stat.h>
 #include <SDL/SDL.h>
 #include <fcntl.h>
@@ -18,12 +19,13 @@
 #include <stdlib.h>
 #include <strings.h>
 #include "op.h"
+
 #define ER_COR	" is not a corewar executable.\n"
 #define ER_SIZE	" take to much memory to be launched.\n"
 #define ER_POS1	"Error : the position "
 #define	ER_POS2	"  is already taken by the file "
 #define ER_POS3	".\n"
-#define	ER_FULL "Can't find place for another champ: places already taken.\n"
+#define	ER_FULL "Can't find place to another champ: places already taken.\n"
 #define ER_VOID	"You haven't gave a single correct champion.\n"
 
 typedef struct		s_champ
@@ -101,7 +103,8 @@ void	my_lldi(t_champ *champ, t_cor *cor);
 void	my_lfork(t_champ *champ, t_cor *cor);
 void	my_aff(t_champ *champ, t_cor *cor);
 void	my_none(t_champ *champ, t_cor *cor);
-int	get_all_type_arg(int *tab, t_champ *champ, unsigned char *mem, int *err);
+int	get_all_type_arg(int *tab, t_champ *champ
+			 , unsigned char *mem, int *err);
 int	get_dir_ind_arg(int *tab, t_champ *champ, unsigned char *mem, int *err);
 int	get_dir_reg_arg(int *tab, t_champ *champ, unsigned char *mem, int *err);
 int	get_dir_ind_arg_noidx(int *tab, t_champ *champ,
