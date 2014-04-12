@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 11:53:25 2014 romaric
-** Last update Mon Apr  7 14:34:50 2014 romaric
+** Last update Sat Apr 12 23:40:56 2014 romaric
 */
 
 #include "struct.h"
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
       my_putstr(" Name_Of_The_Champion.s\n", 2);
       return (0);
     }
-  else
+  /*  else
     {
       while (av[i])
 	{
@@ -32,7 +32,8 @@ int	main(int ac, char **av)
 	  i++;
 	}
     }
-  send_file_to_parser(list);
+    send_file_to_parser(list);*/
+  parser(av[1]);
   return (0);
 }
 
