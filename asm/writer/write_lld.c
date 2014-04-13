@@ -5,12 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 21:43:59 2014 alex-odet
-** Last update Sun Apr 13 06:23:35 2014 alex-odet
+** Last update Sun Apr 13 19:48:45 2014 
 */
 
 #include "struct.h"
 
-int		*write_lld(char *args, int *len, int fd)
+int		*write_lld(char *args, int *len, int fd, t_lab *lab)
 {
   char		val;
   char		**args_tab;
@@ -19,14 +19,14 @@ int		*write_lld(char *args, int *len, int fd)
   *len += write(fd, &op_tab[12].code, 1);
   val = encode_octet(args);
   *len += write(fd, &val, 1);
-  write_lld_arg(args_tab[0], len, fd);
+  write_lld_arg(args_tab[0], len, fd, lab);
   args_tab[1]++;
   val = my_getnbr(args_tab[1]);
   *len += write(fd, &val, 1);
   return (len);
 }
 
-int		write_lld_arg(char *arg, int *len, int fd)
+int		write_lld_arg(char *arg, int *len, int fd, t_lab *lab)
 {
   int		size;
   short	int	size_end;
@@ -34,7 +34,7 @@ int		write_lld_arg(char *arg, int *len, int fd)
   if (arg[0] == '%')
     {
       arg++;
-      size = (arg[1] != ':') ? my_getnbr(arg) : 0;
+      size = (arg[1] != ':') ? my_getnbr(arg) : find_good_lab(lab, arg);
       convert_endian(&size, my_endian());
       *len += write(fd, &size, sizeof(int));
     }

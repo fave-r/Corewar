@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sun Apr 13 19:05:15 2014 romaric
+** Last update Sun Apr 13 19:57:16 2014 
 */
 
 #ifndef __COREWAR__
@@ -53,7 +53,7 @@ typedef struct s_label
 typedef struct	s_cmd
 {
   char		*cmd;
-  int		*(*ptr)(char *, int *, int fd);
+  int		*(*ptr)(char *, int *, int fd, t_lab *list);
 }		t_cmd;
 
 typedef struct	s_chkcmd
@@ -107,11 +107,11 @@ int		count_dot(char *str, int i, char c);
 void		print_bad_instruction(char *cmd);
 void		check_live(char *args, char *cmd, t_label *list);
 int		check_label_exist(t_label *list, char *label_check);
-int		*my_write_live(char *value, int *len, int fd);
-int		*my_write_zjmp(char *value, int *len, int fd);
-int		my_fill_buff(char *str, int fd);
-int		*my_write_fork(char *value, int *len, int fd);
-int		*my_write_lfork(char *value, int *len, int fd);
+int		*my_write_live(char *value, int *len, int fd, t_lab *lab);
+int		*my_write_zjmp(char *value, int *len, int fd, t_lab *lab);
+int		my_fill_buff(char *str, int fd, t_lab *lab);
+int		*my_write_fork(char *value, int *len, int fd, t_lab *lab);
+int		*my_write_lfork(char *value, int *len, int fd, t_lab *lab);
 void		check_ld(char *args, char *cmd, t_label *list);
 char		*copi_labelde(char *args);
 void		printthiserror(char *cmd);
@@ -123,34 +123,34 @@ void		check_st(char *args, char *cmd);
 void		check_add(char *args, char *cmd);
 void		check_and(char *args, char *cmd, t_label *list);
 char		encode_octet(char *args);
-int		*my_write_ld(char *args, int *len, int fd);
+int		*my_write_ld(char *args, int *len, int fd, t_lab *lab);
 char		*copi_labeldei(char *args, int x);
 void		check_ldi(char *args, char *cmd, t_label *list);
 void		check_stinext(char *args, char *cmd, t_label *list);
 void		check_aff(char *args, char *cmd);
 int		count_args(char *args);
-int		*write_add(char *args, int *len, int fd);
-int		*write_sub(char *args, int *len, int fd);
-int		*write_aff(char *arg, int *len, int fd);
-int		*write_and(char *args, int *len, int fd);
-int		*write_arg_and(char *args, int *len, int fd);
-int		*write_ldi(char *args, int *len, int fd);
-int		*write_ldi_arg(char *arg, int *len, int fd);
-int		*write_lld(char *args, int *len, int fd);
-int		write_lld_arg(char *arg, int *len, int fd);
-int		*write_lldi(char *args, int *len, int fd);
-int    		write_lldi_arg(char *args, int *len, int fd);
-int		*write_or(char *args, int *len, int fd);
-int		*write_arg_or(char *args, int *len, int fd);
-int		*write_xor(char *args, int *len, int fd);
-int		*write_arg_xor(char *args, int *len, int fd);
-int		*my_write_st(char *args, int *len, int fd);
-int		*write_sti(char *args, int *len, int fd);
-void		write_sti_arg(char *arg, int *len, int fd);
+int		*write_add(char *args, int *len, int fd, t_lab *lab);
+int		*write_sub(char *args, int *len, int fd, t_lab *lab);
+int		*write_aff(char *arg, int *len, int fd, t_lab *lab);
+int		*write_and(char *args, int *len, int fd, t_lab *lab);
+int		*write_arg_and(char *args, int *len, int fd, t_lab *lab);
+int		*write_ldi(char *args, int *len, int fd, t_lab *lab);
+int		*write_ldi_arg(char *arg, int *len, int fd, t_lab *lab);
+int		*write_lld(char *args, int *len, int fd, t_lab *lab);
+int		write_lld_arg(char *arg, int *len, int fd, t_lab *lab);
+int		*write_lldi(char *args, int *len, int fd, t_lab *lab);
+int    		write_lldi_arg(char *args, int *len, int fd, t_lab *lab);
+int		*write_or(char *args, int *len, int fd, t_lab *lab);
+int		*write_arg_or(char *args, int *len, int fd, t_lab *lab);
+int		*write_xor(char *args, int *len, int fd, t_lab *lab);
+int		*write_arg_xor(char *args, int *len, int fd, t_lab *lab);
+int		*my_write_st(char *args, int *len, int fd, t_lab *lab);
+int		*write_sti(char *args, int *len, int fd, t_lab *lab);
+void		write_sti_arg(char *arg, int *len, int fd, t_lab *lab);
 void		check_cmd_n(t_chkcmd ch, t_label *list);
-int		parse_list(t_lst *list, int fd);
-int		write_in_buff(char **cmd, int *len, int fd);
-int		*write_ld_first(char *args, int *len, int fd);
+int		parse_list(t_lst *list, int fd, t_lab *lab);
+int		write_in_buff(char **cmd, int *len, int fd, t_lab *lab);
+int		*write_ld_first(char *args, int *len, int fd, t_lab *lab);
 t_lab		*new_lab_node(char *label, int oct_pos);
 t_lab		*my_put_in_lab_list(t_lab *list, char *label, int oct_pos);
 t_lab		*set_label_pos(char *str, t_lab *list);
@@ -159,5 +159,8 @@ t_lab		*word_label(char *word, t_lab *list, int *cp);
 int		word_is_instruction(char *word, int *cp);
 void		check_type(char *word, char code, int *cp);
 char		*remove_comment(char *str);
+char		*good_lab(t_lab *list);
+char		*good_lab_call(char *value);
+int		find_good_lab(t_lab *list, char *value);
 
 #endif

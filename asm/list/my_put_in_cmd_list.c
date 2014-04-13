@@ -5,23 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Sun Apr 13 10:05:03 2014 alex-odet
+** Last update Sun Apr 13 19:13:08 2014 
 */
 
 #include "struct.h"
-
-void	my_show_tab(char **tab)
-{
-  int	i;
-
-  i = 0;
-  while (tab[i])
-    {
-      my_printf(1, "%s\n", tab[i]);
-      i++;
-    }
-  my_printf(1, "--END--OF--TAB--\n");
-}
 
 t_lst		*create_new_node(char *cmd, t_lst **node)
 {
@@ -66,7 +53,7 @@ t_lst		*function(int fd)
   return (first);
 }
 
-int	my_fill_buff(char *str, int fd)
+int	my_fill_buff(char *str, int fd, t_lab *lab)
 {
   int	new_fd;
   t_lst	*list;
@@ -78,13 +65,13 @@ int	my_fill_buff(char *str, int fd)
   if (list == NULL)
     my_putstr("Empty file.\n", 2);
   else
-    len = parse_list(list, fd);
+    len = parse_list(list, fd, lab);
   close (new_fd);
   close (fd);
   return (len);
 }
 
-int	parse_list(t_lst *list, int fd)
+int	parse_list(t_lst *list, int fd, t_lab *lab)
 {
   int	len;
   int	save;
@@ -93,7 +80,7 @@ int	parse_list(t_lst *list, int fd)
   while (list)
     {
       len = 0;
-      write_in_buff(list->cmd, &len, fd);
+      write_in_buff(list->cmd, &len, fd, lab);
       save += len;
       list = list->next;
     }

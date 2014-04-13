@@ -5,12 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 14:47:57 2014 alex-odet
-** Last update Sun Apr 13 05:53:49 2014 alex-odet
+** Last update Sun Apr 13 19:44:06 2014 
 */
 
 #include "struct.h"
 
-int		*write_or(char *args, int *len, int fd)
+int		*write_or(char *args, int *len, int fd, t_lab *lab)
 {
   char		**args_tab;
   char		val;
@@ -19,13 +19,13 @@ int		*write_or(char *args, int *len, int fd)
   *len += write(fd, &op_tab[6].code, 1);
   val = encode_octet(args);
   *len += write(fd, &val, 1);
-  write_arg_or(args_tab[0], len, fd);
-  write_arg_or(args_tab[1], len, fd);
-  write_arg_or(args_tab[2], len, fd);
+  write_arg_or(args_tab[0], len, fd, lab);
+  write_arg_or(args_tab[1], len, fd, lab);
+  write_arg_or(args_tab[2], len, fd, lab);
   return (len);
 }
 
-int		*write_arg_or(char *args, int *len, int fd)
+int		*write_arg_or(char *args, int *len, int fd, t_lab *lab)
 {
   int		size;
   char		val;
@@ -40,7 +40,7 @@ int		*write_arg_or(char *args, int *len, int fd)
   else if (args[0] == '%')
     {
       args++;
-      size = (args[1] != ':') ? my_getnbr(args) : 0;
+      size = (args[1] != ':') ? my_getnbr(args) : find_good_lab(lab, args);
       convert_endian(&size, my_endian());
       *len += write(fd, &size, sizeof(int));
     }
@@ -53,7 +53,7 @@ int		*write_arg_or(char *args, int *len, int fd)
   return (len);
 }
 
-int		*write_xor(char *args, int *len, int fd)
+int		*write_xor(char *args, int *len, int fd, t_lab *lab)
 {
   char		**args_tab;
   char		val;
@@ -62,13 +62,13 @@ int		*write_xor(char *args, int *len, int fd)
   *len += write(fd, &op_tab[7].code, 1);
   val = encode_octet(args);
   *len += write(fd, &val, 1);
-  write_arg_and(args_tab[0], len, fd);
-  write_arg_and(args_tab[1], len, fd);
-  write_arg_and(args_tab[2], len, fd);
+  write_arg_and(args_tab[0], len, fd, lab);
+  write_arg_and(args_tab[1], len, fd, lab);
+  write_arg_and(args_tab[2], len, fd, lab);
   return (len);
 }
 
-int		*write_arg_xor(char *args, int *len, int fd)
+int		*write_arg_xor(char *args, int *len, int fd, t_lab *lab)
 {
   int           size;
   char          val;
@@ -83,7 +83,7 @@ int		*write_arg_xor(char *args, int *len, int fd)
   else if (args[0] == '%')
     {
       args++;
-      size = (args[1] != ':') ? my_getnbr(args) : 0;
+      size = (args[1] != ':') ? my_getnbr(args) : find_good_lab(lab, args);
       convert_endian(&size, my_endian());
       *len += write(fd, &size, sizeof(int));
     }

@@ -5,12 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 14:53:20 2014 alex-odet
-** Last update Sun Apr 13 05:31:29 2014 alex-odet
+** Last update Sun Apr 13 19:46:50 2014 
 */
 
 #include "struct.h"
 
-int		*write_ldi(char *args, int *len, int fd)
+int		*write_ldi(char *args, int *len, int fd, t_lab *lab)
 {
   char		**args_tab;
   char		ret;
@@ -19,13 +19,13 @@ int		*write_ldi(char *args, int *len, int fd)
   *len += write(fd, &op_tab[9].code, 1);
   ret = encode_octet(args);
   *len += write(fd, &ret, 1);
-  write_ldi_arg(args_tab[0], len, fd);
-  write_ldi_arg(args_tab[1], len, fd);
-  write_ldi_arg(args_tab[2], len, fd);
+  write_ldi_arg(args_tab[0], len, fd, lab);
+  write_ldi_arg(args_tab[1], len, fd, lab);
+  write_ldi_arg(args_tab[2], len, fd, lab);
   return (len);
 }
 
-int		*write_ldi_arg(char *arg, int *len, int fd)
+int		*write_ldi_arg(char *arg, int *len, int fd, t_lab *lab)
 {
   char		val;
   short int	size_end;
@@ -39,7 +39,7 @@ int		*write_ldi_arg(char *arg, int *len, int fd)
   else if (arg[0] == '%')
     {
       arg++;
-      size_end = (arg[1] != ':') ? my_getnbr(arg) : 0;
+      size_end = (arg[1] != ':') ? my_getnbr(arg) : find_good_lab(lab, arg);
       convert_short_endian(&size_end, my_endian());
       *len += write(fd, &size_end, sizeof(short int));
     }

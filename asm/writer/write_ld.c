@@ -5,12 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  9 17:16:18 2014 alex-odet
-** Last update Sun Apr 13 18:53:47 2014 romaric
+** Last update Sun Apr 13 19:55:29 2014 
 */
 
 #include "struct.h"
 
-int		*my_write_ld(char *args, int *len, int fd)
+int		*my_write_ld(char *args, int *len, int fd, t_lab *lab)
 {
   char		reg;
   char		**args_tab;
@@ -19,7 +19,7 @@ int		*my_write_ld(char *args, int *len, int fd)
   *len += write(fd, &op_tab[1].code, 1);
   reg = encode_octet(args);
   *len += write(fd, &reg, 1);
-  write_ld_first(args_tab[0], len, fd);
+  write_ld_first(args_tab[0], len, fd, lab);
   if (args_tab[1][0] == 'r')
     args_tab[1]++;
   reg = my_getnbr(args_tab[1]);
@@ -27,7 +27,7 @@ int		*my_write_ld(char *args, int *len, int fd)
  return (len);
 }
 
-int		*write_ld_first(char *args, int *len, int fd)
+int		*write_ld_first(char *args, int *len, int fd, t_lab *lab)
 {
   short int	ind;
   int		direct;
@@ -47,7 +47,7 @@ int		*write_ld_first(char *args, int *len, int fd)
     }
   else
     {
-      direct = 0;
+      direct = find_good_lab(lab, args);
       convert_endian(&direct, my_endian());
       *len += write(fd, &direct, sizeof(int));
     }

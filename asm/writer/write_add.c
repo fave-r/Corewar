@@ -5,16 +5,17 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Apr 10 09:53:11 2014 alex-odet
-** Last update Sun Apr 13 05:25:31 2014 alex-odet
+** Last update Sun Apr 13 19:51:03 2014 
 */
 
 #include "struct.h"
 
-int	*write_add(char *args, int *len, int fd)
+int	*write_add(char *args, int *len, int fd, t_lab *lab)
 {
   char	**args_tab;
   char	val;
 
+  (void)lab;
   args_tab = my_str_to_wordtab(args, ",");
   *len += write(fd, &op_tab[3].code, 1);
   val = encode_octet(args);

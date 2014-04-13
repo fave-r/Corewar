@@ -7,4 +7,4 @@ label1:
 	and	r1,%0,r1
 live:
 	live	%20
-	zjmp	%1
+	zjmp	%:live

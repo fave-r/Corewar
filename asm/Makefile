@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Sun Apr 13 16:25:50 2014 romaric
+## Last update Sun Apr 13 19:25:35 2014 
 ##
 
 CC=		clang
@@ -60,7 +60,8 @@ SRCS=		main.c \
 		writer/write_and.c \
 		writer/write_ldi.c \
 		writer/write_or.c \
-		writer/write_sub.c
+		writer/write_sub.c \
+		writer/write_good_lab.c
 
 OBJS=		$(SRCS:.c=.o)
 
