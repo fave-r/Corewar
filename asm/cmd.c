@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:49:55 2014 alex-odet
-** Last update Sun Apr 13 04:16:42 2014 alex-odet
+** Last update Sun Apr 13 05:45:39 2014 romaric
 */
 
 #include "struct.h"
@@ -31,13 +31,13 @@ t_cmd	tab[]=
     {NULL, NULL}
   };
 
-void	write_in_buff(char **cmd, int *len, int fd)
+int	write_in_buff(char **cmd, int *len, int fd)
 {
   int	j;
 
-  printf("----------------\n");
-  my_show_tab(cmd);
-  printf("-----------------\n");
+  //printf("----------------\n");
+  // my_show_tab(cmd);
+  //printf("-----------------\n");
   *len = 0;
   j = 0;
   if (cmd[0] != NULL)
@@ -51,4 +51,5 @@ void	write_in_buff(char **cmd, int *len, int fd)
 	}
     }
   printf("%d\n", *len);
+  return (*len);
 }

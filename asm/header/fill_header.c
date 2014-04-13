@@ -1,17 +1,17 @@
 /*
-** fill_header.c for corewar in /home/blackbird/work/Corewar/asm
+** fill_header.c for corewar in /home/blackbird/work/Corewar/asm/header
 **
-** Made by
-** Login   <odet_a@epitech.net>
+** Made by romaric
+** Login   <fave_r@epitech.net>
 **
-** Started on  Tue Mar  4 16:53:28 2014
-** Last update Sat Mar 22 05:07:39 2014 alex-odet
+** Started on  Sun Apr 13 04:44:50 2014 romaric
+** Last update Sun Apr 13 04:49:32 2014 romaric
 */
 
 #include "struct.h"
 #include "my.h"
 
-header_t	*fill_header(char *name, char *comment)
+header_t	*fill_header(char *name, char *comment, int len)
 {
   int		i;
   header_t	*new;
@@ -33,5 +33,6 @@ header_t	*fill_header(char *name, char *comment)
       i++;
     }
   new->comment[i] = 0;
+  new->prog_size = len;
   return (new);
 }

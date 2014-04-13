@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sun Apr 13 02:25:07 2014 alex-odet
+** Last update Sun Apr 13 05:38:07 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -70,7 +70,7 @@ void		parser(char *str);
 int		check(char *str);
 char		*check_name(char *str);
 char		*recup_name(char *str);
-header_t	*fill_header(char *name, char *comment);
+header_t	*fill_header(char *name, char *comment, int len);
 header_t	*init();
 char		*check_comment(char *str);
 char		*recup_comment(char *str);
@@ -102,7 +102,7 @@ void		check_live(char *args, char *cmd, t_label *list);
 int		check_label_exist(t_label *list, char *label_check);
 int		*my_write_live(char *value, int *len, int fd);
 int		*my_write_zjmp(char *value, int *len, int fd);
-char		*my_fill_buff(char *str, int fd);
+int		my_fill_buff(char *str, int fd);
 int		*my_write_fork(char *value, int *len, int fd);
 int		*my_write_lfork(char *value, int *len, int fd);
 void		check_ld(char *args, char *cmd, t_label *list);
@@ -141,8 +141,8 @@ int		*my_write_st(char *args, int *len, int fd);
 int		*write_sti(char *args, int *len, int fd);
 void		write_sti_arg(char *arg, int *len, int fd);
 void		check_cmd_n(t_chkcmd ch, t_label *list);
-void		parse_list(t_lst *list, int fd);
-void		write_in_buff(char **cmd, int *len, int fd);
+int		parse_list(t_lst *list, int fd);
+int		write_in_buff(char **cmd, int *len, int fd);
 int		*write_ld_first(char *args, int *len, int fd);
 
 #endif

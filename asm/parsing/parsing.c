@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 12:33:43 2014 romaric
-** Last update Sun Apr 13 00:46:52 2014 alex-odet
+** Last update Sun Apr 13 05:39:34 2014 romaric
 */
 
 #include "struct.h"
@@ -22,23 +22,23 @@ void	parser(char *str)
 int	check(char *str)
 {
   t_label	*list;
-  header_t	*ptr;
-  char       	*name;
-  char       	*comment;
-  int		fd;
+  //header_t	*ptr;
+  //char       	*name;
+  //char       	*comment;
+  //int		fd;
 
-  ptr = init();
-  name = check_name(str);
-  comment = check_comment(str);
-  ptr = fill_header(name, comment);
+  //  ptr = init();
+  //name = check_name(str);
+  //comment = check_comment(str);
+  //ptr = fill_header(name, comment, 0);
   list = fill_list_of_label(str);
   check_cmd(str, list);
-  fd = create_cor(str, ptr);
-  my_fill_buff(str, fd);
+  //  fd = create_cor(str, ptr);
+  //my_fill_buff(str, fd);
   free(list);
-  free(name);
-  free(comment);
-  close (fd);
+  //free(name);
+  //free(comment);
+  //close (fd);
   return (0);
 }
 

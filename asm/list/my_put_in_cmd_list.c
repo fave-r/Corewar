@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Sun Apr 13 02:56:06 2014 alex-odet
+** Last update Sun Apr 13 05:49:31 2014 romaric
 */
 
 #include "struct.h"
@@ -65,12 +65,14 @@ t_lst		*function(int fd)
   return (first);
 }
 
-char	*my_fill_buff(char *str, int fd)
+int	my_fill_buff(char *str, int fd)
 {
   int	new_fd;
   t_lst	*list;
   char	*buff;
+  int	len;
 
+  len = 0;
   buff = xmalloc(sizeof(char) * 2);
   new_fd = xopen(str, O_RDONLY);
   list = function(new_fd);
@@ -80,10 +82,10 @@ char	*my_fill_buff(char *str, int fd)
       exit(EXIT_SUCCESS);
     }
   else
-    parse_list(list, fd);
+    len = parse_list(list, fd);
   close (new_fd);
   close (fd);
-  return (buff);
+  return (len);
 }
 
 int	my_cmd_list_size(t_lst *list)
@@ -99,13 +101,15 @@ int	my_cmd_list_size(t_lst *list)
   return (i);
 }
 
-void	parse_list(t_lst *list, int fd)
+int	parse_list(t_lst *list, int fd)
 {
   int	len;
 
   while (list)
     {
       write_in_buff(list->cmd, &len, fd);
+      save_len = save_len + len;
       list = list->next;
     }
+  return (len);
 }
