@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 11:53:25 2014 romaric
-** Last update Sun Apr 13 06:43:56 2014 alex-odet
+** Last update Sun Apr 13 06:48:12 2014 alex-odet
 */
 
 #include "struct.h"
@@ -14,7 +14,7 @@ int	main(int ac, char **av)
 {
   int		fd;
   header_t	*ptr;
-  header_t	*new;
+  //header_t	*new;
   int		len;
 
   if (ac == 1)
@@ -25,15 +25,14 @@ int	main(int ac, char **av)
       return (0);
     }
   ptr = init();
-  new = init();
+  //new = init();
   parser(av[1]);
   fd = create_cor(av[1], ptr);
-  free(ptr);
   len = my_fill_buff(av[1], fd);
   close(fd);
-  new = fill_header(check_name(av[1]), check_comment(av[1]), len);
-  create_cor(av[1], new);
-  print_assembling(av[1], new);
-  free(new);
+  ptr = fill_header(check_name(av[1]), check_comment(av[1]), len);
+  create_cor(av[1], ptr);
+  print_assembling(av[1], ptr);
+  free(ptr);
   return (0);
 }

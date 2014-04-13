@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sun Apr 13 04:44:50 2014 romaric
-** Last update Sun Apr 13 04:49:32 2014 romaric
+** Last update Sun Apr 13 06:51:14 2014 alex-odet
 */
 
 #include "struct.h"
@@ -26,6 +26,8 @@ header_t	*fill_header(char *name, char *comment, int len)
       i++;
     }
   new->prog_name[i] = 0;
+  new->prog_size = len;
+  convert_endian(&(new->prog_size), my_endian());
   i = 0;
   while (i < my_strlen(comment) && i < COMMENT_LENGTH)
     {
@@ -33,6 +35,5 @@ header_t	*fill_header(char *name, char *comment, int len)
       i++;
     }
   new->comment[i] = 0;
-  new->prog_size = len;
   return (new);
 }
