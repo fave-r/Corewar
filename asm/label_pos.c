@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Sun Apr 13 14:39:15 2014 alex-odet
-** Last update Sun Apr 13 15:18:35 2014 alex-odet
+** Last update Sun Apr 13 15:52:12 2014 
 */
 
 #include "struct.h"
@@ -26,6 +26,7 @@ int	set_label_pos(char *str, t_lab *list)
       if (word)
 	{
 	  cp = set_label_pos_code(word, list, cp);
+	  printf("cp = %d\n");
 	  free(word);
 	}
       free(tmp);
