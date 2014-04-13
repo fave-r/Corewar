@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Sat Apr 12 17:29:53 2014 romaric
+** Last update Sun Apr 13 15:29:59 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -81,7 +81,7 @@ int	main(__attribute__((unused))int argc, char **argv)
   t_cor	cor;
 
   fmode();
-  cor.dump = 2500000000;
+  cor.dump = 250000;
   cor.live_done = 0;
   cor.cycle = 1;
   cor.cycle_to_die = CYCLE_TO_DIE;
@@ -96,7 +96,7 @@ int	main(__attribute__((unused))int argc, char **argv)
   cor.nb_chmps_alive = 0;
   my_mem_set(cor.live, 4);
   init_champs_nb(&cor);
-  if (init_graphic(&(cor.graphic), cor.champ) == 1)
+  if (init_graphic(&(cor.graphic), cor.champ, cor.dump) == 1)
     return (1);
   run_corewar(cor.champ, &cor);
   free_graphic(&(cor.graphic));

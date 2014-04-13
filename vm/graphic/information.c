@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sat Apr 12 22:20:42 2014 Thibaut Lopez
-** Last update Sun Apr 13 15:08:45 2014 Thibaut Lopez
+** Last update Sun Apr 13 15:35:04 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -27,7 +27,7 @@ void	refresh_cycle(t_cor *cor, int cycle_done)
   SDL_Color	color;
 
   color = init_white_color();
-  tmp = my_nbr_to_char(cor->cycle, cor->cycle);
+  tmp = my_nbr_to_char(cor->cycle);
   cor->graphic.cycle[1] = TTF_RenderText_Solid(cor->graphic.font, tmp, color);
   free(tmp);
   if (cor->graphic.bg != NULL)
@@ -37,7 +37,7 @@ void	refresh_cycle(t_cor *cor, int cycle_done)
     SDL_FillRect(cor->graphic.screen, &cor->graphic.cycle_pos, 0x9B9B9B);
   SDL_BlitSurface(cor->graphic.cycle[1], NULL,
 		  cor->graphic.screen, &cor->graphic.cycle_pos);
-  tmp = my_nbr_to_char(cycle_done, cycle_done);
+  tmp = my_nbr_to_char(cycle_done);
   cor->graphic.c_done[1] = TTF_RenderText_Solid(cor->graphic.font, tmp, color);
   free(tmp);
   if (cor->graphic.bg != NULL)
@@ -57,7 +57,7 @@ void	refresh_ctd(t_cor *cor)
   int		keep;
 
   color = init_white_color();
-  tmp = my_nbr_to_char(cor->cycle_to_die, cor->cycle_to_die);
+  tmp = my_nbr_to_char(cor->cycle_to_die);
   cor->graphic.ctd[1] = TTF_RenderText_Solid(cor->graphic.font, tmp, color);
   free(tmp);
   if (cor->graphic.bg != NULL)
@@ -97,7 +97,7 @@ void	init_information(t_sdl *cor)
   cor->ctd[0] = TTF_RenderText_Blended(cor->font,
 				       "CYCLE_TO_DIE = ", color);
   save_information(&(position), &(cor->ctd_pos), cor->ctd[0], cor->screen);
-  tmp = my_nbr_to_char(CYCLE_TO_DIE, CYCLE_TO_DIE);
+  tmp = my_nbr_to_char(CYCLE_TO_DIE);
   cor->ctd[1] = TTF_RenderText_Solid(cor->font, tmp, color);
   free(tmp);
   SDL_BlitSurface(cor->ctd[1], NULL, cor->screen, &(cor->ctd_pos));

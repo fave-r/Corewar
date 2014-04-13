@@ -5,23 +5,30 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sat Apr 12 21:06:17 2014 Thibaut Lopez
-** Last update Sat Apr 12 21:21:59 2014 Thibaut Lopez
+** Last update Sun Apr 13 15:33:32 2014 Thibaut Lopez
 */
 
 #include "my.h"
-#include <stdio.h>
 
-char	*my_nbr_to_char(int nb, int tmp_nb)
+int	nbr_len(int nb)
+{
+  int	len;
+
+  len = (nb == 0) ? 2 : 1;
+  while (nb != 0)
+    {
+      len++;
+      nb /= 10;
+    }
+  return (len);
+}
+
+char	*my_nbr_to_char(int nb)
 {
   int	len;
   char	*str;
 
-  len = (tmp_nb == 0) ? 2 : 1;
-  while (tmp_nb != 0)
-    {
-      len++;
-      tmp_nb /= 10;
-    }
+  len = nbr_len(nb);
   str = xmalloc(len * sizeof(char));
   len--;
   str[len] = 0;
