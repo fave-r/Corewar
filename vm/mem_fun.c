@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Apr  9 00:46:06 2014 Thibaut Lopez
-** Last update Fri Apr 11 18:15:48 2014 thibaud
+** Last update Sun Apr 13 12:55:42 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -50,4 +50,19 @@ void	cor_mem_set(unsigned char *mem, int len)
       mem[i] = 0;
       i++;
     }
+}
+
+int	list_size(t_champ *champ)
+{
+  int	nb;
+  t_champ	*tmp;
+
+  tmp = champ;
+  nb = 0;
+  while (tmp != NULL)
+    {
+      tmp = tmp->next;
+      nb++;
+    }
+  return (nb);
 }

@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Sat Apr 12 23:02:36 2014 Thibaut Lopez
+** Last update Sun Apr 13 14:49:34 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -38,6 +38,12 @@ typedef struct	s_sdl
   SDL_Surface	*bg;
   SDL_Surface	*name[4];
   SDL_Surface	*ctd[2];
+  SDL_Rect	ctd_pos;
+  SDL_Surface	*cycle[2];
+  SDL_Rect	cycle_pos;
+  SDL_Surface	*c_done[2];
+  SDL_Rect	c_done_pos;
+  SDL_Surface	*dump[2];
   TTF_Font	*font;
 }		t_sdl;
 
@@ -94,7 +100,6 @@ void	sfree(char **str);
 int	someone_is_dead(t_champ *, t_cor *);
 int	run_corewar(t_champ *, t_cor *);
 t_champ *del_chmp(t_champ *, int);
-int	cycle_run(t_champ *, t_cor *);
 int	get_wait(t_champ *, t_cor *);
 int	champ_play(t_champ *, t_cor *);
 int	find_in_tab(char);
@@ -135,7 +140,7 @@ int	aff_mem(unsigned char *mem);
 int	print_encode(int **tab);
 int	check_reg(int);
 void	print_on_mem(t_cor *cor, int to_add, int pc);
-int	cycle_run(t_champ *champs, t_cor *map);
+int	cycle_run(t_champ *champs, t_cor *map, int cycle_done);
 int	someone_is_dead(t_champ *champs, t_cor *map);
 int	end_game(t_champ *champ, t_cor *map);
 
@@ -147,6 +152,7 @@ int	mod_mem(int nb);
 void	cor_mem_set(unsigned char *mem, int len);
 int	prog_size_error(char *path);
 void    fmode(void);
-void	refresh_info(t_cor *cor);
+void	refresh_ctd(t_cor *cor);
+void	refresh_cycle(t_cor *cor, int cycle_done);
 
 #endif

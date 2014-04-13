@@ -5,13 +5,13 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Mar 24 14:11:08 2014 Thibaut Lopez
-** Last update Sun Apr 13 12:41:41 2014 Thibaut Lopez
+** Last update Sun Apr 13 14:48:42 2014 Thibaut Lopez
 */
 
 #include "vm.h"
 #include "my.h"
 
-int	cycle_run(t_champ *champs, t_cor *map)
+int	cycle_run(t_champ *champs, t_cor *map, int cycle_done)
 {
   t_champ	*cur_champ;
 
@@ -29,6 +29,7 @@ int	cycle_run(t_champ *champs, t_cor *map)
       cur_champ = cur_champ->next;
     }
   map->cycle++;
+  refresh_cycle(map, map->cycle + cycle_done);
   return (0);
 }
 

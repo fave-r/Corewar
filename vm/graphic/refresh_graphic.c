@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:40:14 2014 Thibaut Lopez
-** Last update Sat Apr 12 23:11:42 2014 Thibaut Lopez
+** Last update Sun Apr 13 12:59:23 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -32,7 +32,7 @@ int	get_escape(t_cor *cor)
 {
   SDL_Event	event;
 
-  refresh_info(cor);
+  (void)cor;
   if (SDL_PollEvent(&event) &&
       (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP))
     {

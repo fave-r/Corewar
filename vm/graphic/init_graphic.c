@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Sat Apr 12 23:10:51 2014 Thibaut Lopez
+** Last update Sun Apr 13 13:08:14 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -33,7 +33,7 @@ void	init_color_champ(t_sdl *cor, t_champ *champ)
       tmp = my_strcat(", champion number : ", nb);
       free(nb);
       champ->graphic_name = my_strcat(champ->head->prog_name, tmp);
-      free(tmp); 
+      free(tmp);
       champ = champ->next;
     }
 }

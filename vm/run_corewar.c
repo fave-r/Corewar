@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Sat Apr 12 22:56:13 2014 Thibaut Lopez
+** Last update Sun Apr 13 14:48:41 2014 Thibaut Lopez
 */
 
 #include "vm.h"
@@ -60,19 +60,18 @@ int	get_wait(t_champ *cur_champ, t_cor *map)
   return (cur_champ->wait);
 }
 
-int	list_size(t_champ *champ)
+void	loop_cycle(t_champ *champs, t_cor *map, int cycle_done)
 {
-  int	nb;
-  t_champ	*tmp;
-
-  tmp = champ;
-  nb = 0;
-  while (tmp != NULL)
+  if ((map->cycle + cycle_done) == map->dump)
+    aff_mem(map->mem);
+  cycle_run(champs, map, cycle_done);
+  if (map->live_done >= NBR_LIVE && !someone_is_dead(champs, map))
     {
-      tmp = tmp->next;
-      nb++;
+      map->cycle_to_die -= CYCLE_DELTA;
+      refresh_ctd(map);
+      map->live_done = 0;
     }
-  return (nb);
+  map->cycle_to_die = (get_escape(map) == 1) ? 0 : map->cycle_to_die;
 }
 
 int	run_corewar(t_champ *champs, t_cor *map)
@@ -85,17 +84,7 @@ int	run_corewar(t_champ *champs, t_cor *map)
     {
       my_mem_set(map->live, 4);
       while (map->cycle <=  map->cycle_to_die)
-	{
-	  if ((map->cycle + cycle_done) == map->dump)
-	    aff_mem(map->mem);
-	  cycle_run(champs, map);
-	  if (map->live_done >= NBR_LIVE && !someone_is_dead(champs, map))
-	    {
-	      map->cycle_to_die -= CYCLE_DELTA;
-	      map->live_done = 0;
-	    }
-	  map->cycle_to_die = (get_escape(map) == 1) ? 0 : map->cycle_to_die;
-	}
+	loop_cycle(champs, map, cycle_done);
       kill_champ(&champs, map);
       cycle_done += map->cycle;
       map->cycle = 0;
