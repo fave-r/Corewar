@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Apr 10 10:01:35 2014 alex-odet
-** Last update Sun Apr 13 01:58:36 2014 alex-odet
+** Last update Sun Apr 13 03:34:24 2014 alex-odet
 */
 
 #include "struct.h"
@@ -35,20 +35,20 @@ int		*write_arg_and(char *args, int *len, int fd)
     {
       args++;
       val = my_getnbr(args);
-      len += write(fd, &val, 1);
+      len += write(fd, &val, 1/*REG_SIZE*/);
     }
   else if (args[0] == '%')
     {
       args++;
       size = (args[1] != ':') ? my_getnbr(args) : 0;
       convert_endian(&size, my_endian());
-      len += write(fd, &size, DIR_SIZE);
+      len += write(fd, &size, sizeof(int));
     }
   else
     {
       size_end = my_getnbr(args);
       convert_short_endian(&size_end, my_endian());
-      len += write(fd, &size_end, IND_SIZE);
+      len += write(fd, &size_end, sizeof(short int));
     }
   return (len);
 }

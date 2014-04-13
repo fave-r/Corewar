@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 15:44:53 2014 alex-odet
-** Last update Sun Apr 13 01:28:06 2014 alex-odet
+** Last update Sun Apr 13 03:22:01 2014 alex-odet
 */
 
 #include "struct.h"
@@ -30,11 +30,10 @@ void		write_sti_arg(char *arg, int *len, int fd)
   char		val;
   short int	size_s;
   
-if (arg[0] == 'r')
+  if (arg[0] == 'r')
     {
       arg++;
       val = my_getnbr(arg);
-      printf("val == %d\n", val);
       len += write(fd, &val, 1);
     }
   else if (arg[0] == '%')

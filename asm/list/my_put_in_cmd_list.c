@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Sun Apr 13 01:20:37 2014 alex-odet
+** Last update Sun Apr 13 02:56:06 2014 alex-odet
 */
 
 #include "struct.h"
@@ -108,5 +108,4 @@ void	parse_list(t_lst *list, int fd)
       write_in_buff(list->cmd, &len, fd);
       list = list->next;
     }
-  close (fd);
 }
