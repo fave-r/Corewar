@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Mar 26 10:43:51 2014 alex-odet
-** Last update Sun Apr 13 08:40:25 2014 alex-odet
+** Last update Sun Apr 13 18:53:00 2014 romaric
 */
 
 #include "struct.h"
@@ -14,7 +14,7 @@ int		*my_write_live(char *value, int *len, int fd)
 {
   int		save;
 
-  if (value[0] == '%' && value[1] != ':') 
+  if (value[0] == '%' && value[1] != ':')
     {
       value++;
       save = my_getnbr(value);

@@ -5,10 +5,10 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Sun Apr 13 15:19:01 2014 alex-odet
+## Last update Sun Apr 13 16:25:50 2014 romaric
 ##
 
-CC=		gcc
+CC=		clang
 
 RM=		rm -f
 

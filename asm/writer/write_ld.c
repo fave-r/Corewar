@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  9 17:16:18 2014 alex-odet
-** Last update Sun Apr 13 08:54:37 2014 alex-odet
+** Last update Sun Apr 13 18:53:47 2014 romaric
 */
 
 #include "struct.h"
@@ -15,11 +15,10 @@ int		*my_write_ld(char *args, int *len, int fd)
   char		reg;
   char		**args_tab;
 
-
   args_tab = my_str_to_wordtab(args, ",");
   *len += write(fd, &op_tab[1].code, 1);
   reg = encode_octet(args);
-  *len += write(fd, &reg, 1); 
+  *len += write(fd, &reg, 1);
   write_ld_first(args_tab[0], len, fd);
   if (args_tab[1][0] == 'r')
     args_tab[1]++;
@@ -29,7 +28,7 @@ int		*my_write_ld(char *args, int *len, int fd)
 }
 
 int		*write_ld_first(char *args, int *len, int fd)
-{  
+{
   short int	ind;
   int		direct;
 

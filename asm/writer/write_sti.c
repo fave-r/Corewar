@@ -1,11 +1,11 @@
 /*
 ** write_sti.c for write_sti in /home/alex-odet/work/Corewar/asm
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Fri Apr 11 15:44:53 2014 alex-odet
-** Last update Sun Apr 13 05:54:17 2014 alex-odet
+** Last update Sun Apr 13 18:54:00 2014 romaric
 */
 
 #include "struct.h"
@@ -29,7 +29,7 @@ void		write_sti_arg(char *arg, int *len, int fd)
 {
   char		val;
   short int	size_s;
-  
+
   if (arg[0] == 'r')
     {
       arg++;

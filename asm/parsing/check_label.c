@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Sun Apr 13 02:07:34 2014 alex-odet
+** Last update Sun Apr 13 18:56:19 2014 romaric
 */
 
 #include "struct.h"
@@ -19,7 +19,7 @@ t_label		*fill_list_of_label(char *str)
   p.fd = xopen(str, O_RDONLY);
   while ((p.tmp = get_next_line(p.fd)))
     {
-      if ((p.tmp[0] >= 'a' && p.tmp[0] <= 'z') 
+      if ((p.tmp[0] >= 'a' && p.tmp[0] <= 'z')
 	  && p.tmp[my_strlen(p.tmp) - 1] == ':')
 	{
 	  p.save = my_strndup(p.tmp, my_strlen(p.tmp) - 1);
