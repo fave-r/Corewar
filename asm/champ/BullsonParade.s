@@ -22,7 +22,7 @@ gg:	ld	%4200,r10
 	ld	%1,r5
 	ld	%0,r11
 	ld	%42,r3
-	add	r2,%42,r2
+	add	r2,r2,r2
 	fork	%:gg
 	st	r2,420
 	zjmp	%:gg

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Sun Apr 13 05:49:31 2014 romaric
+** Last update Sun Apr 13 06:42:13 2014 alex-odet
 */
 
 #include "struct.h"
@@ -104,12 +104,14 @@ int	my_cmd_list_size(t_lst *list)
 int	parse_list(t_lst *list, int fd)
 {
   int	len;
+  int	save;
 
+  save = 0;
   while (list)
     {
       write_in_buff(list->cmd, &len, fd);
-      save_len = save_len + len;
+      save += len;
       list = list->next;
     }
-  return (len);
+  return (save);
 }

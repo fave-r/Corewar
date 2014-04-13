@@ -5,36 +5,36 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  9 13:04:49 2014 alex-odet
-** Last update Sat Apr 12 15:36:03 2014 alex-odet
+** Last update Sun Apr 13 05:08:29 2014 alex-odet
 */
 
 #include "struct.h"
 
 int	*my_write_st(char *args, int *len, int fd)
 {
-  char	**args_tab;
-  int	size;
-  char	encode;
-  char	val;
+  char		**args_tab;
+  short int	size_end;
+  char		encode;
+  char		val;
 
   args_tab = my_str_to_wordtab(args, "\t,");
-  len += write(fd, &op_tab[2].code, 1);
+  *len += write(fd, &op_tab[2].code, 1);
   encode = encode_octet(args);
-  len += write(fd, &encode, 1);
+  *len += write(fd, &encode, 1);
   args_tab[0]++;
   val = my_getnbr(args_tab[0]);
-  len += write(fd, &val, REG_SIZE);
+  *len += write(fd, &val, 1);
   if (args_tab[1][0] == 'r')
     {
       args_tab[1]++;
       val = my_getnbr(args_tab[1]);
-      len += write(fd, &val, REG_SIZE);
+      *len += write(fd, &val, 1);
     }
   else
     {
-      size = my_getnbr(args_tab[1]);
-      convert_endian(&size, my_endian());
-      write(fd, &size, sizeof(short int));
+      size_end = my_getnbr(args_tab[1]);
+      convert_short_endian(&size_end, my_endian());
+      *len += write(fd, &size_end, sizeof(short int));
     }
   return (len);
 }

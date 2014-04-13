@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:49:55 2014 alex-odet
-** Last update Sun Apr 13 05:45:39 2014 romaric
+** Last update Sun Apr 13 06:22:46 2014 alex-odet
 */
 
 #include "struct.h"
@@ -42,14 +42,13 @@ int	write_in_buff(char **cmd, int *len, int fd)
   j = 0;
   if (cmd[0] != NULL)
     {
-      while (j < 15)
+      while (j <= 15)
 	{
-	  printf("cmd[0] = %s\n", cmd[0]);
 	  if ((my_strcmp(cmd[0], tab[j].cmd)) == 0)
 	    tab[j].ptr(cmd[1], &(*len), fd);
 	  j++;
 	}
     }
-  printf("%d\n", *len);
+  //printf("%d\n", *len);
   return (*len);
 }

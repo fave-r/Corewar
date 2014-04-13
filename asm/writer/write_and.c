@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Apr 10 10:01:35 2014 alex-odet
-** Last update Sun Apr 13 03:34:24 2014 alex-odet
+** Last update Sun Apr 13 05:50:16 2014 alex-odet
 */
 
 #include "struct.h"
@@ -16,9 +16,9 @@ int		*write_and(char *args, int *len, int fd)
   char		val;
 
   args_tab = my_str_to_wordtab(args, ",");
-  len += write(fd, &op_tab[5].code, 1);
+  *len += write(fd, &op_tab[5].code, 1);
   val = encode_octet(args);
-  len += write(fd, &val, 1);
+  *len += write(fd, &val, 1);
   write_arg_and(args_tab[0], len, fd);
   write_arg_and(args_tab[1], len, fd);
   write_arg_and(args_tab[2], len, fd);
@@ -35,20 +35,20 @@ int		*write_arg_and(char *args, int *len, int fd)
     {
       args++;
       val = my_getnbr(args);
-      len += write(fd, &val, 1/*REG_SIZE*/);
+      *len += write(fd, &val, 1);
     }
   else if (args[0] == '%')
     {
       args++;
       size = (args[1] != ':') ? my_getnbr(args) : 0;
       convert_endian(&size, my_endian());
-      len += write(fd, &size, sizeof(int));
+      *len += write(fd, &size, sizeof(int));
     }
   else
     {
       size_end = my_getnbr(args);
       convert_short_endian(&size_end, my_endian());
-      len += write(fd, &size_end, sizeof(short int));
+      *len += write(fd, &size_end, sizeof(short int));
     }
   return (len);
 }

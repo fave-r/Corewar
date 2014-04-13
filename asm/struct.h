@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sun Apr 13 05:38:07 2014 romaric
+** Last update Sun Apr 13 06:20:32 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -130,9 +130,9 @@ int		*write_arg_and(char *args, int *len, int fd);
 int		*write_ldi(char *args, int *len, int fd);
 int		*write_ldi_arg(char *arg, int *len, int fd);
 int		*write_lld(char *args, int *len, int fd);
-int		*write_lld_arg(char *arg, int *len, int fd);
+int		write_lld_arg(char *arg, int *len, int fd);
 int		*write_lldi(char *args, int *len, int fd);
-int    		*write_lldi_arg(char *args, int *len, int fd);
+int    		write_lldi_arg(char *args, int *len, int fd);
 int		*write_or(char *args, int *len, int fd);
 int		*write_arg_or(char *args, int *len, int fd);
 int		*write_xor(char *args, int *len, int fd);

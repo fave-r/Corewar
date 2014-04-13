@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Mar 11 04:03:48 2014 alex-odet
-** Last update Tue Apr  8 14:58:11 2014 alex-odet
+** Last update Sun Apr 13 06:38:08 2014 alex-odet
 */
 
 #include "struct.h"
@@ -33,7 +33,6 @@ int	create_cor(char *name, header_t *header)
       my_putstr("Open Failed\n", 2);
       exit(EXIT_FAILURE);
     }
-  print_assembling(name, header);
   write(fd, header, sizeof(header_t));
   free (new_name);
   return (fd);

@@ -3,8 +3,8 @@
 
 
 label1:
-	sti	r1,%:live,%1
+	sti	r1,%1,%1
 	and	r1,%0,r1
 live:
-	live	%:label1
+	live	%20
 	zjmp	%1
