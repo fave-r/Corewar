@@ -1,17 +1,17 @@
 /*
 ** rm_fun.c for rm_fun in /home/thibaut.lopez/Corewar/Corewar/vm
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Mon Mar 24 13:57:49 2014 Thibaut Lopez
-** Last update Fri Apr 11 20:25:00 2014 Thibaut Lopez
+** Last update Sun Apr 13 19:17:00 2014 romaric
 */
 
 #include "my.h"
 #include "vm.h"
 
-void	rm_empty_champ(t_champ **tmp, t_champ **first, t_cor *cor)
+void		rm_empty_champ(t_champ **tmp, t_champ **first, t_cor *cor)
 {
   t_champ	*prev;
   t_champ	*to_free;
@@ -27,7 +27,7 @@ void	rm_empty_champ(t_champ **tmp, t_champ **first, t_cor *cor)
   cor->nb_chmps_alive--;
 }
 
-void	epur_champ(t_cor *cor, t_champ **first)
+void		epur_champ(t_cor *cor, t_champ **first)
 {
   int		i;
   t_champ	*tmp;
@@ -50,7 +50,7 @@ void	epur_champ(t_cor *cor, t_champ **first)
     }
 }
 
-t_champ  *del_chmp(t_champ *list, int nb)
+t_champ		*del_chmp(t_champ *list, int nb)
 {
   t_champ        *tmp;
 
@@ -79,10 +79,10 @@ t_champ  *del_chmp(t_champ *list, int nb)
     }
 }
 
-int	kill_champ(t_champ **champs, t_cor *map)
+int		kill_champ(t_champ **champs, t_cor *map)
 {
-  int	i;
-  int	nb_alive;
+  int		i;
+  int		nb_alive;
 
   nb_alive = 0;
   i = 0;

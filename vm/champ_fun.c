@@ -5,13 +5,13 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Wed Feb 26 13:43:48 2014 Thibaut Lopez
-** Last update Sat Apr 12 20:46:31 2014 Thibaut Lopez
+** Last update Sun Apr 13 19:13:48 2014 romaric
 */
 
 #include "vm.h"
 #include "my.h"
 
-void	set_var(t_champ *champ)
+void		set_var(t_champ *champ)
 {
   champ->head = NULL;
   champ->path = NULL;
@@ -22,7 +22,7 @@ void	set_var(t_champ *champ)
   champ->carry = 1;
 }
 
-t_champ	*init_champ()
+t_champ		*init_champ()
 {
   int		i;
   t_champ	*champ;
@@ -48,7 +48,7 @@ t_champ	*init_champ()
   return (tmp);
 }
 
-void	find_next_available(t_champ **champ)
+void		find_next_available(t_champ **champ)
 {
   t_champ	*tmp;
 
@@ -60,7 +60,7 @@ void	find_next_available(t_champ **champ)
     my_putstr(ER_FULL, 2);
 }
 
-int	move_in_list(t_champ **champ, int nbr)
+int		move_in_list(t_champ **champ, int nbr)
 {
   t_champ	*tmp;
 
@@ -85,7 +85,7 @@ int	move_in_list(t_champ **champ, int nbr)
   return (0);
 }
 
-int	check_champ(t_champ **champ, char *path, int addr, int endian)
+int		check_champ(t_champ **champ, char *path, int addr, int endian)
 {
   unsigned int	r_len;
 

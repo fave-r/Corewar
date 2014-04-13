@@ -1,17 +1,17 @@
 /*
 ** list_fun.c for list_fun in /home/thibaut.lopez/Corewar/Corewar/vm
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Sun Mar  2 12:45:35 2014 Thibaut Lopez
-** Last update Wed Apr  9 19:33:30 2014 thibaud
+** Last update Sun Apr 13 19:15:46 2014 romaric
 */
 
 #include "vm.h"
 #include "my.h"
 
-int	my_list_len(t_champ *champ)
+int		my_list_len(t_champ *champ)
 {
   int		i;
   t_champ	*tmp;
@@ -26,7 +26,7 @@ int	my_list_len(t_champ *champ)
   return (i);
 }
 
-void	good_adress(t_champ *champ)
+void		good_adress(t_champ *champ)
 {
   int		i;
   int		j;
@@ -54,7 +54,7 @@ void	good_adress(t_champ *champ)
     }
 }
 
-void	check_adress(t_champ *champ)
+void		check_adress(t_champ *champ)
 {
   t_champ	*tmp;
 
@@ -70,7 +70,7 @@ void	check_adress(t_champ *champ)
     }
 }
 
-void	init_adress(t_champ *champ)
+void		init_adress(t_champ *champ)
 {
   int		i;
   int		len;
@@ -93,7 +93,7 @@ void	init_adress(t_champ *champ)
   check_adress(champ);
 }
 
-int	fill_mem(unsigned char **mem, t_champ *champ)
+int		fill_mem(unsigned char **mem, t_champ *champ)
 {
   int		len;
   t_champ	*tmp;

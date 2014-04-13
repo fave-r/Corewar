@@ -1,19 +1,19 @@
 /*
 ** fork_fun.c for fork_fun in /home/thibaut.lopez/Corewar/Corewar/vm/function
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Tue Apr  8 15:03:11 2014 Thibaut Lopez
-** Last update Sun Apr 13 12:41:24 2014 Thibaut Lopez
+** Last update Sun Apr 13 19:21:14 2014 romaric
 */
 
 #include "my.h"
 #include "vm.h"
 
-t_champ	*champ_dup(t_champ *father, int new_pos)
+t_champ		*champ_dup(t_champ *father, int new_pos)
 {
-  int	i;
+  int		i;
   t_champ	*son;
 
   son = xmalloc(sizeof(t_champ));
@@ -40,7 +40,7 @@ t_champ	*champ_dup(t_champ *father, int new_pos)
   return (son);
 }
 
-void	add_champ(t_champ *champ, int new_pos)
+void		add_champ(t_champ *champ, int new_pos)
 {
   t_champ	*son;
 
@@ -52,7 +52,7 @@ void	add_champ(t_champ *champ, int new_pos)
     son->next->prev = son;
 }
 
-void	my_fork(t_champ *champ, t_cor *cor)
+void		my_fork(t_champ *champ, t_cor *cor)
 {
   int		fork_dest;
 
@@ -61,7 +61,7 @@ void	my_fork(t_champ *champ, t_cor *cor)
   champ->pc += 3;
 }
 
-void	my_lfork(t_champ *champ, t_cor *cor)
+void		my_lfork(t_champ *champ, t_cor *cor)
 {
   int		fork_dest;
 
