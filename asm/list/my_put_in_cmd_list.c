@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Sun Apr 13 06:42:13 2014 alex-odet
+** Last update Sun Apr 13 10:05:03 2014 alex-odet
 */
 
 #include "struct.h"
@@ -17,9 +17,10 @@ void	my_show_tab(char **tab)
   i = 0;
   while (tab[i])
     {
-      printf("%s\n", tab[i]);
+      my_printf(1, "%s\n", tab[i]);
       i++;
     }
+  my_printf(1, "--END--OF--TAB--\n");
 }
 
 t_lst		*create_new_node(char *cmd, t_lst **node)
@@ -61,7 +62,7 @@ t_lst		*function(int fd)
 	    first = ret;
 	}
     }
-  close (fd);
+  close(fd);
   return (first);
 }
 
@@ -69,36 +70,18 @@ int	my_fill_buff(char *str, int fd)
 {
   int	new_fd;
   t_lst	*list;
-  char	*buff;
   int	len;
 
   len = 0;
-  buff = xmalloc(sizeof(char) * 2);
   new_fd = xopen(str, O_RDONLY);
   list = function(new_fd);
   if (list == NULL)
-    {
-      my_putstr("Empty file.\n", 2);
-      exit(EXIT_SUCCESS);
-    }
+    my_putstr("Empty file.\n", 2);
   else
     len = parse_list(list, fd);
   close (new_fd);
   close (fd);
   return (len);
-}
-
-int	my_cmd_list_size(t_lst *list)
-{
-  int	i;
-
-  i = 0;
-  while (list)
-    {
-      i++;
-      list = list->next;
-    }
-  return (i);
 }
 
 int	parse_list(t_lst *list, int fd)
@@ -109,6 +92,7 @@ int	parse_list(t_lst *list, int fd)
   save = 0;
   while (list)
     {
+      len = 0;
       write_in_buff(list->cmd, &len, fd);
       save += len;
       list = list->next;

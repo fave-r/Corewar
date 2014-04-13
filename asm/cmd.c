@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:49:55 2014 alex-odet
-** Last update Sun Apr 13 06:22:46 2014 alex-odet
+** Last update Sun Apr 13 10:53:50 2014 alex-odet
 */
 
 #include "struct.h"
@@ -33,14 +33,13 @@ t_cmd	tab[]=
 
 int	write_in_buff(char **cmd, int *len, int fd)
 {
+  int	i;
   int	j;
 
-  //printf("----------------\n");
-  // my_show_tab(cmd);
-  //printf("-----------------\n");
   *len = 0;
   j = 0;
-  if (cmd[0] != NULL)
+  i = 1;
+  if (cmd[0] != NULL && my_strlen(cmd[0] - 1) != ':')
     {
       while (j <= 15)
 	{
@@ -48,6 +47,16 @@ int	write_in_buff(char **cmd, int *len, int fd)
 	    tab[j].ptr(cmd[1], &(*len), fd);
 	  j++;
 	}
+    }
+  else
+    {
+      if (cmd[1] != NULL && my_strlen(cmd[0] - 1) != ':')
+	while (j <= 15)
+	  {
+	    if ((my_strcmp(cmd[i], tab[j].cmd)) == 0)
+	      tab[j].ptr(cmd[i + 1], &(*len), fd);
+	  }
+      j++;
     }
   //printf("%d\n", *len);
   return (*len);
