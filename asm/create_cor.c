@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Mar 11 04:03:48 2014 alex-odet
-** Last update Sun Apr 13 06:38:08 2014 alex-odet
+** Last update Sun Apr 13 19:08:29 2014 romaric
 */
 
 #include "struct.h"
@@ -38,14 +38,14 @@ int	create_cor(char *name, header_t *header)
   return (fd);
 }
 
-void	print_assembling(char *name, header_t *header)
+void	print_assembling(char *names, char *name, char *comment)
 {
   my_putstr("Assembling : ", 1);
-  my_putstr(name, 1);
+  my_printf(1, "%s", names);
   my_putstr("\n\t", 1);
-  my_putstr(header->prog_name, 1);
+  my_printf(1, "%s", name);
   my_putstr("\n\t", 1);
-  my_putstr(header->comment, 1);
+  my_printf(1, "%s", comment);
   my_putstr("\n", 1);
   my_putstr("-----------------------------------------------------------\n"
 	    , 1);

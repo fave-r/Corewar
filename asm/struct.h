@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sun Apr 13 16:38:26 2014 
+** Last update Sun Apr 13 19:05:15 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -83,7 +83,7 @@ char		*check_comment(char *str);
 char		*recup_comment(char *str);
 void		print_header_error();
 int		create_cor(char *name, header_t *header);
-void		print_assembling(char *name, header_t *header);
+void		print_assembling(char *names, char *name, char *comment);
 void		check_cmd(char *str, t_label *list);
 char		*cmd_exist(char *str, int *bool);
 void		my_show_list(t_label *list);
