@@ -5,10 +5,10 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Sun Apr 13 02:37:33 2014 romaric
+## Last update Sun Apr 13 15:19:01 2014 alex-odet
 ##
 
-CC=		clang
+CC=		gcc
 
 RM=		rm -f
 
@@ -19,6 +19,7 @@ NAME=		asm
 SRCS=		main.c \
 		create_cor.c \
 		count_dot.c \
+		label_pos.c \
 		cmd.c \
 		../op.c \
 		parsing/parsing.c \
@@ -33,6 +34,7 @@ SRCS=		main.c \
 		list/my_put_in_list.c \
 		list/my_put_in_cmd_list.c \
 		list/my_show_list.c \
+		list/my_put_in_lab_list.c \
 		error/error.c \
 		error/bad_value.c \
 		get_next_line/get_next_line.c \

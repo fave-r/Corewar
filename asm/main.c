@@ -5,17 +5,17 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 11:53:25 2014 romaric
-** Last update Sun Apr 13 06:48:12 2014 alex-odet
+** Last update Sun Apr 13 15:16:34 2014 alex-odet
 */
 
 #include "struct.h"
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
   int		fd;
   header_t	*ptr;
-  //header_t	*new;
   int		len;
+  t_lab		*list;
 
   if (ac == 1)
     {
@@ -25,7 +25,6 @@ int	main(int ac, char **av)
       return (0);
     }
   ptr = init();
-  //new = init();
   parser(av[1]);
   fd = create_cor(av[1], ptr);
   len = my_fill_buff(av[1], fd);

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sun Apr 13 06:20:32 2014 alex-odet
+** Last update Sun Apr 13 15:22:04 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -36,6 +36,13 @@ typedef struct	s_lst
   struct s_lst	*prev;
   char		**cmd;
 }		t_lst;
+
+typedef struct	s_lab
+{
+  struct s_lab	*next;
+  char		*lab;
+  int		oct_pos;
+}		t_lab;
 
 typedef struct s_label
 {
@@ -144,5 +151,13 @@ void		check_cmd_n(t_chkcmd ch, t_label *list);
 int		parse_list(t_lst *list, int fd);
 int		write_in_buff(char **cmd, int *len, int fd);
 int		*write_ld_first(char *args, int *len, int fd);
+t_lab		*new_lab_node(char *label, int oct_pos);
+t_lab		*my_put_in_lab_list(t_lab *list, char *label, int oct_pos);
+int		set_label_pos(char *str, t_lab *list);
+int		set_label_pos_code(char **word, t_lab *list, int cp);
+void		word_label(char *word, t_lab *list, int cp);
+int		word_is_instruction(char *word, int *cp);
+void		check_type(char *word, char code, int *cp);
+char		*remove_comment(char *str);
 
 #endif
