@@ -5,28 +5,27 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 21:43:59 2014 alex-odet
-** Last update Sun Apr 13 22:26:07 2014 romaric
+** Last update Sun Apr 13 21:50:27 2014 
 */
 
 #include "struct.h"
 
-int		*write_lld(char *args, int *len, int fd, t_lab *lab)
+void		write_lld(char *args, t_size *p, int fd, t_lab *lab)
 {
   char		val;
   char		**args_tab;
 
   args_tab = my_str_to_wordtab(args, ", ");
-  *len += write(fd, &op_tab[12].code, 1);
+  p->len += write(fd, &op_tab[12].code, 1);
   val = encode_octet(args);
-  *len += write(fd, &val, 1);
-  write_lld_arg(args_tab[0], len, fd, lab);
+  p->len += write(fd, &val, 1);
+  write_lld_arg(args_tab[0], p, fd, lab);
   args_tab[1]++;
   val = my_getnbr(args_tab[1]);
-  *len += write(fd, &val, 1);
-  return (len);
+  p->len += write(fd, &val, 1);
 }
 
-int		write_lld_arg(char *arg, int *len, int fd, t_lab *lab)
+void		write_lld_arg(char *arg, t_size *p, int fd, t_lab *lab)
 {
   int		size;
   short	int	size_end;
@@ -34,15 +33,15 @@ int		write_lld_arg(char *arg, int *len, int fd, t_lab *lab)
   if (arg[0] == '%')
     {
       arg++;
-      size = (arg[1] != ':') ? my_getnbr(arg) : find_good_lab(lab, arg);
+      size = (arg[1] != ':') ? my_getnbr(arg) :
+	find_good_lab(lab, arg) - p->size;
       convert_endian(&size, my_endian());
-      *len += write(fd, &size, sizeof(int));
+      p->len += write(fd, &size, sizeof(int));
     }
   else
     {
       size_end = my_getnbr(arg);
       convert_short_endian(&size_end, my_endian());
-      *len += write(fd, &size_end, sizeof(short int));
+      p->len += write(fd, &size_end, sizeof(short int));
     }
-  return (*len);
 }

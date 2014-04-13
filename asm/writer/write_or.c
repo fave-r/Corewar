@@ -5,27 +5,26 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 14:47:57 2014 alex-odet
-** Last update Sun Apr 13 19:44:06 2014 
+** Last update Sun Apr 13 21:36:18 2014 
 */
 
 #include "struct.h"
 
-int		*write_or(char *args, int *len, int fd, t_lab *lab)
+void		write_or(char *args, t_size *p, int fd, t_lab *lab)
 {
   char		**args_tab;
   char		val;
 
   args_tab = my_str_to_wordtab(args, ",");
-  *len += write(fd, &op_tab[6].code, 1);
+  p->len += write(fd, &op_tab[6].code, 1);
   val = encode_octet(args);
-  *len += write(fd, &val, 1);
-  write_arg_or(args_tab[0], len, fd, lab);
-  write_arg_or(args_tab[1], len, fd, lab);
-  write_arg_or(args_tab[2], len, fd, lab);
-  return (len);
+  p->len += write(fd, &val, 1);
+  write_arg_or(args_tab[0], p, fd, lab);
+  write_arg_or(args_tab[1], p, fd, lab);
+  write_arg_or(args_tab[2], p, fd, lab);
 }
 
-int		*write_arg_or(char *args, int *len, int fd, t_lab *lab)
+void		write_arg_or(char *args, t_size *p, int fd, t_lab *lab)
 {
   int		size;
   char		val;
@@ -35,40 +34,39 @@ int		*write_arg_or(char *args, int *len, int fd, t_lab *lab)
     {
       args++;
       val = my_getnbr(args);
-      *len += write(fd, &val, 1);
+      p->len += write(fd, &val, 1);
     }
   else if (args[0] == '%')
     {
       args++;
-      size = (args[1] != ':') ? my_getnbr(args) : find_good_lab(lab, args);
+      size = (args[1] == ':') ? find_good_lab(lab, args) - p->size
+	: my_getnbr(args);
       convert_endian(&size, my_endian());
-      *len += write(fd, &size, sizeof(int));
+      p->len += write(fd, &size, sizeof(int));
     }
   else
     {
       size_end = my_getnbr(args);
       convert_short_endian(&size_end, my_endian());
-      *len += write(fd, &size_end, sizeof(short int));
+      p->len += write(fd, &size_end, sizeof(short int));
     }
-  return (len);
 }
 
-int		*write_xor(char *args, int *len, int fd, t_lab *lab)
+void		write_xor(char *args, t_size *p, int fd, t_lab *lab)
 {
   char		**args_tab;
   char		val;
 
   args_tab = my_str_to_wordtab(args, ",");
-  *len += write(fd, &op_tab[7].code, 1);
+  p->len += write(fd, &op_tab[7].code, 1);
   val = encode_octet(args);
-  *len += write(fd, &val, 1);
-  write_arg_and(args_tab[0], len, fd, lab);
-  write_arg_and(args_tab[1], len, fd, lab);
-  write_arg_and(args_tab[2], len, fd, lab);
-  return (len);
+  p->len += write(fd, &val, 1);
+  write_arg_and(args_tab[0], p, fd, lab);
+  write_arg_and(args_tab[1], p, fd, lab);
+  write_arg_and(args_tab[2], p, fd, lab);
 }
 
-int		*write_arg_xor(char *args, int *len, int fd, t_lab *lab)
+void		write_arg_xor(char *args, t_size *p, int fd, t_lab *lab)
 {
   int           size;
   char          val;
@@ -78,20 +76,20 @@ int		*write_arg_xor(char *args, int *len, int fd, t_lab *lab)
     {
       args++;
       val = my_getnbr(args);
-      *len += write(fd, &val, 1);
+      p->len += write(fd, &val, 1);
     }
   else if (args[0] == '%')
     {
       args++;
-      size = (args[1] != ':') ? my_getnbr(args) : find_good_lab(lab, args);
+      size = (args[1] != ':') ? my_getnbr(args) :
+	find_good_lab(lab, args) - p->size;
       convert_endian(&size, my_endian());
-      *len += write(fd, &size, sizeof(int));
+      p->len += write(fd, &size, sizeof(int));
     }
   else
     {
       size_end = my_getnbr(args);
       convert_short_endian(&size_end, my_endian());
-      *len += write(fd, &size_end, sizeof(short int));
+      p->len += write(fd, &size_end, sizeof(short int));
     }
-  return (len);
 }
