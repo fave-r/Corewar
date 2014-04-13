@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Sun Feb 23 21:19:02 2014 Thibaut Lopez
-** Last update Sat Apr 12 21:10:06 2014 Thibaut Lopez
+** Last update Sun Apr 13 15:33:45 2014 Thibaut Lopez
 */
 
 #ifndef MY_H
@@ -68,6 +68,6 @@ short int	convert_short_endian(short int *nb, int end);
 char		*my_strncat(char *dest, char *src, int len);
 char		**my_str_to_wordtab(char *str, char *sep);
 char		*my_strncpy(char *dest, char *src, int len);
-char		*my_nbr_to_char(int nb, int tmp_nb);
+char		*my_nbr_to_char(int nb);
 
 #endif

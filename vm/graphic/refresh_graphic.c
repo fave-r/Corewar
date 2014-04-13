@@ -5,10 +5,11 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:40:14 2014 Thibaut Lopez
-** Last update Sun Apr 13 12:59:23 2014 Thibaut Lopez
+** Last update Sun Apr 13 15:34:29 2014 Thibaut Lopez
 */
 
 #include "vm.h"
+#include "my.h"
 
 int	my_pause()
 {
@@ -43,6 +44,26 @@ int	get_escape(t_cor *cor)
 	  return (1);
     }
   return (0);
+}
+
+void	put_dump(t_sdl *cor, int dump)
+{
+  char		*tmp;
+  SDL_Rect	position;
+  SDL_Color	color;
+
+  position.x = 700;
+  position.y = 115;
+  color.r = 255;
+  color.g = 255;
+  color.b = 255;
+  cor->dump[0] = TTF_RenderText_Blended(cor->font, "DUMP = ", color);
+  SDL_BlitSurface(cor->dump[0], NULL, cor->screen, &position);
+  tmp = (dump >= 240000) ? my_strdup("NONE") : my_nbr_to_char(dump);
+  position.x += position.w;
+  cor->dump[1] = TTF_RenderText_Solid(cor->font, tmp, color);
+  free(tmp);
+  SDL_BlitSurface(cor->dump[1], NULL, cor->screen, &position);
 }
 
 void	change_case_mem(int case_mem, Uint32 color, t_sdl *cor)

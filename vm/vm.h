@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Thu Mar 20 17:43:52 2014 Thibaut Lopez
-** Last update Sun Apr 13 14:49:34 2014 Thibaut Lopez
+** Last update Sun Apr 13 15:24:46 2014 Thibaut Lopez
 */
 
 #ifndef VM_H
@@ -131,7 +131,7 @@ int	get_dir_ind_arg_noidx(int *tab, t_champ *champ,
 int	get_all_type_arg_noidx(int *tab, t_champ *champ,
 			       unsigned char *mem, int *err);
 
-int	init_graphic(t_sdl *cor, t_champ *champ);
+int	init_graphic(t_sdl *cor, t_champ *champ, int dump);
 void	free_graphic(t_sdl *cor);
 int	get_escape(t_cor *cor);
 void	init_information(t_sdl *cor);
@@ -154,5 +154,6 @@ int	prog_size_error(char *path);
 void    fmode(void);
 void	refresh_ctd(t_cor *cor);
 void	refresh_cycle(t_cor *cor, int cycle_done);
+void	put_dump(t_sdl *cor, int dump);
 
 #endif

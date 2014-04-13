@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Sun Apr 13 13:08:14 2014 Thibaut Lopez
+** Last update Sun Apr 13 15:34:10 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -29,7 +29,7 @@ void	init_color_champ(t_sdl *cor, t_champ *champ)
       else
 	champ->color = SDL_MapRGB(cor->screen->format, 255, 255, 0);
       i++;
-      nb = my_nbr_to_char(champ->champ_nb, champ->champ_nb);
+      nb = my_nbr_to_char(champ->champ_nb);
       tmp = my_strcat(", champion number : ", nb);
       free(nb);
       champ->graphic_name = my_strcat(champ->head->prog_name, tmp);
@@ -107,7 +107,7 @@ void	name_champ(t_sdl *cor, t_champ *champ)
     cor->name[i] = NULL;
 }
 
-int	init_graphic(t_sdl *cor, t_champ *champ)
+int	init_graphic(t_sdl *cor, t_champ *champ, int dump)
 {
   SDL_Rect	position;
 
@@ -131,6 +131,7 @@ int	init_graphic(t_sdl *cor, t_champ *champ)
   name_champ(cor, champ);
   fill_arena(cor, champ);
   init_information(cor);
+  put_dump(cor, dump);
   SDL_Flip(cor->screen);
   return (0);
 }
