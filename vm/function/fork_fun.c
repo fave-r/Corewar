@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Tue Apr  8 15:03:11 2014 Thibaut Lopez
-** Last update Fri Apr 11 18:02:58 2014 thibaud
+** Last update Sun Apr 13 12:41:24 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -36,6 +36,7 @@ t_champ	*champ_dup(t_champ *father, int new_pos)
   son->carry = father->carry;
   son->wait = -1;
   son->color = father->color;
+  son->graphic_name = NULL;
   return (son);
 }
 
