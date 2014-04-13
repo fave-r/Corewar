@@ -1,11 +1,11 @@
 /*
 ** main.c for main in /home/thibaut.lopez/Corewar/Corewar/asm/Disassembler
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Wed Apr  2 19:53:38 2014 Thibaut Lopez
-** Last update Sat Apr  5 17:13:52 2014 Thibaut Lopez
+** Last update Sun Apr 13 22:47:20 2014 romaric
 */
 
 #include "op.h"
@@ -61,7 +61,7 @@ header_t	*make_header(int fd, char *path)
   return (head);
 }
 
-void	disassembler(char *path)
+void		disassembler(char *path)
 {
   header_t	*head;
   int		fd;
@@ -83,9 +83,9 @@ void	disassembler(char *path)
   close(new_fd);
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
-  int	i;
+  int		i;
 
   if (argc == 1)
     {

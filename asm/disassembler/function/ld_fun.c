@@ -1,11 +1,11 @@
 /*
 ** ld_fun.c for ld in /home/thibaut.lopez/Corewar/Corewar/vm
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Wed Mar 12 19:11:21 2014 Thibaut Lopez
-** Last update Wed Apr  9 14:37:59 2014 Thibaut Lopez
+** Last update Sun Apr 13 22:49:28 2014 romaric
 */
 
 #include "dasm.h"

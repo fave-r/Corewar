@@ -1,11 +1,11 @@
 /*
 ** write_lldi.c for write_lldi in /home/alex-odet/work/Corewar/asm/writer
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Fri Apr 11 22:12:37 2014 alex-odet
-** Last update Sun Apr 13 22:21:27 2014 
+** Last update Sun Apr 13 22:35:47 2014 romaric
 */
 
 #include "struct.h"

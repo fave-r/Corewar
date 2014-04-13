@@ -1,11 +1,11 @@
 /*
 ** other_fun.c for other_fun in /home/thibaut.lopez/Corewar/Corewar/vm
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Wed Mar 12 19:20:50 2014 Thibaut Lopez
-** Last update Fri Apr 11 16:41:05 2014 thibaud
+** Last update Sun Apr 13 22:50:44 2014 romaric
 */
 
 #include "dasm.h"
@@ -22,7 +22,7 @@ int	my_st(unsigned char *buff, int fd, int i, int size)
       tab[2][0] == 0 && tab[3][0] == 0)
     {
       my_putstr("\tst ", fd);
-      my_printf(fd, "r%d,", tab[0[2]);
+      my_printf(fd, "r%d,", tab[0][2]);
       my_printf(fd, (tab[1][0] == 1) ? "r%d\n" : "%d\n", tab[1][2]);
     }
   else

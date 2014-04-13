@@ -5,14 +5,14 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Mar 26 10:43:51 2014 alex-odet
-** Last update Sun Apr 13 21:59:11 2014 
+** Last update Sun Apr 13 22:34:48 2014 romaric
 */
 
 #include "struct.h"
 
 void		my_write_live(char *value, t_size *p, int fd, t_lab *lab)
 {
-  int	size;
+  int		size;
 
   if (value[1] == ':')
     {

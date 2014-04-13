@@ -5,8 +5,10 @@
 ## Login   <thibaut.lopez@epitech.net>
 ##
 ## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Sat Apr 12 22:47:02 2014 Thibaut Lopez
+## Last update Sun Apr 13 22:55:13 2014 romaric
 ##
+
+CC=		gcc
 
 VM_S=		champ_fun.c \
 		check_reg.c \
@@ -33,12 +35,12 @@ VM_N=		corewar
 
 VM_O=		$(VM_S:.c=.o)
 
-CC=		gcc -g3 -W -Wall -Werror -I ../my/ -I ../ -I . -I ./graphic/fmodapi44432linux/api/inc -lSDL_image -lSDL_ttf -lSDL -lGL -lGLU ./graphic/fmodapi44432linux/api/lib/libfmodex64-4.44.32.so
+CFLAGS=		-W -Wall -Werror -I ../my/ -I ../ -I . -I ./graphic/fmodapi44432linux/api/inc -lSDL_image -lSDL_ttf -lSDL -lGL -lGLU ./graphic/fmodapi44432linux/api/lib/libfmodex64-4.44.32.so
 
 all:		$(VM_N)
 
 $(VM_N):	$(VM_O)
-		$(CC) -o $(VM_N) $(VM_O) -L.. -lmy
+		$(CC) -o $(VM_N) $(VM_O) $(LDFLAGS) -L.. -lmy
 
 clean:
 		rm -f $(VM_O)

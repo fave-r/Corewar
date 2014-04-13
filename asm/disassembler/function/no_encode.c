@@ -1,11 +1,11 @@
 /*
 ** no_encode.c for no_encode in /home/thibaut.lopez/Corewar/Corewar/vm
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Wed Feb 26 12:05:37 2014 Thibaut Lopez
-** Last update Wed Apr  9 14:41:00 2014 Thibaut Lopez
+** Last update Sun Apr 13 22:50:06 2014 romaric
 */
 
 #include "dasm.h"
@@ -35,7 +35,7 @@ int	my_zjmp(unsigned char *buff, int fd, int i, int size)
 
 int	my_fork(unsigned char *buff, int fd, int i, int size)
 {
-  int		fork_dest;
+  int	fork_dest;
 
   if (i > size - 2)
     return (-1);
@@ -46,7 +46,7 @@ int	my_fork(unsigned char *buff, int fd, int i, int size)
 
 int	my_lfork(unsigned char *buff, int fd, int i, int size)
 {
-  int		fork_dest;
+  int	fork_dest;
 
   if (i > size - 2)
     return (-1);

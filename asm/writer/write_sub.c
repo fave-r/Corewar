@@ -1,11 +1,11 @@
 /*
 ** write_sub.c for write_sub in /home/alex-odet/work/Corewar/asm/writer
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Thu Apr 10 09:56:35 2014 alex-odet
-** Last update Sun Apr 13 21:49:00 2014 
+** Last update Sun Apr 13 22:36:50 2014 romaric
 */
 
 #include "struct.h"

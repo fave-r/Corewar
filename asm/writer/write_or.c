@@ -1,11 +1,11 @@
 /*
 ** write_or.c for write_or in /home/alex-odet/work/Corewar/asm
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Fri Apr 11 14:47:57 2014 alex-odet
-** Last update Sun Apr 13 21:36:18 2014 
+** Last update Sun Apr 13 22:38:02 2014 romaric
 */
 
 #include "struct.h"

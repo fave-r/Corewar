@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sun Apr 13 22:24:59 2014 
+** Last update Sun Apr 13 22:45:58 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -77,7 +77,6 @@ typedef struct	s_chklab
   char	*tmp;
   char	*save;
 }		t_chklab;
-
 
 char		*get_next_line(const int fd);
 void		parser(char *str);

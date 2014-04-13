@@ -5,14 +5,14 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Mon Apr  7 18:59:29 2014 romaric
+## Last update Sun Apr 13 22:51:27 2014 romaric
 ##
 
 CC=		gcc
 
 RM=		rm -f
 
-CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I../.. -I../../my -I.
+CFLAGS=		-Wall -Wextra -Werror -I../.. -I../../my -I.
 
 NAME=		dasm
 

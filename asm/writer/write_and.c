@@ -1,11 +1,11 @@
 /*
 ** write_and.c for write_end in /home/alex-odet/work/Corewar/asm/writer
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Thu Apr 10 10:01:35 2014 alex-odet
-** Last update Sun Apr 13 21:38:20 2014 
+** Last update Sun Apr 13 22:37:17 2014 romaric
 */
 
 #include "struct.h"

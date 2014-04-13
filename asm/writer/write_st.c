@@ -5,19 +5,19 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  9 13:04:49 2014 alex-odet
-** Last update Sun Apr 13 22:16:54 2014 
+** Last update Sun Apr 13 22:36:34 2014 romaric
 */
 
 #include "struct.h"
 
-void	my_write_st(char *args, t_size *p, int fd, t_lab *lab)
+void		my_write_st(char *args, t_size *p, int fd,
+			    __attribute__((unused))t_lab *lab)
 {
   char		**args_tab;
   short int	size_end;
   char		encode;
   char		val;
 
-  (void)lab;
   args_tab = my_str_to_wordtab(args, "\t,");
   p->len = p->len + write(fd, &op_tab[2].code, 1);
   encode = encode_octet(args);
