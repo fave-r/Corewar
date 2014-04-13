@@ -5,12 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Apr  7 15:11:31 2014 romaric
-** Last update Tue Apr  8 15:04:20 2014 romaric
+** Last update Sun Apr 13 22:18:06 2014 romaric
 */
 
 #include "struct.h"
 
-void    check_andnextnn(char *args, char *cmd, int i)
+void	check_andnextnn(char *args, char *cmd, int i)
 {
   i++;
   if (args[i] != 'r')
@@ -82,7 +82,7 @@ void	check_andnext(char *args, char *cmd, t_label *list)
   check_andnextn(args, cmd, list, i);
 }
 
-void    check_and(char *args, char *cmd, t_label *list)
+void	check_and(char *args, char *cmd, t_label *list)
 {
   if (args[0] != '%' && (args[0] < '0' || args[0] > '9')
       && args[0] != 'r' && args[0] != '-')

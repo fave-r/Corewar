@@ -5,12 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Apr  8 15:01:40 2014 romaric
-** Last update Tue Apr  8 15:04:09 2014 romaric
+** Last update Sun Apr 13 22:15:20 2014 romaric
 */
 
 #include "struct.h"
 
-void    init_labeldei(int *i, int *x, int *j, int *size)
+void	init_labeldei(int *i, int *x, int *j, int *size)
 {
   *x = *x + 2;
   *i = *x;
@@ -18,12 +18,12 @@ void    init_labeldei(int *i, int *x, int *j, int *size)
   *size = 0;
 }
 
-char    *copi_labeldei(char *args, int x)
+char	*copi_labeldei(char *args, int x)
 {
-  char  *str;
-  int   i;
-  int   j;
-  int   size;
+  char	*str;
+  int	i;
+  int	j;
+  int	size;
 
   init_labeldei(&i, &x, &j, &size);
   while (args[x + 2] != ',')

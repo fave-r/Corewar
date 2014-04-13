@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Sun Apr 13 19:13:08 2014 
+** Last update Sun Apr 13 22:03:50 2014 romaric
 */
 
 #include "struct.h"
@@ -53,11 +53,11 @@ t_lst		*function(int fd)
   return (first);
 }
 
-int	my_fill_buff(char *str, int fd, t_lab *lab)
+int		my_fill_buff(char *str, int fd, t_lab *lab)
 {
-  int	new_fd;
-  t_lst	*list;
-  int	len;
+  int		new_fd;
+  t_lst		*list;
+  int		len;
 
   len = 0;
   new_fd = xopen(str, O_RDONLY);
@@ -71,10 +71,10 @@ int	my_fill_buff(char *str, int fd, t_lab *lab)
   return (len);
 }
 
-int	parse_list(t_lst *list, int fd, t_lab *lab)
+int		parse_list(t_lst *list, int fd, t_lab *lab)
 {
-  int	len;
-  int	save;
+  int		len;
+  int		save;
 
   save = 0;
   while (list)

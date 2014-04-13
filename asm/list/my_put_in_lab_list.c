@@ -1,11 +1,11 @@
 /*
 ** my_put_in_lab_list.c for my_put_in_lab_list in /home/alex-odet/work/Corewar/asm/list
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Sun Apr 13 14:50:26 2014 alex-odet
-** Last update Sun Apr 13 15:21:32 2014 alex-odet
+** Last update Sun Apr 13 22:04:20 2014 romaric
 */
 
 #include "struct.h"

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sun Apr  6 17:09:13 2014 romaric
-** Last update Mon Apr  7 13:12:19 2014 romaric
+** Last update Sun Apr 13 22:15:47 2014 romaric
 */
 
 #include "struct.h"
@@ -39,7 +39,7 @@ void	check_stmore(char *args, int i)
     }
 }
 
-void    check_st(char *args, char *cmd)
+void	check_st(char *args, char *cmd)
 {
   int	i;
 

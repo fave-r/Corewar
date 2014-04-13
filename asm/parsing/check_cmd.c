@@ -5,12 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Mar 20 14:24:38 2014 alex-odet
-** Last update Sun Apr 13 18:59:36 2014 romaric
+** Last update Sun Apr 13 22:06:49 2014 romaric
 */
 
 #include "struct.h"
 
-void	check_cmd(char *str, t_label *list)
+void		check_cmd(char *str, t_label *list)
 {
   t_chkcmd	ch;
 
@@ -29,11 +29,11 @@ void	check_cmd(char *str, t_label *list)
   close(ch.fd);
 }
 
-char	*cmd_exist(char *str, int *bool)
+char		*cmd_exist(char *str, int *bool)
 {
-  int	j;
-  int	i;
-  char	*cmd;
+  int		j;
+  int		i;
+  char		*cmd;
 
   i = 1;
   j = 1;
@@ -58,7 +58,7 @@ char	*cmd_exist(char *str, int *bool)
   return (NULL);
 }
 
-char	*cmd_next_label(char *cmd, int *j, int i, char *str)
+char		*cmd_next_label(char *cmd, int *j, int i, char *str)
 {
   my_memset(cmd, my_strlen(cmd));
   *j = 0;
@@ -72,10 +72,10 @@ char	*cmd_next_label(char *cmd, int *j, int i, char *str)
   return (cmd);
 }
 
-void	check_cmd_exist(char *cmd)
+void		check_cmd_exist(char *cmd)
 {
-  int	j;
-  int	x;
+  int		j;
+  int		x;
 
   j = 0;
   x = 1;
@@ -89,11 +89,11 @@ void	check_cmd_exist(char *cmd)
     print_bad_instruction(cmd);
 }
 
-void	check_cmd_arg(char *args, char *cmd, t_label *list)
+void		check_cmd_arg(char *args, char *cmd, t_label *list)
 {
-  int	i;
-  int	nbr_coma;
-  int	k;
+  int		i;
+  int		nbr_coma;
+  int		k;
 
   i = -1;
   k = 0;

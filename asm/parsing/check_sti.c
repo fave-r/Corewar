@@ -5,12 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Apr  8 12:51:16 2014 romaric
-** Last update Fri Apr 11 16:44:11 2014 romaric
+** Last update Sun Apr 13 22:12:04 2014 romaric
 */
 
 #include "struct.h"
 
-void    check_stinextnnn(char *args, int i)
+void	check_stinextnnn(char *args, int i)
 {
   if (args[i + 1] != ':' && args[i] == '%')
     {
@@ -24,7 +24,7 @@ void    check_stinextnnn(char *args, int i)
     }
 }
 
-void    check_stinextnn(char *args, char *cmd, t_label *list, int i)
+void	check_stinextnn(char *args, char *cmd, t_label *list, int i)
 {
   i++;
   if (args[i] != 'r' && args[i] != '%')
@@ -47,7 +47,7 @@ void    check_stinextnn(char *args, char *cmd, t_label *list, int i)
   check_stinextnnn(args, i);
 }
 
-void    check_stinextn(char *args, char *cmd, t_label *list, int i)
+void	check_stinextn(char *args, char *cmd, t_label *list, int i)
 {
   if (args[i] == '%' && args[i + 1] == ':'
       && check_label_exist(list, copi_labeldei(args, i)) != 1)
@@ -75,7 +75,7 @@ void    check_stinextn(char *args, char *cmd, t_label *list, int i)
   check_stinextnn(args, cmd, list, i);
 }
 
-void    check_stinext(char *args, char *cmd, t_label *list)
+void	check_stinext(char *args, char *cmd, t_label *list)
 {
   int	i;
 
@@ -92,7 +92,7 @@ void    check_stinext(char *args, char *cmd, t_label *list)
     }
   check_stinextn(args, cmd, list, i);
 }
-void    check_sti(char *args, char *cmd, t_label *list)
+void	check_sti(char *args, char *cmd, t_label *list)
 {
   if (args[0] != 'r')
     {

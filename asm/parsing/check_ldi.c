@@ -5,12 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Apr  8 12:34:05 2014 romaric
-** Last update Tue Apr  8 15:13:46 2014 romaric
+** Last update Sun Apr 13 22:08:22 2014 romaric
 */
 
 #include "struct.h"
 
-void    check_ldinextnn(char *args, char *cmd, int i)
+void	check_ldinextnn(char *args, char *cmd, int i)
 {
   i++;
   if (args[i] != 'r')
@@ -28,7 +28,7 @@ void    check_ldinextnn(char *args, char *cmd, int i)
     }
 }
 
-void    check_ldinextn(char *args, char *cmd, t_label *list, int i)
+void	check_ldinextn(char *args, char *cmd, t_label *list, int i)
 {
   if (args[i] == '%' && args[i + 1] == ':'
       && check_label_exist(list, copi_labeldei(args, i)) != 1)
@@ -56,9 +56,9 @@ void    check_ldinextn(char *args, char *cmd, t_label *list, int i)
   check_ldinextnn(args, cmd, i);
 }
 
-void    check_ldinext(char *args, char *cmd, t_label *list)
+void	check_ldinext(char *args, char *cmd, t_label *list)
 {
-  int   i;
+  int	i;
 
   i = 1;
   if (args[0] == 'r')
@@ -81,7 +81,7 @@ void    check_ldinext(char *args, char *cmd, t_label *list)
   check_ldinextn(args, cmd, list, i);
 }
 
-void    check_ldi(char *args, char *cmd, t_label *list)
+void	check_ldi(char *args, char *cmd, t_label *list)
 {
   if (args[0] != '%' && (args[0] < '0' || args[0] > '9')
       && args[0] != 'r' && args[0] != '-')

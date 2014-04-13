@@ -5,12 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr  9 13:09:29 2014 romaric
-** Last update Wed Apr  9 13:12:21 2014 romaric
+** Last update Sun Apr 13 22:14:16 2014 romaric
 */
 
 #include "struct.h"
 
-void    check_aff(char *args, char *cmd)
+void	check_aff(char *args, char *cmd)
 {
   if (args[0] != 'r')
     {

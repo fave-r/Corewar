@@ -5,12 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Apr  8 15:28:07 2014 romaric
-** Last update Sat Apr 12 00:25:21 2014 romaric
+** Last update Sun Apr 13 22:13:50 2014 romaric
 */
 
 #include "struct.h"
 
-void   check_cmd_n(t_chkcmd ch, t_label *list)
+void	check_cmd_n(t_chkcmd ch, t_label *list)
 {
   if (ch.i == 0)
     {

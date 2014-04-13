@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sun Apr  6 12:21:40 2014 romaric
-** Last update Fri Apr 11 16:41:18 2014 romaric
+** Last update Sun Apr 13 22:13:35 2014 romaric
 */
 
 #include "struct.h"
@@ -16,11 +16,11 @@ void	moresize(int *size, int *i)
   *i = *i + 1;
 }
 
-char    *copi_labelde(char *args)
+char	*copi_labelde(char *args)
 {
-  char  *str;
-  int   i;
-  int   j;
+  char	*str;
+  int	i;
+  int	j;
   int	size;
 
   i = 2;

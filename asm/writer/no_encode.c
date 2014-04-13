@@ -5,14 +5,14 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Mar 26 10:43:51 2014 alex-odet
-** Last update Sun Apr 13 20:15:31 2014 
+** Last update Sun Apr 13 22:24:34 2014 romaric
 */
 
 #include "struct.h"
 
 int		*my_write_live(char *value, int *len, int fd, t_lab *lab)
 {
-  int	size;
+  int		size;
 
   if (value[1] == ':')
     size = find_good_lab(lab, value);
@@ -61,7 +61,7 @@ int		*my_write_fork(char *value, int *len, int fd, t_lab *lab)
   return (len);
 }
 
-int		* my_write_lfork(char *value, int *len, int fd, t_lab *lab)
+int		*my_write_lfork(char *value, int *len, int fd, t_lab *lab)
 {
   short int	save_v;
 

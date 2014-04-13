@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Sun Apr 13 18:56:19 2014 romaric
+** Last update Sun Apr 13 22:09:42 2014 romaric
 */
 
 #include "struct.h"
@@ -52,7 +52,7 @@ t_label		*check_label(char *tmp, t_label *list)
 
 t_label		*copy_label(char *tmp, int len, t_label *list)
 {
-  char	*save;
+  char		*save;
 
   save = my_strndup(tmp, len);
   if ((check_label_exist(list, save)) != 1)
@@ -60,9 +60,9 @@ t_label		*copy_label(char *tmp, int len, t_label *list)
   return (list);
 }
 
-int	check_label_exist(t_label *list, char *label_check)
+int		check_label_exist(t_label *list, char *label_check)
 {
-  int	i;
+  int		i;
 
   i = 0;
   if (label_check != NULL)
