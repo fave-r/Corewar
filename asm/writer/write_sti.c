@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 11 15:44:53 2014 alex-odet
-** Last update Sun Apr 13 00:12:38 2014 alex-odet
+** Last update Sun Apr 13 01:28:06 2014 alex-odet
 */
 
 #include "struct.h"
@@ -34,7 +34,8 @@ if (arg[0] == 'r')
     {
       arg++;
       val = my_getnbr(arg);
-      len += write(fd, &val, REG_SIZE);
+      printf("val == %d\n", val);
+      len += write(fd, &val, 1);
     }
   else if (arg[0] == '%')
     {

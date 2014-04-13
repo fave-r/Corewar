@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:49:55 2014 alex-odet
-** Last update Sat Apr 12 23:49:42 2014 alex-odet
+** Last update Sun Apr 13 01:20:55 2014 alex-odet
 */
 
 #include "struct.h"
@@ -44,4 +44,5 @@ void	write_in_buff(char **cmd, int *len, int fd)
 	  tab[j].ptr(cmd[1], len, fd);
 	j++;
       }
+  close(fd);
 }

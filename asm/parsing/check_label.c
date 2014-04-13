@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue Mar 11 13:02:00 2014 romaric
-** Last update Sun Apr 13 01:13:07 2014 alex-odet
+** Last update Sun Apr 13 02:07:34 2014 alex-odet
 */
 
 #include "struct.h"
@@ -29,7 +29,6 @@ t_label		*fill_list_of_label(char *str)
       else
 	list = check_label(p.tmp, list);
     }
-  my_show_list(list);
   close (p.fd);
   return (list);
 }

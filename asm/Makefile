@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Sat Apr 12 23:53:43 2014 romaric
+## Last update Sun Apr 13 02:26:10 2014 alex-odet
 ##
 
 CC=		clang
@@ -33,7 +33,6 @@ SRCS=		main.c \
 		list/my_put_in_list.c \
 		list/my_put_in_cmd_list.c \
 		list/my_show_list.c \
-		list/my_list_size.c \
 		error/error.c \
 		error/bad_value.c \
 		get_next_line/get_next_line.c \
@@ -50,8 +49,6 @@ SRCS=		main.c \
 		writer/no_encode.c \
 		parsing/check_aff.c \
 		writer/write_st.c \
-		writer/copy_reg_value.c \
-		writer/size_to_malloc.c \
 		writer/write_ld.c \
 		writer/write_lld.c \
 		writer/write_lldi.c \

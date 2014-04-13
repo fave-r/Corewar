@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sun Apr 13 01:05:46 2014 alex-odet
+** Last update Sun Apr 13 02:25:07 2014 alex-odet
 */
 
 #ifndef __COREWAR__
@@ -22,7 +22,6 @@
 
 #define BUFF_SIZE 4096
 #define COR_EXT ".cor"
-#define COR_SEP "%:,"
 
 typedef struct	s_get
 {
@@ -43,12 +42,6 @@ typedef struct s_label
   struct s_label *next;
   char		*name;
 }		t_label;
-
-typedef struct	s_file
-{
-  struct s_file *next;
-  char		*name_file;
-}		t_file;
 
 typedef struct	s_cmd
 {
@@ -92,10 +85,6 @@ t_label		*my_put_in_list(t_label *list, char *name);
 t_label		*new_node(char *name);
 t_label		*check_label(char *tmp, t_label *list);
 t_label		*copy_label(char *tmp, int len, t_label *list);
-void		my_show_file_list(t_file *list);
-t_file		*create_node(char *name);
-t_file		*my_put_in_file_list(t_file *list, char *name);
-void		send_file_to_parser(t_file *list);
 void		check_cmd_exist(char *cmd);
 char		*my_get_strdup(char *src);
 char		*cmd_next_label(char *cmd, int *j, int i, char *str);
@@ -116,7 +105,6 @@ int		*my_write_zjmp(char *value, int *len, int fd);
 char		*my_fill_buff(char *str, int fd);
 int		*my_write_fork(char *value, int *len, int fd);
 int		*my_write_lfork(char *value, int *len, int fd);
-int		my_file_list_size(t_file *list);
 void		check_ld(char *args, char *cmd, t_label *list);
 char		*copi_labelde(char *args);
 void		printthiserror(char *cmd);

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Mar 21 00:10:32 2014 alex-odet
-** Last update Sat Apr 12 00:55:37 2014 romaric
+** Last update Sun Apr 13 02:25:33 2014 alex-odet
 */
 
 #include "struct.h"
@@ -22,19 +22,6 @@ void	my_show_list(t_label *list)
 	  my_putchar(' ', 1);
 	  my_putchar('\n', 1);
 	}
-      list = list->next;
-    }
-}
-
-void	my_show_file_list(t_file *list)
-{
-  while (list)
-    {
-      if (list->name_file == NULL)
-	return;
-      else
-	my_putstr(list->name_file, 1);
-      my_putchar('\n', 1);
       list = list->next;
     }
 }
