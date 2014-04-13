@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Sun Apr 13 14:48:41 2014 Thibaut Lopez
+** Last update Sun Apr 13 19:20:32 2014 romaric
 */
 
 #include "vm.h"
@@ -32,9 +32,9 @@ t_struct	fct_tab[] =
     {16, &my_aff, 2},
   };
 
-int	find_in_tab(char octet)
+int		find_in_tab(char octet)
 {
-  int	i;
+  int		i;
 
   i = 0;
   while (i <= 16)
@@ -46,21 +46,21 @@ int	find_in_tab(char octet)
   return (0);
 }
 
-int	champ_play(t_champ *cur_champ, t_cor *map)
+int		champ_play(t_champ *cur_champ, t_cor *map)
 {
   fct_tab[find_in_tab(map->mem[mod_mem(cur_champ->pc)])].
     ptr_fct(cur_champ, map);
   return (0);
 }
 
-int	get_wait(t_champ *cur_champ, t_cor *map)
+int		get_wait(t_champ *cur_champ, t_cor *map)
 {
   cur_champ->wait = fct_tab[find_in_tab(map->mem[mod_mem(cur_champ->pc)])].
     wait;
   return (cur_champ->wait);
 }
 
-void	loop_cycle(t_champ *champs, t_cor *map, int cycle_done)
+void		loop_cycle(t_champ *champs, t_cor *map, int cycle_done)
 {
   if ((map->cycle + cycle_done) == map->dump)
     aff_mem(map->mem);
@@ -74,9 +74,9 @@ void	loop_cycle(t_champ *champs, t_cor *map, int cycle_done)
   map->cycle_to_die = (get_escape(map) == 1) ? 0 : map->cycle_to_die;
 }
 
-int	run_corewar(t_champ *champs, t_cor *map)
+int		run_corewar(t_champ *champs, t_cor *map)
 {
-  int	cycle_done;
+  int		cycle_done;
 
   cycle_done = 0;
   map->cycle_to_die = CYCLE_TO_DIE;

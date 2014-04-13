@@ -1,11 +1,11 @@
 /*
 ** information.c for information in /home/thibaut.lopez/Corewar/Corewar/vm
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Sat Apr 12 22:20:42 2014 Thibaut Lopez
-** Last update Sun Apr 13 15:35:04 2014 Thibaut Lopez
+** Last update Sun Apr 13 19:22:45 2014 romaric
 */
 
 #include "my.h"
@@ -21,7 +21,7 @@ SDL_Color	init_white_color()
   return (color);
 }
 
-void	refresh_cycle(t_cor *cor, int cycle_done)
+void		refresh_cycle(t_cor *cor, int cycle_done)
 {
   char		*tmp;
   SDL_Color	color;
@@ -50,7 +50,7 @@ void	refresh_cycle(t_cor *cor, int cycle_done)
   SDL_Flip(cor->graphic.screen);
 }
 
-void	refresh_ctd(t_cor *cor)
+void		refresh_ctd(t_cor *cor)
 {
   char		*tmp;
   SDL_Color	color;
@@ -73,8 +73,8 @@ void	refresh_ctd(t_cor *cor)
   SDL_Flip(cor->graphic.screen);
 }
 
-void	save_information(SDL_Rect *src, SDL_Rect *dest,
-			 SDL_Surface *to_blit, SDL_Surface *screen)
+void		save_information(SDL_Rect *src, SDL_Rect *dest,
+				 SDL_Surface *to_blit, SDL_Surface *screen)
 {
   SDL_BlitSurface(to_blit, NULL, screen, src);
   src->x += src->w;
@@ -85,7 +85,7 @@ void	save_information(SDL_Rect *src, SDL_Rect *dest,
   src->x -= src->w;
 }
 
-void	init_information(t_sdl *cor)
+void		init_information(t_sdl *cor)
 {
   char		*tmp;
   SDL_Color	color;

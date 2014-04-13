@@ -5,15 +5,15 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 12 16:33:41 2014 Thibaut Lopez
-** Last update Fri Apr 11 17:21:53 2014 thibaud
+** Last update Sun Apr 13 19:15:06 2014 romaric
 */
 
 #include "vm.h"
 #include "my.h"
 
-void	print_on_mem(t_cor *cor, int to_add, int pc)
+void		print_on_mem(t_cor *cor, int to_add, int pc)
 {
-  int	i;
+  int		i;
   unsigned char	*tmp;
 
   i = (cor->endian == 1) ? 3 : 1;
@@ -27,10 +27,10 @@ void	print_on_mem(t_cor *cor, int to_add, int pc)
   cor->mem[mod_mem(pc + i)] = tmp[3];
 }
 
-int	get_nbr_action(unsigned char *mem, int pc, int len)
+int		get_nbr_action(unsigned char *mem, int pc, int len)
 {
-  int	i;
-  int	nb;
+  int		i;
+  int		nb;
 
   i = 0;
   nb = 0;
@@ -46,12 +46,12 @@ int	get_nbr_action(unsigned char *mem, int pc, int len)
   return (nb);
 }
 
-int	**get_encode(unsigned char *mem, int pc)
+int		**get_encode(unsigned char *mem, int pc)
 {
-  int	i;
-  int	add;
-  int	puis;
-  int	**tab;
+  int		i;
+  int		add;
+  int		puis;
+  int		**tab;
 
   tab = xmalloc(4 * sizeof(int *));
   puis = 256;

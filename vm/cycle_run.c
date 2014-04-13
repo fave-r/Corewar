@@ -1,17 +1,17 @@
 /*
 ** cycle_run.c for cycle_run in /home/thibaut.lopez/Corewar/Corewar/vm
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Mon Mar 24 14:11:08 2014 Thibaut Lopez
-** Last update Sun Apr 13 14:48:42 2014 Thibaut Lopez
+** Last update Sun Apr 13 19:18:10 2014 romaric
 */
 
 #include "vm.h"
 #include "my.h"
 
-int	cycle_run(t_champ *champs, t_cor *map, int cycle_done)
+int		cycle_run(t_champ *champs, t_cor *map, int cycle_done)
 {
   t_champ	*cur_champ;
 
@@ -33,10 +33,10 @@ int	cycle_run(t_champ *champs, t_cor *map, int cycle_done)
   return (0);
 }
 
-int	someone_is_dead(t_champ *champs, t_cor *map)
+int		someone_is_dead(t_champ *champs, t_cor *map)
 {
-  int	cpt;
-  int	i;
+  int		cpt;
+  int		i;
 
   (void)champs;
   i = 0;
@@ -52,7 +52,7 @@ int	someone_is_dead(t_champ *champs, t_cor *map)
   return (0);
 }
 
-int	free_champ(t_champ *champ)
+int		free_champ(t_champ *champ)
 {
   t_champ	*tmp;
 
@@ -69,10 +69,10 @@ int	free_champ(t_champ *champ)
   return (0);
 }
 
-int	end_game(t_champ *champ, t_cor *map)
+int		end_game(t_champ *champ, t_cor *map)
 {
-  int	gg;
-  int	cpt;
+  int		gg;
+  int		cpt;
 
   (void)champ;
   gg = -1;

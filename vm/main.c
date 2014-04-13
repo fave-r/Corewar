@@ -1,19 +1,19 @@
 /*
 ** main.c for vm in /home/thibaud/rendu/Corewar/vm
-** 
+**
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
-** 
+**
 ** Started on  Tue Feb 25 15:57:49 2014 thibaud
-** Last update Sun Apr 13 15:29:59 2014 Thibaut Lopez
+** Last update Sun Apr 13 19:19:32 2014 romaric
 */
 
 #include "my.h"
 #include "vm.h"
 
-int	get_good_nbr(char *str)
+int		get_good_nbr(char *str)
 {
-  int	ret;
+  int		ret;
 
   ret = my_getnbr(str);
   if (ret < 0)
@@ -24,7 +24,7 @@ int	get_good_nbr(char *str)
   return (ret);
 }
 
-void	fill_champ(char **argv, t_cor *cor)
+void		fill_champ(char **argv, t_cor *cor)
 {
   int		addr;
   t_champ	*tmp;
@@ -53,9 +53,9 @@ void	fill_champ(char **argv, t_cor *cor)
   cor->champ = tmp;
 }
 
-int	init_champs_nb(t_cor *cor)
+int		init_champs_nb(t_cor *cor)
 {
-  int	i;
+  int		i;
   t_champ	*cur_champ;
 
   cur_champ = cor->champ;
@@ -76,9 +76,9 @@ int	init_champs_nb(t_cor *cor)
   return (0);
 }
 
-int	main(__attribute__((unused))int argc, char **argv)
+int		main(__attribute__((unused))int argc, char **argv)
 {
-  t_cor	cor;
+  t_cor		cor;
 
   fmode();
   cor.dump = 250000;

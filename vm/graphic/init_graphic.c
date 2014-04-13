@@ -1,17 +1,17 @@
 /*
 ** init_graphic.c for init_graphic in /home/thibaut.lopez/Corewar/Corewar/vm/Graphic
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Sun Apr 13 15:34:10 2014 Thibaut Lopez
+** Last update Sun Apr 13 19:23:34 2014 romaric
 */
 
 #include "my.h"
 #include "vm.h"
 
-void	init_color_champ(t_sdl *cor, t_champ *champ)
+void		init_color_champ(t_sdl *cor, t_champ *champ)
 {
   int		i;
   char		*tmp;
@@ -38,7 +38,7 @@ void	init_color_champ(t_sdl *cor, t_champ *champ)
     }
 }
 
-void	fill_arena(t_sdl *cor, t_champ *champ)
+void		fill_arena(t_sdl *cor, t_champ *champ)
 {
   int		i;
   SDL_Rect	position;
@@ -67,7 +67,7 @@ void	fill_arena(t_sdl *cor, t_champ *champ)
   SDL_BlitSurface(cor->arena, NULL, cor->screen, &position);
 }
 
-void	loop_name(SDL_Rect *position, t_sdl *cor, int i, t_champ *tmp)
+void		loop_name(SDL_Rect *position, t_sdl *cor, int i, t_champ *tmp)
 {
   SDL_Color	color;
 
@@ -85,7 +85,7 @@ void	loop_name(SDL_Rect *position, t_sdl *cor, int i, t_champ *tmp)
   position->y += 35;
 }
 
-void	name_champ(t_sdl *cor, t_champ *champ)
+void		name_champ(t_sdl *cor, t_champ *champ)
 {
   int		i;
   t_champ	*tmp;
@@ -107,7 +107,7 @@ void	name_champ(t_sdl *cor, t_champ *champ)
     cor->name[i] = NULL;
 }
 
-int	init_graphic(t_sdl *cor, t_champ *champ, int dump)
+int		init_graphic(t_sdl *cor, t_champ *champ, int dump)
 {
   SDL_Rect	position;
 

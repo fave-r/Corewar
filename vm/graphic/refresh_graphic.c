@@ -1,17 +1,17 @@
 /*
 ** refresh_graphic.c for refresh_graphic in /home/thibaut.lopez/Corewar/Corewar/vm/Graphic
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Wed Mar 19 09:40:14 2014 Thibaut Lopez
-** Last update Sun Apr 13 15:34:29 2014 Thibaut Lopez
+** Last update Sun Apr 13 19:24:01 2014 romaric
 */
 
 #include "vm.h"
 #include "my.h"
 
-int	my_pause()
+int		my_pause()
 {
   int		wait;
   SDL_Event	event;
@@ -29,7 +29,7 @@ int	my_pause()
   return (0);
 }
 
-int	get_escape(t_cor *cor)
+int		get_escape(t_cor *cor)
 {
   SDL_Event	event;
 
@@ -46,7 +46,7 @@ int	get_escape(t_cor *cor)
   return (0);
 }
 
-void	put_dump(t_sdl *cor, int dump)
+void		put_dump(t_sdl *cor, int dump)
 {
   char		*tmp;
   SDL_Rect	position;
@@ -66,7 +66,7 @@ void	put_dump(t_sdl *cor, int dump)
   SDL_BlitSurface(cor->dump[1], NULL, cor->screen, &position);
 }
 
-void	change_case_mem(int case_mem, Uint32 color, t_sdl *cor)
+void		change_case_mem(int case_mem, Uint32 color, t_sdl *cor)
 {
   int		i;
   SDL_Rect	position;

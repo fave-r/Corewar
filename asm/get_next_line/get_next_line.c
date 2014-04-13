@@ -5,14 +5,14 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Nov 23 13:24:46 2013 romaric
-** Last update Sun Apr 13 02:35:42 2014 romaric
+** Last update Sun Apr 13 19:25:16 2014 romaric
 */
 
 #include "struct.h"
 
-char    *my_strdup_new(char *src)
+char		*my_strdup_new(char *src)
 {
-  char  *dest;
+  char		*dest;
 
   dest = malloc((my_strlen(src) + 2) * sizeof(char));
   if (dest == NULL)
@@ -21,7 +21,7 @@ char    *my_strdup_new(char *src)
   return (dest);
 }
 
-char    *get_next_line(const int fd)
+char		*get_next_line(const int fd)
 {
   static char   buff[BUFF_SIZE];
   static int    i = 0;
