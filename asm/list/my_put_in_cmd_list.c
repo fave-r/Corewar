@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Wed Apr  2 13:58:14 2014 alex-odet
-** Last update Sun Apr 13 22:45:26 2014 romaric
+** Last update Wed Apr 16 18:07:34 2014 romaric
 */
 
 #include "struct.h"
@@ -74,14 +74,17 @@ int		my_fill_buff(char *str, int fd, t_lab *lab)
 int		parse_list(t_lst *list, int fd, t_lab *lab)
 {
   t_size	p;
+  int		i;
 
+  i = 0;
   p.size = 0;
-  while (list)
+  while (list && i < my_cmd_size(list))
     {
       p.len = 0;
       write_in_buff(list->cmd, &p, fd, lab);
       p.size += p.len;
       list = list->next;
+      i++;
     }
   return (p.size);
 }

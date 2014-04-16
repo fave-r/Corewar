@@ -1,11 +1,11 @@
 /*
 ** repartisseur.c for vm in /home/thibaud/rendu/Corewar/Corewar/vm/fonctions
-** 
+**
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
-** 
+**
 ** Started on  Wed Mar  5 18:19:35 2014 thibaud
-** Last update Sun Apr 13 19:20:32 2014 romaric
+** Last update Wed Apr 16 18:03:22 2014 romaric
 */
 
 #include "vm.h"
@@ -65,7 +65,7 @@ void		loop_cycle(t_champ *champs, t_cor *map, int cycle_done)
   if ((map->cycle + cycle_done) == map->dump)
     aff_mem(map->mem);
   cycle_run(champs, map, cycle_done);
-  if (map->live_done >= NBR_LIVE && !someone_is_dead(champs, map))
+  if (map->live_done >= NBR_LIVE)
     {
       map->cycle_to_die -= CYCLE_DELTA;
       refresh_ctd(map);

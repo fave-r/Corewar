@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Thu Mar 13 10:29:46 2014 romaric
-** Last update Sun Apr 13 22:45:58 2014 romaric
+** Last update Wed Apr 16 18:08:58 2014 romaric
 */
 
 #ifndef __COREWAR__
@@ -168,5 +168,6 @@ char		*remove_comment(char *str);
 char		*good_lab(t_lab *list);
 char		*good_lab_call(char *value);
 int		find_good_lab(t_lab *list, char *value);
+int		my_cmd_size(t_lst *list);
 
 #endif

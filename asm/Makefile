@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Sun Apr 13 22:51:51 2014 romaric
+## Last update Wed Apr 16 18:08:21 2014 romaric
 ##
 
 CC=		gcc
@@ -61,7 +61,8 @@ SRCS=		main.c \
 		writer/write_ldi.c \
 		writer/write_or.c \
 		writer/write_sub.c \
-		writer/write_good_lab.c
+		writer/write_good_lab.c \
+		list/my_list_size.c
 
 OBJS=		$(SRCS:.c=.o)
 
